@@ -1,49 +1,96 @@
 {
-  "live": null,
+  "live": {
+    "console_errors": [],
+    "page_error": null,
+    "won": true,
+    "state": {
+      "t": 67.12,
+      "phase": "boss",
+      "status": "won",
+      "trace": [
+        "capillaries@0.1",
+        "artery@22.0",
+        "boss@46.0",
+        "won@67.1"
+      ],
+      "hearts": 1,
+      "biomass": 468,
+      "tier": 3,
+      "r": 26,
+      "absorbed": 48,
+      "kills": 3,
+      "bombs": 1,
+      "fumbles": 0,
+      "boss": {
+        "cycle": 3,
+        "meter": 2,
+        "hp": 5,
+        "open": false,
+        "dying": false
+      },
+      "player": {
+        "x": 587,
+        "y": 490
+      },
+      "counts": {
+        "germs": 22,
+        "globs": 5,
+        "darts": 11
+      },
+      "season": "autumn"
+    },
+    "trace": [
+      "capillaries@0.1",
+      "artery@22.0",
+      "boss@46.0",
+      "won@67.1"
+    ],
+    "clean": true
+  },
   "sims": {
     "good": {
       "state": {
-        "t": 79.03,
+        "t": 77.03,
         "phase": "boss",
         "status": "won",
         "trace": [
           "capillaries@0.1",
           "artery@22.1",
           "boss@46.1",
-          "won@79.0"
+          "won@77.0"
         ],
         "hearts": 1,
-        "biomass": 170,
-        "tier": 2,
-        "r": 23,
-        "absorbed": 30,
-        "kills": 1,
+        "biomass": 286,
+        "tier": 3,
+        "r": 26,
+        "absorbed": 29,
+        "kills": 6,
         "bombs": 1,
         "fumbles": 0,
         "boss": {
           "cycle": 3,
-          "meter": 3,
+          "meter": 1,
           "hp": 5,
           "open": false,
           "dying": false
         },
         "player": {
-          "x": 606,
+          "x": 599,
           "y": 496
         },
         "counts": {
-          "germs": 21,
-          "globs": 8,
-          "darts": 2
+          "germs": 20,
+          "globs": 5,
+          "darts": 15
         },
         "season": "autumn"
       },
       "recs": {
         "complete": {
-          "t": 79,
-          "biomass": 170,
-          "absorbed": 30,
-          "husked": 124,
+          "t": 77,
+          "biomass": 286,
+          "absorbed": 29,
+          "husked": 88,
           "bombsUsed": 0,
           "season": "autumn"
         },
@@ -52,7 +99,7 @@
     },
     "partial": {
       "state": {
-        "t": 79.22,
+        "t": 69.05,
         "phase": "boss",
         "status": "won",
         "trace": [
@@ -61,40 +108,40 @@
           "fumble2@10.7",
           "artery@22.1",
           "boss@46.1",
-          "won@79.2"
+          "won@69.0"
         ],
-        "hearts": 1,
-        "biomass": 202,
-        "tier": 2,
-        "r": 23,
-        "absorbed": 37,
-        "kills": 0,
-        "bombs": 1,
+        "hearts": 2,
+        "biomass": 392,
+        "tier": 3,
+        "r": 26,
+        "absorbed": 42,
+        "kills": 7,
+        "bombs": 3,
         "fumbles": 2,
         "boss": {
           "cycle": 3,
-          "meter": 0,
-          "hp": 3,
+          "meter": 1,
+          "hp": 5,
           "open": false,
           "dying": false
         },
         "player": {
-          "x": 169,
+          "x": 286,
           "y": 496
         },
         "counts": {
-          "germs": 4,
-          "globs": 9,
-          "darts": 6
+          "germs": 17,
+          "globs": 8,
+          "darts": 16
         },
         "season": "autumn"
       },
       "recs": {
         "complete": {
-          "t": 79.2,
-          "biomass": 202,
-          "absorbed": 37,
-          "husked": 100,
+          "t": 69,
+          "biomass": 392,
+          "absorbed": 42,
+          "husked": 112,
           "bombsUsed": 0,
           "season": "autumn"
         },
@@ -112,7 +159,7 @@
           "lost@35.2"
         ],
         "hearts": 0,
-        "biomass": 23,
+        "biomass": 37,
         "tier": 0,
         "r": 16,
         "absorbed": 4,
@@ -137,6 +184,14 @@
       }
     }
   },
-  "thumbs": null,
-  "shots": []
+  "thumbs": {
+    "ok": true,
+    "bytes": 15003
+  },
+  "shots": [
+    "shot-capillaries.png",
+    "shot-artery.png",
+    "shot-boss.png",
+    "shot-won.png"
+  ]
 }

@@ -89,6 +89,10 @@ export const UI = {
   // ---- mute / volume -------------------------------------------------------
   applyAudioState() {
     const muted = Save.data.settings?.muted;
+    // apply the PERSISTED music/sfx switches at every boot + change (the audio module's
+    // own defaults are ON; without this, a saved music=off is ignored until first click)
+    Audio.setMusicOn(Save.data.settings?.musicOn ?? true);
+    Audio.setSfxOn(Save.data.settings?.sfxOn ?? true);
     Audio.setVolume(muted ? 0 : (Save.data.settings?.volume ?? 1)); // no-op until audio is unlocked
     const btn = $("#muteBtn");
     if (btn) { btn.classList.toggle("muted", !!muted); btn.setAttribute("aria-pressed", muted ? "true" : "false"); }

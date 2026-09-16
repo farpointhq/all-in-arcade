@@ -160,11 +160,11 @@ export function create(level, api) {
   const BOSS = Object.assign({ hw: 332, sporesPer: 3, openT: 4.2, coreHits: 5, cycles: 3, sprayEvery: [1.3, 1.0, 0.85], aimedEvery: [2.4, 1.9, 1.6] }, data.boss);
 
   const KINDS = {
-    virion: { r: 13, hp: 1, bio: 5, vy: 46, amp: 42, freq: 1.7, paint: () => bake("nc-virion", 28, 28, paintVirion) },
-    bacille: { r: 17, hp: 2, bio: 8, vy: 34, amp: 64, freq: 0.9, paint: () => bake("nc-bacille", 36, 20, paintBacille) },
-    coque: { r: 22, hp: 3, bio: 14, vy: 24, amp: 20, freq: 0.5, paint: () => bake("nc-coque", 36, 36, paintCoque) },
-    bacmaj: { r: 26, hp: 4, bio: 18, vy: 18, amp: 12, freq: 0.4, shoots: true, paint: () => bake("nc-bacmaj", 52, 28, paintBacmaj) },
-    spore: { r: 9, hp: 1, bio: 7, vy: 26, amp: 30, freq: 1.2, paint: () => bake("nc-spore", 20, 20, paintSpore) },
+    virion: { r: 13, hp: 1, bio: 8, vy: 46, amp: 42, freq: 1.7, paint: () => bake("nc-virion", 28, 28, paintVirion) },
+    bacille: { r: 17, hp: 2, bio: 13, vy: 34, amp: 64, freq: 0.9, paint: () => bake("nc-bacille", 36, 20, paintBacille) },
+    coque: { r: 22, hp: 3, bio: 22, vy: 24, amp: 20, freq: 0.5, paint: () => bake("nc-coque", 36, 36, paintCoque) },
+    bacmaj: { r: 26, hp: 4, bio: 26, vy: 18, amp: 12, freq: 0.4, shoots: true, paint: () => bake("nc-bacmaj", 52, 28, paintBacmaj) },
+    spore: { r: 9, hp: 1, bio: 11, vy: 26, amp: 30, freq: 1.2, paint: () => bake("nc-spore", 20, 20, paintSpore) },
   };
 
   // ---- flags ------------------------------------------------------------------------------
@@ -264,7 +264,7 @@ export function create(level, api) {
       kills++;
       if (g.kind === "coque") { // splits into two absorbable virions
         for (const dx of [-18, 18]) {
-          germs.push({ kind: "virion", bx: g.x + dx, x: g.x + dx, y: g.y + 10, r: 13, hp: 1, maxHp: 1, bio: 5, ph: rng() * 6.28, husk: false, p: 0, ttl: HUSK_TTL, fireT: 9 });
+          germs.push({ kind: "virion", bx: g.x + dx, x: g.x + dx, y: g.y + 10, r: 13, hp: 1, maxHp: 1, bio: 8, ph: rng() * 6.28, husk: false, p: 0, ttl: HUSK_TTL, fireT: 9 });
         }
         germs.splice(germs.indexOf(g), 1);
         burst(g.x, g.y, C.coc, 12, 100); sfx("hit");
@@ -364,7 +364,7 @@ export function create(level, api) {
         for (let i = 0; i < n; i++) {
           const a = Math.PI * (0.15 + (0.7 * i) / (n - 1)) + (rng() - 0.5) * 0.2;
           const sp = 62 + rng() * 34;
-          germs.push({ kind: "spore", bx: boss.x + Math.cos(a) * 70, x: boss.x + Math.cos(a) * 70, y: boss.y + 40 + Math.abs(Math.sin(a)) * 20, r: 9, hp: 1, maxHp: 1, bio: 6, ph: rng() * 6.28, husk: false, p: 0, ttl: HUSK_TTL, fireT: 9, vx: Math.cos(a) * sp, fvy: Math.sin(a) * sp });
+          germs.push({ kind: "spore", bx: boss.x + Math.cos(a) * 70, x: boss.x + Math.cos(a) * 70, y: boss.y + 40 + Math.abs(Math.sin(a)) * 20, r: 9, hp: 1, maxHp: 1, bio: 11, ph: rng() * 6.28, husk: false, p: 0, ttl: HUSK_TTL, fireT: 9, vx: Math.cos(a) * sp, fvy: Math.sin(a) * sp });
         }
         boss.sprayT = BOSS.sprayEvery[Math.min(boss.cycle, BOSS.sprayEvery.length - 1)];
       }
