@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "id": "L01",
+  "title": "Greenway Gallop",
+  "genre": "platformer",
+  "version": 4,
+  "authors": [
+    {
+      "name": "Fabric Team",
+      "username": "fabric",
+      "kind": "original"
+    }
+  ],
+  "remixOf": null,
+  "sample": true,
+  "prompt": "Sample seed level. Replace me with the first attendee's level! 'A breezy meadow platformer with coins, spike pits and a flag at the end.'",
+  "brief": "A breezy one-screen meadow gallop — a pit, spikes, and a cloud garden of coins up top.",
+  "objective": "Gallop to the flag! Stars on every path — the cloud garden pays best. Mind the spikes!",
+  "win": {
+    "type": "reach_goal"
+  },
+  "style": {
+    "backdrop": "hills",
+    "music": "upbeat",
+    "sky": [
+      "#7ecbff",
+      "#cfeeff"
+    ],
+    "hillFar": "#a9df9f",
+    "hillNear": "#5cb85c",
+    "ground": "#8a5a2b",
+    "grass": "#3fae4a",
+    "accent": "#ffd23e",
+    "platform": "cloud"
+  },
+  "data": {
+    "rows": [
+      "........................",
+      "........................",
+      "........................",
+      "........................",
+      "....o...................",
+      "........................",
+      "...o..o.................",
+      "..=====.................",
+      "...o........o...........",
+      ".===....................",
+      ".P..o.o.........^^....G.",
+      "###########...##########"
+    ]
+  },
+  "status": "ready"
+}

@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "title": "ALL IN ARCADE",
+  "levels": [
+    {
+      "id": "bethany-cloudwalk",
+      "enabled": true
+    },
+    {
+      "id": "simone-death-star-run",
+      "enabled": true
+    },
+    {
+      "id": "nicolas-snowball-seasons",
+      "enabled": true
+    },
+    {
+      "id": "L01",
+      "enabled": true
+    },
+    {
+      "id": "L02",
+      "enabled": true
+    },
+    {
+      "id": "L03",
+      "enabled": true
+    },
+    {
+      "id": "L04",
+      "enabled": true
+    },
+    {
+      "id": "kristopher-federico-study-hall-scramble",
+      "enabled": true
+    },
+    {
+      "id": "louis-philippe-gaulin-knight-s-dungeon-scramble",
+      "enabled": true
+    },
+    {
+      "id": "marc-larochelle-course-apocalypse",
+      "enabled": true
+    },
+    {
+      "id": "mark-abdallah-slingshot-duck-season",
+      "enabled": true
+    },
+    {
+      "id": "matt-mayer-mda-space-mission",
+      "enabled": true
+    }
+  ]
+}

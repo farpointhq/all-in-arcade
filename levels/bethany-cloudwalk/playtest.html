@@ -1,0 +1,95 @@
+<!doctype html>
+<!-- Bethany Cloudwalk local playtest harness (booth-agent owned) — boots the platformer
+     straight into the engine without app.js/UI, self-runs deterministic drive beats at
+     load (no rAF — background tabs throttle it to zero), and publishes ONE beacon blob
+     (#probe) holding everything verification needs: compact JPEG data-URLs of the start
+     state + mid-game beats, pixel probes, and the run result.
+     Use: open http://<host>:<port>/levels/bethany-cloudwalk/playtest.html?bust=<n> -->
+<html>
+<head>
+<meta charset="utf-8">
+<base href="/"> <!-- let core.js's ./assets backdrop loader resolve from any nesting -->
+<title>Cloudwalk — local playtest</title>
+<style>
+  html, body { margin: 0; background: #0b1430; height: 100%; display: grid; place-items: center; }
+  canvas { width: min(96vw, 62vh * 1.7778); border-radius: 14px; box-shadow: 0 20px 70px rgba(90,140,255,.28); }
+  #probe { position: fixed; left: 10px; bottom: 10px; color: #cfe0ff; font: 11px monospace; opacity: .8; max-width: 70vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #beats { display: flex; gap: 8px; position: fixed; right: 8px; top: 8px; }
+  #beats img { width: 190px; border: 2px solid #3a4d7d; border-radius: 6px; display: block; }
+</style>
+</head>
+<body>
+<canvas id="stage"></canvas>
+<div id="beats"></div>
+<pre id="probe">booting…</pre>
+<script type="module">
+  import { create as make } from "/src/genres/platformer.js";
+
+  const lvl = await (await fetch("/levels/bethany-cloudwalk/level.json", { cache: "no-store" })).json();
+  const canvas = document.querySelector("#stage");
+  canvas.width = 960; canvas.height = 540; // same virtual resolution the app uses
+  const ctx = canvas.getContext("2d");
+
+  window.__RESULT = null;
+  window.__INFO = { coins: 0, hearts: 3, stars: "-" };
+  const api = {
+    eng: { shake: () => {} },
+    audio: { sfx: () => {}, ensure: () => {}, unlocked: true, playMusic: () => {} },
+    hud: (m) => { // mirror the real HUD payloads so beats stay observable
+      const mid = m.mid || "";
+      const c = mid.match(/★ (\d+)\/(\d+)/);
+      if (c) window.__INFO.coins = +c[1];
+      const pct = mid.match(/(\d+)%/);
+      if (pct) window.__INFO.stars = pct[1];
+      window.__INFO.hearts = (m.right || "").split("♥").length - 1;
+    },
+    complete: (p) => { window.__RESULT = { win: true, ...p }; },
+    fail: (m) => { window.__RESULT = { win: false, msg: String(m) }; },
+  };
+  const plat = make(lvl, api);
+
+  const inp = (r, u) => ({
+    left: () => false, right: () => r, up: () => u, downKey: () => false,
+    jumpJust: () => u, anyJust: () => false, endFrame: () => {},
+  });
+
+  // compact evidence tile: downscale the live canvas to 440px JPEG and return its data URL
+  const tile = (label) => {
+    const s = document.createElement("canvas"); s.width = 440; s.height = 248;
+    s.getContext("2d").drawImage(canvas, 0, 0, s.width, s.height);
+    const img = document.createElement("img"); img.alt = "beat " + label; img.title = label;
+    img.src = s.toDataURL("image/jpeg", 0.55);
+    document.querySelector("#beats").appendChild(img);
+    return img.src;
+  };
+
+  const px = (x, y) => {
+    const d = ctx.getImageData(x, y, 1, 1).data;
+    return "#" + [d[0], d[1], d[2]].map(v => v.toString(16).padStart(2, "0")).join("");
+  };
+
+  // -------- self-running drive (deterministic 1/60 steps; rAF-free) ------------
+  let f = 0;
+  const step = (n, r, u) => { for (let i = 0; i < n; i++) { f++; plat.update(1 / 60, inp(r, u)); } };
+  const draw = () => { ctx.setTransform(1, 0, 0, 1, 0, 0); plat.draw(ctx); };
+
+  const beats = [];
+  beats.push({ label: "start-banner", data: (step(130, true, true), draw(), tile("start-banner")) });
+  beats.push({ label: "mid-arc", data: (step(40, true, false), step(70, true, true), draw(), tile("mid-arc")) });
+  step(230, true, true); draw();
+  beats.push({ label: "deep", data: tile("deep-route") });
+
+  const probe = {
+    beats: beats.map(b => ({ label: b.label, jpeg: b.data })),
+    pixels: {
+      topSky: px(480, 40), azureBand: px(480, 300), lowBand: px(480, 500),
+      heroStart: px(60, 420),
+    },
+    result: window.__RESULT, info: window.__INFO,
+  };
+  document.querySelector("#probe").textContent = "CWBEACON " + JSON.stringify(probe);
+  document.title = "CW-READY f=" + f + (window.__RESULT ? " " + (window.__RESULT.win ? "WIN" : "FAIL") : "");
+  window.__plat = plat; window.__lvl = lvl;
+</script>
+</body>
+</html>

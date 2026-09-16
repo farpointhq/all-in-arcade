@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "id": "marc-larochelle-course-apocalypse",
+  "title": "Course Apocalypse",
+  "genre": "survival",
+  "version": 5,
+  "authors": [
+    {
+      "name": "Marc Larochelle",
+      "kind": "original"
+    }
+  ],
+  "remixOf": null,
+  "status": "ready",
+  "order": null,
+  "created": "2026-09-16T11:13:48",
+  "prompt": "Génère un jeu dans une scène apocalyptique où l'acteur essaie de survivre. Donc, euh, il y a des missiles qui tombent, il y a des zombies, euh, les maisons ils sont... euh, toutes cassées, donc les zombies courent derrière l'acteur. L'acteur essaie de courir pour survivre.",
+  "brief": "Courir pour survivre : des missiles tombent, des zombies courent derrière toi, les maisons sont toutes cassées. Jusqu'où tiendras-tu ?",
+  "objective": "Survis 900 m en courant : saute par-dessus les ruines, sors des zones d'impact des missiles, garde la Horde derrière toi !",
+  "win": {
+    "type": "reach_distance",
+    "distance": 900
+  },
+  "style": {
+    "backdrop": "apocalypse",
+    "music": "apocalypse",
+    "sky": [
+      "#080612",
+      "#1a1326",
+      "#2e1c2e"
+    ],
+    "accent": "#3ddcff",
+    "accent2": "#8a7cff",
+    "accent3": "#ff3d9a"
+  },
+  "data": {
+    "targetDistance": 900,
+    "runSpeed": 400,
+    "difficulty": 0.4
+  }
+}

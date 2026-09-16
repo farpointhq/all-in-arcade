@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "id": "kristopher-federico-study-hall-scramble",
+  "title": "Study Hall Scramble",
+  "genre": "maze-studyhall",
+  "version": 8,
+  "authors": [
+    {
+      "name": "Kristopher Federico",
+      "kind": "original"
+    }
+  ],
+  "remixOf": null,
+  "status": "ready",
+  "order": null,
+  "created": "2026-09-16T11:49:18",
+  "prompt": "Any idea, any game you played in your past that you like — old-school classic games, Atari, Pac-Man. A Pac-Man like level but inspired by anything to do with scholastic school board education, high school, elementary school. OK so school themed Pac-Man type level.",
+  "brief": "Old-school maze chase in a school hallway: munch every chalk fact, dodge the staff, gold apples grant RECESS power.",
+  "objective": "Munch every fact in the hallway before the staff catches you — gold apples = RECESS power!",
+  "win": {
+    "type": "all_facts_eaten"
+  },
+  "style": {
+    "backdrop": "schoolhall",
+    "music": "chase",
+    "sky": [
+      "#182a24",
+      "#22392f",
+      "#121d1a"
+    ],
+    "accent": "#ffd23f"
+  },
+  "data": {
+    "rows": [
+      "#####################",
+      "#.........#.........#",
+      "#.###.###.#.###.###.#",
+      "#o###.###.#.###.###o#",
+      "#.###.###.#.###.###.#",
+      "#...................#",
+      "#.###.#########.###.#",
+      "#.###.###   ###.###.#",
+      "#.###.####-####.###.#",
+      "#...................#",
+      "#.###.###.#.###.###.#",
+      "#o.................o#",
+      "#.###.###.#.###.###.#",
+      " ................... ",
+      "#####################"
+    ],
+    "speeds": {
+      "player": 148,
+      "ghost": 100,
+      "fright": 66,
+      "eyes": 205,
+      "frightSeconds": 7.5,
+      "tunnelSlow": 0.55,
+      "release": [
+        0,
+        9,
+        18,
+        26
+      ],
+      "progressRelease": [
+        122,
+        100,
+        78
+      ],
+      "elroy": [
+        [
+          24,
+          1.05
+        ],
+        [
+          10,
+          1.1
+        ]
+      ],
+      "mercy": 0.92
+    },
+    "lives": 4
+  }
+}

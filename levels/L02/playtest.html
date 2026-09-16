@@ -1,0 +1,62 @@
+<!doctype html>
+<!-- L02 local playtest harness (booth-agent owned) — boots the racer straight into the
+     engine without app.js/UI, so visual + feel iterations work even if shared UI files
+     are mid-edit. Use: open http://<host>:<port>/levels/L02/playtest.html -->
+<html>
+<head>
+<meta charset="utf-8">
+<title>L02 Neon Coast GP — local playtest</title>
+<style>
+  html, body { margin: 0; background: #05060f; height: 100%; display: grid; place-items: center; }
+  canvas { width: min(96vw, 62vh * 1.7778); border-radius: 14px; box-shadow: 0 20px 70px rgba(255,45,149,.25); }
+  #backend { position: fixed; left: 12px; bottom: 12px; color: #9fb; font: 12px monospace; opacity: .8; }
+</style>
+</head>
+<body>
+<canvas id="stage"></canvas>
+<div id="backend">L02 playtest · ← → / A D steer · ↑ throttle · ↓ brake · Esc pause</div>
+<script type="module">
+  import { createEngine } from "/src/core.js";
+  import { Audio } from "/src/audio.js";
+  import * as Racer from "/src/genres/racer.js";
+
+  const lvl = await (await fetch("/levels/L02/level.json", { cache: "no-store" })).json();
+  lvl.data.lives = 99; // visual snapshots only — this dev harness never ships to the booth
+  const eng = createEngine(document.querySelector("#stage"));
+  const canvas = document.querySelector("#stage");
+  canvas.width = 960; canvas.height = 540; // exact virtual res — letterbox math is identity
+
+  const api = { eng, audio: Audio, hud: () => {}, complete: (p) => { window.__RESULT = { win: true, ...p }; }, fail: (m) => { window.__RESULT = { win: false, msg: m }; } };
+  const plat = Racer.create(lvl, api);
+
+  let paused = false;
+  eng.setScene({
+    enter() {},
+    update(dt, input, ref) { if (!paused) plat.update(dt, input); },
+    draw(ctx) { plat.draw(ctx); },
+  });
+  window.__ENG = eng; window.__PLAT = plat; // dev probes
+  const ctx = canvas.getContext("2d");
+  window.__PAINT = (steps, keys) => {
+    for (let i = 0; i < steps; i++) plat.update(1 / 60, inputProbe(keys));
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.fillStyle = "#05060f"; ctx.fillRect(0, 0, 960, 540);
+    plat.draw(ctx);
+  };
+  const inputProbe = (keys) => ({
+    down: (c) => keys.includes(c),
+    left: () => keys.includes("ArrowLeft") || keys.includes("KeyA"),
+    right: () => keys.includes("ArrowRight") || keys.includes("KeyD"),
+    up: () => keys.includes("ArrowUp") || keys.includes("KeyW"),
+    downKey: () => keys.includes("ArrowDown") || keys.includes("KeyS"),
+    jumpJust: () => false, anyJust: () => true, endFrame: () => {},
+  });
+  Audio.ensure();
+  window.addEventListener("keydown", (e) => {
+    if (e.code === "Escape") paused = !paused;
+    if (!Audio.unlocked) { Audio.ensure(); Audio.playMusic(lvl.style.music || "drive"); }
+  });
+  window.dispatchEvent(new KeyboardEvent("keydown", { code: "Space" })); // unlock audio
+</script>
+</body>
+</html>

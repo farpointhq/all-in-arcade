@@ -1,0 +1,222 @@
+{
+  "schema": 1,
+  "id": "simone-death-star-run",
+  "title": "Death Star Run",
+  "genre": "star-racer",
+  "version": 3,
+  "authors": [
+    {
+      "name": "Simone Hummel",
+      "kind": "original"
+    }
+  ],
+  "remixOf": null,
+  "status": "ready",
+  "order": 6,
+  "created": "2026-09-16T09:10:00",
+  "prompt": "A galactic Star Wars theme, space shuttle racing game. The goal is to defeat the Death Star by collecting items, or something?",
+  "brief": "Pilot the shuttle down the galaxy trench, grab star items, and torpedo the battle station's port.",
+  "objective": "Grab stars to arm your torpedo — then blast the Death Star's port!",
+  "win": {
+    "type": "defeat_boss",
+    "itemsRequired": 5
+  },
+  "style": {
+    "backdrop": "space",
+    "music": "space",
+    "sky": [
+      "#050514",
+      "#0d1033"
+    ],
+    "accent": "#7dfcff"
+  },
+  "data": {
+    "itemsRequired": 5,
+    "lives": 3,
+    "speed": {
+      "base": 46,
+      "max": 96
+    },
+    "boss": {
+      "portSize": 0.24,
+      "sweep": 0.62
+    },
+    "segments": [
+      {
+        "n": 120,
+        "curve": 0,
+        "hill": -3
+      },
+      {
+        "n": 36,
+        "curve": 6,
+        "hill": 0
+      },
+      {
+        "n": 26,
+        "curve": 0,
+        "hill": 1
+      },
+      {
+        "n": 44,
+        "curve": -7,
+        "hill": -2
+      },
+      {
+        "n": 30,
+        "curve": 0,
+        "hill": 2
+      },
+      {
+        "n": 50,
+        "curve": 9,
+        "hill": -3
+      },
+      {
+        "n": 24,
+        "curve": 0,
+        "hill": 0
+      },
+      {
+        "n": 44,
+        "curve": -8,
+        "hill": 3
+      },
+      {
+        "n": 60,
+        "curve": 0,
+        "hill": 0
+      },
+      {
+        "n": 26,
+        "curve": -5,
+        "hill": 0
+      },
+      {
+        "n": 26,
+        "curve": 5,
+        "hill": 0
+      },
+      {
+        "n": 46,
+        "curve": 0,
+        "hill": -2
+      },
+      {
+        "n": 100,
+        "curve": 0,
+        "hill": 0
+      },
+      {
+        "n": 40,
+        "curve": 0,
+        "hill": 0
+      }
+    ],
+    "items": [
+      {
+        "z": 0.04,
+        "x": 0.2
+      },
+      {
+        "z": 0.075,
+        "x": -0.2
+      },
+      {
+        "z": 0.12,
+        "x": 0.45
+      },
+      {
+        "z": 0.165,
+        "x": -0.42
+      },
+      {
+        "z": 0.22,
+        "x": 0
+      },
+      {
+        "z": 0.365,
+        "x": -0.35
+      },
+      {
+        "z": 0.44,
+        "x": 0.42
+      },
+      {
+        "z": 0.5,
+        "x": -0.3
+      },
+      {
+        "z": 0.6,
+        "x": 0.3
+      },
+      {
+        "z": 0.725,
+        "x": 0
+      },
+      {
+        "z": 0.755,
+        "x": 0.45
+      },
+      {
+        "z": 0.79,
+        "x": -0.25
+      }
+    ],
+    "debris": [
+      {
+        "z": 0.16,
+        "x": 0.55
+      },
+      {
+        "z": 0.215,
+        "x": -0.5
+      },
+      {
+        "z": 0.335,
+        "x": 0.4
+      },
+      {
+        "z": 0.4,
+        "x": -0.4
+      },
+      {
+        "z": 0.465,
+        "x": 0
+      },
+      {
+        "z": 0.64,
+        "x": 0.45
+      },
+      {
+        "z": 0.81,
+        "x": 0.5
+      },
+      {
+        "z": 0.86,
+        "x": -0.2
+      }
+    ],
+    "waves": [
+      {
+        "z": 0.235,
+        "n": 3,
+        "x": 0,
+        "spacing": 10
+      },
+      {
+        "z": 0.52,
+        "n": 3,
+        "x": 0,
+        "spacing": 18
+      },
+      {
+        "z": 0.67,
+        "n": 3,
+        "x": 0,
+        "spacing": 12
+      }
+    ],
+    "note": "star-racer genre: data reads z as 0..1 of track length, x as lateral (-1..1) port-side; handled by src/genres/star-racer.js"
+  }
+}

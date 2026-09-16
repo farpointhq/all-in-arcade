@@ -1,0 +1,112 @@
+<!doctype html>
+<!-- L03 Frost Depot — SELF-CONTAINED playtest harness (agent-owned, not part of the game).
+     Boots the REAL engine input contract (core.js) + REAL puzzle module with real level.json,
+     isolated from shared index.html. setInterval-driven (background-loop-proof).
+     Publishes E2E results via DOM beacons (title + #liveMid). -->
+<html>
+<head>
+<meta charset="utf-8"><title>L03 harness</title>
+<style>
+  html, body { margin: 0; background: #05060f; }
+  canvas { display: block; width: 960px; height: 540px; }
+  #liveMid { position: fixed; left: 8px; top: 8px; color: #fff; font: 13px monospace; z-index: 9; }
+</style>
+</head>
+<body>
+<canvas id="stage" width="960" height="540"></canvas>
+<div id="liveMid">booting…</div>
+<script type="module">
+  window.addEventListener("error", (e) => document.body.setAttribute("data-err", String(e.message || e)));
+  window.addEventListener("unhandledrejection", (e) => document.body.setAttribute("data-rej", String(e.reason)));
+
+  import { createEngine } from "/src/core.js";
+  import { create as createPuzzle } from "/src/genres/puzzle.js";
+
+  const log = [];
+  const hudLog = [];
+  let ticks = 0;
+  const canvas = document.querySelector("#stage");
+  const ctx = canvas.getContext("2d");
+  const level = await fetch("level.json").then((r) => r.json());
+
+  // synthetic input mirroring core.js createInput's exact contract
+  const INP = (() => {
+    const down = new Set(), just = new Set();
+    let seen = 0;
+    window.addEventListener("keydown", (e) => { seen++; if (!e.repeat) just.add(e.code); down.add(e.code); });
+    window.addEventListener("keyup", (e) => down.delete(e.code));
+    return {
+      down: (c) => down.has(c), just: (c) => just.has(c),
+      left: () => down.has("ArrowLeft") || down.has("KeyA"),
+      right: () => down.has("ArrowRight") || down.has("KeyD"),
+      up: () => down.has("ArrowUp") || down.has("KeyW"),
+      downKey: () => down.has("ArrowDown") || down.has("KeyS"),
+      anyJust: () => just.size > 0,
+      endFrame: () => just.clear(),
+      count: () => seen,
+    };
+  })();
+
+  const eng = createEngine(canvas);
+  eng.input = INP;
+  eng.paused = false;
+
+  const api = {
+    eng: { input: INP, shake: (k = 1) => { eng.shakeK = Math.max(eng.shakeK, k); } },
+    audio: { sfx: (n) => log.push("sfx:" + n) },
+    hud: (p) => { hudLog.push(p); if (p.mid !== undefined) document.querySelector("#liveMid").textContent = (p.mid || "") + " | " + (p.right || ""); },
+    complete: (payload) => log.push("complete:" + JSON.stringify(payload)),
+    fail: (msg) => log.push("fail:" + msg),
+  };
+  const scene = createPuzzle(level, api);
+
+  setInterval(() => { ticks++; scene.update(1 / 60, INP); INP.endFrame(); scene.draw(ctx); }, 16);
+
+  const press = (code) => {
+    window.dispatchEvent(new KeyboardEvent("keydown", { code, bubbles: true }));
+    setTimeout(() => window.dispatchEvent(new KeyboardEvent("keyup", { code, bubbles: true })), 30);
+  };
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const tap = async (code) => { press(code); await sleep(150); };
+  const seq = async (s) => { for (const k of s) await tap(k === "U" ? "ArrowUp" : k === "D" ? "ArrowDown" : k === "L" ? "ArrowLeft" : "ArrowRight"); };
+  const snap = () => ({ status: scene.status(), hud: (hudLog[hudLog.length - 1] || {}).right, dbg: scene.debug ? JSON.stringify(scene.debug()) : "no-debug" });
+
+  window.__TEST_API__ = { press, scene, api, log, hudLog, tap, seq, snap,
+    selfTest: async () => {
+      const out = {};
+      await sleep(300);
+      out.boot = { ticks, snap: snap() };
+      await tap("ArrowUp"); await tap("ArrowUp");
+      out.walked = { ticks, snap: snap() };      // expect right: "2 moves"
+      await tap("KeyZ"); await tap("KeyZ");
+      out.unqueued = { ticks, snap: snap() };    // undo lands too
+      await tap("KeyR");
+      out.restart = { ticks, snap: snap() };     // expect right: "0 moves"
+      await seq("UULDLUUULURDDDRR");
+      out.midSolve = { snap: snap(), last: (hudLog[hudLog.length - 1] || {}) };
+      await seq("RDRRUUURULLLRRDDLLDRDRUUURULL");
+      await sleep(1400);
+      out.solved = { ticks, snap: snap(), tail: log.slice(-8), hudLen: hudLog.length };
+      return out;
+    },
+  };
+
+  document.body.setAttribute("data-test", "running");
+  const t0 = performance.now();
+  window.__TEST_API__.selfTest()
+    .then((r) => {
+      const s = JSON.stringify(r);
+      document.body.setAttribute("data-result", s);
+      document.title = "E2E✓ " + s;
+      document.querySelector("#liveMid").textContent = "RESULT " + s;
+      document.body.setAttribute("data-ms", String(Math.round(performance.now() - t0)));
+    })
+    .catch((e) => {
+      const s = "SELFTEST-ERR:" + (e && e.message || e);
+      document.body.setAttribute("data-result", s); document.title = s;
+      document.querySelector("#liveMid").textContent = "RESULT " + s;
+      document.body.setAttribute("data-err", String(e && e.message || e));
+    });
+</script>
+</body>
+</html>

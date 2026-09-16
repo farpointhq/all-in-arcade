@@ -1,0 +1,99 @@
+<!doctype html>
+<!-- Private verification harness — mark-abdallah-slingshot-duck-season (playtest only, not render path).
+     Serves the level module + engine from this rig origin, drives loops with setInterval
+     (RAF throttles in background tabs), publishes state via DOM beacon + document.title.
+     Driver API on window.__DRV: drag(), aimAt() (ballistic solve), state().              -->
+<meta charset="utf-8">
+<title>DUCK-HARNESS</title>
+<style>
+  html, body { margin: 0; background: #05060f; }
+  #stage { width: 960px; height: 540px; }
+  #beacons { position: fixed; top: 0; left: 0; right: 0; background: #000; color: #7dfcff;
+             font: 11px/1.4 monospace; white-space: pre; padding: 3px 6px; z-index: 9; }
+</style>
+<canvas id="stage" width="960" height="540"></canvas>
+<div id="beacons">booting…</div>
+<script type="module">
+  const id = "mark-abdallah-slingshot-duck-season";
+  const qs = new URLSearchParams(location.search);
+  const STEP = parseFloat(qs.get("step") || "0") || 0;   // ?step=N: fixed dt = N/60 per tick
+  const bust = qs.get("bust") || "1";
+  const bootPaused = qs.get("auto") === "0";             // ?auto=0: boot frozen — drive via windows
+
+  const lvl = await (await fetch("/levels/" + id + "/level.json")).json();
+
+  const cv = document.getElementById("stage");
+  const ctx = cv.getContext("2d");
+  const state = { wins: [], losses: [], hud: [], paused: bootPaused };
+  let lastT = null;
+
+  const eng = { shake() {}, flash: 0 };
+  const sfxLog = [];
+  const api = {
+    eng,
+    audio: { unlocked: false, ensure() { return null; }, sfx(n) { sfxLog.push(n); } },
+    hud(p) { state.hud.push(JSON.stringify(p)); if (state.hud.length > 12) state.hud.shift(); },
+    complete(p) { state.wins.push(p); bump("WON"); },
+    fail(m) { state.losses.push(m); bump("LOST " + m); },
+  };
+
+  const mod = await import("/src/genres/slingshot.js?v=" + bust);
+  const plat = mod.create(lvl, api);
+
+  function loop() {
+    if (state.paused) return;
+    if (STEP > 0) plat.update(STEP / 60);
+    else {
+      if (lastT == null) lastT = performance.now();
+      const now = performance.now();
+      const dt = Math.min(0.05, (now - lastT) / 1000);
+      lastT = now;
+      plat.update(dt);
+    }
+    plat.draw(ctx);
+  }
+  setInterval(loop, 16);
+
+  // ---- beacons ----
+  const bc = document.getElementById("beacons");
+  const snap = () => ({
+    w: state.wins.length, l: state.losses.length,
+    hud: state.hud.length ? state.hud[state.hud.length - 1] : "",
+    sfx: sfxLog.slice(-6).join(","),
+  });
+  function bump(prefix) { bc.textContent = prefix + "\n" + bc.textContent.slice(0, 400); }
+  setInterval(() => {
+    const s = snap();
+    const line = "W" + s.w + " L" + s.l + " HUD{" + s.hud + "} SFX[" + s.sfx + "] " + (document.getElementById("duckBeacon") || {}).textContent;
+    bc.textContent = line.slice(0, 600);
+    document.title = "DUCK|" + line.slice(0, 110);
+  }, 400);
+
+  // ---- driver: synthetic pointer drag on the canvas ----
+  const PID = 7;
+  const PE = (type, x, y) => {
+    const r = cv.getBoundingClientRect(); // CSS box is exactly 960x540 → virtual == client
+    cv.dispatchEvent(new PointerEvent(type, { pointerId: PID, clientX: r.left + x, clientY: r.top + y, bubbles: true, cancelable: true }));
+  };
+  function drag(x0, y0, x1, y1) {
+    PE("pointermove", x0, y0);
+    PE("pointerdown", x0, y0);
+    for (let i = 1; i <= 4; i++) PE("pointermove", x0 + (x1 - x0) * i / 4, y0 + (y1 - y0) * i / 4);
+    PE("pointerup", x1, y1);
+  }
+  // ballistic solve: pick T so the needed speed lands in [477, 1560], then pull opposite
+  const FORK = { x: 133, y: 322 }, MAXPULL = 118, GRAV = 980, SP0 = 240, SPK = 1320;
+  function aimAt(tx, ty, T = 0.55) {
+    const dx = tx - FORK.x, dy = ty - FORK.y;
+    const vx = dx / T, vy = (dy - 0.5 * GRAV * T * T) / T;
+    const sp = Math.hypot(vx, vy);
+    if (sp < SP0 + 0.18 * SPK || sp > SP0 + SPK) return { ok: false, why: "speed " + Math.round(sp) + " out of band" };
+    const pull = (sp - SP0) / SPK * MAXPULL;
+    const dirx = vx / sp, diry = vy / sp;
+    drag(FORK.x, FORK.y, FORK.x - dirx * pull, FORK.y - diry * pull);
+    return { ok: true, vx: Math.round(vx), vy: Math.round(vy), sp: Math.round(sp) };
+  }
+  window.__DRV = { drag, aimAt, pause: () => state.paused = true, resume: () => state.paused = false, state: () => state };
+  bc.textContent = "HARNESS-READY";
+  document.title = "DUCK-READY";
+</script>

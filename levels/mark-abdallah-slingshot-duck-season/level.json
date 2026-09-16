@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "id": "mark-abdallah-slingshot-duck-season",
+  "title": "Slingshot Duck Season",
+  "genre": "slingshot",
+  "version": 1,
+  "authors": [
+    {
+      "name": "Mark Abdallah",
+      "kind": "original"
+    }
+  ],
+  "remixOf": null,
+  "status": "ready",
+  "order": null,
+  "created": "2026-09-17T00:00:00",
+  "prompt": "Mark Abdallah I would like to contribute a game idea, or contribute a level. He wants to Do a game like Duck Hunt for the original Nintendo, except here the user would be using their mouse, of course, to click. How can we make it— You can make it easier by having fewer birds on the screen, come out, and when the dog goes hunting, but then have like a— what's it called, that thing with the— Shotgun? The fling shot. Fling shot. You have a sling shot, so they got to drag the pebble and that gives force and angle, and they got to try and hit the birds. So it's a little more challenging than just clicking the birds. And whatever, you want Nintendo-style graphics? NES-style graphics, and like pixel art kind of graphics. Yeah. And sounds.",
+  "brief": "Duck Hunt, booth edition: pull the pebble back on the slingshot — force and angle — and swat the flush of ducks out of the sky. Dog included, laughs included.",
+  "objective": "THREE FLIGHTS, a duck-quota each. Drag the pebble, aim, release — hit the quota or face the laughing dog.",
+  "win": {
+    "type": "flight_quota",
+    "flights": 3,
+    "ducks": 14,
+    "quota": 8
+  },
+  "style": {
+    "backdrop": "duckseason",
+    "music": "upbeat",
+    "sky": [
+      "#4fa8e8",
+      "#7fc9f2",
+      "#cfeeff"
+    ],
+    "accent": "#ffd23e",
+    "accent2": "#3ddcff",
+    "ground": "#5a9e46"
+  },
+  "data": {
+    "pebbles": 3,
+    "flights": [
+      {
+        "ducks": 3,
+        "maxOnScreen": 1,
+        "speed": 150,
+        "pass": 2
+      },
+      {
+        "ducks": 5,
+        "maxOnScreen": 2,
+        "speed": 175,
+        "pass": 3
+      },
+      {
+        "ducks": 6,
+        "maxOnScreen": 2,
+        "speed": 205,
+        "pass": 3,
+        "reds": 2
+      }
+    ]
+  }
+}

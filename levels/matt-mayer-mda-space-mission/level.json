@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "id": "matt-mayer-mda-space-mission",
+  "title": "MDA Space Mission",
+  "genre": "space-mission",
+  "version": 2,
+  "authors": [
+    {
+      "name": "Matt Mayer",
+      "kind": "original"
+    }
+  ],
+  "remixOf": null,
+  "status": "ready",
+  "order": null,
+  "created": "2026-09-16T12:03:59",
+  "prompt": "Yeah, this is, uh, Matt Mayer. M-A-T-T. Oh, I did it. M-A-Y-E-R. From MDA Space. And I'd like to create a space-based themed game. We could have a multi-level game. The first level would be, uh, building the rocket ship. And also, actually, scratch that. The first level is building a satellite and then a second level would be getting the satellite to the rocket, third level would be launching the rocket into space. So there would be many different attributes of each kind of level: building the actual satellite itself, maybe individuals would have to go and mine and procure resources to put the satellite together, the components, the processors, the antennas, and microboards, etc. And then obviously the traveling to and building the rocket for phase 2.",
+  "brief": "Mine the parts, build a satellite, haul it to the rocket, launch it to orbit — a 3-phase space mission. / Minez, assemblez, transportez, lancez — mission spatiale en 3 phases.",
+  "objective": "Build the satellite, carry it to the rocket, and complete the launch to orbit",
+  "win": {
+    "type": "launch_to_orbit"
+  },
+  "style": {
+    "backdrop": "space",
+    "music": "space",
+    "sky": [
+      "#05040f",
+      "#0a0e24",
+      "#12183a"
+    ],
+    "accent": "#3ddcff"
+  },
+  "data": {
+    "reqs": {
+      "cpu": 3,
+      "ant": 3,
+      "micro": 2
+    },
+    "minerTime": 1.35,
+    "minerRange": 52,
+    "carrySlow": 0.78,
+    "walk": 236,
+    "carryWalk": 184,
+    "jumpV": -760,
+    "grav": 1900,
+    "bayX": 120,
+    "padX": 842,
+    "deposits": [
+      {
+        "x": 190,
+        "kind": "cpu"
+      },
+      {
+        "x": 300,
+        "kind": "ant"
+      },
+      {
+        "x": 460,
+        "kind": "cpu"
+      },
+      {
+        "x": 520,
+        "kind": "ant"
+      },
+      {
+        "x": 545,
+        "kind": "ant"
+      },
+      {
+        "x": 700,
+        "kind": "micro"
+      },
+      {
+        "x": 720,
+        "kind": "cpu"
+      },
+      {
+        "x": 756,
+        "kind": "micro"
+      }
+    ],
+    "rocks": [
+      {
+        "x": 370,
+        "w": 80,
+        "h": 30
+      },
+      {
+        "x": 600,
+        "w": 90,
+        "h": 36
+      }
+    ],
+    "countdown": 4.4,
+    "windows": [
+      {
+        "label": "IGNITION",
+        "alt": 0,
+        "per": 2.3,
+        "band": 0.2
+      },
+      {
+        "label": "STAGE SEP",
+        "alt": 0.34,
+        "per": 2.0,
+        "band": 0.17
+      },
+      {
+        "label": "ORBIT INSERT",
+        "alt": 0.74,
+        "per": 1.7,
+        "band": 0.13
+      }
+    ],
+    "missShrink": 0.72
+  }
+}

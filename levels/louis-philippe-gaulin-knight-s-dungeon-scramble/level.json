@@ -1,0 +1,136 @@
+{
+  "schema": 1,
+  "id": "louis-philippe-gaulin-knight-s-dungeon-scramble",
+  "title": "Knight's Dungeon Scramble",
+  "genre": "maze",
+  "version": 2,
+  "authors": [
+    {
+      "name": "Louis-Philippe Gaulin",
+      "kind": "remix"
+    }
+  ],
+  "remixOf": "kristopher-federico-study-hall-scramble",
+  "status": "ready",
+  "order": null,
+  "created": "2026-09-16T12:08:18",
+  "prompt": "do you can rewoark pacman in a medieval theme and add a bunch of cool rpg features",
+  "brief": "Remix of Kristopher Federico's Study Hall Scramble - the schoolhouse maze re-imagined as a medieval dungeon: collect loot as XP, level up your knight, grab runes to strike terror, slay monsters for glory, and beware the WYRM.",
+  "objective": "Loot every coin and all 4 runes to clear the dungeon - XP levels grant shields, slay monsters for glory, and beware the WYRM!",
+  "win": {
+    "type": "all_facts_eaten"
+  },
+  "style": {
+    "backdrop": "dungeon",
+    "music": "dungeon",
+    "sky": [
+      "#131017",
+      "#1a1420",
+      "#0c0910"
+    ],
+    "accent": "#ffd23f",
+    "wall": {
+      "base": "#575f52",
+      "dust": "#3b423a",
+      "mortar": "#2c322c",
+      "top": "#74806e"
+    },
+    "floor": {
+      "cell": "rgba(58,52,42,.4)",
+      "shade": "#241f19"
+    },
+    "hero": "knight"
+  },
+  "data": {
+    "rows": [
+      "#####################",
+      "#.........#.........#",
+      "#.###.###.#.###.###.#",
+      "#o###.###.#.###.###o#",
+      "#.###.###.#.###.###.#",
+      "#...................#",
+      "#.###.#########.###.#",
+      "#.###.###   ###.###.#",
+      "#.###.####-####.###.#",
+      "#...................#",
+      "#.###.###.#.###.###.#",
+      "#o.................o#",
+      "#.###.###.#.###.###.#",
+      " ................... ",
+      "#####################"
+    ],
+    "speeds": {
+      "player": 112,
+      "ghost": 100,
+      "fright": 62,
+      "eyes": 205,
+      "frightSeconds": 6.5,
+      "tunnelSlow": 0.55,
+      "release": [
+        0,
+        2.2,
+        4.4,
+        6.6
+      ],
+      "elroy": [
+        [
+          26,
+          1.07
+        ],
+        [
+          12,
+          1.18
+        ]
+      ]
+    },
+    "names": {
+      "roles": [
+        "Goblin",
+        "Wraith",
+        "Bat",
+        "Orc"
+      ],
+      "pen": "the keep",
+      "powerName": "rune stone",
+      "terrorLabel": "TERROR!"
+    },
+    "rpg": {
+      "enabled": true,
+      "hero": "Knight",
+      "titles": [
+        "Squire",
+        "Knight",
+        "Champion",
+        "Legend"
+      ],
+      "thresholds": [
+        0,
+        1000,
+        2500,
+        4500
+      ],
+      "speedPerLevel": 1.06,
+      "speedCap": 1.25,
+      "shieldsPerLevel": 1,
+      "shieldMax": 2,
+      "coinXP": [
+        10,
+        25,
+        50
+      ],
+      "coinThreatEvery": [
+        20,
+        50
+      ],
+      "runeXP": 200,
+      "slayXP": 400,
+      "slayGloryBase": 200,
+      "gloryChainFactor": 2,
+      "wyrmSlayThreshold": 2,
+      "wyrmSpeedMult": 1.16,
+      "wyrmFrightSeconds": 2,
+      "questBonusXP": 500,
+      "invulnSeconds": 1.2
+    }
+  }
+}
