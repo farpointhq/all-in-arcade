@@ -148,7 +148,7 @@ export function create(level, api) {
   // Issue #1: contracts, mass budget, crate stat-tags, live readouts, TWR-scaled gauge,
   // margins. No death anywhere; legacy 3-phase flow stays the default until sims pass.
   const V3D = data.v3 || { catalog: [], launchers: [], contracts: [] };
-  const V3 = q.get("v3") === "1" && V3D.catalog.length > 0;
+  const V3 = q.get("v3") !== "0" && V3D.catalog.length > 0; // v3 default (flipped after M6 sims green on 2026-09-17); legacy flow: ?v3=0
   const CATALOG = V3D.catalog.map((p) => ({ ...p }));
   const LAUNCHERS = V3D.launchers.map((l) => ({ ...l }));
   const CONTRACTS = V3D.contracts.map((c) => ({ ...c }));
