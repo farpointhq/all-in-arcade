@@ -22,7 +22,7 @@ import { W, H, clamp, lerp, hash, drawText, seasonTint, seasonNow } from "../cor
 
 export const meta = {
   name: "MDA Space Mission",
-  controls: "← → marcher · ESPACE : sauter, puis ENGAGEZ chaque tir moteur · EN: ←/→ walk · SPACE jump, then FIRE each burn",
+  controls: "← → marcher · ESPACE : sauter, puis ENGAGEZ chaque tir moteur · ?v3=1 : tenez immobile près d'une caisse pour charger, ESPACE décharge · EN: ←/→ walk · SPACE jump, then FIRE each burn — stand still near a crate to load, SPACE to unload",
 };
 
 // ---- palette (ALL IN brand tokens + regolith) -----------------------------------------
@@ -144,11 +144,22 @@ export function create(level, api) {
   const FLAVOR = q.get("flavor") || "good";
   const DBG = BOT || q.get("debug") === "1";
 
+  // ---- v3 "Mission Architect" Phase 1 (?v3=1) — desk → procurement → bench → physics launch
+  // Issue #1: contracts, mass budget, crate stat-tags, live readouts, TWR-scaled gauge,
+  // margins. No death anywhere; legacy 3-phase flow stays the default until sims pass.
+  const V3D = data.v3 || { catalog: [], launchers: [], contracts: [] };
+  const V3 = q.get("v3") === "1" && V3D.catalog.length > 0;
+  const CATALOG = V3D.catalog.map((p) => ({ ...p }));
+  const LAUNCHERS = V3D.launchers.map((l) => ({ ...l }));
+  const CONTRACTS = V3D.contracts.map((c) => ({ ...c }));
+  const CRATE_X = [150, 205, 260, 315, 410, 470, 520, 570, 640, 700, 750, 805];
+  const LOAD_T = 0.9, UNLOAD_T = 0.55, DESKX = Math.max(46, BAYX - 74);
+
   // ---- state ------------------------------------------------------------------------------
-  let t = 0, status = "playing", phase = "mine";
+  let t = 0, status = "playing", phase = V3 ? "desk" : "mine";
   const trace = [];
   const res = { cpu: 0, ant: 0, micro: 0 };
-  const pl = { x: 118, y: GROUND, vy: 0, vx: 0, face: 1, onGround: true, buf: 0, coyote: 0 };
+  const pl = { x: V3 ? DESKX : 118, y: GROUND, vy: 0, vx: 0, face: 1, onGround: true, buf: 0, coyote: 0 };
   let carrying = false;
   const sat = { x: BAYX + 70 };
   let asmT = 0, intT = 0, cdT = 0, cdTick = 0, depT = 0;
@@ -159,6 +170,18 @@ export function create(level, api) {
   let parts = [], pops = [];
   let bannerT = 3.6, b2T = 0, b2a = "", b2b = "";
   let lastHud = "";
+
+  // ---- v3 state ------------------------------------------------------------------------------
+  const cart = { ids: [], mass: 0 };
+  const crates = V3 ? CATALOG.map((p, i) => ({ ...p, x: CRATE_X[i % CRATE_X.length], cart: false, prog: 0 })) : [];
+  const ship = { contract: null, launcher: null, kg: 0, gen: 0, draw: 0, kwNet: 0, mbps: 0, twr: 0, dv: 0, cg: 0, wob: 0, stiff: 0, att: 0 };
+  let deskStep = 0, cIdx = 0, lIdx = 0, deskL = false, deskR = false;
+  let benchT = 0, botI = 0, overPopup = false, strainShown = false, cdStarted = false, v3Result = null;
+  const V3PLAN = {
+    good:    { li: 1, crates: ["frameL", "optical", "solarL", "engC", "batt"] },
+    partial: { li: 1, crates: ["frameL", "sar", "solarM", "engC"] },
+    clumsy:  { li: 2, crates: ["frameH", "engC", "solarM", "batt", "rw", "ka"] },
+  };
 
   const rocketBaseY = GROUND - 14;
   const shipBottom = () => rocketBaseY - alt * 700;
@@ -195,10 +218,10 @@ export function create(level, api) {
     fx(dt);
     if (status !== "playing") return;
 
-    const moving = phase === "mine" || phase === "carry";
+    const moving = phase === "mine" || phase === "carry" || phase === "shop";
     if (moving) {
       const dir = (input.left() ? -1 : 0) + (input.right() ? 1 : 0);
-      pl.vx = dir * (carrying ? CWALK : WALK);
+      pl.vx = dir * (carrying ? CWALK : walkSpeed());
       if (dir) pl.face = dir;
       pl.x = clamp(pl.x + pl.vx * dt, 26, W - 26);
       // jump (buffered + coyote)
@@ -240,7 +263,10 @@ export function create(level, api) {
       pl.vx = 0;
     }
 
-    if (phase === "mine") {
+    if (V3 && phase === "desk") deskStep2(input);
+    else if (V3 && phase === "shop") shopStep(dt);
+    else if (V3 && phase === "bench") benchStep(dt);
+    else if (phase === "mine") {
       let near = null, nd = 1e9;
       for (const d of DEP) {
         if (d.done) continue;
@@ -280,9 +306,14 @@ export function create(level, api) {
       }
       if (carrying && Math.abs(pl.x - PADX) < 50) { setPhase("integrate"); intT = 0; }
     } else if (phase === "integrate") {
+      cdStarted = false;
       intT += dt;
       if (intT >= 1.2) { setPhase("countdown"); cdT = COUNT_T; cdTick = 5; }
     } else if (phase === "countdown") {
+      if (V3 && !cdStarted) {
+        cdStarted = true;
+        if (ship.twr <= 0) setBanner2("ADD CHEMICAL PROPULSION ✓", "L'ionique seul ne soulève pas — moteur chimique requis / ion alone cannot lift off");
+      }
       cdT -= dt;
       const c = Math.ceil(cdT);
       if (c !== cdTick && c > 0) { cdTick = c; api.audio.sfx("select"); }
@@ -298,7 +329,16 @@ export function create(level, api) {
       if (depT > 3.6 && status === "playing") {
         status = "won";
         api.audio.sfx("win");
-        api.complete({ time: +t.toFixed(1), anomalies, payload: "MDA-1" });
+        const brief = { time: +t.toFixed(1), anomalies, payload: "MDA-1" };
+        if (V3) {
+          const deb = debriefStars();
+          v3Result = deb;
+          brief.sat = { contract: ship.contract && ship.contract.id, launcher: ship.launcher && ship.launcher.id, kg: ship.kg, twr: +ship.twr.toFixed(2), dvKms: +ship.dv.toFixed(2), kwNet: +ship.kwNet.toFixed(2), mbps: Math.round(ship.mbps), loaded: [...cart.ids] };
+          brief.stars = deb.stars;
+          brief.margins = deb.margins;
+          if (deb.stars >= 4 && api.lives && api.lives.gain) api.lives.gain(1);
+        }
+        api.complete(brief);
       }
     }
     hud();
@@ -307,17 +347,25 @@ export function create(level, api) {
   function openWindow(i) {
     winIdx = i;
     const w = WIN[i];
-    gauge.on = true; gauge.per = w.per; gauge.band = w.band;
+    const perEff = V3 ? clamp(w.per * clamp(ship.twr, 0.45, 3.2), 0.5, 7) : w.per;
+    gauge.on = true; gauge.per = perEff; gauge.band = w.band;
     gauge.c = 0.26 + hash(Math.floor(t * 7) + i * 31) * 0.48;
     gauge.t0 = t;
     altT = w.alt;
+    if (V3 && i === 0 && ship.twr < 1.02 && !strainShown) {
+      strainShown = true;
+      anomalies++;
+      setBanner2("TWR " + ship.twr.toFixed(2) + " — MOTEUR EN PEINE / STRAIN", "Le train ralentit, anomalie comptée — jamais mortel ✓");
+      api.audio.sfx("alarm");
+      popup(W / 2, GROUND - 210, "TWR < 1.02 — STRAIN ✓", C.danger);
+    }
     setPhase("burn");
   }
 
   function burnStep(dt, input) {
     if (!gauge.on) {
       thrust = true;
-      const rate = altT >= 1 ? 0.3 : 0.16;
+      const rate = (altT >= 1 ? 0.3 : 0.16) * (V3 ? clamp(ship.twr / 2.2, 0.33, 1.5) : 1);
       alt = Math.min(alt + rate * dt, altT);
       api.eng.shake(0.16);
       if (Math.random() < 0.7) parts.push({
@@ -376,7 +424,29 @@ export function create(level, api) {
   function botThink() {
     const B = BOT_IN;
     B.l = false; B.r = false; B.j = false; B.js.clear();
-    if (phase === "mine") {
+    if (V3 && phase === "desk") {
+      const wantL = (V3PLAN[FLAVOR] || V3PLAN.good).li;
+      if (deskStep === 0) {
+        if (cIdx !== 0 && t > 0.4 && Math.floor(t * 2) % 2 === 0) B.r = true;
+        else if (t > 2.2 && cIdx === 0) B.j = true;
+      } else {
+        if (lIdx !== wantL && t > 2.8 && Math.floor(t * 4) % 4 < 2) B.r = true;
+        else if (t > 3.4 && lIdx === wantL) B.j = true;
+      }
+    } else if (V3 && phase === "shop") {
+      const plan = (V3PLAN[FLAVOR] || V3PLAN.good).crates;
+      while (botI < plan.length) {
+        const nxt = crates.find((k) => k.id === plan[botI]);
+        if (nxt && nxt.cart) botI++; else break;
+      }
+      if (botI < plan.length) {
+        const c = crates.find((k) => k.id === plan[botI]);
+        const dx = c.x - pl.x;
+        if (Math.abs(dx) >= 16) { if (dx > 0) B.r = true; else B.l = true; }
+      } else if (pl.x > BAYX + 20) B.l = true;
+    } else if (V3 && phase === "bench") {
+      // stand still and watch the readouts build
+    } else if (phase === "mine") {
       let near = null, nd = 1e9;
       for (const d of DEP) {
         if (d.done) continue;
@@ -406,11 +476,14 @@ export function create(level, api) {
 
   // ---- hud -----------------------------------------------------------------------------------
   function hud() {
-    const phMap = { mine: "1", assemble: "1", carry: "2", integrate: "2", countdown: "3", burn: "3", deploy: "3" };
+    const phMap = { desk: "1", shop: "1", bench: "1", mine: "1", assemble: "1", carry: "2", integrate: "2", countdown: "3", burn: "3", deploy: "3" };
     let right = "PHASE " + (phMap[phase] || "1") + "/3";
     if (anomalies > 0) right += " · ANOMALY " + anomalies;
     let mid = "";
-    if (phase === "mine") mid = "CPU " + res.cpu + "/" + reqs.cpu + " · ANT " + res.ant + "/" + reqs.ant + " · µBD " + res.micro + "/" + reqs.micro;
+    if (V3 && phase === "desk") mid = "CONTRAT + LANCEUR — ESPACE pour confirmer ✓";
+    else if (V3 && phase === "shop") mid = "CHAR " + Math.round(cart.mass) + (ship.launcher ? "/" + ship.launcher.capKg : "") + " kg — immobile = charger · SPACE décharger";
+    else if (V3 && phase === "bench") mid = "READOUTS — TWR · Δv · kW · Mbps · CG";
+    else if (phase === "mine") mid = "CPU " + res.cpu + "/" + reqs.cpu + " · ANT " + res.ant + "/" + reqs.ant + " · µBD " + res.micro + "/" + reqs.micro;
     else if (phase === "assemble") mid = "ASSEMBLING…";
     else if (phase === "carry") mid = carrying ? "SATELLITE → ROCKET" : "RAMASSEZ LE SATELLITE / PICK IT UP";
     else if (phase === "integrate") mid = "INTEGRATION…";
@@ -429,7 +502,7 @@ export function create(level, api) {
       drawGround(ctx, off);
       drawBay(ctx, off);
       drawPad(ctx, off);
-      drawDeposits(ctx, off);
+      if (V3 && phase !== "mine") drawCrates(ctx, off); else drawDeposits(ctx, off);
       drawRocks(ctx, off);
       drawRocket(ctx);
       drawPlayer(ctx, off);
@@ -440,6 +513,8 @@ export function create(level, api) {
     if (phase === "countdown") drawCount(ctx);
     if (gauge.on) drawGauge(ctx);
     drawBanners(ctx);
+    if (V3 && phase === "desk") drawDesk(ctx);
+    if (V3 && phase === "bench") drawReadouts(ctx);
     if (phase === "deploy") drawDeploy(ctx);
     seasonTint(ctx);
   }
@@ -547,6 +622,7 @@ export function create(level, api) {
 
   function drawSatellite(ctx) {
     if (phase === "mine" || phase === "deploy") return;
+    if (V3 && (phase === "desk" || phase === "shop")) return;
     const body = bake("satBody", 88, 48, paintSatBody);
     const wing = bake("satWing", 36, 24, paintSatWing);
     const comp = (x, y, kw, alpha, scale) => {
@@ -557,7 +633,20 @@ export function create(level, api) {
       ctx.drawImage(body, -44, -24);
       ctx.restore();
     };
-    if (phase === "assemble") {
+    if (V3 && phase === "bench") {
+      // ghost bus integration with spin-test wobble ∝ CG
+      const k = clamp(benchT / 2.3, 0, 1);
+      ctx.save();
+      ctx.translate(BAYX + 70, GROUND - 38 - k * 4);
+      ctx.rotate(Math.sin(benchT * 9) * ship.wob * 0.4);
+      const gk = 0.5 + 0.5 * k;
+      ctx.scale(gk, gk);
+      const wk = ship.gen > 0 ? 1 : 0.55;
+      ctx.drawImage(wing, -44 - 36 * wk, -12, 36 * wk, 24);
+      ctx.drawImage(wing, 44, -12, 36 * wk, 24);
+      ctx.drawImage(body, -44, -24);
+      ctx.restore();
+    } else if (phase === "assemble") {
       const k = clamp(asmT / 1.6, 0, 1);
       comp(BAYX + 70, GROUND - 38 - k * 4, 1, k, 0.4 + 0.6 * k);
     } else if (phase === "integrate") {
@@ -626,6 +715,10 @@ export function create(level, api) {
     ctx.translate(pl.x, pl.y + off + (pl.onGround && Math.abs(pl.vx) > 10 ? Math.sin(t * 22) * 1.5 : 0));
     ctx.scale(pl.face, 1);
     ctx.drawImage(img, -18, -45);
+    if (V3 && cart.mass > 0 && (phase === "shop" || phase === "bench")) {
+      ctx.fillStyle = C.steelDk; ctx.fillRect(-46, -20, 13, 9);
+      ctx.fillStyle = C.gold; ctx.fillRect(-46, -29, 13, 9);
+    }
     ctx.restore();
   }
 
@@ -678,7 +771,7 @@ export function create(level, api) {
       ctx.save(); ctx.globalAlpha = clamp(bannerT / 0.8, 0, 1);
       ctx.fillStyle = "rgba(5,6,15,.55)"; ctx.fillRect(0, 138, W, 134);
       drawText(ctx, "MDA SPACE MISSION", W / 2, 188, { size: 36, color: "#fff", shadow: C.cyan });
-      drawText(ctx, "Phase 1 — mine the parts, assemble the satellite · Phase 1 — minez les composants, assemblez le satellite", W / 2, 230, { size: 14, color: "rgba(216,228,255,.9)" });
+      drawText(ctx, V3 ? "Contract desk — pick the mission, load under the mass cap · Choisissez le contrat, chargez sous la masse" : "Phase 1 — mine the parts, assemble the satellite · Phase 1 — minez les composants, assemblez le satellite", W / 2, 230, { size: 14, color: "rgba(216,228,255,.9)" });
       drawText(ctx, "← → marcher · ESPACE sauter — puis engagez chaque tir moteur", W / 2, 254, { size: 12, color: "rgba(216,228,255,.6)" });
       ctx.restore();
     }
@@ -714,12 +807,207 @@ export function create(level, api) {
     if (Math.random() < 0.4) parts.push({ x: x + (Math.random() - 0.5) * 160, y: sy + (Math.random() - 0.5) * 60, vx: (Math.random() - 0.5) * 30, vy: (Math.random() - 0.5) * 30, g: 0, t: 0.6, col: C.cyan });
     if (depT > 2.3) {
       ctx.save(); ctx.globalAlpha = clamp((depT - 2.3) / 0.5, 0, 1);
-      ctx.fillStyle = "rgba(5,8,20,.7)"; ctx.fillRect(W / 2 - 270, H / 2 - 66, 540, 132);
-      drawText(ctx, "MISSION COMPLETE ✓", W / 2, H / 2 - 24, { size: 32, color: "#fff", shadow: C.green });
-      drawText(ctx, "MDA SPACE — satellite en orbite / satellite in orbit", W / 2, H / 2 + 12, { size: 15, color: "rgba(216,228,255,.9)" });
-      drawText(ctx, "time " + t.toFixed(1) + " s · anomalies " + anomalies, W / 2, H / 2 + 38, { size: 13, color: "#9aa4c6" });
+      ctx.fillStyle = "rgba(5,8,20,.7)"; ctx.fillRect(W / 2 - 285, H / 2 - 80, 570, 172);
+      drawText(ctx, "MISSION COMPLETE ✓", W / 2, H / 2 - 40, { size: 32, color: "#fff", shadow: C.green });
+      drawText(ctx, "MDA SPACE — satellite en orbite / satellite in orbit", W / 2, H / 2 - 6, { size: 15, color: "rgba(216,228,255,.9)" });
+      drawText(ctx, "time " + t.toFixed(1) + " s · anomalies " + anomalies, W / 2, H / 2 + 16, { size: 13, color: "#9aa4c6" });
+      if (V3 && v3Result) {
+        const capL = ship.launcher ? ship.launcher.capKg : 0;
+        drawText(ctx, ship.contract.en + " · " + ship.launcher.en + " · " + ship.kg + " kg — ★ " + v3Result.stars + "/4", W / 2, H / 2 + 40, { size: 14.5, color: C.gold, shadow: "#05060f" });
+        drawText(ctx, "marge Δv " + v3Result.margins.dvLeft.toFixed(2) + " km/s · réserve " + v3Result.margins.headroom.toFixed(2) + " kW · " + Math.max(0, Math.round(capL - ship.kg)) + " kg non dépensés / unspent", W / 2, H / 2 + 62, { size: 11.5, color: "#9aa4c6" });
+      }
       ctx.restore();
     }
+  }
+
+  // ===== v3 Phase 1 machinery (?v3=1) ========================================================
+  function classColor(p) {
+    if (p.gen || p.storeKwh) return C.gold;
+    if (p.mbps || p.res) return C.cyan;
+    if (p.thrustN !== undefined) return p.launchThrust ? C.fire : C.violet;
+    if (p.stiff) return C.steelLt;
+    if (p.attitude) return C.violet;
+    return C.magenta;
+  }
+  function walkSpeed() {
+    if (!V3) return carrying ? CWALK : WALK;
+    if (carrying || phase === "carry") return CWALK;
+    const cap = ship.launcher ? ship.launcher.capKg : 950;
+    if (cart.mass <= 0) return WALK;
+    const base = lerp(WALK * 0.94, WALK * 0.5, clamp(cart.mass / cap, 0, 1));
+    if (cart.mass > cap && !overPopup) {
+      overPopup = true;
+      popup(W / 2, GROUND - 170, "SURCHARGE — marche ralentie / overload slow ✓", C.danger);
+      api.audio.sfx("hit");
+    }
+    return cart.mass > cap ? Math.round(base * 0.62) : Math.round(base);
+  }
+  function computeShip() {
+    const items = cart.ids.map((id) => CATALOG.find((p) => p.id === id)).filter(Boolean);
+    ship.kg = items.reduce((a, p) => a + (p.mass || 0), 0);
+    ship.gen = items.reduce((a, p) => a + (p.gen || 0), 0);
+    ship.draw = items.reduce((a, p) => a + (p.kw || 0), 0);
+    const store = items.reduce((a, p) => a + (p.storeKwh || 0), 0);
+    ship.kwNet = ship.gen - ship.draw + (store > 0 ? store * 0.6 : 0);
+    ship.mbps = items.reduce((a, p) => a + (p.mbps || 0), 0);
+    const thN = items.reduce((a, p) => a + (p.thrustN || 0), 0);
+    ship.twr = thN > 0 ? thN / (Math.max(ship.kg, 1) * 9.81) : 0;
+    ship.dv = items.reduce((a, p) => a + (p.dvKeff ? p.dvKeff * Math.log(Math.max(ship.kg, 2) / Math.max(2, ship.kg - (p.fuel || 0))) : 0), 0);
+    let cgS = 0;
+    items.forEach((p, i) => { cgS += (i % 2 ? 1 : -1) * (p.mass || 0); });
+    ship.cg = Math.abs(cgS) / Math.max(ship.kg, 1);
+    const fr = items.find((p) => p.stiff);
+    ship.stiff = fr ? fr.stiff : 0;
+    ship.att = items.reduce((a, p) => a + (p.attitude || 0), 0);
+    ship.wob = clamp(ship.cg * 1.5 - ship.stiff * 0.12 - ship.att * 0.34, 0, 1);
+  }
+  function deskStep2(input) {
+    const L = input.left(), R = input.right();
+    if (deskStep === 0) {
+      if (R && !deskR) { cIdx = (cIdx + 1) % Math.max(1, CONTRACTS.length); api.audio.sfx("select"); }
+      if (L && !deskL) cIdx = (cIdx + Math.max(1, CONTRACTS.length) - 1) % Math.max(1, CONTRACTS.length);
+    } else {
+      if (R && !deskR) { lIdx = (lIdx + 1) % Math.max(1, LAUNCHERS.length); api.audio.sfx("select"); }
+      if (L && !deskL) lIdx = (lIdx + Math.max(1, LAUNCHERS.length) - 1) % Math.max(1, LAUNCHERS.length);
+    }
+    deskL = L; deskR = R;
+    if (input.jumpJust()) {
+      if (deskStep === 0) { deskStep = 1; api.audio.sfx("coin"); }
+      else if (ship.contract == null) {
+        ship.contract = CONTRACTS[cIdx] || null;
+        ship.launcher = LAUNCHERS[lIdx] || null;
+        api.audio.sfx("powerup");
+        setBanner2("CONTRAT VERROUILLÉ — " + (ship.contract && ship.contract.en) + " · " + (ship.launcher && ship.launcher.en), "Chargez les caisses sous " + (ship.launcher ? ship.launcher.capKg : 0) + " kg puis revenez au hangar ✓");
+        setPhase("shop");
+      }
+    }
+  }
+  function shopStep(dt) {
+    for (const c of crates) {
+      const near = pl.onGround && Math.abs(pl.x - c.x) < 24 && Math.abs(pl.vx) < 3;
+      if (!near) { c.prog = 0; continue; }
+      c.prog += dt;
+      if (Math.random() < 0.3) parts.push({ x: c.x + (Math.random() - 0.5) * 26, y: GROUND - 16, vx: (Math.random() - 0.5) * 40, vy: -70 - Math.random() * 60, g: 200, t: 0.3, col: classColor(c) });
+      if (c.prog >= (c.cart ? UNLOAD_T : LOAD_T)) {
+        c.prog = 0;
+        if (!c.cart) { c.cart = true; cart.ids.push(c.id); cart.mass += c.mass; api.audio.sfx("coin"); popup(c.x, GROUND - 92, "+ " + c.name + " ✓", C.green); }
+        else { c.cart = false; cart.ids = cart.ids.filter((i2) => i2 !== c.id); cart.mass = Math.max(0, cart.mass - c.mass); api.audio.sfx("hit"); popup(c.x, GROUND - 92, "− " + c.name, C.danger); }
+        computeShip();
+      }
+    }
+    if (cart.mass > 0 && pl.x < BAYX + 34 && pl.onGround) {
+      computeShip();
+      benchT = 0;
+      setBanner2("BANC D'ASSEMBLAGE — lectures directes", "TWR · Δv · kW · Mbps · CG — spin test after / essai de rotation ✓");
+      setPhase("bench");
+    }
+  }
+  function benchStep(dt) {
+    benchT += dt;
+    if (benchT < 1.0 && Math.random() < 0.45) parts.push({ x: BAYX + 70 + (Math.random() - 0.5) * 90, y: GROUND - 40, vx: (Math.random() - 0.5) * 60, vy: -40 - Math.random() * 60, g: 120, t: 0.5, col: C.violet });
+    if (benchT >= 2.3) {
+      sat.x = BAYX + 70;
+      setBanner2("PHASE 2 — CARRY / TRANSPORT", "Balancez la masse — attention aux rochers ✓");
+      api.audio.sfx("select");
+      setPhase("carry");
+    }
+  }
+  function evalKpi(k) {
+    const has = (id) => cart.ids.indexOf(id) !== -1;
+    let v = 0;
+    if (k.stat === "kw") v = ship.kwNet;
+    else if (k.stat === "mbps") v = ship.mbps;
+    else if (k.stat === "dv") v = ship.dv;
+    else if (k.stat === "attitude") v = ship.att;
+    else if (k.stat === "res") v = (has("optical") ? (has("batt") ? 9 : 5) : 0) + (has("sar") ? 4 : 0);
+    return v >= k.min;
+  }
+  function debriefStars() {
+    if (!ship.contract || !ship.launcher) return { stars: 0, margins: { unspent: 0, headroom: +Math.max(0, ship.kwNet).toFixed(2), dvLeft: +ship.dv.toFixed(2) } };
+    const kpis = ship.contract.kpis || [];
+    let met = 0;
+    for (const k of kpis) if (evalKpi(k)) met++;
+    const cap = ship.launcher.capKg;
+    const unspent = Math.max(0, cap - ship.kg) / cap;
+    const unspentStar = unspent >= 0.15 ? 1 : 0;
+    const headStar = ship.kwNet >= 1.2 ? 1 : 0;
+    const dvKpi = kpis.find((k) => k.stat === "dv");
+    const margins = {
+      unspent: +(unspent * 100).toFixed(0),
+      headroom: +Math.max(0, ship.kwNet).toFixed(2),
+      dvLeft: +(Math.max(0, ship.dv - (dvKpi ? dvKpi.min : 0))).toFixed(2),
+    };
+    return { stars: met + unspentStar + headStar, margins };
+  }
+
+  function drawDesk(ctx) {
+    const x = DESKX, gy = GROUND;
+    ctx.fillStyle = C.engineBlue; ctx.fillRect(x - 22, gy - 36, 44, 36);
+    ctx.fillStyle = C.steelDk; ctx.fillRect(x - 26, gy - 40, 52, 5);
+    const px = 150, py = 132, pw = 380, ph = 244;
+    ctx.fillStyle = "rgba(5,8,20,.84)"; ctx.fillRect(px, py, pw, ph);
+    ctx.strokeStyle = C.violet; ctx.lineWidth = 2; ctx.strokeRect(px, py, pw, ph);
+    drawText(ctx, "BUREAU DES CONTRATS · MISSION DESK", px + pw / 2, py + 24, { size: 15, color: C.cyan, shadow: "#05060f" });
+    if (deskStep === 0) {
+      CONTRACTS.forEach((cc, i) => {
+        const ry = py + 58 + i * 50;
+        const sel = i === cIdx;
+        if (sel) { ctx.fillStyle = "rgba(61,220,255,.14)"; ctx.fillRect(px + 10, ry - 18, pw - 20, 38); }
+        drawText(ctx, sel ? "▶ " : "  ", px + 26, ry - 4, { size: 13, color: C.cyan });
+        drawText(ctx, cc.en + " · " + cc.fr, px + 52, ry - 4, { size: 15, color: "#fff", shadow: "#05060f" });
+        drawText(ctx, cc.descEn + "  ·  " + cc.descFr, px + 26, ry + 16, { size: 10, color: "#9aa4c6" });
+      });
+      drawText(ctx, "← → choisir · ESPACE confirmer ✓", px + pw / 2, py + ph - 14, { size: 11, color: "#9aa4c6" });
+    } else {
+      LAUNCHERS.forEach((lc, i) => {
+        const ry = py + 62 + i * 52;
+        const sel = i === lIdx;
+        if (sel) { ctx.fillStyle = "rgba(61,220,255,.14)"; ctx.fillRect(px + 10, ry - 20, pw - 20, 40); }
+        drawText(ctx, sel ? "▶ " : "  ", px + 28, ry - 2, { size: 14, color: C.cyan });
+        drawText(ctx, lc.en, px + 56, ry - 2, { size: 16, color: "#fff", shadow: "#05060f" });
+        drawText(ctx, lc.tagEn + " · " + lc.tagFr, px + 56, ry + 20, { size: 10, color: "#9aa4c6" });
+      });
+      drawText(ctx, "← → choisir · ESPACE verrouille le budget de masse ✓", px + pw / 2, py + ph - 14, { size: 11, color: "#9aa4c6" });
+    }
+  }
+  function drawCrates(ctx, off) {
+    for (const c of crates) {
+      const x = c.x, y = GROUND + off;
+      if (c.cart) {
+        ctx.fillStyle = "rgba(70,242,180,.4)"; ctx.beginPath(); ctx.ellipse(x, y - 2, 22, 8, 0, Math.PI, 0); ctx.fill();
+        continue;
+      }
+      const bob = Math.sin(t * 3 + x) * 1.5;
+      const near = Math.abs(pl.x - c.x) < 66;
+      ctx.fillStyle = "#1a1f30"; ctx.fillRect(x - 14, y - 22 + bob, 28, 20);
+      ctx.fillStyle = classColor(c); ctx.fillRect(x - 12, y - 20 + bob, 24, 16);
+      ctx.fillStyle = "#0d1018"; ctx.fillRect(x - 8, y - 14 + bob, 18, 6);
+      if (near) drawText(ctx, c.tagEn + " · " + c.tagFr, x, y - 56 + bob, { size: 9, color: "#d4dbe6", shadow: "#05060f" });
+      if (c.prog > 0) {
+        ctx.strokeStyle = c.cart ? C.danger : C.green; ctx.lineWidth = 4; ctx.globalAlpha = 0.9;
+        ctx.beginPath(); ctx.arc(x, y - 14, 18, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * clamp(c.prog / (c.cart ? UNLOAD_T : LOAD_T), 0, 1)); ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
+    }
+  }
+  function drawReadouts(ctx) {
+    const px = 150, py = 268, pw = 380, ph = 132;
+    ctx.save();
+    ctx.fillStyle = "rgba(5,8,20,.8)"; ctx.fillRect(px, py, pw, ph);
+    ctx.strokeStyle = C.violet; ctx.lineWidth = 2; ctx.strokeRect(px, py, pw, ph);
+    const rows = [
+      "MASSE " + ship.kg + (ship.launcher ? "/" + ship.launcher.capKg : "") + " kg · mass",
+      "TWR " + ship.twr.toFixed(2) + (ship.twr < 1.02 ? "  ⚠ peine/strain" : "  ✓"),
+      "Δv " + ship.dv.toFixed(2) + " km/s",
+      "ALIM " + (ship.kwNet >= 0 ? "+" : "") + ship.kwNet.toFixed(2) + " kW " + (ship.kwNet >= 0 ? "✓" : "⚠"),
+      "DONNÉES " + Math.round(ship.mbps) + " Mbps · CG ±" + ship.cg.toFixed(2) + " · wob " + Math.round(ship.wob * 100) + "%",
+    ];
+    rows.forEach((r, i) => {
+      const ry = py + 30 + i * 21;
+      if (ry < py + ph - 14) drawText(ctx, r, px + 18, ry, { size: 12, color: i === 1 && ship.twr < 1.02 ? C.danger : "#d4dbe6", shadow: "#05060f" });
+    });
+    drawText(ctx, "essai de rotation — CG décentré = balancement ✓ / spin test (no death)", px + 18, py + ph + 2, { size: 10, color: "#9aa4c6" });
+    ctx.restore();
   }
 
   // ---- debug hook + compression wrapper --------------------------------------------------------
@@ -733,6 +1021,7 @@ export function create(level, api) {
           gauge: { on: gauge.on, m: +gauge.m.toFixed(3), c: +gauge.c.toFixed(3), band: +gauge.band.toFixed(3), win: winIdx },
           player: { x: Math.round(pl.x), y: Math.round(pl.y), carrying },
           sat: { x: Math.round(sat.x) }, trace,
+          v3: V3 ? { contract: ship.contract && ship.contract.id, launcher: ship.launcher && ship.launcher.id, kg: ship.kg, twr: +ship.twr.toFixed(3), dvKms: +ship.dv.toFixed(3), kwNet: +ship.kwNet.toFixed(2), mbps: +ship.mbps.toFixed(2), cg: +ship.cg.toFixed(3), wob: +ship.wob.toFixed(3), deskStep, cIdx, lIdx, cart: [...cart.ids], stars: v3Result && v3Result.stars } : null,
         };
       },
     };
