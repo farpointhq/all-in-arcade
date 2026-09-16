@@ -18,10 +18,10 @@ RIG = "levels/matt-mayer-mda-space-mission/sim.html"
 
 # contract: (mode, flavor) with the expectations the build promises
 PROFILES = [
-    ("legacy", "good", None),
-    ("v3", "good", {"stars": 4}),
-    ("v3", "partial", {"misses": 3}),
-    ("v3", "clumsy", {"drops": 1}),
+    ("legacy", "good", {"tMax": 40, "misses": 0, "drops": 0}),
+    ("v3", "good", {"stars": 4, "kg": 705, "drops": 0}),
+    ("v3", "partial", {"misses": 3, "stars": 1, "drops": 0}),
+    ("v3", "clumsy", {"drops": 1, "stars": 3, "misses": 0}),
 ]
 
 
@@ -37,7 +37,7 @@ def check(tag, row):
 
 
 def run_case(port, tag, flavor, v3, expect):
-    url = f"{BASE}/{RIG}?bot=1&flavor={flavor}&v={int(time.time() * 1000)}{'' if not v3 else '&v3=1'}"
+    url = f"{BASE}/{RIG}?bot=1&flavor={flavor}&v={int(time.time() * 1000)}{'&v3=0' if not v3 else '&v3=1'}"  # explicit path — never rely on the current default
     with sync_playwright() as p:
         b = p.chromium.launch(headless=True)
         pg = b.new_page()
@@ -51,10 +51,14 @@ def run_case(port, tag, flavor, v3, expect):
     ok = True
     if expect.get("stars") is not None and v.get("stars") != expect["stars"]:
         problems.append(f"stars={v.get('stars')} != {expect['stars']}")
-    if expect.get("drops") is not None and drops < expect["drops"]:
-        problems.append(f"drops={drops} < {expect['drops']}")
-    if expect.get("misses") is not None and anom < expect["misses"]:
-        problems.append(f"anomalies={anom} < {expect['misses']}")
+    if expect.get("drops") is not None and drops != expect["drops"]:
+        problems.append(f"drops={drops} != {expect['drops']}")
+    if expect.get("misses") is not None and anom != expect["misses"]:
+        problems.append(f"anomalies={anom} != {expect['misses']}")
+    if expect.get("kg") is not None and v.get("kg") != expect["kg"]:
+        problems.append(f"kg={v.get('kg')} != {expect['kg']}")
+    if expect.get("tMax") is not None and (t < 0 or t > expect["tMax"]):
+        problems.append(f"t={t} above ceiling {expect['tMax']}")
     if problems:
         ok = False
     line = {

@@ -36,7 +36,7 @@
         { "id": "sar", "name": "SAR radar", "en": "SAR radar", "fr": "Radar SAR",              "mass": 320, "kw": 1.7, "res": 4, "allWeather": true,  "tagEn": "All-weather imaging · res 4 · 320 kg", "tagFr": "Imagerie tout temps · rés 4 · 320 kg" },
         { "id": "optical", "name": "Optical imager",     "fr": "Imagerie optique",        "mass": 110, "kw": 0.7, "res": 9, "weatherLimited": true, "tagEn": "res 9 · weather-limited · 110 kg", "tagFr": "rés 9 · limitée par la météo · 110 kg" },
         { "id": "ka",      "name": "Ka comm",             "fr": "Comm Ka",                "mass": 95,  "kw": 1.1, "mbps": 22, "tagEn": "22 Mbps relay · 95 kg", "tagFr": "Relais 22 Mbps · 95 kg" },
-        { "id": "sci",     "name": "Science suite",       "fr": "Suite scientifique",     "mass": 70,  "kw": 0.4, "sci": 2, "tagEn": "science yield ×2 · 70 kg", "tagFr": "rendement sci ×2 · 70 kg" },
+        { "id": "sci",     "name": "Science suite",       "fr": "Suite scientifique",     "mass": 70,  "kw": 0.4, "tagEn": "science payload · 70 kg", "tagFr": "charge scientifique · 70 kg" },
         { "id": "solarL",  "name": "Solar array · L",     "fr": "Panneau solaire L",      "mass": 260, "gen": 3.8, "tagEn": "generates 3.8 kW · 260 kg", "tagFr": "génère 3,8 kW · 260 kg" },
         { "id": "solarM",  "name": "Solar array · M",     "fr": "Panneau solaire M",      "mass": 140, "gen": 2.2, "tagEn": "generates 2.2 kW · 140 kg", "tagFr": "génère 2,2 kW · 140 kg" },
         { "id": "batt",    "name": "Battery",             "fr": "Batterie",               "mass": 45,  "storeKwh": 3, "tagEn": "holds 3 kWh after sunset · 45 kg", "tagFr": "3 kWh stockés après le coucher du soleil · 45 kg" },
@@ -48,7 +48,7 @@
       ],
       "launchers": [
         { "id": "v3",   "en": "Vector-3",   "fr": "Vector-3",   "capKg": 550,  "tagEn": "payload cap 550 kg",  "tagFr": "charge utile max 550 kg" },
-        { "id": "v9",   "en": "Vector-9",   "fr": "Vector-9",   "capKg": 950,  "capFrom": "borealTug",  "tagEn": "payload cap 950 kg",  "tagFr": "charge utile max 950 kg" },
+        { "id": "v9",   "en": "Vector-9",   "fr": "Vector-9",   "capKg": 950,  "tagEn": "payload cap 950 kg",  "tagFr": "charge utile max 950 kg" },
         { "id": "boreal", "en": "Boreal Heavy", "fr": "Boreal Heavy", "capKg": 1400, "tagEn": "payload cap 1400 kg · heaviest ride down", "tagFr": "charge utile max 1400 kg · la plus lourde sous le coude" }
       ],
       "contracts": [

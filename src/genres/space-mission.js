@@ -355,7 +355,7 @@ export function create(level, api) {
     if (V3 && i === 0 && ship.twr < 1.02 && !strainShown) {
       strainShown = true;
       anomalies++;
-      setBanner2("TWR " + ship.twr.toFixed(2) + " — MOTEUR EN PEINE / STRAIN", "Le train ralentit, anomalie comptée — jamais mortel ✓");
+      setBanner2("TWR " + ship.twr.toFixed(2) + " — MOTEUR EN PEINE / STRAIN", "L'ascension ralentit, anomalie comptée — jamais mortel ✓ · The stack limps, anomaly counted — never lethal ✓");
       api.audio.sfx("alarm");
       popup(W / 2, GROUND - 210, "TWR < 1.02 — STRAIN ✓", C.danger);
     }
@@ -480,9 +480,9 @@ export function create(level, api) {
     let right = "PHASE " + (phMap[phase] || "1") + "/3";
     if (anomalies > 0) right += " · ANOMALY " + anomalies;
     let mid = "";
-    if (V3 && phase === "desk") mid = "CONTRAT + LANCEUR — ESPACE pour confirmer ✓";
-    else if (V3 && phase === "shop") mid = "CHAR " + Math.round(cart.mass) + (ship.launcher ? "/" + ship.launcher.capKg : "") + " kg — immobile = charger · SPACE décharger";
-    else if (V3 && phase === "bench") mid = "READOUTS — TWR · Δv · kW · Mbps · CG";
+    if (V3 && phase === "desk") mid = "BUREAU · DESK — ← → choisir/choose · ESPACE confirmer ✓";
+    else if (V3 && phase === "shop") mid = "CHAR/CART " + Math.round(cart.mass) + (ship.launcher ? "/" + ship.launcher.capKg : "") + " kg — immobile = charger/stand still to load · ESPACE décharger/unload";
+    else if (V3 && phase === "bench") mid = "MESURES/READOUTS — TWR · Δv · kW · Mbps · CG";
     else if (phase === "mine") mid = "CPU " + res.cpu + "/" + reqs.cpu + " · ANT " + res.ant + "/" + reqs.ant + " · µBD " + res.micro + "/" + reqs.micro;
     else if (phase === "assemble") mid = "ASSEMBLING…";
     else if (phase === "carry") mid = carrying ? "SATELLITE → ROCKET" : "RAMASSEZ LE SATELLITE / PICK IT UP";
@@ -813,7 +813,7 @@ export function create(level, api) {
       drawText(ctx, "time " + t.toFixed(1) + " s · anomalies " + anomalies, W / 2, H / 2 + 16, { size: 13, color: "#9aa4c6" });
       if (V3 && v3Result) {
         const capL = ship.launcher ? ship.launcher.capKg : 0;
-        drawText(ctx, ship.contract.en + " · " + ship.launcher.en + " · " + ship.kg + " kg — ★ " + v3Result.stars + "/4", W / 2, H / 2 + 40, { size: 14.5, color: C.gold, shadow: "#05060f" });
+        drawText(ctx, ship.contract.en + " · " + ship.contract.fr + " — " + ship.launcher.en + " · " + ship.launcher.fr + " · " + ship.kg + " kg — ★ " + v3Result.stars + "/4", W / 2, H / 2 + 40, { size: 13.5, color: C.gold, shadow: "#05060f" });
         drawText(ctx, "marge Δv " + v3Result.margins.dvLeft.toFixed(2) + " km/s · réserve " + v3Result.margins.headroom.toFixed(2) + " kW · " + Math.max(0, Math.round(capL - ship.kg)) + " kg non dépensés / unspent", W / 2, H / 2 + 62, { size: 11.5, color: "#9aa4c6" });
       }
       ctx.restore();
@@ -877,7 +877,7 @@ export function create(level, api) {
         ship.contract = CONTRACTS[cIdx] || null;
         ship.launcher = LAUNCHERS[lIdx] || null;
         api.audio.sfx("powerup");
-        setBanner2("CONTRAT VERROUILLÉ — " + (ship.contract && ship.contract.en) + " · " + (ship.launcher && ship.launcher.en), "Chargez les caisses sous " + (ship.launcher ? ship.launcher.capKg : 0) + " kg puis revenez au hangar ✓");
+        setBanner2("CONTRAT VERROUILLÉ / LOCKED — " + (ship.contract && ship.contract.en) + " · " + (ship.launcher && ship.launcher.en), "Chargez les caisses sous " + (ship.launcher ? ship.launcher.capKg : 0) + " kg puis revenez au hangar ✓ · Load crates under " + (ship.launcher ? ship.launcher.capKg : 0) + " kg, return to the bay ✓");
         setPhase("shop");
       }
     }
@@ -890,15 +890,15 @@ export function create(level, api) {
       if (Math.random() < 0.3) parts.push({ x: c.x + (Math.random() - 0.5) * 26, y: GROUND - 16, vx: (Math.random() - 0.5) * 40, vy: -70 - Math.random() * 60, g: 200, t: 0.3, col: classColor(c) });
       if (c.prog >= (c.cart ? UNLOAD_T : LOAD_T)) {
         c.prog = 0;
-        if (!c.cart) { c.cart = true; cart.ids.push(c.id); cart.mass += c.mass; api.audio.sfx("coin"); popup(c.x, GROUND - 92, "+ " + c.name + " ✓", C.green); }
-        else { c.cart = false; cart.ids = cart.ids.filter((i2) => i2 !== c.id); cart.mass = Math.max(0, cart.mass - c.mass); api.audio.sfx("hit"); popup(c.x, GROUND - 92, "− " + c.name, C.danger); }
+        if (!c.cart) { c.cart = true; cart.ids.push(c.id); cart.mass += c.mass; api.audio.sfx("coin"); popup(c.x, GROUND - 92, "+ " + c.en + " · " + c.fr + " ✓", C.green); }
+        else { c.cart = false; cart.ids = cart.ids.filter((i2) => i2 !== c.id); cart.mass = Math.max(0, cart.mass - c.mass); api.audio.sfx("hit"); popup(c.x, GROUND - 92, "− " + c.en + " · " + c.fr, C.danger); }
         computeShip();
       }
     }
     if (cart.mass > 0 && pl.x < BAYX + 34 && pl.onGround) {
       computeShip();
       benchT = 0;
-      setBanner2("BANC D'ASSEMBLAGE — lectures directes", "TWR · Δv · kW · Mbps · CG — spin test after / essai de rotation ✓");
+      setBanner2("BANC D'ASSEMBLAGE — lectures en direct / assembly bench — live readouts", "TWR · Δv · kW · Mbps · CG — essai de rotation/spin test ✓");
       setPhase("bench");
     }
   }
@@ -907,7 +907,7 @@ export function create(level, api) {
     if (benchT < 1.0 && Math.random() < 0.45) parts.push({ x: BAYX + 70 + (Math.random() - 0.5) * 90, y: GROUND - 40, vx: (Math.random() - 0.5) * 60, vy: -40 - Math.random() * 60, g: 120, t: 0.5, col: C.violet });
     if (benchT >= 2.3) {
       sat.x = BAYX + 70;
-      setBanner2("PHASE 2 — CARRY / TRANSPORT", "Balancez la masse — attention aux rochers ✓");
+      setBanner2("PHASE 2 — TRANSPORT/SATELLITE → FUSÉE", "Balancez la masse — attention aux rochers ✓ · Balance the mass — mind the boulders ✓");
       api.audio.sfx("select");
       setPhase("carry");
     }
@@ -919,7 +919,14 @@ export function create(level, api) {
     else if (k.stat === "mbps") v = ship.mbps;
     else if (k.stat === "dv") v = ship.dv;
     else if (k.stat === "attitude") v = ship.att;
-    else if (k.stat === "res") v = (has("optical") ? (has("batt") ? 9 : 5) : 0) + (has("sar") ? 4 : 0);
+    else if (k.stat === "res") {
+      let best = 0;
+      for (const p of CATALOG) {
+        if (!p.res || !has(p.id)) continue; // only crates actually loaded on the cart
+        best = Math.max(best, p.weatherLimited && !has("batt") ? 5 : p.res); // weather-limited optics degrade without battery power
+      }
+      v = best;
+    }
     return v >= k.min;
   }
   function debriefStars() {
@@ -957,7 +964,7 @@ export function create(level, api) {
         drawText(ctx, cc.en + " · " + cc.fr, px + 52, ry - 4, { size: 15, color: "#fff", shadow: "#05060f" });
         drawText(ctx, cc.descEn + "  ·  " + cc.descFr, px + 26, ry + 16, { size: 10, color: "#9aa4c6" });
       });
-      drawText(ctx, "← → choisir · ESPACE confirmer ✓", px + pw / 2, py + ph - 14, { size: 11, color: "#9aa4c6" });
+      drawText(ctx, "← → choisir/choose · ESPACE confirmer/confirm ✓", px + pw / 2, py + ph - 14, { size: 11, color: "#9aa4c6" });
     } else {
       LAUNCHERS.forEach((lc, i) => {
         const ry = py + 62 + i * 52;
@@ -967,7 +974,7 @@ export function create(level, api) {
         drawText(ctx, lc.en, px + 56, ry - 2, { size: 16, color: "#fff", shadow: "#05060f" });
         drawText(ctx, lc.tagEn + " · " + lc.tagFr, px + 56, ry + 20, { size: 10, color: "#9aa4c6" });
       });
-      drawText(ctx, "← → choisir · ESPACE verrouille le budget de masse ✓", px + pw / 2, py + ph - 14, { size: 11, color: "#9aa4c6" });
+      drawText(ctx, "← → choisir/choose · ESPACE verrouille le budget de masse/locks the mass budget ✓", px + pw / 2, py + ph - 14, { size: 11, color: "#9aa4c6" });
     }
   }
   function drawCrates(ctx, off) {
@@ -996,11 +1003,11 @@ export function create(level, api) {
     ctx.fillStyle = "rgba(5,8,20,.8)"; ctx.fillRect(px, py, pw, ph);
     ctx.strokeStyle = C.violet; ctx.lineWidth = 2; ctx.strokeRect(px, py, pw, ph);
     const rows = [
-      "MASSE " + ship.kg + (ship.launcher ? "/" + ship.launcher.capKg : "") + " kg · mass",
+      "MASSE/MASS " + ship.kg + (ship.launcher ? "/" + ship.launcher.capKg : "") + " kg",
       "TWR " + ship.twr.toFixed(2) + (ship.twr < 1.02 ? "  ⚠ peine/strain" : "  ✓"),
       "Δv " + ship.dv.toFixed(2) + " km/s",
-      "ALIM " + (ship.kwNet >= 0 ? "+" : "") + ship.kwNet.toFixed(2) + " kW " + (ship.kwNet >= 0 ? "✓" : "⚠"),
-      "DONNÉES " + Math.round(ship.mbps) + " Mbps · CG ±" + ship.cg.toFixed(2) + " · wob " + Math.round(ship.wob * 100) + "%",
+      "ALIM/POWER " + (ship.kwNet >= 0 ? "+" : "") + ship.kwNet.toFixed(2) + " kW " + (ship.kwNet >= 0 ? "✓" : "⚠"),
+      "DONNÉES/DATA " + Math.round(ship.mbps) + " Mbps · CG ±" + ship.cg.toFixed(2) + " · wob " + Math.round(ship.wob * 100) + "%",
     ];
     rows.forEach((r, i) => {
       const ry = py + 30 + i * 21;
