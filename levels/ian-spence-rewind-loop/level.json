@@ -11,7 +11,7 @@
     }
   ],
   "remixOf": null,
-  "status": "draft",
+  "status": "ready",
   "order": 1000,
   "created": "2026-09-18T09:10:00",
   "prompt": "A 2D platformer where the game moves backwards while the player has to jump in reverse — think original Mario, but backwards: pressing right does nothing, you climb up platform after platform going up, up, up but backwards the whole time, until you reach the top left. Then the level reverse orders and you come back down left to right. Enemies come in and can kill you, and everything is going backwards in time. And portals: if you enter the portal, you start going backwards again — the portal goes back 200 feet, so essentially the player is stuck; the level is a loop the player can't escape. When you make it all the way back to the beginning, you jump into a portal and it starts you back at the beginning — you're playing forever. You can win the level, but the only way to escape is actually failing — you die — and then it goes to the next game: congratulations, you won by dying. Here's the next level.",

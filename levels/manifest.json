@@ -53,6 +53,10 @@
     {
       "id": "amir-kermany-nano-cure-2",
       "enabled": true
+    },
+    {
+      "id": "ian-spence-rewind-loop",
+      "enabled": true
     }
   ]
 }
