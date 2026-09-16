@@ -3,7 +3,7 @@
   "id": "simone-death-star-run",
   "title": "Death Star Run",
   "genre": "star-racer",
-  "version": 3,
+  "version": 4,
   "authors": [
     {
       "name": "Simone Hummel",
@@ -15,8 +15,8 @@
   "order": 6,
   "created": "2026-09-16T09:10:00",
   "prompt": "A galactic Star Wars theme, space shuttle racing game. The goal is to defeat the Death Star by collecting items, or something?",
-  "brief": "Pilot the shuttle down the galaxy trench, grab star items, and torpedo the battle station's port.",
-  "objective": "Grab stars to arm your torpedo — then blast the Death Star's port!",
+  "brief": "Pilot the shuttle down the galaxy trench, shoot turrets and fighters for loose energy, charge the torpedo, then fire the payload into the station's port.",
+  "objective": "Blast turrets and fighters (X) for energy — charge the torpedo — then SPACE into the port!",
   "win": {
     "type": "defeat_boss",
     "itemsRequired": 5

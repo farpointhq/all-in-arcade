@@ -21,7 +21,8 @@ const CURVE_K = 0.0042;     // level curve -> lateral bend (gentler than racer: 
 const HILL_K = 0.34;        // level hill -> elevation amplitude
 const HORIZON_Y = H * 0.40; // lots of sky for the Death Star + stars (we fly low)
 const BOSS_RANGE = 0.13;    // fraction of track that is the final approach (the port shot)
-const TORPEDO_SPEED = 900;  // world units/s once fired
+const TORPEDO_SPEED = 1500; // torpedo-cam chase speed once fired
+const BLASTER_SPD = 1500;   // ship tracer speed (world units/s)
 
 // ---- procedural sprite layer ----------------------------------------------------------------------------
 // No asset files (booth rule): every sprite is drawn once to an offscreen canvas and blitted per frame.
@@ -125,7 +126,50 @@ function paintBolt(g, cx, cy, s) {
   g.fillStyle = "rgba(255,255,255,.9)";
   g.beginPath(); g.ellipse(cx + s * 0.34, cy, s * 0.12, s * 0.09, 0, 0, Math.PI * 2); g.fill();
 }
-function paintStar(g, cx, cy, s) {
+  function paintTurret(g, cx, cy, s) { // dome + barrel: floor/wall/ceiling defense mount
+    const r = s / 2;
+    g.fillStyle = "#28374f";
+    g.beginPath(); g.arc(cx, cy, r * 0.92, Math.PI, 0); g.closePath(); g.fill();
+    g.fillStyle = "#3f5674";
+    g.beginPath(); g.arc(cx, cy, r * 0.66, Math.PI, 0); g.closePath(); g.fill();
+    g.fillStyle = "#ff7d5c";
+    g.beginPath(); g.arc(cx, cy - r * 0.18, r * 0.2, 0, Math.PI * 2); g.fill();
+    g.strokeStyle = "#7dfcff"; g.lineWidth = Math.max(1, s * 0.05);
+    g.beginPath(); g.moveTo(cx - r * 0.75, cy - r * 0.15); g.lineTo(cx + r * 0.75, cy - r * 0.15); g.stroke();
+    g.fillStyle = "#1a2233"; g.fillRect(cx - r * 0.16, cy - r * 0.75, r * 0.32, r * 0.55);
+  }
+
+  function paintIon(g, cx, cy, s) { // turret ion blob: slow purple-red orb
+    const r = s / 2;
+    const grad = g.createRadialGradient(cx, cy, r * 0.15, cx, cy, r);
+    grad.addColorStop(0, "#ffd9c8");
+    grad.addColorStop(0.5, "#ff7d5c");
+    grad.addColorStop(1, "rgba(120,40,30,0)");
+    g.fillStyle = grad;
+    g.beginPath(); g.arc(cx, cy, r, 0, Math.PI * 2); g.fill();
+  }
+
+  function paintCell(g, cx, cy, s) { // energy cell: cyan capsule + white core + charge-bolt, pulsing halo drawn by caller glow
+    const r = s / 2;
+    const grad = g.createRadialGradient(cx, cy, r * 0.2, cx, cy, r);
+    grad.addColorStop(0, "#eaffff");
+    grad.addColorStop(0.55, "#7dfcff");
+    grad.addColorStop(1, "#0e3f52");
+    g.beginPath(); g.arc(cx, cy, r, 0, Math.PI * 2); g.fillStyle = grad; g.fill();
+    g.strokeStyle = "#cfffff"; g.lineWidth = Math.max(1, s * 0.07);
+    g.beginPath(); g.arc(cx, cy, r, 0, Math.PI * 2); g.stroke();
+    // charge bolt (procedural zigzag — no emoji glyphs)
+    g.beginPath();
+    g.moveTo(cx - r * 0.16, cy - r * 0.5);
+    g.lineTo(cx + r * 0.22, cy - r * 0.05);
+    g.lineTo(cx - r * 0.05, cy - r * 0.02);
+    g.lineTo(cx + r * 0.18, cy + r * 0.5);
+    g.lineTo(cx - r * 0.28, cy + r * 0.02);
+    g.closePath();
+    g.fillStyle = "#ffffff"; g.fill();
+  }
+
+  function paintStar(g, cx, cy, s) {
   const five = 5;
   const glow = g.createRadialGradient(cx, cy, s * 0.05, cx, cy, s * 0.52);
   glow.addColorStop(0, "rgba(255,230,150,.85)");
@@ -147,7 +191,7 @@ function paintStar(g, cx, cy, s) {
 
 export const meta = {
   name: "Star Racer",
-  controls: "← → / A D steer · collect stars to charge the torpedo · SPACE fires it at the port",
+  controls: "← → steer · ↑ ↓ / W S fly high-low · X = blaster (turrets & fighters drop energy) · SPACE: torpedo when fully charged",
 };
 
 export function create(level, api) {
@@ -170,8 +214,19 @@ export function create(level, api) {
   const total = N * SEG_LEN;
 
   // ---- level objects (level.json is the source of truth; z is 0..1 of the track) ----
-  const items = (D.items || []).map((it) => ({ z: it.z * total, x: it.x, got: false }));
+  const items = (D.items || []).map((it, i) => ({ z: it.z * total, x: it.x, y: [-0.55, 0.45, 0][i % 3], got: false }));
   const debris = (D.debris || []).map((ob) => ({ z: ob.z * total, x: ob.x }));
+  // ---- turrets: floor/wall/ceiling mounts, telegraphed slow + inaccurate shots—they fall to blaster hits and drop energy。
+  const TURRET_SPOTS = [0.14, 0.27, 0.36, 0.48, 0.6, 0.72, 0.86];
+  const TURRET_SIDES = ["floor", "left", "ceiling", "right", "floor", "left", "ceiling"];
+  const turrets = TURRET_SPOTS.map((f, i) => ({
+    z: f * total, x: TURRET_SIDES[i] === "left" ? -0.82 : TURRET_SIDES[i] === "right" ? 0.82 : (i % 2 ? -0.3 : 0.3),
+    y: TURRET_SIDES[i] === "floor" ? 0.82 : TURRET_SIDES[i] === "ceiling" ? -0.78 : 0.1,
+    hp: 2, cd: 1.4 + hash(i * 31) * 1.2, tele: 0, dead: false, kind: TURRET_SIDES[i],
+  }));
+  const drops = [];    // loose energy left behind by kills {z, x, y, ttl， on}
+  const blobs = [];    // turret ion shots (slow, frozen aim → easy dodges)
+  const blasters = []; // ship tracers {z, x, y, on}
   const fighters = [];
   for (const w of D.waves || []) {
     for (let i = 0; i < (w.n || 3); i++) {
@@ -187,22 +242,22 @@ export function create(level, api) {
   }
 
   // ---- state ----
-  let position = 0, speed = 0, playerX = 0, steerVis = 0;
+  let position = 0, speed = 0, playerX = 0, playerY = 0, steerVis = 0, bankVis = 0;
   let hearts = D.lives || 3;
   let status = "playing", t = 0, runT = 0, inv = 0;
   const INV_TIME = 1.5;
   let countdown = 2.2, goGlow = 0;
   let got = 0, armed = false, launched = false;
-  let bossPhase = false, portX = 0, fireCd = 0, missT = 0;
-  const FAST = clamp(parseFloat(new URLSearchParams(location.search).get("fast") || "1") || 1, 1, 12); // ?fast=N: compressed-time smoke testing
-  const torpedoes = []; // { z, x, on }
+  let bossPhase = false, portX = 0, fireCd = 0, missT = 0, blasterCd = 0;
+  const FAST = clamp(parseFloat(new URLSearchParams(location.search).get("fast") || "1") || 1, 1, 12);
+  const torpedoes = []; // { z, x, y, on }
   const bursts = [];    // screen-space sparkle particles
-  let prevPosition = 0;
+  let prevPosition = 0, followTorp = null;
 
   function setHud(txt) {
-    let mid = txt || `★ ${got}/${itemsRequired} to arm the torpedo`;
-    if (bossPhase && armed && !launched) mid = txt || "TORPEDO LOCKED — fire into the port!";
-    if (bossPhase && !armed) mid = txt || `★ ${got}/${itemsRequired} — torpedo offline`;
+    let mid = txt || `ENERGY ${got}/${itemsRequired} — torpedo charge`;
+    if (bossPhase && armed && !launched) mid = txt || "TORPEDO CHARGED — SPACE fires at the port!";
+    if (bossPhase && !armed) mid = txt || `ENERGY ${got}/${itemsRequired} — torpedo offline`;
     api.hud({ mid, right: "♥".repeat(Math.max(0, hearts)) });
   }
 
@@ -233,7 +288,7 @@ export function create(level, api) {
     if (!bossPhase || launched) return;
     if (!armed) { api.audio.sfx("select"); return; }
     if (fireCd > 0) return;
-    if (Math.abs(playerX - portX) <= portSize) {
+    if (Math.abs(playerX - portX) <= Math.max(0.42, portSize * 1.6)) {
       launched = true;
       torpedoes.push({ z: position, x: playerX, on: true });
       api.audio.sfx("shoot");
@@ -267,26 +322,75 @@ export function create(level, api) {
     const target = bossPhase ? 34 : speedCfg.base + (speedCfg.max - speedCfg.base) * clamp(runT / 16, 0, 1);
     speed += (target - speed) * Math.min(1, dt * (bossPhase ? 1.6 : 2.2));
 
-    // ---- steering ----
+    // ---- steering: full-corridor flight (lateral + vertical) ----
     const steer = (input.left() ? -1 : 0) + (input.right() ? 1 : 0);
-    steerVis = steer;
+    const climb = (input.up() ? -1 : 0) + (input.downKey() ? 1 : 0);
+    steerVis = steer; bankVis = climb;
     const pct = clamp(speed / speedCfg.max, 0, 1);
     playerX += steer * dt * 1.6 * (0.4 + pct);
+    playerY = clamp(playerY + climb * dt * 1.25, -0.95, 0.95);
     const seg = segs[Math.floor(position / SEG_LEN) % N];
     playerX -= (bossPhase ? 0 : seg.curve) * CURVE_K * dt * pct * 2.4; // mild centrifugal
     playerX = clamp(playerX, -1, 1);
 
-    if (!launched) position += speed * dt;
+    if (followTorp) position = followTorp.z;         // torpedo-cam: the world chases the bolt
+    else if (!launched) position += speed * dt;
 
-    // ---- collect stars (swept cross-plane check: correct at any dt incl. ?fast runs) ----
+    // ---- blaster (X): tracers; turrets/fighters they kill leave energy behind ----
+    blasterCd = Math.max(0, blasterCd - dt);
+    if (input.down && input.down("KeyX") && blasterCd <= 0 && status === "playing") {
+      blasterCd = 0.18;
+      blasters.push({ z: position + SEG_LEN * 0.5, x: playerX, y: playerY, on: true });
+      api.audio.sfx("shoot");
+    }
+    for (const b of blasters) {
+      if (!b.on) continue;
+      b.z += BLASTER_SPD * dt;
+      if (b.z - position > SEG_LEN * 30) b.on = false;
+      for (const f of fighters) {
+        if (f.dead) continue;
+        if (Math.abs(b.z - f.z) < SEG_LEN * 1.0 && Math.abs(b.x - f.x) < 0.5 && Math.abs(b.y - (f.h ?? 0)) < 0.55) {
+          b.on = false; f.dead = true;
+          drops.push({ z: f.z, x: f.x, y: f.h ?? 0, ttl: 8, on: true });
+          api.audio.sfx("boom"); api.eng.shake(0.22);
+          burst(W / 2, HORIZON_Y - 30, "#ffd27d", 10, 120);
+        }
+      }
+      for (const tu of turrets) {
+        if (tu.dead) continue;
+        if (Math.abs(b.z - tu.z) < SEG_LEN * 1.2 && Math.abs(b.x - tu.x) < 0.8 && Math.abs(b.y - tu.y) < 0.9) {
+          b.on = false; tu.hp--; tu.flash = 0.35;
+          if (tu.hp <= 0) {
+            tu.dead = true;
+            drops.push({ z: tu.z, x: tu.x, y: tu.y, ttl: 8, on: true });
+            api.audio.sfx("boom"); api.eng.shake(0.32);
+            burst(W / 2, HORIZON_Y - 20, "#ffb066", 14, 150);
+          } else api.audio.sfx("hit");
+        }
+      }
+    }
+    for (let bi = blasters.length - 1; bi >= 0; bi--) if (!blasters[bi].on) blasters.splice(bi, 1);
+
+    // ---- collect energy (static cells + kill drops) — 3D window: lane AND altitude ----
+    const grab3D = (o) => Math.abs(o.x - playerX) < 0.38 && Math.abs(o.y - playerY) < 0.5;
     for (const it of items) {
       if (it.got) continue;
       const inWindow = it.z >= prevPosition - SEG_LEN * 1.2 && it.z <= position + SEG_LEN * 3.2;
-      if (inWindow && Math.abs(it.x - playerX) < 0.38) {
-        it.got = true; got++;
-        armed = got >= itemsRequired;
-        api.audio.sfx("coin");
-        burst(W / 2 + it.x * 120, H * 0.6, "#ffe066", 9, 90);
+      if (inWindow && grab3D(it)) {
+        it.got = true; got++; armed = got >= itemsRequired;
+        api.audio.sfx(armed ? "powerup" : "coin");
+        burst(W / 2 + it.x * 120, H * 0.6 - it.y * 90, "#7dfcff", 8, 80);
+        setHud();
+      }
+    }
+    for (let di = drops.length - 1; di >= 0; di--) {
+      const d = drops[di]; d.ttl -= dt;
+      if (d.ttl <= 0 || !d.on) { drops.splice(di, 1); continue; }
+      if (d.z >= prevPosition - SEG_LEN * 1.2 && d.z <= position + SEG_LEN * 3.2 && grab3D(d)) {
+        drops.splice(di, 1);
+        got++; armed = got >= itemsRequired;
+        api.audio.sfx(armed ? "powerup" : "coin");
+        burst(W / 2, H * 0.6, "#7dfcff", 7, 80);
         setHud();
       }
     }
@@ -295,28 +399,64 @@ export function create(level, api) {
     if (inv <= 0) {
       for (const b of debris) {
         const inWindow = b.z >= prevPosition - SEG_LEN && b.z <= position + SEG_LEN * 1.6;
-        if (inWindow && Math.abs(b.x - playerX) < 0.22) { hurt(b.x); break; }
+        if (inWindow && Math.abs(b.x - playerX) < 0.24 && Math.abs(playerY - (b.y ?? 0)) < 0.4) { hurt(b.x); break; }
       }
     }
 
-    // ---- fighters: hold position, swerve; home gently while FAR, ballistic when near (dodgeable) ----
+    // ---- turrets: telegraph then a slow, frozen-aim ion blob (easy dodges) ----
+    for (const tu of turrets) {
+      if (tu.dead) continue;
+      const rel = tu.z - position;
+      if (rel < -SEG_LEN || rel > SEG_LEN * 60) continue;
+      tu.flash = Math.max(0, (tu.flash || 0) - dt);
+      tu.cd -= dt;
+      if (tu.cd <= 0 && !launched) {
+        tu.cd = 2.6 + hash(Math.floor(tu.z)) * 2.4;
+        tu.tele = 0.55;
+      }
+      if (tu.tele > 0) {
+        tu.tele -= dt;
+        if (tu.tele <= 0) {
+          const sx = clamp(playerX + (hash(Math.floor(tu.z * 7 + t * 61)) - 0.5) * 1.1, -1, 1);
+          const sy = clamp(playerY + (hash(Math.floor(tu.z * 13 + t * 83)) - 0.5) * 1.1, -1, 1);
+          blobs.push({ z: tu.z, x: sx, y: sy, on: true });
+          api.audio.sfx("shoot");
+        }
+      }
+    }
+    for (let bi = blobs.length - 1; bi >= 0; bi--) {
+      const b = blobs[bi];
+      b.z -= 110 * dt;
+      if (b.z < position - SEG_LEN) { blobs.splice(bi, 1); continue; }
+      if (inv <= 0 && b.z - position < SEG_LEN * 1.8 && Math.abs(b.x - playerX) < 0.3 && Math.abs(b.y - playerY) < 0.38) {
+        blobs.splice(bi, 1); hurt(b.x);
+      }
+    }
+
+    // ---- fighters: gentle homing far, ballistic near (dodgeable); now ALSO shootable ----
     for (const f of fighters) {
+      if (f.dead) continue;
       const rel = f.z - position;
       if (rel < -SEG_LEN * 4 || rel > SEG_LEN * 90) continue;
+      f.h = f.h ?? (hash(Math.floor(f.z * 3)) - 0.5) * 0.9;
       if (rel > 220) { // homing disengages once close — late corrections would be unfair
         f.baseX += (playerX - f.baseX) * f.a * dt * 0.9;
         f.baseX = clamp(f.baseX, -1.05, 1.05);
+        f.h = clamp(f.h + (playerY - f.h) * f.a * dt * 0.35, -0.9, 0.9);
       }
       f.x = clamp(f.baseX + Math.sin(t * f.wob + f.ph) * 0.22, -1.1, 1.1);
-      if (inv <= 0 && rel > -SEG_LEN * 4 && rel < SEG_LEN * 2.2 && Math.abs(f.x - playerX) < 0.24) hurt(f.x);
+      if (inv <= 0 && rel > -SEG_LEN * 4 && rel < SEG_LEN * 2.2 && Math.abs(f.x - playerX) < 0.24 && Math.abs(f.h - playerY) < 0.36) hurt(f.x);
     }
 
     // ---- the boss gate: last stretch is the station approach ----
     if (!bossPhase && position >= total * (1 - BOSS_RANGE)) { bossPhase = true; api.audio.sfx("select"); }
     if (bossPhase) {
       const tn = clamp((position - total * (1 - BOSS_RANGE)) / (total * BOSS_RANGE), 0, 1);
-      portX = Math.sin(tn * 3.1) * 0.62 * (1 - tn * 0.3);
-      if (input.jumpJust()) fire();
+      if (!followTorp) {
+        portX = Math.sin(tn * 3.1) * 0.5 * (1 - tn * 0.3);
+        playerX += (portX - playerX) * dt * 0.55; // approach lock-on: the shuttle eases toward the port
+        if (input.jumpJust()) fire();
+      } else portX = followTorp.x * 0.9; // the port holds steady under the torpedo for the payoff shot
     }
 
     // ---- hull: reached the station without a fired torpedo ----
@@ -324,29 +464,30 @@ export function create(level, api) {
       status = "lost";
       api.audio.sfx("lose");
       api.fail(armed
-        ? "Slid past the port and burned on the hull — line up with the port, then SPACE."
-        : `The port's defense turned you away — you were ${itemsRequired - got} stars short of a torpedo.`);
+        ? "Slid past the port and burned on the hull — line up with the glowing port, then SPACE."
+        : `You reached the port with only ${got} of ${itemsRequired} energy — blast turrets and fighters (X) and grab their drops.`);
       return;
     }
 
-    // ---- torpedo flight → port → boom → win ----
+    // ---- torpedo flight (torpedo-cam) → port → boom → win ----
     for (const ty of torpedoes) {
       if (!ty.on) continue;
       ty.z += TORPEDO_SPEED * dt;
+      if (followTorp === ty) position = ty.z;
       if (ty.z >= total) {
         ty.on = false;
         api.audio.sfx("boom");
-        api.eng.shake(1.5);
-        api.eng.flash = 0.7;
+        api.eng.shake(1.6);
+        api.eng.flash = 0.8;
         status = "won";
-        burst(W / 2, HORIZON_Y - 20, "#ffd9a0", 24, 260);
-        burst(W / 2, HORIZON_Y - 20, "#7dfcff", 18, 200);
+        burst(W / 2, HORIZON_Y - 10, "#ffd9a0", 30, 300);
+        burst(W / 2, HORIZON_Y - 10, "#7dfcff", 22, 240);
         api.audio.sfx("win");
-        api.complete({ items: got, total: items.length });
+        api.complete({ energy: got, total: items.length });
       }
     }
 
-    setHud(missT > 0 ? "MISS — track the glowing port and fire again!" : undefined);
+    setHud(followTorp ? "TORPEDO AWAY — camera locked!" : (missT > 0 ? "MISS — track the glowing port and fire again!" : undefined));
   }
 
   // ---- projection (same math family as racer.js) ----
@@ -414,7 +555,18 @@ export function create(level, api) {
         ctx.globalAlpha = alpha;
         ctx.beginPath(); ctx.arc(px, py, portR, 0, Math.PI * 2); ctx.fillStyle = pg; ctx.fill();
         ctx.strokeStyle = armed ? "#7dfcff" : "#ffe066"; ctx.lineWidth = Math.max(2, portR * 0.14);
-        ctx.beginPath(); ctx.arc(px, py, portR, 0, Math.PI * 2); ctx.stroke();
+      ctx.globalAlpha = alpha;
+      ctx.beginPath(); ctx.arc(px, py, portR, 0, Math.PI * 2); ctx.fillStyle = pg; ctx.fill();
+      ctx.strokeStyle = armed ? "#7dfcff" : "#ffe066"; ctx.lineWidth = Math.max(2, portR * 0.14);
+      ctx.beginPath(); ctx.arc(px, py, portR, 0, Math.PI * 2); ctx.stroke();
+      // aiming guide: floor-locked target ring beneath the port (ship side) + lock ticks
+      if (bossPhase) {
+        ctx.globalAlpha = 0.8;
+        ctx.strokeStyle = armed ? "#7dfcff" : "#ffe066"; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(px, py, portR * (armed ? 1.9 : 1.7), -0.6 + Math.sin(t * 5) * 0.2, 0.6 + Math.sin(t * 5)); ctx.stroke();
+        ctx.beginPath(); ctx.arc(px, py, portR * (armed ? 1.9 : 1.7) + 6, 0, Math.PI * 2); ctx.setLineDash([4, 7]); ctx.stroke(); ctx.setLineDash([]);
+        ctx.globalAlpha = 1;
+      }
         ctx.restore();
       }
     }
@@ -485,18 +637,54 @@ export function create(level, api) {
         ctx.globalAlpha = 1;
       }
 
-      // items (procedural star pickup, drawn after fog — readable ≥2s out)
+      // energy-cell pickups: ground-anchored (floor glow + light pillar + charged cell)
+      // so they read as pickups ON the lane, not floaters in the sky
       for (const it of items) {
         if (it.got) continue;
         if (Math.floor(it.z / SEG_LEN) % N !== i) continue;
         const pulse = 0.92 + 0.1 * Math.sin(t * 4 + it.z);
-        blit(ctx, sprite(clampS(p1.w * 0.46, 14, 64), "star", paintStar), p1.x + it.x * p1.w, p1.y - p1.w * 0.26);
+        const ix = p1.x + it.x * p1.w, iy = p1.y - p1.w * 0.26;
+        ctx.globalAlpha = 0.55;
+        ctx.fillStyle = "#7dfcff";
+        ctx.beginPath(); ctx.ellipse(ix, p1.y, p1.w * 0.24, p1.w * 0.07, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.globalAlpha = 0.2 * pulse;
+        ctx.beginPath(); ctx.moveTo(ix - p1.w * 0.11, iy); ctx.lineTo(ix + p1.w * 0.11, iy); ctx.lineTo(ix + p1.w * 0.05, p1.y); ctx.lineTo(ix - p1.w * 0.05, p1.y); ctx.closePath(); ctx.fill();
+        ctx.globalAlpha = 1;
+        blit(ctx, sprite(clampS(p1.w * 0.46, 14, 64), "cell", paintCell), ix, iy);
       }
       // debris (procedural rock, seed-variants)
       for (const b of debris) {
         if (Math.floor(b.z / SEG_LEN) % N !== i) continue;
         const seed = Math.floor(b.z / SEG_LEN) % 3;
         blit(ctx, sprite(clampS(p1.w * 0.72, 22, 120), "rock" + seed, paintRock(seed)), p1.x + b.x * p1.w, p1.y - p1.w * 0.38, Math.sin(t * 1.6 + b.z) * 0.2);
+      }
+      // turrets: floor / wall / ceiling mounts — hp flash when nicked, telegraph glow before firing
+      for (const tu of turrets) {
+        if (tu.dead || Math.floor(tu.z / SEG_LEN) % N !== i) continue;
+        const sz = clampS(p1.w * 0.4, 16, 62);
+        let ax = p1.x + tu.x * p1.w, ay = p1.y - p1.w * 0.12;
+        if (tu.kind === "left") { ax = p1.x - p1.w + p1.w * 0.08; ay = p1.y - wallH * 0.45; }
+        else if (tu.kind === "right") { ax = p1.x + p1.w - p1.w * 0.08; ay = p1.y - wallH * 0.45; }
+        else if (tu.kind === "ceiling") { ay = p1.y - wallH + p1.w * 0.06; }
+        blit(ctx, sprite(sz, "turret", paintTurret), ax, ay, Math.sin(t * 2 + tu.z) * 0.08, 1);
+        if (tu.flash > 0) { ctx.globalAlpha = 0.55; ctx.fillStyle = "#ff6b6b"; ctx.beginPath(); ctx.arc(ax, ay, sz * 0.5, 0, Math.PI * 2); ctx.fill(); ctx.globalAlpha = 1; }
+        if (tu.tele > 0) { ctx.globalAlpha = 0.5 * (1 - tu.tele); ctx.fillStyle = "#ff7d5c"; ctx.beginPath(); ctx.arc(ax, ay, sz * (0.34 + 0.5 * (1 - tu.tele)), 0, Math.PI * 2); ctx.fill(); ctx.globalAlpha = 1; }
+      }
+      // loose energy drops (ground glow + pillar, like the static cells)
+      for (const d of drops) {
+        if (Math.floor(d.z / SEG_LEN) % N !== i) continue;
+        const ix = p1.x + d.x * p1.w, iy = p1.y - p1.w * (d.kind ? 0.14 : 0.26);
+        ctx.globalAlpha = 0.5 + 0.2 * Math.sin(t * 6);
+        ctx.fillStyle = "#7dfcff";
+        ctx.beginPath(); ctx.ellipse(ix, p1.y, p1.w * 0.2, p1.w * 0.06, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.globalAlpha = 1;
+        blit(ctx, sprite(clampS(p1.w * 0.32, 10, 44), "dropCell", paintCell), ix, iy);
+      }
+      // turrets' ion blobs: slow glowing orbs — frozen aim, easy to dodge
+      for (const b of blobs) {
+        if (Math.floor(b.z / SEG_LEN) % N !== i) continue;
+        const bs = clampS(p1.w * 0.3, 10, 40);
+        blit(ctx, sprite(bs, "ion", paintIon), p1.x + b.x * p1.w, p1.y - p1.w * (0.3 - b.y * 0.3));
       }
       // fighters (procedural interceptor sprite)
       for (const f of fighters) {
@@ -506,22 +694,42 @@ export function create(level, api) {
       }
     }
 
-    // ---- torpedo streaks (procedural proton bolt, launched from the ship plane) ----
+    // ---- torpedo streaks (procedural proton bolt, launched from the ship plane; torpedo-cam keeps it center) ----
     for (const ty of torpedoes) {
       if (!ty.on) continue;
       const rel = clamp((ty.z - position) / (total - position), 0, 1);
-      const yFrom = H - 84, yTo = HORIZON_Y - 26;
-      blit(ctx, sprite(16, "bolt", paintBolt), W / 2 + ty.x * 30 * (1 - rel), yFrom + (yTo - yFrom) * rel, 0);
+      const yFrom = followTorp === ty ? H * 0.62 : H - 84;
+      const yTo = followTorp === ty ? H * 0.58 : HORIZON_Y - 26;
+      const txx = followTorp === ty ? W / 2 : W / 2 + ty.x * 30 * (1 - rel);
+      blit(ctx, sprite(16, "bolt", paintBolt), txx, yFrom + (yTo - yFrom) * rel, 0);
+      if (followTorp === ty) { // speed trail
+        ctx.globalAlpha = 0.3;
+        for (let s2 = 1; s2 <= 4; s2++) {
+          ctx.fillStyle = "#9fffff";
+          ctx.fillRect(W / 2 - 2 - s2 * 2, H * 0.63 + s2 * 9, 4, 14);
+        }
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    // ---- ship blaster tracers ----
+    for (const b of blasters) {
+      const rel = clamp((b.z - position) / (total - position), 0, 1);
+      const yb = H - 96 + (HORIZON_Y + 30 - (H - 96)) * rel;
+      ctx.globalAlpha = 0.85 - rel * 0.55;
+      ctx.fillStyle = "#aefcff";
+      ctx.fillRect(W / 2 + clamp(b.x, -1.1, 1.1) * 30 - 1.5, yb, 3, 10);
+      ctx.globalAlpha = 1;
     }
 
     // ---- player shuttle: racer-convention anchor — lane 0 is screen center; objects in YOUR lane already land there ----
     const bounce = 2 + Math.min(3, speed * 0.05);
     const blink = inv > 0 && Math.floor(t * 14) % 2 === 0;
     const px = W / 2 + clamp(playerX, -1.1, 1.1) * 30;
-    const py = H - 70 - bounce;
-    // player shuttle (procedural, 2-frame bank; dims to a ghost while invulnerable)
-    const frame = steerVis !== 0 ? "bank" : "idle";
-    blit(ctx, sprite(86, "shuttle-" + frame, (g, cx, cy, s) => paintShuttle(g, cx, cy, s, frame === "bank")), px, py, clamp(steerVis * 0.14, -0.14, 0.14), blink ? 0.3 : 1);
+    const py = H - 70 - bounce - (playerY + 1) * 78;
+    // player shuttle (procedural, 2-frame bank; dims to a ghost while invulnerable); pitch hints by climb
+    const frame = steerVis !== 0 || bankVis !== 0 ? "bank" : "idle";
+    blit(ctx, sprite(86, "shuttle-" + frame, (g, cx, cy, s) => paintShuttle(g, cx, cy, s, frame === "bank")), px, py, clamp(steerVis * 0.14 - bankVis * 0.10, -0.2, 0.2), blink ? 0.3 : 1);
 
     // ---- bursts (screen-space; keep animating even post-result) ----
     for (const p of bursts) {
@@ -552,10 +760,13 @@ export function create(level, api) {
   if ((typeof location !== "undefined") && new URLSearchParams(location.search).get("debug") === "1") {
     window.__SR = {
       read: () => ({
-        position, total, speed, playerX, got, armed, hearts, status, portX, launched, bossPhase, runT, curves: segs.map((s) => s.curve),
-        items: items.map((i) => ({ z: i.z, x: i.x, got: i.got })),
+        position, total, speed, playerX, playerY, got, armed, hearts, status, portX, launched, bossPhase, runT, curves: segs.map((s) => s.curve),
+        items: items.map((i) => ({ z: i.z, x: i.x, y: i.y || 0, got: i.got })),
         debris: debris.map((d) => ({ z: d.z, x: d.x })),
-        fighters: fighters.map((f) => ({ z: f.z, x: f.x })),
+        fighters: fighters.map((f) => ({ z: f.z, x: f.x, h: f.h || 0, dead: !!f.dead })),
+        turrets: turrets.map((tu) => ({ z: tu.z, x: tu.x, y: tu.y, hp: tu.hp, dead: tu.dead, tele: tu.tele })),
+        blobs: blobs.map((b) => ({ z: b.z, x: b.x, y: b.y })),
+        drops: drops.map((d) => ({ z: d.z, x: d.x, y: d.y })),
       }),
     };
   }

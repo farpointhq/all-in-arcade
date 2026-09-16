@@ -8,6 +8,7 @@ let mood = null;
 let timer = null;
 let musicOn = true, sfxOn = true;
 let lastMood = "title";
+let pendingMood = null; // blocked pre-gesture mood; ensure() replays it on first gesture
 let step = 0;
 let nextTime = 0;
 let noiseBuf = null;
@@ -122,6 +123,12 @@ function ensure() {
     for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
   }
   if (ac.state === "suspended") ac.resume();
+  // first real gesture: restart anything that was blocked by the autoplay policy
+  if (pendingMood) {
+    const k = pendingMood;
+    pendingMood = null;
+    Audio.playMusic(k);
+  }
   return ac;
 }
 
@@ -165,20 +172,16 @@ export const Audio = {
     }
     const p = el.play();
     if (p && p.catch) p.catch(() => {
-      // browser autoplay law: wait for the first user gesture, then resume
-      const resume = () => { if (lastMood === key) this.playMusic(key); };
-      document.addEventListener("pointerdown", resume, { once: true, capture: true });
-      document.addEventListener("keydown", resume, { once: true, capture: true });
+      // browser autoplay law: remember the mood; App's first-gesture unlock (ensure()) replays it
+      pendingMood = key;
     });
     return true;
   },
   setMusicOn(v) {
+    const was = musicOn;
     musicOn = !!v;
-    if (!musicOn) {
-      mood = null;
-      if (timer) { clearInterval(timer); timer = null; }
-      stopFile();
-    } else this.playMusic(lastMood);
+    if (!musicOn) { mood = null; stopFile(); if (timer) { clearInterval(timer); timer = null; } return; }
+    if (!was) this.playMusic(lastMood); // only coming back from OFF — never fight a queued mood
   },
   setSfxOn(v) { sfxOn = !!v; },
   stopMusic() {

@@ -230,7 +230,7 @@ export function create(level, api) {
       api.audio.sfx("jump");
     }
     // variable jump height: releasing jump early cuts the arc
-    if (P.vy < -4 && !input.up() && !input.downKey()) P.vy = -4;
+    if (P.vy < -4 && !input.up() && !input.downKey() && !(input.down && input.down("Space"))) P.vy = -4; // Space counts as held-jump (up() only tracks ArrowUp/KeyW)
     P.vy += 0.55 * dtf;
     P.vy = Math.min(P.vy, 14);
 

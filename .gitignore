@@ -5,3 +5,16 @@
 node_modules/
 __pycache__/
 *.pyc
+.git/
+.venv/
+venv/
+build/
+dist/
+out/
+.cache/
+cache/
+tmp/
+tmp.benchmarks/
+tmp_worktree/
+.claude/
+*.map

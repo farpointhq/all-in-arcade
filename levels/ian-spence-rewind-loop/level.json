@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "id": "ian-spence-rewind-loop",
+  "title": "Rewind Loop",
+  "genre": "rewind",
+  "version": 1,
+  "authors": [
+    {
+      "name": "Ian Spence",
+      "kind": "original"
+    }
+  ],
+  "remixOf": null,
+  "status": "draft",
+  "order": 1000,
+  "created": "2026-09-18T09:10:00",
+  "prompt": "A 2D platformer where the game moves backwards while the player has to jump in reverse — think original Mario, but backwards: pressing right does nothing, you climb up platform after platform going up, up, up but backwards the whole time, until you reach the top left. Then the level reverse orders and you come back down left to right. Enemies come in and can kill you, and everything is going backwards in time. And portals: if you enter the portal, you start going backwards again — the portal goes back 200 feet, so essentially the player is stuck; the level is a loop the player can't escape. When you make it all the way back to the beginning, you jump into a portal and it starts you back at the beginning — you're playing forever. You can win the level, but the only way to escape is actually failing — you die — and then it goes to the next game: congratulations, you won by dying. Here's the next level.",
+  "brief": "A one-way platformer stuck in rewind: march up-and-LEFT, get flipped at the Rewind Gate, march back down-and-RIGHT — and its portals start the whole thing over, forever. The only way out is to die. / Un platformer à une seule direction bloqué en rebobinage : remonte vers la gauche, la Porte du Rebobinage t'inverse, redescend vers la droite… et les portails rebobinent la boucle à l'infini. La seule sortie : mourir.",
+  "objective": "Climb backwards to the Rewind Gate, run it back to the start, dodge the tape-walkers, rewind wraiths and backward birds — and skip the portals. Touch one and the level rewinds to the beginning. Dying is the only victory.",
+  "win": {
+    "type": "died_winning"
+  },
+  "style": {
+    "backdrop": "vhs",
+    "music": "chase",
+    "sky": [
+      "#0b0417",
+      "#241233",
+      "#402350"
+    ],
+    "accent": "#3ddcff",
+    "accent2": "#8a7cff",
+    "accent3": "#ff3d9a"
+  },
+  "data": {
+    "seed": 20260918,
+    "ftPx": 21,
+    "worldW": 4480,
+    "worldH": 1780,
+    "groundY": 1400,
+    "spawnX": 4340,
+    "gate": {
+      "x": 205,
+      "y": 150
+    },
+    "move": {
+      "speed": 212,
+      "airK": 0.78,
+      "jumpV": -622,
+      "grav": 1560,
+      "coyote": 0.09,
+      "buffer": 0.1,
+      "cutK": 0.42,
+      "maxFall": 780
+    },
+    "enemy": {
+      "graceT": 7,
+      "walkerEvery": [
+        3.6,
+        2.2
+      ],
+      "walkerSpeed": [
+        30,
+        52
+      ],
+      "rewinderFrom": 22,
+      "rewinderEvery": [
+        8,
+        5
+      ],
+      "rewindChase": 120,
+      "rewindCycle": 2.6,
+      "birdFrom": 40,
+      "birdEvery": [
+        8,
+        5.2
+      ],
+      "birdSpeed": [
+        92,
+        132
+      ],
+      "birdAmp": 44,
+      "maxAlive": 9,
+      "perchers": 4,
+      "phase2Mul": 1.35
+    },
+    "portals": [
+      {
+        "type": "lane",
+        "idx": 6,
+        "frac": 0.45,
+        "label": "◄◄ LA BOUCLE"
+      },
+      {
+        "type": "lane",
+        "idx": 15,
+        "frac": 0.55,
+        "label": "◄◄ LA SUITE"
+      },
+      {
+        "type": "p2",
+        "idx": 18,
+        "frac": 1,
+        "label": "PAS TOUCHE"
+      },
+      {
+        "type": "exit",
+        "label": "▶ AGAIN ?"
+      }
+    ],
+    "deathFx": 2.35,
+    "flipFx": 1,
+    "rewoundFx": 0.9
+  }
+}

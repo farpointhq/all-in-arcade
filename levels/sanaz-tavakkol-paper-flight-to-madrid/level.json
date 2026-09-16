@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "id": "sanaz-tavakkol-paper-flight-to-madrid",
+  "title": "Paper Flight to Madrid",
+  "genre": "paper-flight",
+  "version": 1,
+  "authors": [
+    {
+      "name": "Sanaz Tavakkol",
+      "kind": "original"
+    }
+  ],
+  "remixOf": null,
+  "status": "draft",
+  "order": null,
+  "created": "2026-09-16T16:09:03",
+  "prompt": "A game where I fly to Spain. No, I will fly over Spain. Okay, below you is the countryside of Spain. There's cities, there's Madrid, you fly over Spain. There's mountains, villages, countryside, farmers. And there are, like, coins that I collect. And I win when I have 10 coins... the coins are very sparsely distributed, they're not like every 1 second, maybe every 30 seconds there's a coin. So you play the game for 300 seconds, 5 minutes. There are some birds that I have to kind of dodge... Sounds like a plan. Yeah.",
+  "brief": "Lancez un avion en papier de Séville, collectez des pièces en plein vol, dépensez-les en boutique pour améliorer le pliage — certains achats aident, d'autres plombent — jusqu'à ce qu'un seul vol atteigne Madrid. / Throw a paper plane out of Seville, collect coins in flight, spend them in the shop to upgrade your fold — some buys help, some are tempting traps — until one single flight reaches Madrid.",
+  "objective": "Throw, glide, restock, repeat — fly the full 536 km from Seville to Madrid in one flight.",
+  "win": {
+    "type": "reach_madrid"
+  },
+  "style": {
+    "backdrop": "clouds",
+    "music": "chill",
+    "sky": [
+      "#8ec9ff",
+      "#a9d9fb",
+      "#f4e3c0"
+    ],
+    "accent": "#cd6a1e"
+  },
+  "data": {
+    "seed": 20260917,
+    "routeKm": 536,
+    "kmPerU": 0.0052,
+    "throw": {
+      "pwr": 158,
+      "angleMin": -8,
+      "angleMax": 36,
+      "chargeMin": 0.62,
+      "chargeMax": 1.0,
+      "guides": true
+    },
+    "flight": {
+      "g": 148,
+      "liftK": 5.0,
+      "dragK": 0.0011,
+      "alphaMax": 0.3,
+      "vMax": 1200,
+      "pitchRate": 2.2,
+      "alt0": 9,
+      "altMax": 3600,
+      "thermForce": 330,
+      "thermW": 60,
+      "birdKnock": 0.82,
+      "birdWobble": 1.4,
+      "stickerWobble": 2.6,
+      "diveDragCut": 0.45,
+      "zoomBleed": 0.55
+    },
+    "coins": {
+      "soloKmEvery": [2.2, 4.4],
+      "clusterKM": [11, 26],
+      "clusterN": [3, 5],
+      "lateSoloKmEvery": [4.5, 7.5],
+      "thermalTrail": 7,
+      "starWorth": 5
+    },
+    "birds": {
+      "fromKm": 3.2,
+      "everyKm": 6.0,
+      "denseKmRange": [150, 460],
+      "denseEveryKm": 3.4,
+      "speed": 118,
+      "flock": [2, 4]
+    },
+    "regions": [
+      { "km": 0,   "name": "Guadalquivir", "kind": "river",     "thermals": 3 },
+      { "km": 60,  "name": "Écija",        "kind": "sunflower", "thermals": 3 },
+      { "km": 155, "name": "Córdoba",      "kind": "mosque",    "thermals": 2 },
+      { "km": 217, "name": "Andújar",      "kind": "hills",     "thermals": 4 },
+      { "km": 300, "name": "Valdepeñas",   "kind": "vineyard",  "thermals": 5 },
+      { "km": 360, "name": "La Mancha",    "kind": "wheat",     "thermals": 4, "birds": true },
+      { "km": 440, "name": "Criptana",     "kind": "windmills", "thermals": 4, "birds": true },
+      { "km": 490, "name": "Aranjuez",     "kind": "gardens",   "thermals": 2 },
+      { "km": 536, "name": "Madrid",       "kind": "city",      "thermals": 0 }
+    ],
+    "upgrades": {
+      "gloves": { "decoy": false, "cost": [40, 90, 180],  "fx": { "v0":  [0.30, 0.62, 0.95] } },
+      "fold":   { "decoy": false, "cost": [60, 140, 260], "fx": { "liftK": [1.16, 1.30, 1.44] } },
+      "wax":    { "decoy": false, "cost": [50, 110],      "fx": { "dragK": [0.72, 0.52] } },
+      "nose":   { "decoy": false, "cost": [30, 70],       "fx": { "diveK": [0.80, 0.62] } },
+      "tail":   { "decoy": false, "cost": [45, 100],      "fx": { "pitch": [1.35, 1.75] } },
+      "stickers": { "decoy": true, "cost": [25], "fx": { "g": 1.10, "wobble": 2.6 } },
+      "thick":   { "decoy": true, "cost": [20], "fx": { "v0": 0.92, "dragK": 1.22, "liftK": 0.90 } },
+      "ribbon":  { "decoy": true, "cost": [30], "fx": { "dragK": 1.09, "pitch": 0.93 } }
+    }
+  }
+}

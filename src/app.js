@@ -44,7 +44,8 @@ const App = {
     const unlock = () => {
       if (!Audio._started) {
         Audio.ensure();
-        Audio.playMusic("title");
+        // in a playtest boot (?level=…) the level mood was queued pre-gesture — don't fight it with the title
+        if (!new URLSearchParams(location.search).get("level")) Audio.playMusic("title");
         Audio._started = true;
       }
       UI.applyAudioState(); // persisted mute/volume take effect once audio is live

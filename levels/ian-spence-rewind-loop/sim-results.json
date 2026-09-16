@@ -1,0 +1,43 @@
+{
+  "lid": "ian-spence-rewind-loop",
+  "modes": [
+    "sims"
+  ],
+  "sims": {
+    "ok": false,
+    "notes": [
+      "good: loops=0",
+      "good: phases={1}",
+      "partial: portalsHit=0"
+    ],
+    "payloads": {
+      "good": {
+        "cause": "died",
+        "killer": "tape-walker",
+        "loops": 0,
+        "ft": 87,
+        "survived": 13.4,
+        "portalsHit": 0,
+        "season": "na"
+      },
+      "partial": {
+        "cause": "died",
+        "killer": "tape-walker",
+        "loops": 0,
+        "ft": 99,
+        "survived": 35.6,
+        "portalsHit": 0,
+        "season": "na"
+      },
+      "clumsy": {
+        "cause": "died",
+        "killer": "tape-walker",
+        "loops": 0,
+        "ft": 103,
+        "survived": 12.6,
+        "portalsHit": 0,
+        "season": "na"
+      }
+    }
+  }
+}
