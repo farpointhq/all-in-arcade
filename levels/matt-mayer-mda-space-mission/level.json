@@ -3,7 +3,7 @@
   "id": "matt-mayer-mda-space-mission",
   "title": "MDA Space Mission",
   "genre": "space-mission",
-  "version": 3,
+  "version": 4,
   "authors": [
     {
       "name": "Matt Mayer",
@@ -15,8 +15,8 @@
   "order": null,
   "created": "2026-09-16T12:03:59",
   "prompt": "Yeah, this is, uh, Matt Mayer. M-A-T-T. Oh, I did it. M-A-Y-E-R. From MDA Space. And I'd like to create a space-based themed game. We could have a multi-level game. The first level would be, uh, building the rocket ship. And also, actually, scratch that. The first level is building a satellite and then a second level would be getting the satellite to the rocket, third level would be launching the rocket into space. So there would be many different attributes of each kind of level: building the actual satellite itself, maybe individuals would have to go and mine and procure resources to put the satellite together, the components, the processors, the antennas, and microboards, etc. And then obviously the traveling to and building the rocket for phase 2.",
-  "brief": "Mine the parts, build a satellite, haul it to the rocket, launch it to orbit — a 3-phase space mission. / Minez, assemblez, transportez, lancez — mission spatiale en 3 phases.",
-  "objective": "Build the satellite, carry it to the rocket, and complete the launch to orbit",
+  "brief": "Moonshot Inc. — build a junk rocket, launch, turn altitude into tokens, upgrade, and grind your way to a MOON landing. / Moonshot Inc. — montez une fusée de pacotille, transformez l'altitude en jetons, améliorez, et gagnez la LUNE.",
+  "objective": "Reach the MOON: launch, earn tokens by apex altitude, buy parts, break through strato/meso/space walls, achieve orbit, then land softly",
   "win": {
     "type": "launch_to_orbit"
   },
@@ -31,30 +31,344 @@
     "accent": "#3ddcff"
   },
   "data": {
+    "moon": {
+      "persistKey": "mda-moon-v1",
+      "startTokens": 100,
+      "tanks": [
+        {
+          "id": "t1",
+          "en": "Stock tank",
+          "fr": "Reservoir standard",
+          "dry": 20,
+          "prop": 9,
+          "cost": 0
+        },
+        {
+          "id": "t2",
+          "en": "Wide tank",
+          "fr": "Reservoir large",
+          "dry": 26,
+          "prop": 51,
+          "cost": 400
+        },
+        {
+          "id": "t3",
+          "en": "Core tank",
+          "fr": "Reservoir central",
+          "dry": 38,
+          "prop": 211,
+          "cost": 1600
+        }
+      ],
+      "engines": [
+        {
+          "id": "eng1",
+          "en": "HOP-1 engine",
+          "fr": "Moteur HOP-1",
+          "dry": 40,
+          "F": 2800,
+          "isp": 195,
+          "cost": 0
+        },
+        {
+          "id": "eng2",
+          "en": "BULL-2 engine",
+          "fr": "Moteur BULL-2",
+          "dry": 62,
+          "F": 10500,
+          "isp": 240,
+          "cost": 900
+        },
+        {
+          "id": "eng3",
+          "en": "TITAN-3 engine",
+          "fr": "Moteur TITAN-3",
+          "dry": 95,
+          "F": 26000,
+          "isp": 280,
+          "cost": 3600
+        }
+      ],
+      "srb": {
+        "cost": 300,
+        "max": 3,
+        "dry": 25,
+        "prop": 40,
+        "F": 12000,
+        "isp": 240,
+        "burn": 8
+      },
+      "stage2": {
+        "cost": 1500,
+        "dry": 55,
+        "prop": 140,
+        "F": 16000,
+        "isp": 345
+      },
+      "fins": {
+        "cost": 250,
+        "gim": 0.25,
+        "drag": 0.85,
+        "dry": 8
+      },
+      "guid": {
+        "cost": 900,
+        "dry": 6
+      },
+      "shield": {
+        "cost": 300,
+        "dry": 12,
+        "salvage": 1.5
+      },
+      "legs": {
+        "cost": 5000,
+        "dry": 135,
+        "prop": 120,
+        "F": 3500,
+        "isp": 300
+      },
+      "realms": [
+        {
+          "km": 3,
+          "mult": 2,
+          "en": "STRATO",
+          "fr": "LA STRATO",
+          "unlock": [
+            "stage2"
+          ]
+        },
+        {
+          "km": 25,
+          "mult": 5,
+          "en": "MESO",
+          "fr": "LA MESO",
+          "unlock": [
+            "t3",
+            "eng3"
+          ]
+        },
+        {
+          "km": 100,
+          "mult": 20,
+          "en": "SPACE",
+          "fr": "L'ESPACE",
+          "unlock": [
+            "guid",
+            "shield"
+          ]
+        }
+      ],
+      "orbitLateral": 1750,
+      "orbitKm": 110,
+      "orbitBonus": 8000,
+      "stampTok": 100,
+      "recordTok": 50,
+      "moonBonus": 10000,
+      "moonG": 1.62,
+      "landMax": 6,
+      "coastScale": 6
+    },
     "v3": {
       "catalog": [
-        { "id": "sar", "name": "SAR radar", "en": "SAR radar", "fr": "Radar SAR",              "mass": 320, "kw": 1.7, "res": 4, "allWeather": true,  "tagEn": "All-weather imaging · res 4 · 320 kg", "tagFr": "Imagerie tout temps · rés 4 · 320 kg" },
-        { "id": "optical", "name": "Optical imager",     "fr": "Imagerie optique",        "mass": 110, "kw": 0.7, "res": 9, "weatherLimited": true, "tagEn": "res 9 · weather-limited · 110 kg", "tagFr": "rés 9 · limitée par la météo · 110 kg" },
-        { "id": "ka",      "name": "Ka comm",             "fr": "Comm Ka",                "mass": 95,  "kw": 1.1, "mbps": 22, "tagEn": "22 Mbps relay · 95 kg", "tagFr": "Relais 22 Mbps · 95 kg" },
-        { "id": "sci",     "name": "Science suite",       "fr": "Suite scientifique",     "mass": 70,  "kw": 0.4, "tagEn": "science payload · 70 kg", "tagFr": "charge scientifique · 70 kg" },
-        { "id": "solarL",  "name": "Solar array · L",     "fr": "Panneau solaire L",      "mass": 260, "gen": 3.8, "tagEn": "generates 3.8 kW · 260 kg", "tagFr": "génère 3,8 kW · 260 kg" },
-        { "id": "solarM",  "name": "Solar array · M",     "fr": "Panneau solaire M",      "mass": 140, "gen": 2.2, "tagEn": "generates 2.2 kW · 140 kg", "tagFr": "génère 2,2 kW · 140 kg" },
-        { "id": "batt",    "name": "Battery",             "fr": "Batterie",               "mass": 45,  "storeKwh": 3, "tagEn": "holds 3 kWh after sunset · 45 kg", "tagFr": "3 kWh stockés après le coucher du soleil · 45 kg" },
-        { "id": "rw",      "name": "Reaction wheels",     "fr": "Roues de réaction",      "mass": 40,  "attitude": 1, "tagEn": "steady attitude · 40 kg", "tagFr": "attitude stable · 40 kg" },
-        { "id": "engC",    "name": "Chemical engine + fuel", "fr": "Moteur chimique + carburant", "mass": 210, "launchThrust": true, "thrustN": 12000, "fuel": 120, "dvKeff": 12.7, "tagEn": "launch thrust 12 kN · ~1.8 km/s · 210 kg", "tagFr": "poussée 12 kN · ~1,8 km/s · 210 kg" },
-        { "id": "engI",    "name": "Ion thruster",        "fr": "Propulseur ionique",     "mass": 120, "launchThrust": false, "thrustN": 0, "fuel": 60, "dvKeff": 37.0, "tagEn": "no launch thrust · ~2.6 km/s · 120 kg", "tagFr": "aucune poussée au lancement · ~2,6 km/s · 120 kg" },
-        { "id": "frameL",  "name": "Frame · light",       "fr": "Châssis léger",          "mass": 80,  "stiff": 1, "tagEn": "light bus · 80 kg", "tagFr": "bus léger · 80 kg" },
-        { "id": "frameH",  "name": "Frame · heavy",       "fr": "Châssis lourd",          "mass": 150, "stiff": 2, "tagEn": "rigid bus · 150 kg", "tagFr": "bus rigide · 150 kg" }
+        {
+          "id": "sar",
+          "name": "SAR radar",
+          "en": "SAR radar",
+          "fr": "Radar SAR",
+          "mass": 320,
+          "kw": 1.7,
+          "res": 4,
+          "allWeather": true,
+          "tagEn": "All-weather imaging · res 4 · 320 kg",
+          "tagFr": "Imagerie tout temps · rés 4 · 320 kg"
+        },
+        {
+          "id": "optical",
+          "name": "Optical imager",
+          "fr": "Imagerie optique",
+          "mass": 110,
+          "kw": 0.7,
+          "res": 9,
+          "weatherLimited": true,
+          "tagEn": "res 9 · weather-limited · 110 kg",
+          "tagFr": "rés 9 · limitée par la météo · 110 kg"
+        },
+        {
+          "id": "ka",
+          "name": "Ka comm",
+          "fr": "Comm Ka",
+          "mass": 95,
+          "kw": 1.1,
+          "mbps": 22,
+          "tagEn": "22 Mbps relay · 95 kg",
+          "tagFr": "Relais 22 Mbps · 95 kg"
+        },
+        {
+          "id": "sci",
+          "name": "Science suite",
+          "fr": "Suite scientifique",
+          "mass": 70,
+          "kw": 0.4,
+          "tagEn": "science payload · 70 kg",
+          "tagFr": "charge scientifique · 70 kg"
+        },
+        {
+          "id": "solarL",
+          "name": "Solar array · L",
+          "fr": "Panneau solaire L",
+          "mass": 260,
+          "gen": 3.8,
+          "tagEn": "generates 3.8 kW · 260 kg",
+          "tagFr": "génère 3,8 kW · 260 kg"
+        },
+        {
+          "id": "solarM",
+          "name": "Solar array · M",
+          "fr": "Panneau solaire M",
+          "mass": 140,
+          "gen": 2.2,
+          "tagEn": "generates 2.2 kW · 140 kg",
+          "tagFr": "génère 2,2 kW · 140 kg"
+        },
+        {
+          "id": "batt",
+          "name": "Battery",
+          "fr": "Batterie",
+          "mass": 45,
+          "storeKwh": 3,
+          "tagEn": "holds 3 kWh after sunset · 45 kg",
+          "tagFr": "3 kWh stockés après le coucher du soleil · 45 kg"
+        },
+        {
+          "id": "rw",
+          "name": "Reaction wheels",
+          "fr": "Roues de réaction",
+          "mass": 40,
+          "attitude": 1,
+          "tagEn": "steady attitude · 40 kg",
+          "tagFr": "attitude stable · 40 kg"
+        },
+        {
+          "id": "engC",
+          "name": "Chemical engine + fuel",
+          "fr": "Moteur chimique + carburant",
+          "mass": 210,
+          "launchThrust": true,
+          "thrustN": 12000,
+          "fuel": 120,
+          "dvKeff": 12.7,
+          "tagEn": "launch thrust 12 kN · ~1.8 km/s · 210 kg",
+          "tagFr": "poussée 12 kN · ~1,8 km/s · 210 kg"
+        },
+        {
+          "id": "engI",
+          "name": "Ion thruster",
+          "fr": "Propulseur ionique",
+          "mass": 120,
+          "launchThrust": false,
+          "thrustN": 0,
+          "fuel": 60,
+          "dvKeff": 37.0,
+          "tagEn": "no launch thrust · ~2.6 km/s · 120 kg",
+          "tagFr": "aucune poussée au lancement · ~2,6 km/s · 120 kg"
+        },
+        {
+          "id": "frameL",
+          "name": "Frame · light",
+          "fr": "Châssis léger",
+          "mass": 80,
+          "stiff": 1,
+          "tagEn": "light bus · 80 kg",
+          "tagFr": "bus léger · 80 kg"
+        },
+        {
+          "id": "frameH",
+          "name": "Frame · heavy",
+          "fr": "Châssis lourd",
+          "mass": 150,
+          "stiff": 2,
+          "tagEn": "rigid bus · 150 kg",
+          "tagFr": "bus rigide · 150 kg"
+        }
       ],
       "launchers": [
-        { "id": "v3",   "en": "Vector-3",   "fr": "Vector-3",   "capKg": 550,  "tagEn": "payload cap 550 kg",  "tagFr": "charge utile max 550 kg" },
-        { "id": "v9",   "en": "Vector-9",   "fr": "Vector-9",   "capKg": 950,  "tagEn": "payload cap 950 kg",  "tagFr": "charge utile max 950 kg" },
-        { "id": "boreal", "en": "Boreal Heavy", "fr": "Boreal Heavy", "capKg": 1400, "tagEn": "payload cap 1400 kg · heaviest ride down", "tagFr": "charge utile max 1400 kg · la plus lourde sous le coude" }
+        {
+          "id": "v3",
+          "en": "Vector-3",
+          "fr": "Vector-3",
+          "capKg": 550,
+          "tagEn": "payload cap 550 kg",
+          "tagFr": "charge utile max 550 kg"
+        },
+        {
+          "id": "v9",
+          "en": "Vector-9",
+          "fr": "Vector-9",
+          "capKg": 950,
+          "tagEn": "payload cap 950 kg",
+          "tagFr": "charge utile max 950 kg"
+        },
+        {
+          "id": "boreal",
+          "en": "Boreal Heavy",
+          "fr": "Boreal Heavy",
+          "capKg": 1400,
+          "tagEn": "payload cap 1400 kg · heaviest ride down",
+          "tagFr": "charge utile max 1400 kg · la plus lourde sous le coude"
+        }
       ],
       "contracts": [
-        { "id": "eyenorth",  "en": "EYE-ON-NORTH",     "fr": "ŒIL-DU-NORD",      "descEn": "Imaging constellation slot — sharp eyes, day or storm.", "descFr": "Slot d'imagerie — œil net, jour ou tempête.", "kpis": [ { "stat": "res", "min": 6 }, { "stat": "kw", "min": 2.4 } ] },
-        { "id": "lightspeed", "en": "LIGHTSPEED-LINK",  "fr": "LIAISON-LUMIÈRE",  "descEn": "Ka-band relay — wide pipe, tight budget.", "descFr": "Relais Ka — gros débit, budget serré.", "kpis": [ { "stat": "mbps", "min": 20 }, { "stat": "kw", "min": 3.0 } ] },
-        { "id": "highground", "en": "HIGH-GROUND",      "fr": "HAUTE-GARDE",      "descEn": "Servicing stack — rendezvous-ready bus.", "descFr": "Étage de maintenance — bus prêt au rendezvous.", "kpis": [ { "stat": "dv", "min": 1.4 }, { "stat": "attitude", "min": 1 } ] }
+        {
+          "id": "eyenorth",
+          "en": "EYE-ON-NORTH",
+          "fr": "ŒIL-DU-NORD",
+          "descEn": "Imaging constellation slot — sharp eyes, day or storm.",
+          "descFr": "Slot d'imagerie — œil net, jour ou tempête.",
+          "kpis": [
+            {
+              "stat": "res",
+              "min": 6
+            },
+            {
+              "stat": "kw",
+              "min": 2.4
+            }
+          ]
+        },
+        {
+          "id": "lightspeed",
+          "en": "LIGHTSPEED-LINK",
+          "fr": "LIAISON-LUMIÈRE",
+          "descEn": "Ka-band relay — wide pipe, tight budget.",
+          "descFr": "Relais Ka — gros débit, budget serré.",
+          "kpis": [
+            {
+              "stat": "mbps",
+              "min": 20
+            },
+            {
+              "stat": "kw",
+              "min": 3.0
+            }
+          ]
+        },
+        {
+          "id": "highground",
+          "en": "HIGH-GROUND",
+          "fr": "HAUTE-GARDE",
+          "descEn": "Servicing stack — rendezvous-ready bus.",
+          "descFr": "Étage de maintenance — bus prêt au rendezvous.",
+          "kpis": [
+            {
+              "stat": "dv",
+              "min": 1.4
+            },
+            {
+              "stat": "attitude",
+              "min": 1
+            }
+          ]
+        }
       ]
     },
     "reqs": {

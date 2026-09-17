@@ -36,7 +36,11 @@ async function run() {
   const mod = await import("../../src/genres/space-mission.js?v=" + q.get("v"));
   const g = mod.create(level, fakeApi);
   let trace = [], lastPhase = "";
+  const elP = document.getElementById("done");
   for (let i = 0; i < MAX_STEPS; i++) {
+    g.update(DT, null);
+    if (i % 2000 === 0 && elP) elP.dataset.prog = i + "/" + MAX_STEPS + (window.__MDA ? ":" + window.__MDA.state().phase + ":tok" + (window.__MDA.state().moon || {}).tokens : "");
+    if (i % 3000 === 2999) await new Promise((r) => setTimeout(r, 0)); // yield so observers can poll mid-run
     g.update(DT, null);
     const s = window.__MDA ? window.__MDA.state() : null;
     if (s && s.moon) {

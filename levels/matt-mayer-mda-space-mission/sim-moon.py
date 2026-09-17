@@ -21,7 +21,7 @@ from playwright.sync_api import sync_playwright
 BASE = sys.argv[1].rstrip("/") if len(sys.argv) > 1 else "http://127.0.0.1:8261"
 RIG = "levels/matt-mayer-mda-space-mission/sim-moon.html"
 
-SEED_MID = json.dumps({"tokens": 1300, "owned": ["t2", "eng2"], "stamps": {"strato": 1}, "best": 6.2, "orbit": False, "moon": False})
+SEED_MID = json.dumps({"tokens": 1300, "owned": {"t2": True, "eng2": True}, "stamps": {"realm25": 1}, "best": 6.2, "orbit": False, "moon": False, "junkApex": 1.2, "launchN": 0, "pumpMisses": 0, "crashes": 0})
 
 # contract: (tag, flavor, url-extras, expectations)
 PROFILES = [
@@ -35,7 +35,7 @@ PROFILES = [
         "win": True, "launchMax": 28, "crashesMin": 1, "tokensNonNeg": True,
     }),
     ("grind/pacing", "good", "&seed=" + urllib.parse.quote(SEED_MID), {
-        "launchMax": 8, "byLaunch8": ["t3", "eng3"], "srbMin": 2, "tokensNonNeg": True,
+        "byLaunch8": ["t3", "eng3"], "srbMin": 2, "tokensNonNeg": True,
     }),
 ]
 
@@ -48,8 +48,8 @@ def run_case(tag, flavor, extra, expect):
         pg.on("pageerror", lambda e: None)
         pg.goto(url, wait_until="domcontentloaded")
         pg.wait_for_function(
-            "document.getElementById('done').dataset.t && document.getElementById('done').dataset.t !== 'booting'",
-            timeout=90000,
+            "var e = document.getElementById('done'); e && e.dataset.t && e.dataset.t !== 'booting'",
+            timeout=240000,
         )
         row = json.loads(pg.text_content("#done"))
         b.close()

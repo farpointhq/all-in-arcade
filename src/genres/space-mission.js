@@ -21,8 +21,8 @@
 import { W, H, clamp, lerp, hash, drawText, seasonTint, seasonNow } from "../core.js";
 
 export const meta = {
-  name: "MDA Space Mission",
-  controls: "← → marcher · ESPACE : sauter, puis ENGAGEZ chaque tir moteur · ?v3=1 : tenez immobile près d'une caisse pour charger, ESPACE décharge · EN: ←/→ walk · SPACE jump, then FIRE each burn — stand still near a crate to load, SPACE to unload",
+  name: "Moonshot Inc. (MDA Space Mission)",
+  controls: "MOONSHOT — EN: ←→↑↓ shop · SPACE buy · ENTER launch · SPACE thrust · ←→ steer · SPACE brake on the moon · FR: ←→↑↓ magasin · ESPACE acheter · ENTRÉE décoller · ESPACE poussée · ←→ gouverner · ESPACE frein lunaire",
 };
 
 // ---- palette (ALL IN brand tokens + regolith) -----------------------------------------
@@ -148,7 +148,8 @@ export function create(level, api) {
   // Issue #1: contracts, mass budget, crate stat-tags, live readouts, TWR-scaled gauge,
   // margins. No death anywhere; legacy 3-phase flow stays the default until sims pass.
   const V3D = data.v3 || { catalog: [], launchers: [], contracts: [] };
-  const V3 = q.get("v3") !== "0" && V3D.catalog.length > 0; // v3 default (flipped after M6 sims green on 2026-09-17); legacy flow: ?v3=0
+  const V3 = q.get("v3") === "1" && V3D.catalog.length > 0; // proc-desk fallback now explicit: ?v3=1 (was default until the Moonshot pivot)
+  const MOON = !V3 && !!data.moon && q.get("v3") !== "0";   // Moonshot Inc. — default flow; ?v3=0 legacy 3-phase
   const CATALOG = V3D.catalog.map((p) => ({ ...p }));
   const LAUNCHERS = V3D.launchers.map((l) => ({ ...l }));
   const CONTRACTS = V3D.contracts.map((c) => ({ ...c }));
@@ -156,7 +157,7 @@ export function create(level, api) {
   const LOAD_T = 0.9, UNLOAD_T = 0.55, DESKX = Math.max(46, BAYX - 74);
 
   // ---- state ------------------------------------------------------------------------------
-  let t = 0, status = "playing", phase = V3 ? "desk" : "mine";
+  let t = 0, status = "playing", phase = MOON ? "pad" : V3 ? "desk" : "mine";
   const trace = [];
   const res = { cpu: 0, ant: 0, micro: 0 };
   const pl = { x: V3 ? DESKX : 118, y: GROUND, vy: 0, vx: 0, face: 1, onGround: true, buf: 0, coyote: 0 };
@@ -217,6 +218,8 @@ export function create(level, api) {
     if (BOT) { botThink(); input = BOT_IN; }
     fx(dt);
     if (status !== "playing") return;
+
+    if (MOON) { moonStep(dt, input); hud(); return; }
 
     const moving = phase === "mine" || phase === "carry" || phase === "shop";
     if (moving) {
@@ -403,10 +406,10 @@ export function create(level, api) {
 
   // ---- bot (in-module autopilot; ?bot=1) -----------------------------------------------------
   const BOT_IN = {
-    l: false, r: false, j: false, js: new Set(),
+    l: false, r: false, j: false, h: false, js: new Set(),
     left() { return this.l; }, right() { return this.r; },
     up() { return false; }, downKey() { return false; },
-    down(c) { return this.js.has(c); }, just(c) { return this.js.has(c); },
+    down(c) { return this.js.has(c) || (c === "Space" && this.h); }, just(c) { return this.js.has(c); },
     jumpJust() { return this.j || this.js.has("Space"); },
     anyJust() { return this.j || this.js.size > 0; },
     endFrame() { this.js.clear(); this.j = false; },
@@ -423,7 +426,8 @@ export function create(level, api) {
   }
   function botThink() {
     const B = BOT_IN;
-    B.l = false; B.r = false; B.j = false; B.js.clear();
+    B.l = false; B.r = false; B.j = false; B.h = false; B.js.clear();
+    if (MOON) { moonBot(B); return; }
     if (V3 && phase === "desk") {
       const wantL = (V3PLAN[FLAVOR] || V3PLAN.good).li;
       if (deskStep === 0) {
@@ -476,6 +480,7 @@ export function create(level, api) {
 
   // ---- hud -----------------------------------------------------------------------------------
   function hud() {
+    if (MOON) { moonHud(); return; }
     const phMap = { desk: "1", shop: "1", bench: "1", mine: "1", assemble: "1", carry: "2", integrate: "2", countdown: "3", burn: "3", deploy: "3" };
     let right = "PHASE " + (phMap[phase] || "1") + "/3";
     if (anomalies > 0) right += " · ANOMALY " + anomalies;
@@ -496,6 +501,7 @@ export function create(level, api) {
 
   // ---- draw -----------------------------------------------------------------------------------
   function draw(ctx) {
+    if (MOON) { drawMoon(ctx); seasonTint(ctx); return; }
     const off = alt * 1500;
     drawSpace(ctx);
     if (alt < 1.05) {
@@ -1017,6 +1023,595 @@ export function create(level, api) {
     ctx.restore();
   }
 
+  // ===== Moonshot Inc. — incremental moon program (default flow) =============================
+  // Loop: pad/shop → pump gauge → 2D physics flight (thrust + gimbal) → debrief (tokens by
+  // apex) → back to pad, buy parts, break through realm walls → orbit → MOON landing = win.
+  // No death: a crash still pays salvage (×0.25), so the grind never dead-ends. Progress
+  // persists across booth visitors (localStorage via data.moon.persistKey; ?reset=1 wipes).
+  const MOOND = data.moon || {};
+  const MKEY = MOOND.persistKey || "mda-moon-v1";
+  const MR = {
+    realms: (MOOND.realms || []).map((r) => ({ ...r })),
+    orbitLateral: MOOND.orbitLateral ?? 2800,
+    orbitKm: MOOND.orbitKm ?? 150,
+    orbitBonus: MOOND.orbitBonus ?? 8000,
+    stampTok: MOOND.stampTok ?? 100,
+    recordTok: MOOND.recordTok ?? 50,
+    moonBonus: MOOND.moonBonus ?? 10000,
+    moonG: MOOND.moonG ?? 1.62,
+    landMax: MOOND.landMax ?? 6,
+    coastScale: MOOND.coastScale ?? 3.5,
+    re: 6371000,
+  };
+  const MTANK = [...(MOOND.tanks || [])];
+  const MENG = [...(MOOND.engines || [])];
+  const MSRB = MOOND.srb || { cost: 300, max: 3, dry: 25, prop: 40, F: 12000, isp: 240, burn: 8 };
+  const MSTAGE2 = MOOND.stage2 || { cost: 1500, dry: 55, prop: 110, F: 16000, isp: 330 };
+  const MFIN = MOOND.fins || { cost: 250, gim: 0.25, drag: 0.85, dry: 8 };
+  const MGUID = MOOND.guid || { cost: 900, dry: 6 };
+  const MSHIELD = MOOND.shield || { cost: 300, dry: 12, salvage: 1.5 };
+  const MLEGS = MOOND.legs || { cost: 5000, dry: 135, prop: 120, F: 8000, isp: 300 };
+  const MBUY_LIST = ["t2", "eng2", "srb", "stage2", "t3", "eng3", "fins", "guid", "shield", "legs"];
+  const MPART = {};
+  for (const p of MTANK) MPART[p.id] = { ...p, kind: "tank" };
+  for (const p of MENG) MPART[p.id] = { ...p, kind: "engine" };
+  MPART.srb = { ...MSRB, en: "SRB booster", fr: "Booster d'appoint", kind: "srb" };
+  MPART.stage2 = { ...MSTAGE2, en: "Upper stage", fr: "Étage supérieur", kind: "stage2" };
+  MPART.fins = { ...MFIN, en: "Aero fins", fr: "Ailerons", kind: "fins" };
+  MPART.guid = { ...MGUID, en: "Guidance", fr: "Guidage", kind: "guid" };
+  MPART.shield = { ...MSHIELD, en: "Heat shield", fr: "Bouclier thermique", kind: "shield" };
+  MPART.legs = { ...MLEGS, en: "Lunar legs", fr: "Train lunaire", kind: "legs" };
+
+  let M = { tokens: 100, owned: { t1: true, eng1: true }, srbs: 0, stamps: {}, best: 0, orbit: false, moon: false, launchN: 0, junkApex: null, pumpMisses: 0, crashes: 0, moonWish: false };
+  if (MOON) {
+    if (q.get("reset") === "1") { try { localStorage.removeItem(MKEY); } catch (e) {} }
+    const seed = typeof window !== "undefined" && window.__MOON_SEED ? window.__MOON_SEED : null;
+    let raw = null;
+    try {
+      raw = JSON.parse(localStorage.getItem(MKEY) || "null");
+      if (raw && typeof raw.tokens === "number") M = Object.assign(M, raw);
+    } catch (e) {}
+    if (seed) M = Object.assign(M, seed);
+    if (Array.isArray(M.owned)) { const o = {}; for (const id of M.owned) o[id] = true; M.owned = o; } // defensive: legacy array saves
+    if (!seed && !raw) M.tokens = MOOND.startTokens ?? 100; // fresh machine only — grant the starter purse
+  }
+  function mSave() { if (!MOON) return; try { localStorage.setItem(MKEY, JSON.stringify(M)); } catch (e) {} }
+  const mTank = () => { for (let i = MTANK.length - 1; i >= 0; i--) if (M.owned[MTANK[i].id]) return MTANK[i]; return MTANK[0] || { dry: 20, prop: 17 }; };
+  const mEng = () => { for (let i = MENG.length - 1; i >= 0; i--) if (M.owned[MENG[i].id]) return MENG[i]; return MENG[0] || { dry: 40, F: 3200, isp: 195 }; };
+  const mStampsRealms = () => MR.realms.filter((r) => M.stamps["realm" + r.km]);
+  function mUnlocked(id) {
+    if (id === "t2" || id === "eng2" || id === "srb") return true;
+    if (id === "legs") return M.orbit || M.best >= 200; // orbit route unlocks legs; direct route too
+    return mStampsRealms().some((r) => (r.unlock || []).includes(id));
+  }
+  function mLockLabel(id) {
+    if (id === "legs") return M.orbit ? null : "ORBITE/ORBIT";
+    for (const r of MR.realms) if ((r.unlock || []).includes(id) && !M.stamps["realm" + r.km]) return r.en + " · " + r.fr;
+    return null;
+  }
+  const mCost = (id) => (MPART[id] ? MPART[id].cost || 0 : 0);
+  const mOwned = (id) => (id === "srb" ? M.srbs >= MSRB.max : !!M.owned[id]); // srb "owned out" only at max stack
+  const moonEligible = () => !!M.owned.legs && (M.orbit || M.best >= 200); // orbit route, or Apollo-style direct ascent
+  function mStack() {
+    const t = mTank(), e = mEng();
+    let mass = e.dry + t.dry + t.prop + (M.owned.stage2 ? MSTAGE2.dry + MSTAGE2.prop : 0) + (M.owned.fins ? MFIN.dry : 0) + (M.owned.guid ? MGUID.dry : 0) + (M.owned.shield ? MSHIELD.dry : 0);
+    let F = e.F;
+    if (M.srbs > 0) { mass += M.srbs * (MSRB.dry + MSRB.prop); F += M.srbs * MSRB.F; }
+    return { t, e, mass, F, twr: F / (mass * 9.81), prop: t.prop };
+  }
+  function mAutoTgt(y) { return y < 5000 ? 0 : y < 30000 ? lerp(0, 1.05, (y - 5000) / 25000) : 1.42; }
+
+  // ---- moon state ------------------------------------------------------------------------------
+  const MQ = { q: 1 };
+  const fl = { on: false, x: 0, y: 0, vx: 0, vy: 0, ang: 0, prop: 0, srbT: 0, s2: false, s2prop: 0, q: 1, apex: 0, apexT: 0, burnT: 0, tS: 1, trail: [], auto: false, orbitNow: false, crash: false, junk: false, thrusting: false };
+  const land = { y: 0, vy: 0, prop: 0 };
+  let mCur = 0, moonT = 0, mDebT = 0, mDeb = null, mWon = false, lastTrail = 0;
+
+  function moonStep(dt, input) {
+    if (phase === "pad") moonPad(dt, input);
+    else if (phase === "pump") moonPump(dt, input);
+    else if (phase === "flight") moonFlight(dt, input);
+    else if (phase === "tli") { moonT += dt; if (moonT > 2.6) moonLandInit(); }
+    else if (phase === "landing") moonLand(dt, input);
+    else if (phase === "debrief") moonDebrief(dt);
+  }
+
+  function moonPad(dt, input) {
+    const dirs = [["ArrowLeft", "KeyA"], ["ArrowRight", "KeyD"], ["ArrowUp", "KeyW"], ["ArrowDown", "KeyS"]];
+    for (let i = 0; i < 2; i++) if (input.just(dirs[i][0]) || input.just(dirs[i][1])) { mCur = (mCur + (i ? 1 : MBUY_LIST.length - 1)) % MBUY_LIST.length; api.audio.sfx("select"); }
+    for (let i = 2; i < 4; i++) if (input.just(dirs[i][0]) || input.just(dirs[i][1])) { mCur = (mCur + (i === 2 ? MBUY_LIST.length - 5 : 5)) % MBUY_LIST.length; api.audio.sfx("select"); }
+    const id = MBUY_LIST[mCur];
+    if (input.jumpJust()) {
+      const isSrb = id === "srb";
+      if (!mOwned(id) && mUnlocked(id) && M.tokens >= mCost(id) && (!isSrb || M.srbs < MSRB.max)) {
+        M.tokens -= mCost(id);
+        if (isSrb) M.srbs++; else M.owned[id] = true;
+        api.audio.sfx("coin");
+        popup(W / 2, GROUND - 120, "+ " + MPART[id].en + " · " + MPART[id].fr + " ✓", C.green);
+        mSave();
+        if (BEATS) snap("buy:" + id);
+      } else api.audio.sfx("hit");
+    }
+    if (moonEligible() && input.just("KeyM")) { M.moonWish = !M.moonWish; api.audio.sfx("select"); }
+    if (input.just("Enter")) {
+      const S = mStack();
+      if (S.twr <= 1.02) {
+        setBanner2("TWR " + S.twr.toFixed(2) + " — TROP LOURD / TOO HEAVY", "Ajoutez de la poussée ou allégez — TWR > 1.02 requis ✓ · add thrust — TWR > 1.02 required ✓");
+        api.audio.sfx("alarm");
+      } else {
+        setPhase("pump");
+        gauge.on = true; gauge.per = 1.6; gauge.band = 0.2;
+        gauge.c = 0.26 + hash(Math.floor(t * 7) + M.launchN * 31) * 0.48;
+        gauge.t0 = t; gauge.m = 0;
+        MQ.q = 1;
+      }
+    }
+  }
+
+  function moonPump(dt, input) {
+    gauge.m = 0.5 + 0.5 * Math.sin((2 * Math.PI * (t - gauge.t0)) / gauge.per);
+    if (input.jumpJust()) {
+      if (Math.abs(gauge.m - gauge.c) <= gauge.band / 2) {
+        MQ.q = 1.08; gauge.on = false;
+        api.audio.sfx("boom"); api.eng.shake(0.4);
+        moonFlightInit();
+      } else {
+        M.pumpMisses++;
+        gauge.band = Math.max(0.08, gauge.band * 0.72);
+        gauge.c = 0.26 + hash(Math.floor(t * 13) + M.pumpMisses * 17) * 0.48;
+        api.audio.sfx("hit");
+        popup(W / 2, H - 150, "POMPE RATÉE — RÉESSAI ✓", C.danger);
+        if (M.pumpMisses % 3 === 0) { MQ.q = 0.9; gauge.on = false; moonFlightInit(); } // 3 strikes — the tank just launches sad
+      }
+    }
+  }
+
+  function moonFlightInit() {
+    const S = mStack();
+    fl.on = true; fl.x = 0; fl.y = 0; fl.vx = 0; fl.vy = 0; fl.ang = 0; fl.prop = S.prop;
+    fl.srbT = M.srbs > 0 ? MSRB.burn : 0; fl.s2 = false; fl.s2prop = M.owned.stage2 ? MSTAGE2.prop : 0;
+    fl.apex = 0; fl.burnT = 0; fl.tS = 1; fl.trail = []; fl.orbitNow = false; fl.crash = false;
+    fl.junk = M.junkApex == null; fl.auto = !!M.owned.guid; fl.q = MQ.q; MQ.q = 1; fl.thrusting = false;
+    M.launchN++;
+    setPhase("flight");
+    api.audio.sfx("boom"); api.eng.shake(0.6);
+    if (BEATS) snap("liftoff");
+  }
+
+  function moonFlight(dt, input) {
+    if (M.moonWish && moonEligible()) { moonT = 0; setPhase("tli"); api.audio.sfx("powerup"); if (BEATS) snap("tli"); return; } // orbit proven — cinematic straight to the moon
+    const hold = input ? input.down("Space") : false;
+    const d = input ? ((input.right() ? 1 : 0) - (input.left() ? 1 : 0)) : 0;
+    fl.thrusting = hold && (fl.prop > 0 || fl.s2prop > 0 || fl.srbT > 0);
+    fl.tS = fl.y > 8000 ? MR.coastScale : 1; // thin-air phase compresses (burn + coast) — kiosk pacing
+    const sdt = dt * fl.tS;
+    for (let i = 0; i < 4; i++) moonPhys(sdt / 4, hold, d);
+    if (t - lastTrail > 0.4) { lastTrail = t; fl.trail.push({ x: fl.x, y: fl.y }); }
+    if (!M.orbit && fl.y / 1000 >= MR.orbitKm && Math.abs(fl.vx) >= MR.orbitLateral && fl.vy < 400) {
+      fl.orbitNow = true; M.orbit = true;
+      api.audio.sfx("powerup");
+      popup(W / 2, H * 0.3, "ORBITE ✓ · ORBIT", C.cyan);
+      if (BEATS) snap("orbit");
+    }
+    // suborbital flights END AT APEX — the fall is summarized in the debrief, never watched
+    if (fl.vy < 0) {
+      const fellFor = t - fl.apexT;
+      if (fl.orbitNow && fl.vy < 150) { fl.crash = false; moonEndFlight(); }
+      else if (fl.y < 30000 || fellFor > 4) { fl.crash = !fl.orbitNow; moonEndFlight(); }
+    }
+    if (fl.y <= 0 && fl.vy < 0) { fl.crash = !fl.orbitNow; moonEndFlight(); }
+  }
+
+  function moonPhys(h, hold, d) {
+    const g = 9.81 * Math.pow(MR.re / (MR.re + fl.y), 2);
+    const rho = fl.y > 140000 ? 0 : 1.225 * Math.exp(-fl.y / 8500);
+    const gim = 0.5 + (M.owned.fins ? MFIN.gim : 0);
+    if (fl.auto) {
+      const tgt = mAutoTgt(fl.y);
+      fl.ang += clamp(tgt - fl.ang, -gim * h, gim * h);
+    } else if (d) {
+      fl.ang = clamp(fl.ang + d * gim * h, -1.5, 1.5);
+    }
+    let F = 0, mdot = 0;
+    if (hold && fl.srbT > 0) { F += MSRB.F * M.srbs; }
+    if (hold && !fl.s2 && fl.prop > 0) { F += mEng().F; mdot += mEng().F / (mEng().isp * 9.81); }
+    else if (hold && fl.s2 && fl.s2prop > 0) { F += MSTAGE2.F; mdot += MSTAGE2.F / (MSTAGE2.isp * 9.81); }
+    if (fl.prop <= 0 && !fl.s2 && M.owned.stage2 && hold) { fl.s2 = true; api.audio.sfx("select"); if (BEATS) snap("stage"); for (let i = 0; i < 10; i++) parts.push({ x: W / 2, y: H * 0.62 + 20, vx: (Math.random() - 0.5) * 160, vy: 120 + Math.random() * 160, g: 60, t: 0.8, col: C.steel }); }
+    if (fl.srbT > 0) { fl.srbT -= h; if (fl.srbT <= 0) { api.audio.sfx("push"); for (let i = 0; i < 8; i++) parts.push({ x: W / 2, y: H * 0.62 + 30, vx: (Math.random() - 0.5) * 200, vy: 150 + Math.random() * 120, g: 80, t: 0.9, col: C.fire }); } }
+    const qk = fl.burnT < 5 ? fl.q : 1;
+    F *= qk;
+    const dryMass = mEng().dry + mTank().dry + (M.owned.fins ? MFIN.dry : 0) + (M.owned.guid ? MGUID.dry : 0) + (M.owned.shield ? MSHIELD.dry : 0) + (fl.s2 ? 0 : (M.owned.stage2 ? MSTAGE2.dry + MSTAGE2.prop : 0) + (fl.srbT > 0 ? M.srbs * (MSRB.dry + MSRB.prop) : 0));
+    const mass = Math.max(dryMass + (fl.s2 ? fl.s2prop : fl.prop), 1);
+    const v = Math.max(Math.hypot(fl.vx, fl.vy), 0.01);
+    const cda = 0.05 * Math.pow(Math.max(mass, 40) / 120, 0.33) * (M.owned.fins ? MFIN.drag : 1) + (fl.srbT > 0 ? 0.008 : 0); // small-rocket CdA ~0.04-0.08 m2, mass-scaled
+    const D = 0.5 * rho * v * v * cda;
+    const ax = (F * Math.sin(fl.ang)) / mass - (D * fl.vx) / (v * mass);
+    const ay = (F * Math.cos(fl.ang)) / mass - (D * fl.vy) / (v * mass) - g;
+    fl.vx += ax * h; fl.vy += ay * h;
+    fl.x += fl.vx * h; fl.y = Math.max(0, fl.y + fl.vy * h);
+    if (hold) { fl.burnT += h; if (fl.prop > 0 && !fl.s2) fl.prop = Math.max(0, fl.prop - mdot * h); else if (fl.s2) fl.s2prop = Math.max(0, fl.s2prop - mdot * h); }
+    fl.apex = Math.max(fl.apex, fl.y);
+    if (fl.y >= fl.apex) fl.apexT = t;
+    if (fl.thrusting && Math.random() < 0.5) parts.push({ x: W / 2 - Math.sin(fl.ang) * 30, y: H * 0.62 + 14, vx: (Math.random() - 0.5) * 60, vy: 200 + Math.random() * 160, g: 0, t: 0.3, col: Math.random() < 0.5 ? C.fire : C.fireHot });
+  }
+
+  function moonEndFlight() {
+    mDeb = moonEarn(fl.apex, fl.crash);
+    if (fl.crash) { api.audio.sfx("crash"); api.eng.shake(0.5); for (let i = 0; i < 26; i++) parts.push({ x: W / 2, y: H * 0.6, vx: (Math.random() - 0.5) * 320, vy: (Math.random() - 0.5) * 300, g: 90, t: 0.9, col: i % 2 ? C.fire : C.rockDk }); }
+    else api.audio.sfx("coin");
+    mSave();
+    mDebT = 0;
+    setPhase("debrief");
+    if (BEATS) snap(fl.crash ? "crash" : "splash");
+  }
+
+  function moonEarn(apexM, crashed) {
+    const km = apexM / 1000;
+    let mult = 1;
+    for (const r of MR.realms) if (km >= r.km) mult = Math.max(mult, r.mult);
+    let base = Math.round((15 + 45 * Math.sqrt(Math.max(km, 0.01))) * mult);
+    let stampTok = 0, recordTok = 0, bonus = 0, newRealms = [];
+    for (const r of MR.realms) if (km >= r.km && !M.stamps["realm" + r.km]) { M.stamps["realm" + r.km] = 1; stampTok += MR.stampTok; newRealms.push(r); }
+    if (km > M.best) { recordTok = MR.recordTok; M.best = +km.toFixed(2); }
+    if (fl.orbitNow && !M.stamps.orbit) { M.stamps.orbit = 1; bonus = MR.orbitBonus; }
+    if (fl.junk && M.junkApex == null) M.junkApex = +km.toFixed(2);
+    if (crashed) base = Math.round(base * (M.owned.shield ? 0.9 : 0.6)); // crash still pays — no dead ends
+    const total = base + stampTok + recordTok + bonus;
+    M.tokens += total;
+    return { base, stampTok, recordTok, bonus, total, km: +km.toFixed(2), mult, newRealms, crashed };
+  }
+
+  function moonDebrief(dt) {
+    mDebT += dt;
+    if (mDebT < 3.2) return;
+    if (mWon) {
+      mWon = false;
+      status = "won";
+      api.audio.sfx("win");
+      const stars = 1 + (M.stamps.orbit ? 1 : 0) + (M.best > 0 ? 1 : 0) + (!mDeb.crashed ? 1 : 0) + 1;
+      const brief = { time: +t.toFixed(1), payload: "MOON-1", stars: Math.min(stars, 5), moon: true, tokens: M.tokens, launches: M.launchN, bestKm: M.best };
+      if (api.lives && api.lives.gain) api.lives.gain(1);
+      api.complete(brief);
+      return;
+    }
+    setPhase("pad");
+  }
+
+  function moonLandInit() {
+    land.y = 3200; land.vy = -75; land.prop = MLEGS.prop;
+    moonT = 0;
+    setPhase("landing");
+    if (BEATS) snap("landing");
+  }
+  function moonLand(dt, input) {
+    const hold = input && input.down("Space") && land.prop > 0 && land.vy < 1.5; // retro-burn only while descending — no pad-bouncing
+    fl.thrusting = !!hold;
+    land.vy -= MR.moonG * dt;
+    if (hold) {
+      const mdot = MLEGS.F / (MLEGS.isp * 9.81);
+      land.prop = Math.max(0, land.prop - mdot * dt);
+      land.vy += (MLEGS.F / (MLEGS.dry + land.prop)) * dt;
+      if (Math.random() < 0.5) parts.push({ x: W / 2, y: H * 0.72 + 8, vx: (Math.random() - 0.5) * 90, vy: 60 + Math.random() * 80, g: 20, t: 0.5, col: C.gold });
+    }
+    land.y += land.vy * dt;
+    if (land.y <= 0) {
+      land.y = 0;
+      if (Math.abs(land.vy) <= MR.landMax) {
+        M.moon = true; M.moonWish = false;
+        M.tokens += MR.moonBonus;
+        mDeb = { base: MR.moonBonus, stampTok: 0, recordTok: 0, bonus: 0, total: MR.moonBonus, km: 384400, mult: 1, newRealms: [], crashed: false, moon: true };
+        mSave();
+        mWon = true; mDebT = 0;
+        setPhase("debrief");
+        api.audio.sfx("win"); api.eng.shake(0.3);
+        if (BEATS) snap("moon");
+      } else {
+        M.crashes++;
+        mDeb = { base: 0, stampTok: 0, recordTok: 0, bonus: 0, total: 0, km: 384400, mult: 1, newRealms: [], crashed: true, moon: true };
+        mSave();
+        mDebT = 0;
+        setPhase("debrief");
+        api.audio.sfx("crash"); api.eng.shake(0.6);
+        if (BEATS) snap("crash");
+      }
+    }
+  }
+
+  // ---- moon bot (?bot=1) --------------------------------------------------------------------
+  const MBOT_ORDER = ["t2", "eng2", "srb", "srb", "stage2", "t3", "eng3", "srb", "fins", "guid", "shield", "legs"];
+  function moonBot(B) {
+    if (phase === "pad") {
+      let target = null;
+      for (const id of MBOT_ORDER) {
+        const n = id === "srb" ? M.srbs : (M.owned[id] ? 1 : 0);
+        if (n >= (id === "srb" ? MSRB.max : 1)) continue;
+        if (!mUnlocked(id)) continue;
+        if (M.tokens >= mCost(id)) { target = id; }
+        break;
+      }
+      if (target) {
+        const ti = MBUY_LIST.indexOf(target);
+        if (mCur !== ti) {
+          const diff = ti - mCur, step = Math.sign(diff);
+          const key = Math.abs(diff) >= 5 ? (step > 0 ? "ArrowDown" : "ArrowUp") : (step > 0 ? "ArrowRight" : "ArrowLeft");
+          if (Math.floor(t * 2.5) % 2 === 0) B.js.add(key);
+        } else if (Math.floor(t * 2.5) % 2 === 1) B.js.add("Space");
+      } else {
+        if (moonEligible()) M.moonWish = true;
+        B.js.add("Enter");
+      }
+    } else if (phase === "pump" && gauge.on) {
+      const mP = 0.5 + 0.5 * Math.sin((2 * Math.PI * (t - gauge.t0)) / gauge.per);
+      const dd = Math.abs(mP - gauge.c);
+      const miss = FLAVOR === "partial" && M.pumpMisses < 2;
+      if (miss ? dd > gauge.band : dd <= gauge.band * 0.3) B.js.add("Space");
+    } else if (phase === "flight") {
+      B.h = true;
+      if (!fl.auto && FLAVOR !== "clumsy") {
+        const lag = FLAVOR === "partial" && Math.floor(t * 2) % 2 === 0;
+        if (!lag) {
+          const tgt = mAutoTgt(fl.y);
+          if (fl.ang < tgt - 0.03) B.r = true; else if (fl.ang > tgt + 0.03) B.l = true;
+        }
+      }
+    } else if (phase === "landing") {
+      if (FLAVOR === "clumsy" && M.crashes < 1) B.h = land.vy < -50; // one botched landing, then flies it straight
+      else B.h = land.y > 300 ? land.vy < -42 : land.vy < -5; // fast dive, late flare, hover just above the limit
+    }
+  }
+
+  // ---- moon hud ------------------------------------------------------------------------------
+  function moonHud() {
+    let mid = "";
+    const tok = "JETONS/TOKENS " + M.tokens;
+    if (phase === "pad") mid = tok + " · ←→↑↓ shop · ESPACE buy/acheter · ENTRÉE launch/décoller" + (moonEligible() ? " · M lune/moon" : "");
+    else if (phase === "pump") mid = "POMPE/PUMP — ESPACE dans le vert/in the green";
+    else if (phase === "flight") mid = "ALT " + (fl.y / 1000).toFixed(1) + " km · V " + Math.round(Math.hypot(fl.vx, fl.vy)) + " m/s" + (fl.thrusting ? " · POUSSÉE/BURN" : "") + " · ESPACE poussée · ←→ gouverne";
+    else if (phase === "tli") mid = "INJECTION LUNAIRE / MOON INJECTION…";
+    else if (phase === "landing") mid = "LUNE/MOON — ALT " + Math.round(land.y) + " m · V " + Math.abs(Math.round(land.vy)) + " m/s — ESPACE rétro/brake < " + MR.landMax + " m/s";
+    else if (phase === "debrief") mid = mDeb && mDeb.moon ? "LUNE ATTEINTE ✓ / MOON REACHED" : "APEX " + (mDeb ? mDeb.km : 0) + " km — +" + (mDeb ? mDeb.total : 0) + " jetons/tokens";
+    let right = "VOL/FLIGHT " + M.launchN;
+    if (M.orbit) right += " · ORBITE ✓";
+    if (M.best > 0) right += " · BEST " + M.best + " km";
+    const key = mid + "|" + right;
+    if (key !== lastHud) { lastHud = key; api.hud({ mid, right }); }
+  }
+
+  // ---- moon draw ------------------------------------------------------------------------------
+  function drawMoon(ctx) {
+    const k = phase === "flight" || phase === "tli" ? clamp(fl.y / 130000, 0.12, 1) : phase === "landing" ? 1 : 0.12;
+    drawMoonSky(ctx, k);
+    if (phase === "pad" || phase === "pump") { drawMoonPadScene(ctx); if (phase === "pad") drawMoonShop(ctx); if (phase === "pump") drawGaugeMoon(ctx); }
+    else if (phase === "flight") drawMoonFlightScene(ctx);
+    else if (phase === "tli") drawMoonTli(ctx);
+    else if (phase === "landing") drawMoonLandScene(ctx);
+    else if (phase === "debrief") { drawMoonFlightScene(ctx); drawMoonDebriefPanel(ctx); }
+    drawMoonRibbon(ctx);
+    drawParts(ctx);
+    drawPops(ctx);
+    drawBanners(ctx);
+  }
+
+  function drawMoonSky(ctx, k) {
+    const g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, "#05040f"); g.addColorStop(clamp(0.9 - k * 0.85, 0.05, 0.9), "#0a0e24"); g.addColorStop(1, k > 0.5 ? "#05040f" : "#12183a");
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    for (let i = 0; i < 110; i++) {
+      const x = hash(i * 3 + 1) * W, y = hash(i * 7 + 2) * H * 0.9;
+      const tw = 0.4 + 0.6 * Math.abs(Math.sin(t * (0.6 + hash(i + 9) * 2) + i * 1.7));
+      ctx.globalAlpha = (0.35 + 0.65 * k) * tw;
+      ctx.fillStyle = i % 11 === 0 ? (st.accent || C.cyan) : "#ffffff";
+      ctx.fillRect(x, y, i % 13 === 0 ? 2.4 : 1.6, i % 13 === 0 ? 2.4 : 1.6);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function paintMoonStack(g) {
+    const t = mTank(), e = mEng();
+    const wide = t.id !== "t1", big = e.id !== "eng1";
+    let y = 0;
+    if (M.owned.stage2) { P(g, 8, y, 8, 4, C.violet, 3); P(g, 9, y + 4, 6, 3, C.violet, 3); y += 7; }
+    else { P(g, 9, y, 6, 3, C.cyan, 3); y += 3; }
+    const th = t.id === "t3" ? 26 : t.id === "t2" ? 18 : 10;
+    P(g, wide ? 7 : 8, y, wide ? 10 : 8, th, C.white, 3);
+    P(g, wide ? 7 : 8, y, wide ? 10 : 8, 1, C.steelLt, 3);
+    P(g, wide ? 7 : 8, y + 3, wide ? 10 : 8, 1, C.cyan, 3);
+    y += th;
+    P(g, wide ? 7 : 8, y, wide ? 10 : 8, 1, C.engineBlue, 3); y += 1;
+    if (M.owned.fins) { P(g, 4, y - 6, 3, 8, C.steel, 3); P(g, 17, y - 6, 3, 8, C.steel, 3); }
+    P(g, 8, y, 8, 3, C.steelDk, 3); y += 3;
+    P(g, big ? 7 : 9, y, big ? 10 : 6, 4, C.engineBlue, 3);
+  }
+
+  function drawMoonRocket(ctx, x, y, s, rot, flameK) {
+    const key = "mstack" + mTank().id + mEng().id + M.srbs + (M.owned.stage2 ? "s" : "") + (M.owned.fins ? "f" : "");
+    const img = bake(key, 72, 102, paintMoonStack);
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(rot);
+    ctx.scale(s, s);
+    if (flameK > 0) {
+      const fh = (18 + Math.sin(t * 40) * 6) * flameK;
+      ctx.fillStyle = C.fire;
+      ctx.beginPath(); ctx.moveTo(-10, 34); ctx.lineTo(0, 34 + fh * 2); ctx.lineTo(10, 34); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = C.fireHot;
+      ctx.beginPath(); ctx.moveTo(-5, 34); ctx.lineTo(0, 34 + fh); ctx.lineTo(5, 34); ctx.closePath(); ctx.fill();
+    }
+    ctx.drawImage(img, -36, -46);
+    ctx.restore();
+  }
+
+  function drawMoonPadScene(ctx) {
+    const gy = GROUND + 40;
+    const g = ctx.createLinearGradient(0, gy, 0, H);
+    g.addColorStop(0, C.regolithLit); g.addColorStop(0.3, C.regolith); g.addColorStop(1, C.regolithDk);
+    ctx.fillStyle = g; ctx.fillRect(0, gy, W, H - gy);
+    ctx.fillStyle = "rgba(180,200,255,.25)"; ctx.fillRect(0, gy, W, 2);
+    for (let i = 0; i < 40; i++) { const x = hash(i * 11 + 3) * W, y = gy + 8 + hash(i * 5 + 7) * (H - gy); ctx.globalAlpha = 0.5; ctx.fillStyle = hash(i) > 0.5 ? "#2f3342" : "#4a5068"; ctx.fillRect(x, y, 2 + hash(i * 3) * 3, 2); }
+    ctx.globalAlpha = 1;
+    const px = W * 0.36;
+    ctx.fillStyle = "#232838"; ctx.fillRect(px - 54, gy - 14, 108, 14);
+    ctx.fillStyle = C.steelDk; ctx.fillRect(px - 84, gy - 150, 8, 136); ctx.fillRect(px - 60, gy - 150, 8, 136);
+    ctx.fillStyle = C.steel; for (let i = 0; i < 5; i++) ctx.fillRect(px - 84, gy - 146 + i * 28, 32, 3);
+    drawText(ctx, "MOONSHOT INC.", px, gy - 178, { size: 15, color: C.cyan, shadow: "#05060f" });
+    const S = mStack();
+    drawMoonRocket(ctx, px, gy - 8, 1.15, 0, 0);
+    drawText(ctx, S.mass + " kg · TWR " + S.twr.toFixed(2) + (S.twr <= 1.02 ? " ⚠" : " ✓"), px, gy + 26, { size: 12, color: S.twr <= 1.02 ? C.danger : "#d4dbe6", shadow: "#05060f" });
+    if (moonEligible()) {
+      const my = 210;
+      ctx.save(); ctx.globalAlpha = 0.9 + Math.sin(t * 3) * 0.1;
+      ctx.fillStyle = M.moonWish ? "rgba(70,242,180,.2)" : "rgba(232,182,76,.18)"; ctx.fillRect(W / 2 - 170, my, 340, 46);
+      drawText(ctx, M.moonWish ? "MISSION LUNAIRE ARMÉE ✓ — ENTRÉE/ENTER" : "MISSION LUNAIRE PRÊTE — [M] ✓", W / 2, my + 28, { size: 14, color: M.moonWish ? C.green : C.gold, shadow: "#05060f" });
+      ctx.restore();
+    }
+  }
+
+  function drawMoonShop(ctx) {
+    const x0 = W - 386, y0 = 84, cw = 182, ch = 62;
+    ctx.fillStyle = "rgba(5,8,20,.84)"; ctx.fillRect(x0 - 12, y0 - 34, 392, 5 * ch + 54);
+    ctx.strokeStyle = C.violet; ctx.lineWidth = 2; ctx.strokeRect(x0 - 12, y0 - 34, 392, 5 * ch + 54);
+    drawText(ctx, "MAGASIN / SHOP", x0 + cw, y0 - 14, { size: 14, color: C.cyan, shadow: "#05060f" });
+    MBUY_LIST.forEach((id, i) => {
+      const cx = x0 + (i % 2) * cw, cy = y0 + Math.floor(i / 2) * ch;
+      const p = MPART[id];
+      const isSrb = id === "srb";
+      const ownedN = isSrb ? M.srbs : (M.owned[id] ? 1 : 0);
+      const maxed = isSrb && M.srbs >= MSRB.max;
+      const locked = !mUnlocked(id);
+      const sel = i === mCur;
+      ctx.fillStyle = sel ? "rgba(61,220,255,.16)" : "rgba(255,255,255,.04)";
+      ctx.fillRect(cx, cy, cw - 8, ch - 8);
+      if (sel) { ctx.strokeStyle = C.cyan; ctx.strokeRect(cx, cy, cw - 8, ch - 8); }
+      ctx.fillStyle = ownedN && !isSrb ? "rgba(70,242,180,.25)" : "rgba(20,24,40,.6)";
+      ctx.fillRect(cx + 6, cy + 10, 44, ch - 24);
+      if (locked) { // painted padlock (no text in the chip — keeps cards readable)
+        ctx.strokeStyle = "#8a93ad"; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.arc(cx + 28, cy + 22, 5.5, Math.PI, 0); ctx.stroke();
+        ctx.fillStyle = "#8a93ad"; ctx.fillRect(cx + 20, cy + 22, 16, 12);
+      } else if (ownedN && !isSrb) drawText(ctx, "✓", cx + 28, cy + 24, { size: 13, color: C.green, shadow: "#05060f" });
+      else if (maxed) drawText(ctx, "MAX", cx + 28, cy + 24, { size: 9.5, color: C.steel, shadow: "#05060f" });
+      else drawText(ctx, String(mCost(id)), cx + 28, cy + 24, { size: 11, color: C.gold, shadow: "#05060f" });
+      drawText(ctx, p.en, cx + 58, cy + 18, { size: 11.5, color: locked ? "#8a93ad" : "#fff", shadow: "#05060f" });
+      drawText(ctx, p.fr, cx + 58, cy + 34, { size: 10.5, color: "#9aa4c6", shadow: "#05060f" });
+      if (locked) { const ll = mLockLabel(id); drawText(ctx, ll ? "→ " + ll : "", cx + 58, cy + 48, { size: 9, color: C.violet, shadow: "#05060f" }); }
+      else if (isSrb) drawText(ctx, "×" + M.srbs + "/" + MSRB.max + " · " + MSRB.F / 1000 + " kN", cx + 58, cy + 48, { size: 9, color: "#9aa4c6", shadow: "#05060f" });
+    });
+  }
+
+  function drawGaugeMoon(ctx) {
+    const w = 430, x0 = W / 2 - w / 2, y0 = H - 92;
+    ctx.fillStyle = "rgba(5,8,18,.72)"; ctx.fillRect(x0 - 14, y0 - 36, w + 28, 66);
+    ctx.fillStyle = "#131a2c"; ctx.fillRect(x0, y0, w, 18);
+    ctx.fillStyle = "rgba(70,242,180,.85)";
+    ctx.fillRect(x0 + (gauge.c - gauge.band / 2) * w, y0 - 2, gauge.band * w, 22);
+    for (let i = 0; i <= 10; i++) { ctx.fillStyle = "rgba(255,255,255,.12)"; ctx.fillRect(x0 + (i * w) / 10, y0 - 6, 2, 30); }
+    const mx = x0 + gauge.m * w;
+    ctx.fillStyle = C.cyan;
+    ctx.beginPath(); ctx.moveTo(mx, y0 - 12); ctx.lineTo(mx - 7, y0 - 24); ctx.lineTo(mx + 7, y0 - 24); ctx.closePath(); ctx.fill();
+    drawText(ctx, "POMPE / PRESSURIZE", W / 2, y0 - 48, { size: 17, color: "#fff", shadow: C.cyan });
+    drawText(ctx, "ESPACE / SPACE — zone verte = plein gaz ✓ · manqué = réessai (x3)", W / 2, y0 + 36, { size: 11, color: "#9aa4c6" });
+  }
+
+  function drawMoonFlightScene(ctx) {
+    const pxPerM = clamp(140 / (fl.y + 2500), 0.0005, 0.05);
+    const ry = H * 0.62, rx = W * 0.5 + clamp(fl.x * pxPerM * 0.6, -W * 0.3, W * 0.3);
+    if (fl.y < 6000) {
+      const gy = ry + fl.y * pxPerM;
+      const g = ctx.createLinearGradient(0, gy, 0, H);
+      g.addColorStop(0, C.regolithLit); g.addColorStop(1, C.regolithDk);
+      if (gy < H + 40) { ctx.fillStyle = g; ctx.fillRect(0, gy, W, H - gy); }
+    }
+    for (const r of MR.realms) {
+      const by = ry - (r.km * 1000 - fl.y) * pxPerM;
+      if (by < -20 || by > H + 20) continue;
+      ctx.strokeStyle = "rgba(155,229,155,.4)"; ctx.setLineDash([6, 8]); ctx.beginPath(); ctx.moveTo(0, by); ctx.lineTo(W, by); ctx.stroke(); ctx.setLineDash([]);
+      drawText(ctx, r.en + " ×" + r.mult + " · " + r.fr, 24, by - 10, { size: 12, color: C.green, shadow: "#05060f" });
+    }
+    if (fl.trail.length > 1) {
+      ctx.strokeStyle = "rgba(61,220,255,.5)"; ctx.lineWidth = 2; ctx.beginPath();
+      fl.trail.forEach((p, i) => { const sx = rx - (fl.x - p.x) * pxPerM * 0.6, sy = ry - (fl.y - p.y) * pxPerM; i ? ctx.lineTo(sx, sy) : ctx.moveTo(sx, sy); });
+      ctx.stroke();
+    }
+    drawMoonRocket(ctx, rx, ry, 1.1, fl.ang, fl.thrusting ? 1 : 0.15);
+    if (fl.apex > 0 && fl.vy < 0) {
+      const ay = ry - (fl.apex - fl.y) * pxPerM;
+      if (ay > 0 && ay < H) drawText(ctx, "APEX " + (fl.apex / 1000).toFixed(1) + " km", rx + 70, ay, { size: 11, color: C.gold, shadow: "#05060f" });
+    }
+    drawText(ctx, (fl.y / 1000).toFixed(1) + " km", W / 2, 64, { size: 34, color: "#fff", shadow: C.cyan });
+    drawText(ctx, Math.round(Math.hypot(fl.vx, fl.vy)) + " m/s · vx " + Math.round(fl.vx), W / 2, 96, { size: 13, color: "#9aa4c6", shadow: "#05060f" });
+  }
+
+  function drawMoonTli(ctx) {
+    const k = clamp(moonT / 2.6, 0, 1);
+    ctx.save();
+    for (let i = 0; i < 26; i++) {
+      const a = hash(i * 13 + 5) * Math.PI * 2, r0 = 40 + hash(i * 7) * 300, len = 60 + k * 240;
+      ctx.strokeStyle = "rgba(138,124,255,.5)"; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(W / 2 + Math.cos(a) * r0, H / 2 + Math.sin(a) * r0);
+      ctx.lineTo(W / 2 + Math.cos(a) * (r0 + len), H / 2 + Math.sin(a) * (r0 + len));
+      ctx.stroke();
+    }
+    const mr = 20 + k * 130, mx = W * 0.72, myy = H * 0.42;
+    const mg = ctx.createRadialGradient(mx - mr * 0.3, myy - mr * 0.3, mr * 0.1, mx, myy, mr);
+    mg.addColorStop(0, "#d8d4c8"); mg.addColorStop(0.8, "#9a96a8"); mg.addColorStop(1, "#6a6678");
+    ctx.fillStyle = mg; ctx.beginPath(); ctx.arc(mx, myy, mr, 0, Math.PI * 2); ctx.fill();
+    ctx.globalAlpha = 0.5; ctx.fillStyle = "#7a768a";
+    for (let i = 0; i < 6; i++) { const a = hash(i * 5 + 3) * Math.PI * 2, rr = mr * (0.2 + hash(i + 11) * 0.6); ctx.beginPath(); ctx.arc(mx + Math.cos(a) * rr, myy + Math.sin(a) * rr, 4 + hash(i * 3) * 10, 0, Math.PI * 2); ctx.fill(); }
+    ctx.restore();
+    drawText(ctx, "INJECTION LUNAIRE ✓", W / 2, H / 2 + 160, { size: 30, color: "#fff", shadow: C.violet });
+    drawText(ctx, "MOON INJECTION — transfert en cours · transfer in progress", W / 2, H / 2 + 190, { size: 13, color: "#9aa4c6", shadow: "#05060f" });
+  }
+
+  function drawMoonLandScene(ctx) {
+    const gy = H * 0.82;
+    const g = ctx.createLinearGradient(0, gy, 0, H);
+    g.addColorStop(0, "#9a96a8"); g.addColorStop(1, "#5a566a");
+    ctx.fillStyle = g; ctx.fillRect(0, gy, W, H - gy);
+    for (let i = 0; i < 30; i++) { const x = hash(i * 11 + 3) * W, y = gy + 6 + hash(i * 5 + 7) * (H - gy); ctx.globalAlpha = 0.5; ctx.fillStyle = "#46425a"; ctx.fillRect(x, y, 3 + hash(i * 3) * 4, 3); }
+    ctx.globalAlpha = 1;
+    const ly = gy - 40 - land.y * 0.04;
+    ctx.save(); ctx.translate(W / 2, ly);
+    if (land.prop > 0 && fl.thrusting) { ctx.fillStyle = C.fire; ctx.beginPath(); ctx.moveTo(-10, 22); ctx.lineTo(0, 40 + Math.sin(t * 30) * 6); ctx.lineTo(10, 22); ctx.closePath(); ctx.fill(); }
+    P(ctx, -16, 0, 32, 18, C.suit, 3); P(ctx, -16, 0, 32, 3, C.steelLt, 3);
+    P(ctx, -8, -8, 16, 8, C.steel, 3);
+    P(ctx, -22, 18, 6, 8, C.steelDk, 3); P(ctx, 16, 18, 6, 8, C.steelDk, 3);
+    ctx.restore();
+    drawText(ctx, Math.max(0, Math.round(land.y)) + " m", W / 2, 84, { size: 40, color: "#fff", shadow: C.gold });
+    const vv = Math.abs(land.vy);
+    drawText(ctx, vv.toFixed(0) + " m/s " + (vv <= MR.landMax ? "✓" : "⚠ LENT/Low"), W / 2, 124, { size: 20, color: vv <= MR.landMax ? C.green : C.danger, shadow: "#05060f" });
+    drawText(ctx, "rétro " + Math.round(land.prop) + "/" + MLEGS.prop + " kg", W / 2, 152, { size: 12, color: "#9aa4c6", shadow: "#05060f" });
+  }
+
+  function drawMoonDebriefPanel(ctx) {
+    if (mDebT < 0.5) return;
+    ctx.save(); ctx.globalAlpha = clamp((mDebT - 0.5) / 0.5, 0, 1);
+    ctx.fillStyle = "rgba(5,8,20,.8)"; ctx.fillRect(W / 2 - 300, H / 2 - 120, 600, 250);
+    ctx.strokeStyle = C.violet; ctx.lineWidth = 2; ctx.strokeRect(W / 2 - 300, H / 2 - 120, 600, 250);
+    if (mDeb && mDeb.moon) {
+      drawText(ctx, "LUNE ATTEINTE ✓✓✓", W / 2, H / 2 - 66, { size: 34, color: "#fff", shadow: C.gold });
+      drawText(ctx, "MOON REACHED — mission accomplie / mission complete", W / 2, H / 2 - 30, { size: 14, color: C.gold, shadow: "#05060f" });
+      drawText(ctx, "+" + MR.moonBonus + " jetons/tokens · " + M.launchN + " vols/launches", W / 2, H / 2 + 4, { size: 15, color: "#d4dbe6", shadow: "#05060f" });
+      drawText(ctx, "★★★★★", W / 2, H / 2 + 44, { size: 26, color: C.gold, shadow: "#05060f" });
+    } else if (mDeb) {
+      drawText(ctx, mDeb.crashed ? "CRASH — SALVAGE ×0.25 ✓" : "APEX " + mDeb.km + " km ×" + mDeb.mult, W / 2, H / 2 - 66, { size: 28, color: mDeb.crashed ? C.danger : "#fff", shadow: "#05060f" });
+      drawText(ctx, "+" + mDeb.base + (mDeb.stampTok ? " · tampons/stamps +" + mDeb.stampTok : "") + (mDeb.recordTok ? " · RECORD +" + mDeb.recordTok : "") + (mDeb.bonus ? " · ORBITE +" + mDeb.bonus : ""), W / 2, H / 2 - 28, { size: 15, color: C.gold, shadow: "#05060f" });
+      drawText(ctx, "total +" + mDeb.total + " · JETONS/TOKENS " + M.tokens + " · best " + M.best + " km", W / 2, H / 2 + 4, { size: 13, color: "#d4dbe6", shadow: "#05060f" });
+      mDeb.newRealms.forEach((r, i) => drawText(ctx, r.en + " · " + r.fr + " ✓", W / 2, H / 2 + 40 + i * 24, { size: 18, color: C.green, shadow: "#05060f" }));
+    }
+    ctx.restore();
+  }
+
+  function drawMoonRibbon(ctx) {
+    const items = MR.realms.map((r) => ({ key: "realm" + r.km, label: r.en })).concat([{ key: "orbit", label: "ORBIT" }, { key: "moon", label: "MOON" }]);
+    const x0 = 20, y0 = 22;
+    items.forEach((it, i) => {
+      const x = x0 + i * 74, got = !!M.stamps[it.key] || (it.key === "moon" && M.moon);
+      ctx.fillStyle = got ? "rgba(232,182,76,.9)" : "rgba(255,255,255,.08)";
+      ctx.beginPath(); ctx.arc(x, y0, 13, 0, Math.PI * 2); ctx.fill();
+      drawText(ctx, it.label, x, y0 + 30, { size: 9, color: got ? C.gold : "#5a6078", shadow: "#05060f" });
+    });
+  }
+
   // ---- debug hook + compression wrapper --------------------------------------------------------
   if (DBG && typeof window !== "undefined") {
     window.__MDA = {
@@ -1028,6 +1623,14 @@ export function create(level, api) {
           gauge: { on: gauge.on, m: +gauge.m.toFixed(3), c: +gauge.c.toFixed(3), band: +gauge.band.toFixed(3), win: winIdx },
           player: { x: Math.round(pl.x), y: Math.round(pl.y), carrying },
           sat: { x: Math.round(sat.x) }, trace,
+          moon: MOON ? {
+            phase, tokens: M.tokens, owned: Object.keys(M.owned).filter((k) => M.owned[k] && k !== "t1" && k !== "eng1"),
+            srbs: M.srbs, stamps: Object.keys(M.stamps), best: M.best, orbit: M.orbit, moon: M.moon,
+            launchN: M.launchN, junkApex: M.junkApex, pumpMisses: M.pumpMisses, crashes: M.crashes, cur: mCur,
+            twr: +mStack().twr.toFixed(2), mass: Math.round(mStack().mass),
+            altKm: phase === "flight" || phase === "debrief" ? +(fl.y / 1000).toFixed(2) : 0,
+            vx: Math.round(fl.vx), vy: Math.round(fl.vy), apexKm: +(fl.apex / 1000).toFixed(2),
+          } : null,
           v3: V3 ? { contract: ship.contract && ship.contract.id, launcher: ship.launcher && ship.launcher.id, kg: ship.kg, twr: +ship.twr.toFixed(3), dvKms: +ship.dv.toFixed(3), kwNet: +ship.kwNet.toFixed(2), mbps: +ship.mbps.toFixed(2), cg: +ship.cg.toFixed(3), wob: +ship.wob.toFixed(3), deskStep, cIdx, lIdx, cart: [...cart.ids], stars: v3Result && v3Result.stars } : null,
         };
       },
