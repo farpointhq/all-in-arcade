@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MDA moon sim rig — deterministic fixed-dt full-program (booth pattern)</title>
+<style>
+  body { background:#05060f; color:#d4dbe6; font:12px/1.5 monospace; }
+  #host { padding:10px; }
+  iframe { display:none; }
+</style>
+</head>
+<body>
+<div id="host"></div>
+<script type="module">
+// Moon-program rig: real module + real level.json + fake api + fixed 1/60 dt steps.
+// Drives the WHOLE incremental program (pad → pump → flight → debrief → pad … → moon win),
+// so one page run = a complete economy test, not a single flight.
+// Page URL: ?bot=1&flavor=X&seed=<urlencoded save>&launches=N&v=<bust>
+// Results land on window.__SIM and the #done data-* beacon (background-tab friendly).
+const q = new URLSearchParams(location.search);
+const DT = 1 / 60, MAX_STEPS = 480000;
+const state = { steps: 0, done: null, result: null, trace: [], launches: 0 };
+
+const fakeApi = {
+  audio: { sfx() {}, setVolume() {}, mood() {} },
+  hud() {}, shake() {}, eng: { shake() {} },
+  lives: { get: () => 0, spend: () => false, gain: (n) => { state.lives = (state.lives || 0) + n; return true; }, enabled: true },
+  complete(r) { state.result = r; },
+};
+
+async function run() {
+  const seed = q.get("seed");
+  if (seed) { try { window.__MOON_SEED = JSON.parse(seed); } catch {} }
+  const level = await (await fetch("./level.json?v=" + q.get("v"))).json();
+  level.style = level.style || {};
+  const mod = await import("../../src/genres/space-mission.js?v=" + q.get("v"));
+  const g = mod.create(level, fakeApi);
+  let trace = [], lastPhase = "";
+  for (let i = 0; i < MAX_STEPS; i++) {
+    g.update(DT, null);
+    const s = window.__MDA ? window.__MDA.state() : null;
+    if (s && s.moon) {
+      if (s.phase !== lastPhase) { trace.push(s.phase + "@" + s.t.toFixed(1)); lastPhase = s.phase; }
+      if (s.moon.launchN !== state.launches) state.launches = s.moon.launchN;
+      if (s.moon.launchN >= +(q.get("launches") || Infinity)) { state.done = g.status(); break; }
+    }
+    if (g.status() === "won" || g.status() === "failed") { state.done = g.status(); break; }
+  }
+  if (!state.done) state.done = g.status();
+  const s = window.__MDA ? window.__MDA.state() : null;
+  state.trace = trace.join(" → ");
+  state.final = s ? s : null;
+  const el = document.getElementById("done");
+  el.dataset.t = state.done || "timeout";
+  el.textContent = JSON.stringify(state);
+}
+document.title = "booting";
+run().then(() => { document.title = "ready"; }).catch((e) => {
+  state.error = String(e);
+  document.getElementById("done").textContent = JSON.stringify(state);
+});
+const el = document.createElement("span");
+el.id = "done";
+document.body.appendChild(el);
+</script>
+</body>
+</html>
