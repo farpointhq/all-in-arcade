@@ -36,10 +36,45 @@ single slot in the Level Select.
 10. **HUD informative** — checklist mid (`CPU n/3 · ANT n/2 · μBD n/2`), phase right
    (`PHASE 1/3…`), anomaly count, mission-complete stats (time, anomalies). ✅/⚠
 
+### V3 Phase 1 rubric (engineering trench, 2026-09-17 — issue #1)
+
+11. **Engineering procurement** — contract desk (EYE-ON-NORTH · LIGHTSPEED-LINK ·
+    HIGH-GROUND, bilingual) + launcher tiers as mass budgets (Vector-3 · 550 kg /
+    Vector-9 · 950 kg / Boreal Heavy · 1400 kg); crates carry printed bilingual stat
+    tags (kg · kW · res · Mbps · Δv); walk-cart slows when overloaded. ✅/⚠
+12. **Bench = live engineering readouts** — bilingual TWR = T/(m×9.81), Δv
+    (Isp·g₀·ln(m₀/m_f), fictional game-scale constants in level.json), kW draw vs
+    generation (+battery buffer), data Mbps, CG axis balance; spin-test wobble ∝ CG
+    offset (no death). ✅/⚠
+13. **Launch gauge becomes physics** — marker period ∝ TWR (same three-window
+    machine/band shrink, no death anywhere); TWR < 1.02 trips one soft strain anomaly
+    + limping ascent + fiery sputter; ion-only (thrust 0) gets a single non-blocking
+    "add chemical propulsion" banner at countdown. ✅/⚠
+14. **Debrief margins** — stars (KPIs met + unspent kg ≥ 15% + power headroom ≥ 1.2 kW)
+    plus margin line (Δv leftover, kW reserve, unspent kg), bilingual; stars pass to
+    season reward ledger via the existing per-level `api.lives.gain()` contract at ≥4★
+    (no shared-file writes). ✅/⚠
+15. **Deterministic bot sims** — fixed-dt (1/60) in-page rig `sim.html` + `sim.py`
+    headless driver: legacy/good regression stays 36.2 s (pre-Phase-1 tune exact),
+    v3 good 4★, v3 partial ends at 1★ with exactly 3 deliberate misses, v3 clumsy
+    with exactly 1 boulder drop — all won, all no-death. ✅/⚠
+
 ## Not in scope (explicitly)
 - No fail/death path (booth line speed) — mistakes cost time, never a restart.
 - No season-specific gameplay (season chip tint stays the engine's wash; `seasonNow()` in
   debug hook only).
+- Orbit-ops minigames, Canadarm servicing class, campaign/season arcs, 2-player duel —
+  tracked as follow-up issues after Phase 1 review.
+
+## Booth band (v3 Phase 1 update, 2026-09-17)
+
+- Legacy flow keeps the 60–90 s kiosk band (bots 36.2 s; first-time players with
+  misses/drops 60–90 s).
+- V3 default flow adds desk + procurement + bench readouts: fixed-dt bot sims 43–46 s;
+  first-time kiosk player lands ~75–150 s (reading the tags/readouts is the game).
+  Hard ceiling per issue #1 session target ≈ 4.5 min — nowhere close in Phase 1.
+- `?v3=0` returns the legacy flow part-for-part (sim-verified identical numbers to the
+  publish tune 2026-09-17).
 
 ## Results (2026-09-17, pre-publish)
 
@@ -59,7 +94,62 @@ single slot in the Level Select.
 - Engine total with zero deaths honored — mistakes cost time only; band floor 0.08 keeps
   missed burn windows recoverable.
 
+## Phase 1 results (2026-09-17, v3 sims — deterministic fixed-dt 1/60, real module + real level.json)
+
+| case                                   | t (s) | anomalies | drops | kg (cap)     | TWR  | Δv km/s | kW net | stars |
+|----------------------------------------|-------|-----------|-------|--------------|------|---------|--------|-------|
+| legacy/good (regression, `?v3=0`)       | 36.2  | 0         | 0     | —            | —    | —       | —      | —     |
+| v3/good (default)                       | 43.2  | 0         | 0     | 705 (950)    | 1.74 | 2.37    | +4.90  | 4     |
+| v3/partial                              | 45.9  | 3         | 0     | 750 (950)    | 1.63 | 2.21    | +0.50  | 1     |
+| v3/clumsy                               | 45.4  | 0         | 1     | 680 (1400)   | 1.80 | 2.47    | +2.90  | 3     |
+
+- All rows marked sample:true — these are bot sims, not human playtimes.
+- Note: identical numbers reproduced standalone in the browser AND via `sim.py`, and the
+  legacy regression matches the publish-time tune table within 0.1 s — determinism holds.
+- Live real-time engine run (v3 good, bot=1) also won with the same cart (705 kg),
+  confirming the fixed-dt rig matches the live engine (desk → shop → bench → burn → won).
+- Caveat, not hidden: very light builds get twitch-fast markers (period clamp 0.5–7 s at
+  TWR > ~3.2); gauge copy under the clamp line carries no math for kiosk players.
+
 ## Artifacts
-- `src/genres/space-mission.js` (genre module, Route A painters, bot + debug hooks)
-- `levels/matt-mayer-mda-space-mission/level.json` (verbatim prompt, no glyphs, all tuning)
+- `src/genres/space-mission.js` (genre module, Route A painters, bot + debug hooks, v3 phase
+  machine behind the ?v3 flag with desk/shop/bench/physics/debrief)
+- `levels/matt-mayer-mda-space-mission/level.json` (verbatim prompt, no glyphs, all tuning +
+  v3 catalog/launchers/contracts data blocks)
+- `levels/matt-mayer-mda-space-mission/sim.html` (deterministic fixed-dt rig: real module +
+  fake api; DOM beacon for headless collection) + `sim.py` (headless Chromium driver over all
+  bot profiles, exits non-zero on contract failure)
 - this file (rubric + results)
+
+---
+
+# Moonshot Inc. (2026-09-18 PIVOT — default flow; ?v3=1 proc fallback, ?v3=0 legacy)
+
+## Moon rubric — the 10 that must hold
+1. Default flow is the incremental moon program: pad shop → pump → flight → debrief loop; every screen bilingual (EN · FR), zero stat-paragraph walls.
+2. Junk rocket: first-flight apex lands in 0.9–2.4 km (sim-pinned at 1.82 km) and still pays salvage on crash — grind never dead-ends.
+3. Shop is one canvas panel, 10 cards, grid-nav + 1-click buy; cost chip, painted padlock for locked tiers, ✓ for owned; no text rows.
+4. Realm walls at 3/25/100 km unlock parts exactly as stamped (STRATO→upper stage, MESO→core tank+TITAN, SPACE→guidance+shield, orbit/direct→lunar legs).
+5. Economy curve: tokens = (15+45·√km)·realm-mult + stamps(100) + record(50) + orbit bonus(8000); wall #1 ~5–8 junk launches, space kit ~4–5 meso launches, legs ~2–3 space launches.
+6. Flights END AT APEX (fall is summarized, never watched); burn+coast above 8 km compresses ×coastScale — kiosk launch cycle ≤ ~35 s real time.
+7. Orbit gate: apex ≥ 110 km with lateral ≥ 1.75 km/s (gravity-turn program); direct-ascent route at best ≥ 200 km — two ways to the moon, both reachable.
+8. Moon landing minigame: fast dive + late flare, touch ≤ 6 m/s; crash = retry with salvage floor, never a dead end.
+9. Program win = moon landing → stars ≤ 5, lives.gain, leaderboard row; progress persists across booth visitors (localStorage, ?reset=1).
+10. Bots: good/partial/clumsy all land the moon within budget (24/26/28 launches); grind pacing from a seeded mid-save reaches SPACE kit by launch 8.
+
+## Moon tune table (sim-moon.py, 4/4 green — bot programs, not human times)
+| case        | launches | junkApex km | best km | orbit | moon | crashes | notes                            |
+|-------------|----------|-------------|---------|-------|------|---------|----------------------------------|
+| good        | 19       | 1.82        | 156     | ✓     | ✓    | 0       | budget 24                        |
+| partial     | 19       | 1.82        | 173     | ✓     | ✓    | 0       | 2 pump misses absorbed; budget 26 |
+| clumsy      | 21       | 1.82        | 380     | ✓     | ✓    | 1       | direct route; salvage floor; 28   |
+| grind/pacing| 7        | 1.20        | 156     | ✓     | ✓    | 0       | seeded mid-save; SPACE kit by 8   |
+
+- Tuning levers: small-rocket CdA 0.05·(m/120)^0.33 (drag was strangling every stack at ~20 km);
+  gravity-turn program (vertical to 5 km → pitch-over 1.05 rad by 30 km → 1.42 near-horizontal);
+  legs retro F 3.5 kN (was unlandable hover at 19× moon-g); landing = fast dive, late flare.
+- Legacy + v3 sims still 4/4 green after the pivot (fallbacks intact).
+
+## Artifacts (moon)
+- `sim-moon.html` (full-program fixed-dt rig with seed injection + progress beacon) +
+  `sim-moon.py` (4 headless program sims; exits non-zero on contract failure)

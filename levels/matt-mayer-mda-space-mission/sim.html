@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MDA sim rig — deterministic fixed-dt (booth pattern)</title>
+<style>
+  body { background:#05060f; color:#d4dbe6; font:12px/1.5 monospace; }
+  #host { padding:10px; }
+  iframe { display:none; }
+  ol { white-space:pre-wrap; }
+</style>
+</head>
+<body>
+<div id="host"></div>
+<script type="module">
+// Deterministic rig: real module + real level.json + fake api + fixed 1/60 dt steps.
+// Page URL carries the same flags the module reads (?bot=1&flavor=X&v3=1&beats=0).
+// Run results land on window.__SIM and a data-* beacon (background-tab friendly).
+const q = new URLSearchParams(location.search);
+const DT = 1 / 60, MAX_STEPS = 26000;
+const state = { steps: 0, done: null, result: null, trace: [] };
+
+const fakeApi = {
+  audio: { sfx() {}, setVolume() {}, mood() {} },
+  hud() {}, shake() {}, eng: { shake() {} },
+  lives: { get: () => 0, spend: () => false, gain: (n) => { state.lives = (state.lives || 0) + n; return true; }, enabled: true },
+  complete(r) { state.result = r; },
+};
+
+async function run() {
+  const level = await (await fetch("./level.json?v=" + q.get("v"))).json();
+  level.style = level.style || {};
+  const mod = await import("../../src/genres/space-mission.js?v=" + q.get("v"));
+  const g = mod.create(level, fakeApi);
+  let trace = [];
+  for (let i = 0; i < MAX_STEPS; i++) {
+    g.update(DT, null);
+    const s = window.__MDA ? window.__MDA.state() : null;
+    if (s) {
+      if (!trace.length || trace[trace.length - 1].split("@")[0] !== s.phase) trace.push(s.phase + "@" + s.t.toFixed(1));
+    }
+    if (g.status() === "won" || q.get("stop") === i + "") { state.done = g.status(); break; }
+  }
+  if (!state.done) state.done = g.status();
+  const s = window.__MDA ? window.__MDA.state() : null;
+  state.trace = trace.join(" → ");
+  state.final = s ? s : null;
+  const el = document.getElementById("done");
+  el.dataset.t = state.done || "timeout";
+  el.textContent = JSON.stringify(state);
+}
+document.title = "booting";
+run().then(() => { document.title = "ready"; }).catch((e) => {
+  state.error = String(e);
+  document.getElementById("done").textContent = JSON.stringify(state);
+});
+const el = document.createElement("span");
+el.id = "done";
+document.body.appendChild(el);
+</script>
+</body>
+</html>
