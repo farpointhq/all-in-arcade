@@ -1119,7 +1119,7 @@ export function create(level, api) {
   function moonPad(dt, input) {
     const dirs = [["ArrowLeft", "KeyA"], ["ArrowRight", "KeyD"], ["ArrowUp", "KeyW"], ["ArrowDown", "KeyS"]];
     for (let i = 0; i < 2; i++) if (input.just(dirs[i][0]) || input.just(dirs[i][1])) { mCur = (mCur + (i ? 1 : MBUY_LIST.length - 1)) % MBUY_LIST.length; api.audio.sfx("select"); }
-    for (let i = 2; i < 4; i++) if (input.just(dirs[i][0]) || input.just(dirs[i][1])) { mCur = (mCur + (i === 2 ? MBUY_LIST.length - 5 : 5)) % MBUY_LIST.length; api.audio.sfx("select"); }
+    for (let i = 2; i < 4; i++) if (input.just(dirs[i][0]) || input.just(dirs[i][1])) { mCur = (mCur + (i === 2 ? MBUY_LIST.length - 2 : 2)) % MBUY_LIST.length; api.audio.sfx("select"); } // 2-column grid: up/down move ±2
     const id = MBUY_LIST[mCur];
     if (input.jumpJust()) {
       const isSrb = id === "srb";
@@ -1140,7 +1140,7 @@ export function create(level, api) {
         api.audio.sfx("alarm");
       } else {
         setPhase("pump");
-        gauge.on = true; gauge.per = 1.6; gauge.band = 0.2;
+        gauge.on = true; gauge.per = 1.6; gauge.band = 0.27; // generous green — the skill beat, not a punishment
         gauge.c = 0.26 + hash(Math.floor(t * 7) + M.launchN * 31) * 0.48;
         gauge.t0 = t; gauge.m = 0;
         MQ.q = 1;
@@ -1170,7 +1170,7 @@ export function create(level, api) {
     const S = mStack();
     fl.on = true; fl.x = 0; fl.y = 0; fl.vx = 0; fl.vy = 0; fl.ang = 0; fl.prop = S.prop;
     fl.srbT = M.srbs > 0 ? MSRB.burn : 0; fl.s2 = false; fl.s2prop = M.owned.stage2 ? MSTAGE2.prop : 0;
-    fl.apex = 0; fl.burnT = 0; fl.tS = 1; fl.trail = []; fl.orbitNow = false; fl.crash = false;
+    fl.apex = 0; fl.burnT = 0; fl.tS = 1; fl.trail = []; fl.orbitNow = false; fl.crash = false; fl.t0 = t;
     fl.junk = M.junkApex == null; fl.auto = !!M.owned.guid; fl.q = MQ.q; MQ.q = 1; fl.thrusting = false;
     M.launchN++;
     setPhase("flight");
@@ -1199,7 +1199,7 @@ export function create(level, api) {
       if (fl.orbitNow && fl.vy < 150) { fl.crash = false; moonEndFlight(); }
       else if (fl.y < 30000 || fellFor > 4) { fl.crash = !fl.orbitNow; moonEndFlight(); }
     }
-    if (fl.y <= 0 && fl.vy < 0) { fl.crash = !fl.orbitNow; moonEndFlight(); }
+    if (fl.y <= 0 && fl.vy < 0 && (fl.burnT > 0.4 || t - fl.t0 > 2.5)) { fl.crash = !fl.orbitNow; moonEndFlight(); } // idle-on-pad grace: never insta-flop a launch
   }
 
   function moonPhys(h, hold, d) {
@@ -1284,7 +1284,7 @@ export function create(level, api) {
     if (BEATS) snap("landing");
   }
   function moonLand(dt, input) {
-    const hold = input && input.down("Space") && land.prop > 0 && land.vy < 1.5; // retro-burn only while descending — no pad-bouncing
+    const hold = input && input.down("Space") && land.prop > 0 && land.vy < 0.2; // retro-burn only while descending — thrust above 0 means wasted climb
     fl.thrusting = !!hold;
     land.vy -= MR.moonG * dt;
     if (hold) {
@@ -1294,7 +1294,7 @@ export function create(level, api) {
       if (Math.random() < 0.5) parts.push({ x: W / 2, y: H * 0.72 + 8, vx: (Math.random() - 0.5) * 90, vy: 60 + Math.random() * 80, g: 20, t: 0.5, col: C.gold });
     }
     land.y += land.vy * dt;
-    if (land.y <= 0) {
+    if (land.y <= 0.5) { // touchdown threshold — a hover-cap player must resolve, not hover forever
       land.y = 0;
       if (Math.abs(land.vy) <= MR.landMax) {
         M.moon = true; M.moonWish = false;
@@ -1332,8 +1332,8 @@ export function create(level, api) {
       if (target) {
         const ti = MBUY_LIST.indexOf(target);
         if (mCur !== ti) {
-          const diff = ti - mCur, step = Math.sign(diff);
-          const key = Math.abs(diff) >= 5 ? (step > 0 ? "ArrowDown" : "ArrowUp") : (step > 0 ? "ArrowRight" : "ArrowLeft");
+          const tr = ti >> 1, tc = ti & 1, cr = mCur >> 1, cc = mCur & 1; // 2-column grid pathing
+          const key = tr !== cr ? (tr > cr ? "ArrowDown" : "ArrowUp") : (tc !== cc ? "ArrowRight" : "ArrowLeft");
           if (Math.floor(t * 2.5) % 2 === 0) B.js.add(key);
         } else if (Math.floor(t * 2.5) % 2 === 1) B.js.add("Space");
       } else {
@@ -1626,10 +1626,10 @@ export function create(level, api) {
           moon: MOON ? {
             phase, tokens: M.tokens, owned: Object.keys(M.owned).filter((k) => M.owned[k] && k !== "t1" && k !== "eng1"),
             srbs: M.srbs, stamps: Object.keys(M.stamps), best: M.best, orbit: M.orbit, moon: M.moon,
-            launchN: M.launchN, junkApex: M.junkApex, pumpMisses: M.pumpMisses, crashes: M.crashes, cur: mCur,
+            launchN: M.launchN, junkApex: M.junkApex, pumpMisses: M.pumpMisses, crashes: M.crashes, cur: mCur, wish: !!M.moonWish,
             twr: +mStack().twr.toFixed(2), mass: Math.round(mStack().mass),
-            altKm: phase === "flight" || phase === "debrief" ? +(fl.y / 1000).toFixed(2) : 0,
-            vx: Math.round(fl.vx), vy: Math.round(fl.vy), apexKm: +(fl.apex / 1000).toFixed(2),
+            altKm: phase === "landing" ? +(land.y / 1000).toFixed(3) : (phase === "flight" || phase === "debrief" ? +(fl.y / 1000).toFixed(2) : 0),
+            vx: Math.round(phase === "landing" ? 0 : fl.vx), vy: Math.round(phase === "landing" ? land.vy : fl.vy), apexKm: +(fl.apex / 1000).toFixed(2),
           } : null,
           v3: V3 ? { contract: ship.contract && ship.contract.id, launcher: ship.launcher && ship.launcher.id, kg: ship.kg, twr: +ship.twr.toFixed(3), dvKms: +ship.dv.toFixed(3), kwNet: +ship.kwNet.toFixed(2), mbps: +ship.mbps.toFixed(2), cg: +ship.cg.toFixed(3), wob: +ship.wob.toFixed(3), deskStep, cIdx, lIdx, cart: [...cart.ids], stars: v3Result && v3Result.stars } : null,
         };

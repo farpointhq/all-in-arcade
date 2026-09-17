@@ -120,3 +120,36 @@ single slot in the Level Select.
   fake api; DOM beacon for headless collection) + `sim.py` (headless Chromium driver over all
   bot profiles, exits non-zero on contract failure)
 - this file (rubric + results)
+
+---
+
+# Moonshot Inc. (2026-09-18 PIVOT — default flow; ?v3=1 proc fallback, ?v3=0 legacy)
+
+## Moon rubric — the 10 that must hold
+1. Default flow is the incremental moon program: pad shop → pump → flight → debrief loop; every screen bilingual (EN · FR), zero stat-paragraph walls.
+2. Junk rocket: first-flight apex lands in 0.9–2.4 km (sim-pinned at 1.82 km) and still pays salvage on crash — grind never dead-ends.
+3. Shop is one canvas panel, 10 cards, grid-nav + 1-click buy; cost chip, painted padlock for locked tiers, ✓ for owned; no text rows.
+4. Realm walls at 3/25/100 km unlock parts exactly as stamped (STRATO→upper stage, MESO→core tank+TITAN, SPACE→guidance+shield, orbit/direct→lunar legs).
+5. Economy curve: tokens = (15+45·√km)·realm-mult + stamps(100) + record(50) + orbit bonus(8000); wall #1 ~5–8 junk launches, space kit ~4–5 meso launches, legs ~2–3 space launches.
+6. Flights END AT APEX (fall is summarized, never watched); burn+coast above 8 km compresses ×coastScale — kiosk launch cycle ≤ ~35 s real time.
+7. Orbit gate: apex ≥ 110 km with lateral ≥ 1.75 km/s (gravity-turn program); direct-ascent route at best ≥ 200 km — two ways to the moon, both reachable.
+8. Moon landing minigame: fast dive + late flare, touch ≤ 6 m/s; crash = retry with salvage floor, never a dead end.
+9. Program win = moon landing → stars ≤ 5, lives.gain, leaderboard row; progress persists across booth visitors (localStorage, ?reset=1).
+10. Bots: good/partial/clumsy all land the moon within budget (24/26/28 launches); grind pacing from a seeded mid-save reaches SPACE kit by launch 8.
+
+## Moon tune table (sim-moon.py, 4/4 green — bot programs, not human times)
+| case        | launches | junkApex km | best km | orbit | moon | crashes | notes                            |
+|-------------|----------|-------------|---------|-------|------|---------|----------------------------------|
+| good        | 19       | 1.82        | 156     | ✓     | ✓    | 0       | budget 24                        |
+| partial     | 19       | 1.82        | 173     | ✓     | ✓    | 0       | 2 pump misses absorbed; budget 26 |
+| clumsy      | 21       | 1.82        | 380     | ✓     | ✓    | 1       | direct route; salvage floor; 28   |
+| grind/pacing| 7        | 1.20        | 156     | ✓     | ✓    | 0       | seeded mid-save; SPACE kit by 8   |
+
+- Tuning levers: small-rocket CdA 0.05·(m/120)^0.33 (drag was strangling every stack at ~20 km);
+  gravity-turn program (vertical to 5 km → pitch-over 1.05 rad by 30 km → 1.42 near-horizontal);
+  legs retro F 3.5 kN (was unlandable hover at 19× moon-g); landing = fast dive, late flare.
+- Legacy + v3 sims still 4/4 green after the pivot (fallbacks intact).
+
+## Artifacts (moon)
+- `sim-moon.html` (full-program fixed-dt rig with seed injection + progress beacon) +
+  `sim-moon.py` (4 headless program sims; exits non-zero on contract failure)
