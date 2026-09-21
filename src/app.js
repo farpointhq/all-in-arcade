@@ -136,11 +136,22 @@ const App = {
       case "restart":
         if (this.activeLevel) this.startLevel(this.activeLevel.id);
         break;
+      case "pause-levels":
+        eng.paused = false;
+        Audio.playMusic("title");
+        UI.hudOn(false);
+        eng.setScene(attract);
+        this.activeLevel = null;   // the run is over — menus must not "resume" it
+        this.resultShown = false;
+        this.refreshData().then(() => UI.show("levels"));
+        break;
       case "pause-quit":
         eng.paused = false;
         Audio.playMusic("title");
         UI.hudOn(false);
         eng.setScene(attract);
+        this.activeLevel = null;   // same: without this, ESC on menus re-paused the old level
+        this.resultShown = false;
         UI.show("title");
         break;
       case "result-primary": {
@@ -355,6 +366,22 @@ const App = {
   // keyboard routing for overlays
   key(e) {
     const has = (id) => $(id).classList.contains("active");
+    if (has("#screen-levels")) {
+      // keyboard scrolling for the booth: ↑/↓ one card, PgUp/PgDn a page, Home/End ends
+      const grid = $("#levelGrid");
+      if (grid && ["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End"].includes(e.code)) {
+        e.preventDefault();
+        const cardStep = () => { const c = grid.querySelector(".levelCard"); return (c ? c.offsetHeight : 76) + 12; };
+        if (e.code === "Home") grid.scrollTo({ top: 0, behavior: "smooth" });
+        else if (e.code === "End") grid.scrollTo({ top: grid.scrollHeight, behavior: "smooth" });
+        else {
+          const dir = e.code === "ArrowDown" || e.code === "PageDown" ? 1 : -1;
+          const amt = e.code === "ArrowDown" || e.code === "ArrowUp" ? cardStep() : grid.clientHeight * 0.82;
+          grid.scrollBy({ top: dir * amt, behavior: "smooth" });
+        }
+        return;
+      }
+    }
     if (e.code === "Escape") {
       if (has("#screen-pause")) { this.action("resume"); return; }
       if (this.playing()) { this.openPause(); return; }

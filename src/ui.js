@@ -204,8 +204,7 @@ export const UI = {
       const card = document.createElement("button");
       card.className = "levelCard";
       const num = document.createElement("div"); num.className = "num";
-      const ord = typeof l.order === "number" ? l.order : i + 1;
-      num.textContent = String(ord).padStart(2, "0");
+      num.textContent = String(i + 1).padStart(2, "0");
       const mid = document.createElement("div");
       const tt = document.createElement("div"); tt.className = "tt"; tt.textContent = l.title || l.id;
       const mt = document.createElement("div");
@@ -219,6 +218,26 @@ export const UI = {
       card.addEventListener("click", () => this.app.action("play-index", i));
       grid.appendChild(card);
     });
+    const sub = document.querySelector("#screen-levels .panel-header .sub");
+    if (sub) sub.textContent = `${levels.length} level${levels.length === 1 ? "" : "s"} · every one dreamed up by a human`;
+    if (!this._scrollWired) {
+      this._scrollWired = true;
+      $("#levelGrid").addEventListener("scroll", () => this.updateLevelScroll());
+      window.addEventListener("resize", () => this.updateLevelScroll());
+    }
+    requestAnimationFrame(() => this.updateLevelScroll());
+  },
+
+  // level select scrolls once the grid outgrows the panel — fade + hint + scrollbar
+  updateLevelScroll() {
+    const grid = $("#levelGrid");
+    if (!grid) return;
+    const scrollable = grid.scrollHeight > grid.clientHeight + 8;
+    const atEnd = !scrollable || grid.scrollTop + grid.clientHeight >= grid.scrollHeight - 12;
+    grid.classList.toggle("scrollable", scrollable);
+    grid.classList.toggle("at-end", atEnd);
+    const hint = $("#levelScrollHint");
+    if (hint) hint.classList.toggle("show", scrollable && !atEnd);
   },
 
   // ---- credits ---------------------------------------------------------------
