@@ -31,12 +31,12 @@
    "idx": 10,
    "id": "australia",
    "kind": "country",
-   "t": 215.67,
-   "stageT": 9.82,
+   "t": 215.64,
+   "stageT": 9.83,
    "bubbles": 3,
    "items": "6/6",
    "gateOpen": true,
-   "px": 2320,
+   "px": 2321,
    "py": null,
    "meter": null,
    "surfaced": null,
@@ -57,47 +57,47 @@
     },
     {
      "id": "brazil",
-     "t": 33.4,
+     "t": 33.5,
      "why": "seq"
     },
     {
      "id": "mid-atlantic",
-     "t": 54.2,
+     "t": 54.3,
      "why": "seq"
     },
     {
      "id": "egypt",
-     "t": 76.4,
+     "t": 73.4,
      "why": "seq"
     },
     {
      "id": "suez-crossing",
-     "t": 96.5,
+     "t": 93.4,
      "why": "seq"
     },
     {
      "id": "turkiye",
-     "t": 115.4,
+     "t": 112.3,
      "why": "seq"
     },
     {
      "id": "bosphorus-run",
-     "t": 135.5,
+     "t": 132.4,
      "why": "seq"
     },
     {
      "id": "japan",
-     "t": 153.2,
+     "t": 152.3,
      "why": "seq"
     },
     {
      "id": "pacific-crossing",
-     "t": 181.8,
+     "t": 180.9,
      "why": "seq"
     },
     {
      "id": "australia",
-     "t": 195.6,
+     "t": 195.3,
      "why": "seq"
     }
    ],
