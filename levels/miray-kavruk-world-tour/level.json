@@ -1,0 +1,457 @@
+{
+  "schema": 1,
+  "id": "miray-kavruk-world-tour",
+  "title": "Miray's World Tour",
+  "genre": "world-tour",
+  "version": 1,
+  "authors": [
+    {
+      "name": "Miray Kavruk",
+      "kind": "original"
+    }
+  ],
+  "remixOf": null,
+  "status": "ready",
+  "order": 1001,
+  "created": "2026-09-20T09:20:00",
+  "prompt": "The game Miray asked for: you travel the world, visiting one country on each continent, and each country's level is themed to that continent. Brazil might have sugar plantations; in Africa you go to Egypt and there are the pyramids. Each country level has puzzles to solve, or quizzes and questions, tied to that place.\n\nTo travel from continent to continent you have to cross an ocean. That is its own level: you are swimming underwater, you get bigger by eating fish, you avoid sharks and bigger fish, and once you are big enough you reach the surface, find a boat, and hitch a ride to the next continent. The ocean level plays every time you cross between continents, but it is a different version each time so it is not boring or repetitive: the first crossing you are plankton, the next crossing you are a minnow or tiny fish, then tuna, then a shark, then a whale or an orca, something like that, each one a bigger creature with bigger threats.",
+  "brief": "Un tour du monde : six pays, un par continent, chacun avec ses énigmes et son quiz — et cinq traversées d'océan où l'on grandit en mangeant, du plancton à l'orque, pour attraper le bateau vers la suite. / A world tour: six countries, one per continent, each with its own puzzle and quiz — and five ocean crossings where you grow by eating, from plankton to orca, to catch the boat onward.",
+  "objective": "Stamp all six passports — solve each country's puzzle and quiz — then grow through five ocean crossings (plankton → minnow → tuna → shark → orca) and catch the boat that carries you around the world.",
+  "win": {
+    "type": "complete_tour"
+  },
+  "style": {
+    "backdrop": "voyage",
+    "music": "chill",
+    "sky": [
+      "#8ec9ff",
+      "#bfe3ff",
+      "#ffe9c9"
+    ],
+    "accent": "#3ddcff",
+    "accent2": "#ffd166",
+    "accent3": "#ff3d9a"
+  },
+  "data": {
+    "seed": 20260920,
+    "bubbles": 3,
+    "walk": {
+      "speed": 224,
+      "camLead": 340
+    },
+    "ocean": {
+      "accel": 640,
+      "drag": 2.1,
+      "vmax": 320,
+      "drift": 46,
+      "iframes": 1.4,
+      "surfY": 84,
+      "foodEvery": [
+        0.45,
+        0.85
+      ],
+      "foodCap": 20,
+      "threatEvery": [
+        4.0,
+        6.6
+      ],
+      "threatMax": 2,
+      "eatK": 0.75,
+      "growK": 0.07
+    },
+    "tour": [
+      {
+        "id": "canada",
+        "kind": "country",
+        "continent": "North America",
+        "place": "Canada",
+        "tagline": "Spring dawn in the maple sugar bush",
+        "worldW": 2400,
+        "music": "chill",
+        "sky": [
+          "#20304f",
+          "#5f83b0",
+          "#f2d9b8"
+        ],
+        "hills": [
+          "#2e5b46",
+          "#3f7a58"
+        ],
+        "ground": [
+          "#dff0e2",
+          "#b9d8b6"
+        ],
+        "accent": "#ff5f7e",
+        "item": {
+          "kind": "pail",
+          "n": 5,
+          "interact": "tap",
+          "label": "sap pails"
+        },
+        "hazard": null,
+        "quiz": {
+          "q": "Sugaring-off — when maple sap runs — happens in which season?",
+          "opts": [
+            "Spring",
+            "Winter",
+            "Autumn"
+          ],
+          "right": 0,
+          "hint": "Nights below zero, days above — that's when the sap starts to run."
+        },
+        "landmark": "sugarshack",
+        "landmarkLabel": "SUGAR SHACK"
+      },
+      {
+        "id": "atlantic-south",
+        "kind": "ocean",
+        "from": "North America",
+        "to": "South America",
+        "creature": "plankton",
+        "size": 10,
+        "eatN": 10,
+        "foods": [
+          "algae"
+        ],
+        "threats": [
+          "jelly"
+        ],
+        "speed": 40,
+        "sky": [
+          "#0b6e86",
+          "#0d93a8",
+          "#12c2c9"
+        ],
+        "music": "space",
+        "tagline": "Drift with the current, snack on algae motes, slip past the baby jellies"
+      },
+      {
+        "id": "brazil",
+        "kind": "country",
+        "continent": "South America",
+        "place": "Brazil",
+        "tagline": "Cutting cane at a sugar plantation",
+        "worldW": 3000,
+        "music": "chill",
+        "sky": [
+          "#ffd9a3",
+          "#ffb37a",
+          "#7ec9b0"
+        ],
+        "hills": [
+          "#3f8f5f",
+          "#2f7a4f"
+        ],
+        "ground": [
+          "#e8d9a8",
+          "#cdbb84"
+        ],
+        "accent": "#ff8c42",
+        "item": {
+          "kind": "cane",
+          "n": 12,
+          "interact": "touch",
+          "label": "cane stalks"
+        },
+        "hazard": {
+          "kind": "tractor",
+          "speed": 62,
+          "every": [
+            6,
+            9
+          ]
+        },
+        "quiz": {
+          "q": "What language do people speak in Brazil?",
+          "opts": [
+            "Spanish",
+            "Portuguese",
+            "French"
+          ],
+          "right": 1,
+          "hint": "Not Spanish — think açúcar, cana, obrigado."
+        },
+        "landmark": "mill",
+        "landmarkLabel": "SUGAR MILL"
+      },
+      {
+        "id": "mid-atlantic",
+        "kind": "ocean",
+        "from": "South America",
+        "to": "Africa",
+        "creature": "minnow",
+        "size": 16,
+        "eatN": 11,
+        "foods": [
+          "fry"
+        ],
+        "threats": [
+          "perch",
+          "jelly"
+        ],
+        "speed": 52,
+        "sky": [
+          "#0a5f8a",
+          "#0c86a8",
+          "#10b4c4"
+        ],
+        "music": "space",
+        "tagline": "Scoot with the fry schools — the perch are hunting"
+      },
+      {
+        "id": "egypt",
+        "kind": "country",
+        "continent": "Africa",
+        "place": "Egypt",
+        "tagline": "Digging scarabs in the shadow of the pyramids",
+        "worldW": 2800,
+        "music": "chill",
+        "sky": [
+          "#ffedc2",
+          "#ffd48a",
+          "#e8a54e"
+        ],
+        "hills": [
+          "#d9a45e",
+          "#c08d4a"
+        ],
+        "ground": [
+          "#f4dfae",
+          "#e0c489"
+        ],
+        "accent": "#ffd166",
+        "item": {
+          "kind": "scarab",
+          "n": 6,
+          "interact": "dig",
+          "label": "scarab mounds"
+        },
+        "hazard": null,
+        "quiz": {
+          "q": "The Sphinx's riddle: what walks on four legs at dawn, two at noon, three at dusk?",
+          "opts": [
+            "A camel",
+            "A human",
+            "The Sphinx"
+          ],
+          "right": 1,
+          "hint": "It crawls as a baby, stands tall, and leans on a cane when old."
+        },
+        "landmark": "sphinx",
+        "landmarkLabel": "THE SPHINX"
+      },
+      {
+        "id": "suez-crossing",
+        "kind": "ocean",
+        "from": "Africa",
+        "to": "Europe",
+        "creature": "tuna",
+        "size": 26,
+        "eatN": 12,
+        "foods": [
+          "sardine"
+        ],
+        "threats": [
+          "barracuda"
+        ],
+        "speed": 66,
+        "sky": [
+          "#08527a",
+          "#0a7ba0",
+          "#0ea3b8"
+        ],
+        "music": "space",
+        "tagline": "Run with the tuna — slash through the sardine schools, mind the barracuda"
+      },
+      {
+        "id": "turkiye",
+        "kind": "country",
+        "continent": "Europe",
+        "place": "Türkiye",
+        "tagline": "Istanbul bazaar — five painted tiles for the mosaic",
+        "worldW": 2800,
+        "music": "chill",
+        "sky": [
+          "#ffd98c",
+          "#ff9d6b",
+          "#8a5f9e"
+        ],
+        "hills": [
+          "#8a5f9e",
+          "#6e4a8a"
+        ],
+        "ground": [
+          "#e8cfa8",
+          "#cfae84"
+        ],
+        "accent": "#3ddcff",
+        "item": {
+          "kind": "tile",
+          "n": 5,
+          "interact": "touch",
+          "label": "painted tiles"
+        },
+        "hazard": {
+          "kind": "shopper",
+          "speed": 84,
+          "every": [
+            4,
+            7
+          ]
+        },
+        "quiz": {
+          "q": "Istanbul straddles two continents, split by which strait?",
+          "opts": [
+            "The Nile",
+            "The Bosphorus",
+            "Gibraltar"
+          ],
+          "right": 1,
+          "hint": "A Turkish waterway — and also a delicious pastry."
+        },
+        "landmark": "bazaar",
+        "landmarkLabel": "GRAND BAZAAR"
+      },
+      {
+        "id": "bosphorus-run",
+        "kind": "ocean",
+        "from": "Europe",
+        "to": "Asia",
+        "creature": "shark",
+        "size": 40,
+        "eatN": 14,
+        "foods": [
+          "reeffish"
+        ],
+        "threats": [
+          "bullshark",
+          "net"
+        ],
+        "speed": 76,
+        "sky": [
+          "#06405e",
+          "#085f84",
+          "#0b8aa0"
+        ],
+        "music": "space",
+        "tagline": "Now YOU are the shark — hunt the reef fish, dodge the bull shark and the nets"
+      },
+      {
+        "id": "japan",
+        "kind": "country",
+        "continent": "Asia",
+        "place": "Japan",
+        "tagline": "Feeding the koi beneath the torii",
+        "worldW": 2600,
+        "music": "chill",
+        "sky": [
+          "#ffe3ec",
+          "#ffc4d9",
+          "#b8d8f2"
+        ],
+        "hills": [
+          "#e8a0b8",
+          "#d88aa8"
+        ],
+        "ground": [
+          "#f2e8e0",
+          "#dccbc0"
+        ],
+        "accent": "#ff8ac2",
+        "item": {
+          "kind": "koi",
+          "n": 7,
+          "interact": "feed",
+          "label": "koi feedings"
+        },
+        "hazard": null,
+        "quiz": {
+          "q": "Which city was Japan's capital before Tokyo?",
+          "opts": [
+            "Osaka",
+            "Kyoto",
+            "Busan"
+          ],
+          "right": 1,
+          "hint": "Home of the Imperial Palace for over a thousand years."
+        },
+        "landmark": "torii",
+        "landmarkLabel": "THE TORII GATE"
+      },
+      {
+        "id": "pacific-crossing",
+        "kind": "ocean",
+        "from": "Asia",
+        "to": "Oceania",
+        "creature": "orca",
+        "size": 56,
+        "eatN": 15,
+        "foods": [
+          "tunafish"
+        ],
+        "threats": [
+          "squid",
+          "net"
+        ],
+        "speed": 84,
+        "sky": [
+          "#043550",
+          "#056080",
+          "#077f96"
+        ],
+        "music": "space",
+        "tagline": "Apex of the Pacific — out-swim the giant squid, tear through the last nets"
+      },
+      {
+        "id": "australia",
+        "kind": "country",
+        "continent": "Oceania",
+        "place": "Australia",
+        "tagline": "Shells and tide pools on the reef coast",
+        "worldW": 2600,
+        "music": "chill",
+        "sky": [
+          "#9be0ff",
+          "#c8f0ff",
+          "#ffe9c9"
+        ],
+        "hills": [
+          "#4fa06a",
+          "#3d8a56"
+        ],
+        "ground": [
+          "#f7ecc9",
+          "#e3d3a5"
+        ],
+        "accent": "#7dfcff",
+        "item": {
+          "kind": "shell",
+          "n": 6,
+          "interact": "touch",
+          "label": "reef shells",
+          "bands": true
+        },
+        "hazard": {
+          "kind": "seagull",
+          "speed": 150,
+          "every": [
+            7,
+            11
+          ]
+        },
+        "quiz": {
+          "q": "Which of these is a hopping marsupial?",
+          "opts": [
+            "Kangaroo",
+            "Emu",
+            "Shark"
+          ],
+          "right": 0,
+          "hint": "It carries its joey in a pouch."
+        },
+        "landmark": "reefstation",
+        "landmarkLabel": "REEF STATION"
+      }
+    ]
+  }
+}

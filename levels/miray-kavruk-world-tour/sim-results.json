@@ -1,0 +1,299 @@
+[
+ {
+  "level": "miray-kavruk-world-tour",
+  "mode": "live",
+  "ok": true,
+  "checks": [
+   {
+    "id": "live-completes",
+    "ok": true
+   },
+   {
+    "id": "live-6-stamps",
+    "ok": true
+   },
+   {
+    "id": "live-all-11-stages",
+    "ok": true
+   },
+   {
+    "id": "live-beats-fired",
+    "ok": true
+   },
+   {
+    "id": "live-no-js-errors",
+    "ok": true,
+    "errors": []
+   }
+  ],
+  "final": {
+   "mode": "finale",
+   "idx": 10,
+   "id": "australia",
+   "kind": "country",
+   "t": 215.67,
+   "stageT": 9.82,
+   "bubbles": 3,
+   "items": "6/6",
+   "gateOpen": true,
+   "px": 2320,
+   "py": null,
+   "meter": null,
+   "surfaced": null,
+   "foods": null,
+   "threats": null,
+   "stamps": 6,
+   "completed": true,
+   "stageLog": [
+    {
+     "id": "canada",
+     "t": 0,
+     "why": "boot"
+    },
+    {
+     "id": "atlantic-south",
+     "t": 18.8,
+     "why": "seq"
+    },
+    {
+     "id": "brazil",
+     "t": 33.4,
+     "why": "seq"
+    },
+    {
+     "id": "mid-atlantic",
+     "t": 54.2,
+     "why": "seq"
+    },
+    {
+     "id": "egypt",
+     "t": 76.4,
+     "why": "seq"
+    },
+    {
+     "id": "suez-crossing",
+     "t": 96.5,
+     "why": "seq"
+    },
+    {
+     "id": "turkiye",
+     "t": 115.4,
+     "why": "seq"
+    },
+    {
+     "id": "bosphorus-run",
+     "t": 135.5,
+     "why": "seq"
+    },
+    {
+     "id": "japan",
+     "t": 153.2,
+     "why": "seq"
+    },
+    {
+     "id": "pacific-crossing",
+     "t": 181.8,
+     "why": "seq"
+    },
+    {
+     "id": "australia",
+     "t": 195.6,
+     "why": "seq"
+    }
+   ],
+   "quiz": null
+  },
+  "beats": [
+   "boot",
+   "leg-canada",
+   "gate-canada",
+   "quiz-canada-ok",
+   "stamp-canada",
+   "leg-atlantic-south",
+   "surface-atlantic-south",
+   "board-atlantic-south",
+   "leg-brazil",
+   "gate-brazil",
+   "quiz-brazil-ok",
+   "stamp-brazil",
+   "leg-mid-atlantic",
+   "surface-mid-atlantic",
+   "board-mid-atlantic",
+   "leg-egypt",
+   "gate-egypt",
+   "quiz-egypt-ok",
+   "stamp-egypt",
+   "leg-suez-crossing",
+   "surface-suez-crossing",
+   "board-suez-crossing",
+   "leg-turkiye",
+   "gate-turkiye",
+   "quiz-turkiye-ok",
+   "stamp-turkiye",
+   "leg-bosphorus-run",
+   "surface-bosphorus-run",
+   "board-bosphorus-run",
+   "leg-japan"
+  ],
+  "stage_ids": [
+   "canada",
+   "atlantic-south",
+   "brazil",
+   "mid-atlantic",
+   "egypt",
+   "suez-crossing",
+   "turkiye",
+   "bosphorus-run",
+   "japan",
+   "pacific-crossing",
+   "australia"
+  ]
+ },
+ {
+  "level": "miray-kavruk-world-tour",
+  "mode": "sims:good",
+  "ok": true,
+  "checks": [
+   {
+    "id": "good-no-update-error",
+    "ok": true,
+    "error": null
+   },
+   {
+    "id": "good-fail-never-called",
+    "ok": true
+   },
+   {
+    "id": "good-completes-once",
+    "ok": true
+   },
+   {
+    "id": "good-payload-6-stamps-5-crossings",
+    "ok": true
+   },
+   {
+    "id": "good-quizzes-perfect",
+    "ok": true
+   },
+   {
+    "id": "good-tour-order",
+    "ok": true
+   }
+  ],
+  "complete_payload": {
+   "tour": [
+    "canada",
+    "atlantic-south",
+    "brazil",
+    "mid-atlantic",
+    "egypt",
+    "suez-crossing",
+    "turkiye",
+    "bosphorus-run",
+    "japan",
+    "pacific-crossing",
+    "australia"
+   ],
+   "stamps": 6,
+   "crossings": 5,
+   "quizzesRightFirst": 6,
+   "quizWrongTries": 0,
+   "hits": 2,
+   "eats": 74,
+   "t": 213,
+   "season": "autumn"
+  },
+  "sim_t": 213.02,
+  "final_mode": "finale"
+ },
+ {
+  "level": "miray-kavruk-world-tour",
+  "mode": "sims:partial",
+  "ok": true,
+  "checks": [
+   {
+    "id": "partial-no-update-error",
+    "ok": true,
+    "error": null
+   },
+   {
+    "id": "partial-fail-never-called",
+    "ok": true
+   },
+   {
+    "id": "partial-completes-once",
+    "ok": true
+   },
+   {
+    "id": "partial-flubbed-a-quiz",
+    "ok": true
+   }
+  ],
+  "complete_payload": {
+   "tour": [
+    "canada",
+    "atlantic-south",
+    "brazil",
+    "mid-atlantic",
+    "egypt",
+    "suez-crossing",
+    "turkiye",
+    "bosphorus-run",
+    "japan",
+    "pacific-crossing",
+    "australia"
+   ],
+   "stamps": 6,
+   "crossings": 5,
+   "quizzesRightFirst": 5,
+   "quizWrongTries": 1,
+   "hits": 3,
+   "eats": 79,
+   "t": 207.3,
+   "season": "autumn"
+  },
+  "sim_t": 207.02,
+  "final_mode": "finale"
+ },
+ {
+  "level": "miray-kavruk-world-tour",
+  "mode": "sims:clumsy",
+  "ok": true,
+  "checks": [
+   {
+    "id": "clumsy-no-update-error",
+    "ok": true,
+    "error": null
+   },
+   {
+    "id": "clumsy-fail-never-called",
+    "ok": true
+   },
+   {
+    "id": "clumsy-never-completes",
+    "ok": true
+   },
+   {
+    "id": "clumsy-still-playing-at-cap",
+    "ok": true
+   }
+  ],
+  "complete_payload": null,
+  "sim_t": 699.02,
+  "final_mode": "play"
+ },
+ {
+  "level": "miray-kavruk-world-tour",
+  "mode": "thumbs",
+  "ok": true,
+  "checks": [
+   {
+    "id": "thumbs-renders",
+    "ok": true,
+    "bytes": 203562
+   }
+  ],
+  "bytes": 203562,
+  "head": "data:image/png;base64,iVBORw0K"
+ }
+]
