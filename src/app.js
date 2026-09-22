@@ -156,6 +156,11 @@ const App = {
       case "restart":
         if (this.activeLevel) this.startLevel(this.activeLevel.id);
         break;
+      case "pause-music":
+        // persists to Save, flips the music bus, toasts, and repaints the label
+        // (applyAudioState → paintPauseMusic) — one call, no pause-specific state
+        UI.setAudioFlag("musicOn", !(Save.data.settings.musicOn ?? true));
+        break;
       case "pause-levels":
         eng.paused = false;
         Audio.playMusic("title");
@@ -425,6 +430,7 @@ const App = {
   openPause() {
     eng.paused = true;
     $("#pauseSub").textContent = this.activeLevel ? `${this.activeLevel.id} — ${this.activeLevel.title} · ${authorLabel(this.activeLevel)}` : "";
+    UI.paintPauseMusic(); // label reflects the save state every time pause opens
     UI.show("pause");
   },
 };
