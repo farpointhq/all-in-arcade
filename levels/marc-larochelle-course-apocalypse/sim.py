@@ -27,6 +27,15 @@ Writes sim-results.json in THIS folder. Exit 0 only if all requested modes pass.
 
 Seed note: salvos/aim are Math.random-driven; sims pins seed the PRNG (SEED below) so the
 fixed-dt pins are reproducible run-to-run. Live probes stay unseeded (real rAF + real keys).
+
+Rig-design notes (measured while calibrating):
+· losepath stubs gain() as a no-op — the plan's "stub lives bank allowing exactly 3 spends"
+  must isolate the lose-path wiring from ♥ heart economics (a caught heart legitimately
+  extends the bank and would mask the 3-spends→fail pin).
+· grace + density use the dodge-TAP driver (Space 1.3 s / ArrowUp 2.6 s) instead of fully
+  neutral input: under the fixed tuning a neutral runner horde-locks against the first ruin
+  wall (dies every ~3.4 s — measured), which closes the grace observation window and
+  under-measures early density. The tap driver is the plan's own AC1 driver.
 """
 import json
 import os
@@ -66,10 +75,17 @@ async (sc) => {
   };
   const lvl = await (await fetch("/levels/marc-larochelle-course-apocalypse/level.json")).json();
   const mod = await import("/src/genres/survival.js?v=" + Date.now());
+  // driver: "neutral" = inert; "taps" = the AC1 dodge cadence (Space 1.3 s / ArrowUp 2.6 s)
+  const TAPS = [["Space", 1.3, 0.06], ["ArrowUp", 2.6, 0.12]];
+  const keyState = {};
+  let simT = 0, pulse = false;
+  for (const [k, period, hold] of TAPS) keyState[k] = { next: 0.8, until: -1 };
   const neutral = {
-    down: () => false, just: () => false, left: () => false, right: () => false,
-    up: () => false, downKey: () => false, jumpJust: () => false, anyJust: () => false,
-    endFrame() {},
+    down: (k) => { const ks = keyState[k]; return sc.driver === "taps" && !!ks && simT < ks.until; },
+    just: () => false, left: () => false, right: () => false,
+    up: () => false, downKey: () => false,
+    jumpJust: () => sc.driver === "taps" && pulse,
+    anyJust: () => false, endFrame() {},
   };
   const calls = { complete: [], fail: [] };
   const bank = { n: sc.bank == null ? 0 : sc.bank, spends: 0, gains: 0 };
@@ -92,7 +108,8 @@ async (sc) => {
         events.push({ type: "spend", t: window.__SR.state().t, left: bank.n });
         return true;
       },
-      gain(k) { k = k || 1; bank.n = Math.min(9, bank.n + k); bank.gains += k; return true; },
+      // no-op counter (see docstring): losepath must isolate 3-spends→fail from hearts
+      gain(k) { k = k || 1; bank.gains += k; return false; },
       enabled: true,
     };
   }
@@ -104,15 +121,23 @@ async (sc) => {
   let graceWatch = null;   // { respawnT, spawnsAtRespawn, spawnT } — first continue only
   let step = 0;
   for (; step * DT < MAXS; step++) {
+    if (sc.driver === "taps") {
+      pulse = false;
+      for (const [k, period] of TAPS) {
+        const ks = keyState[k];
+        if (simT >= ks.next) { ks.until = simT + TAPS.find(x => x[0] === k)[2]; ks.next = simT + period; pulse = true; }
+      }
+    }
     inst.update(DT, neutral);
+    if (sc.driver === "taps") pulse = false;
+    simT += DT;
     const s2 = st();
     if (!s2) return { error: "window.__SR missing (boot ?debug=1 style URL or check module)" };
     maxDist = Math.max(maxDist, s2.dist);
     tEnd = s2.t;
     const total = s2.missileStats.total;
-    if (sc.spawnTimeline && (step % 6 === 0 || total !== (trace.length ? trace[trace.length - 1]._tot : undefined))) {
-      trace.push({ t: s2.t, dist: s2.dist, status: s2.status,
-                   _tot: total, _aimed: s2.missileStats.aimed, _tele: s2.missileStats.aimedTele });
+    if (sc.spawnTimeline && step % 6 === 0) {
+      trace.push({ t: s2.t, dist: s2.dist, status: s2.status });
     }
     const lastSpend = events.length && events[events.length - 1].type === "spend"
       ? events[events.length - 1] : null;
@@ -126,7 +151,6 @@ async (sc) => {
     if (sc.stopAfterFirstSpawn && graceWatch && graceWatch.spawnT !== null) break;
     if (sc.maxS <= 0) break;
   }
-  trace.forEach(r => { delete r._tot; delete r._aimed; delete r._tele; });
   return {
     events, complete: calls.complete, fails: calls.fail,
     spends: bank.spends, gains: bank.gains, bankLeft: bank.n,
@@ -170,17 +194,18 @@ def run_sims(pw, results):
     pins = {}
 
     scenarios = {
-        # neutral run through the whole learn window; unlimited stub bank so any
+        # dodge-tap driver through the whole learn window; unlimited stub bank so any
         # death just continues and never truncates the 35 s measurement window
-        "density": {"seed": SEED, "bank": 99, "maxS": EARLY_T + 0.5,
+        "density": {"seed": SEED, "bank": 99, "maxS": EARLY_T + 0.5, "driver": "taps",
                     "spawnTimeline": True},
         # AC2 logic: exactly 3 bank lives → 3 continues → 4th death hard-fails
-        "losepath": {"seed": SEED, "bank": 3, "maxS": 150},
+        # (neutral driver — deterministic wall-horde deaths, no taps needed)
+        "losepath": {"seed": SEED, "bank": 3, "maxS": 150, "driver": "neutral"},
         # today-0 behavior: no api.lives at all → first death hard-fails
-        "ducktype": {"seed": SEED, "bank": None, "maxS": 150},
-        # first continue must buy ≥ CONTINUE_GRACE of clean road
-        "grace": {"seed": SEED, "bank": 3, "maxS": 120, "stopAfterFirstSpawn": True,
-                  "grace": True},
+        "ducktype": {"seed": SEED, "bank": None, "maxS": 150, "driver": "neutral"},
+        # first continue must buy ≥ CONTINUE_GRACE of clean road before the next salvo
+        "grace": {"seed": SEED, "bank": 99, "maxS": 120, "driver": "taps",
+                  "stopAfterFirstSpawn": True, "grace": True},
     }
     for name, sc in scenarios.items():
         page.goto(BASE + "/?sim=1&debug=1")
