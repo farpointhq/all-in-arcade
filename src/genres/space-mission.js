@@ -1362,15 +1362,20 @@ export function create(level, api) {
 
   // ---- moon hud ------------------------------------------------------------------------------
   function moonHud() {
+    // issue #15 B: mid carries STATUS tokens only — control instructions live in
+    // #hudHint (meta.controls); they duplicated it and overran into the right
+    // slot + the lives row at booth width.
     let mid = "";
     const tok = "JETONS/TOKENS " + M.tokens;
-    if (phase === "pad") mid = tok + " · ←→↑↓ shop · ESPACE buy/acheter · ENTRÉE launch/décoller" + (moonEligible() ? " · M lune/moon" : "");
-    else if (phase === "pump") mid = "POMPE/PUMP — ESPACE dans le vert/in the green";
-    else if (phase === "flight") mid = "ALT " + (fl.y / 1000).toFixed(1) + " km · V " + Math.round(Math.hypot(fl.vx, fl.vy)) + " m/s" + (fl.thrusting ? " · POUSSÉE/BURN" : "") + " · ESPACE poussée · ←→ gouverne";
+    if (phase === "pad") mid = tok;
+    else if (phase === "pump") mid = "POMPE/PUMP";
+    else if (phase === "flight") mid = "ALT " + (fl.y / 1000).toFixed(1) + " km · V " + Math.round(Math.hypot(fl.vx, fl.vy)) + " m/s" + (fl.thrusting ? " · POUSSÉE/BURN" : "");
     else if (phase === "tli") mid = "INJECTION LUNAIRE / MOON INJECTION…";
-    else if (phase === "landing") mid = "LUNE/MOON — ALT " + Math.round(land.y) + " m · V " + Math.abs(Math.round(land.vy)) + " m/s — ESPACE rétro/brake < " + MR.landMax + " m/s";
+    else if (phase === "landing") mid = "LUNE/MOON — ALT " + Math.round(land.y) + " m · V " + Math.abs(Math.round(land.vy)) + " m/s";
     else if (phase === "debrief") mid = mDeb && mDeb.moon ? "LUNE ATTEINTE ✓ / MOON REACHED" : "APEX " + (mDeb ? mDeb.km : 0) + " km — +" + (mDeb ? mDeb.total : 0) + " jetons/tokens";
-    let right = "VOL/FLIGHT " + M.launchN;
+    // short form "FLIGHT" (not "VOL/FLIGHT"): the 26vw right cap at booth width
+    // must never eat the BEST number (issue #15 plan, fix B consequence).
+    let right = "FLIGHT " + M.launchN;
     if (M.orbit) right += " · ORBITE ✓";
     if (M.best > 0) right += " · BEST " + M.best + " km";
     const key = mid + "|" + right;

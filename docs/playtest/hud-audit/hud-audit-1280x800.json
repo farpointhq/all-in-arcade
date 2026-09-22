@@ -2,62 +2,62 @@
   "kristopher-federico-study-hall-scramble": {
     "lid": "kristopher-federico-study-hall-scramble",
     "viewport": "1280x800",
-    "ok": false,
+    "ok": true,
     "checks": [
       {
         "name": "collision-free",
-        "ok": false,
-        "detail": "overlapping: ['#hudLeft .t×#hudMid', '#hudMid×#hudLeft .a']"
+        "ok": true,
+        "detail": "overlapping: none"
       },
       {
         "name": "title-capped-ellipsis",
-        "ok": false,
-        "detail": "scrollW=534 clientW=534 cap=410 ellipsis=clip ws=normal"
+        "ok": true,
+        "detail": "scrollW=534 clientW=390 cap=410 ellipsis=ellipsis ws=nowrap"
       },
       {
         "name": "title-attr-mirrors-full-text",
-        "ok": false,
-        "detail": "title='' text='KRISTOPHER-FEDERICO-STUDY-HALL-SCRAMBLE · STUDY HALL SCRAMBLE'"
+        "ok": true,
+        "detail": "title='KRISTOPHER-FEDERICO-STUDY-HALL-SCRAMBLE · STUDY HALL SCRAMBLE' text='KRISTOPHER-FEDERICO-STUDY-HALL-SCRAMBLE · STUDY HALL SCRAMBLE'"
       },
       {
         "name": "mid-fits-slot",
         "ok": true,
-        "detail": "scrollW=253 clientW=253 text='SCORE 00000 · FACTS 136/136'"
+        "detail": "scrollW=253 clientW=253"
       },
       {
         "name": "hearts-class+style",
-        "ok": false,
-        "detail": "text='♥♥♥♥' cls='' size=15 color=rgb(255, 255, 255)"
+        "ok": true,
+        "detail": "text='♥♥♥♥' cls='hearts' size=20 color=rgb(255, 61, 154)"
       },
       {
         "name": "dim-token:#hudLeft .a",
-        "ok": false,
-        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+        "ok": true,
+        "detail": "color=rgb(198, 207, 233) size=12(>=12.0) shadow='rgba(0, 0, 0, 0.6) 0px 1px 3px'"
       },
       {
         "name": "dim-token:#hudLeft .lives .lc",
-        "ok": false,
-        "detail": "color=rgb(154, 164, 198) size=9(>=10.0) shadow='rgba(255, 61, 154, 0.35) 0px 0px 12px'"
+        "ok": true,
+        "detail": "color=rgb(198, 207, 233) size=10(>=10.0) shadow='rgba(0, 0, 0, 0.6) 0px 1px 3px'"
       },
       {
         "name": "dim-token:#hudHint",
-        "ok": false,
-        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+        "ok": true,
+        "detail": "color=rgb(198, 207, 233) size=12(>=12.0) shadow='rgba(0, 0, 0, 0.6) 0px 1px 3px'"
       },
       {
         "name": "contrast-recorded-light:#hudLeft .a",
         "ok": true,
-        "detail": "ratio=8.18 sample=[6, 6, 11] (mechanism asserted)"
+        "detail": "ratio=12.87 sample=[7, 8, 12] (mechanism asserted)"
       },
       {
         "name": "contrast-recorded-light:#hudLeft .lives .lc",
         "ok": true,
-        "detail": "ratio=7.50 sample=[18, 20, 17] (mechanism asserted)"
+        "detail": "ratio=11.91 sample=[18, 20, 17] (mechanism asserted)"
       },
       {
         "name": "contrast-recorded-light:#hudHint",
         "ok": true,
-        "detail": "ratio=8.18 sample=[5, 6, 15] (mechanism asserted)"
+        "detail": "ratio=12.99 sample=[5, 6, 15] (mechanism asserted)"
       },
       {
         "name": "boot-canvas+hud",
@@ -84,62 +84,62 @@
   "louis-philippe-gaulin-knight-s-dungeon-scramble": {
     "lid": "louis-philippe-gaulin-knight-s-dungeon-scramble",
     "viewport": "1280x800",
-    "ok": false,
+    "ok": true,
     "checks": [
       {
         "name": "collision-free",
-        "ok": false,
-        "detail": "overlapping: ['#hudLeft .t×#hudMid', '#hudMid×#hudLeft .a']"
+        "ok": true,
+        "detail": "overlapping: none"
       },
       {
         "name": "title-capped-ellipsis",
-        "ok": false,
-        "detail": "scrollW=662 clientW=662 cap=410 ellipsis=clip ws=normal"
+        "ok": true,
+        "detail": "scrollW=662 clientW=390 cap=410 ellipsis=ellipsis ws=nowrap"
       },
       {
         "name": "title-attr-mirrors-full-text",
-        "ok": false,
-        "detail": "title='' text=\"LOUIS-PHILIPPE-GAULIN-KNIGHT-S-DUNGEON-SCRAMBLE · KNIGHT'S DUNGEON SCRAMBLE\""
+        "ok": true,
+        "detail": "title=\"LOUIS-PHILIPPE-GAULIN-KNIGHT-S-DUNGEON-SCRAMBLE · KNIGHT'S DUNGEON SCRAMBLE\" text=\"LOUIS-PHILIPPE-GAULIN-KNIGHT-S-DUNGEON-SCRAMBLE · KNIGHT'S DUNGEON SCRAMBLE\""
       },
       {
         "name": "mid-fits-slot",
         "ok": true,
-        "detail": "scrollW=423 clientW=423 text='GLORY 00000 · FACTS 136/136 · XP SQUIRE 0/1000'"
+        "detail": "scrollW=423 clientW=423"
       },
       {
         "name": "hearts-class+style",
-        "ok": false,
-        "detail": "text='♥♥♥' cls='' size=15 color=rgb(255, 255, 255)"
+        "ok": true,
+        "detail": "text='♥♥♥' cls='hearts' size=20 color=rgb(255, 61, 154)"
       },
       {
         "name": "dim-token:#hudLeft .a",
-        "ok": false,
-        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+        "ok": true,
+        "detail": "color=rgb(198, 207, 233) size=12(>=12.0) shadow='rgba(0, 0, 0, 0.6) 0px 1px 3px'"
       },
       {
         "name": "dim-token:#hudLeft .lives .lc",
-        "ok": false,
-        "detail": "color=rgb(154, 164, 198) size=9(>=10.0) shadow='rgba(255, 61, 154, 0.35) 0px 0px 12px'"
+        "ok": true,
+        "detail": "color=rgb(198, 207, 233) size=10(>=10.0) shadow='rgba(0, 0, 0, 0.6) 0px 1px 3px'"
       },
       {
         "name": "dim-token:#hudHint",
-        "ok": false,
-        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+        "ok": true,
+        "detail": "color=rgb(198, 207, 233) size=12(>=12.0) shadow='rgba(0, 0, 0, 0.6) 0px 1px 3px'"
       },
       {
         "name": "contrast-recorded-light:#hudLeft .a",
         "ok": true,
-        "detail": "ratio=8.19 sample=[5, 6, 11] (mechanism asserted)"
+        "detail": "ratio=13.00 sample=[6, 6, 11] (mechanism asserted)"
       },
       {
         "name": "contrast-recorded-light:#hudLeft .lives .lc",
         "ok": true,
-        "detail": "ratio=7.88 sample=[15, 12, 12] (mechanism asserted)"
+        "detail": "ratio=12.52 sample=[15, 12, 12] (mechanism asserted)"
       },
       {
         "name": "contrast-recorded-light:#hudHint",
         "ok": true,
-        "detail": "ratio=8.18 sample=[5, 6, 15] (mechanism asserted)"
+        "detail": "ratio=12.99 sample=[5, 6, 15] (mechanism asserted)"
       },
       {
         "name": "boot-canvas+hud",
@@ -166,7 +166,7 @@
   "L01": {
     "lid": "L01",
     "viewport": "1280x800",
-    "ok": false,
+    "ok": true,
     "checks": [
       {
         "name": "collision-free",
@@ -180,48 +180,48 @@
       },
       {
         "name": "title-attr-mirrors-full-text",
-        "ok": false,
-        "detail": "title=''"
+        "ok": true,
+        "detail": "title='L01 · GREENWAY GALLOP'"
       },
       {
         "name": "mid-fits-slot",
         "ok": true,
-        "detail": "scrollW=52 clientW=52 text='★ 0/7'"
+        "detail": "scrollW=52 clientW=52"
       },
       {
         "name": "hearts-class+style",
-        "ok": false,
-        "detail": "text='♥♥♥' cls='' size=15 color=rgb(255, 255, 255)"
+        "ok": true,
+        "detail": "text='♥♥♥' cls='hearts' size=20 color=rgb(255, 61, 154)"
       },
       {
         "name": "dim-token:#hudLeft .a",
-        "ok": false,
-        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+        "ok": true,
+        "detail": "color=rgb(198, 207, 233) size=12(>=12.0) shadow='rgba(0, 0, 0, 0.6) 0px 1px 3px'"
       },
       {
         "name": "dim-token:#hudLeft .lives .lc",
-        "ok": false,
-        "detail": "color=rgb(154, 164, 198) size=9(>=10.0) shadow='rgba(255, 61, 154, 0.35) 0px 0px 12px'"
+        "ok": true,
+        "detail": "color=rgb(198, 207, 233) size=10(>=10.0) shadow='rgba(0, 0, 0, 0.6) 0px 1px 3px'"
       },
       {
         "name": "dim-token:#hudHint",
-        "ok": false,
-        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+        "ok": true,
+        "detail": "color=rgb(198, 207, 233) size=12(>=12.0) shadow='rgba(0, 0, 0, 0.6) 0px 1px 3px'"
       },
       {
         "name": "contrast-recorded-light:#hudLeft .a",
         "ok": true,
-        "detail": "ratio=7.81 sample=[11, 14, 21] (mechanism asserted)"
+        "detail": "ratio=10.95 sample=[20, 29, 38] (mechanism asserted)"
       },
       {
         "name": "contrast-recorded-light:#hudLeft .lives .lc",
         "ok": true,
-        "detail": "ratio=1.10 sample=[110, 163, 197] (mechanism asserted)"
+        "detail": "ratio=1.71 sample=[112, 165, 199] (mechanism asserted)"
       },
       {
         "name": "contrast-recorded-light:#hudHint",
         "ok": true,
-        "detail": "ratio=8.18 sample=[5, 6, 15] (mechanism asserted)"
+        "detail": "ratio=12.99 sample=[5, 6, 15] (mechanism asserted)"
       },
       {
         "name": "boot-canvas+hud",
@@ -248,7 +248,7 @@
   "L03": {
     "lid": "L03",
     "viewport": "1280x800",
-    "ok": false,
+    "ok": true,
     "checks": [
       {
         "name": "collision-free",
@@ -262,13 +262,13 @@
       },
       {
         "name": "title-attr-mirrors-full-text",
-        "ok": false,
-        "detail": "title=''"
+        "ok": true,
+        "detail": "title='L03 · FROST DEPOT'"
       },
       {
         "name": "mid-fits-slot",
         "ok": true,
-        "detail": "scrollW=155 clientW=155 text='CRATES 0/3 placed'"
+        "detail": "scrollW=155 clientW=155"
       },
       {
         "name": "hearts-class-absent-on-non-hearts",
@@ -277,33 +277,33 @@
       },
       {
         "name": "dim-token:#hudLeft .a",
-        "ok": false,
-        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+        "ok": true,
+        "detail": "color=rgb(198, 207, 233) size=12(>=12.0) shadow='rgba(0, 0, 0, 0.6) 0px 1px 3px'"
       },
       {
         "name": "dim-token:#hudLeft .lives .lc",
-        "ok": false,
-        "detail": "color=rgb(154, 164, 198) size=9(>=10.0) shadow='rgba(255, 61, 154, 0.35) 0px 0px 12px'"
+        "ok": true,
+        "detail": "color=rgb(198, 207, 233) size=10(>=10.0) shadow='rgba(0, 0, 0, 0.6) 0px 1px 3px'"
       },
       {
         "name": "dim-token:#hudHint",
-        "ok": false,
-        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+        "ok": true,
+        "detail": "color=rgb(198, 207, 233) size=12(>=12.0) shadow='rgba(0, 0, 0, 0.6) 0px 1px 3px'"
       },
       {
         "name": "contrast-recorded-light:#hudLeft .a",
         "ok": true,
-        "detail": "ratio=7.80 sample=[12, 14, 21] (mechanism asserted)"
+        "detail": "ratio=10.84 sample=[24, 29, 40] (mechanism asserted)"
       },
       {
         "name": "contrast-recorded-light:#hudLeft .lives .lc",
         "ok": true,
-        "detail": "ratio=1.00 sample=[133, 168, 206] (mechanism asserted)"
+        "detail": "ratio=1.55 sample=[135, 170, 209] (mechanism asserted)"
       },
       {
         "name": "contrast-recorded-light:#hudHint",
         "ok": true,
-        "detail": "ratio=8.18 sample=[5, 6, 15] (mechanism asserted)"
+        "detail": "ratio=12.99 sample=[5, 6, 15] (mechanism asserted)"
       },
       {
         "name": "boot-canvas+hud",
@@ -330,7 +330,7 @@
   "L04": {
     "lid": "L04",
     "viewport": "1280x800",
-    "ok": false,
+    "ok": true,
     "checks": [
       {
         "name": "collision-free",
@@ -344,48 +344,48 @@
       },
       {
         "name": "title-attr-mirrors-full-text",
-        "ok": false,
-        "detail": "title=''"
+        "ok": true,
+        "detail": "title='L04 · STAR CAVALCADE'"
       },
       {
         "name": "mid-fits-slot",
         "ok": true,
-        "detail": "scrollW=60 clientW=60 text='0/9000'"
+        "detail": "scrollW=60 clientW=60"
       },
       {
         "name": "hearts-class+style",
-        "ok": false,
-        "detail": "text='♥♥♥' cls='' size=15 color=rgb(255, 255, 255)"
+        "ok": true,
+        "detail": "text='♥♥♥' cls='hearts' size=20 color=rgb(255, 61, 154)"
       },
       {
         "name": "dim-token:#hudLeft .a",
-        "ok": false,
-        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+        "ok": true,
+        "detail": "color=rgb(198, 207, 233) size=12(>=12.0) shadow='rgba(0, 0, 0, 0.6) 0px 1px 3px'"
       },
       {
         "name": "dim-token:#hudLeft .lives .lc",
-        "ok": false,
-        "detail": "color=rgb(154, 164, 198) size=9(>=10.0) shadow='rgba(255, 61, 154, 0.35) 0px 0px 12px'"
+        "ok": true,
+        "detail": "color=rgb(198, 207, 233) size=10(>=10.0) shadow='rgba(0, 0, 0, 0.6) 0px 1px 3px'"
       },
       {
         "name": "dim-token:#hudHint",
-        "ok": false,
-        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+        "ok": true,
+        "detail": "color=rgb(198, 207, 233) size=12(>=12.0) shadow='rgba(0, 0, 0, 0.6) 0px 1px 3px'"
       },
       {
         "name": "contrast>=4.5-dark:#hudLeft .a",
         "ok": true,
-        "detail": "ratio=8.23 sample=[5, 5, 11] tainted=False"
+        "detail": "ratio=13.07 sample=[5, 5, 11] tainted=False"
       },
       {
         "name": "contrast>=4.5-dark:#hudLeft .lives .lc",
         "ok": true,
-        "detail": "ratio=8.26 sample=[4, 4, 15] tainted=False"
+        "detail": "ratio=13.12 sample=[4, 4, 15] tainted=False"
       },
       {
         "name": "contrast>=4.5-dark:#hudHint",
         "ok": true,
-        "detail": "ratio=8.18 sample=[5, 6, 15] tainted=False"
+        "detail": "ratio=12.99 sample=[5, 6, 15] tainted=False"
       },
       {
         "name": "boot-canvas+hud",
@@ -412,12 +412,12 @@
   "mark-abdallah-slingshot-duck-season": {
     "lid": "mark-abdallah-slingshot-duck-season",
     "viewport": "1280x800",
-    "ok": false,
+    "ok": true,
     "checks": [
       {
         "name": "ammo-mid",
-        "ok": false,
-        "detail": "mid='FLIGHT 1/3 · ✓ 0 · ♥ 3'"
+        "ok": true,
+        "detail": "mid='FLIGHT 1/3 · ✓ 0 · AMMO 3'"
       },
       {
         "name": "hearts-class-absent-on-non-hearts",
@@ -449,17 +449,17 @@
   "matt-mayer-mda-space-mission": {
     "lid": "matt-mayer-mda-space-mission",
     "viewport": "1280x800",
-    "ok": false,
+    "ok": true,
     "checks": [
       {
         "name": "moon-mid-status-only",
-        "ok": false,
-        "detail": "control strings: ['ALT 0.0 km · V 10 m/s · POUSSÉE/BURN · ESPACE poussée · ←→ gouverne', 'ALT 0.0 km · V 20 m/s · POUSSÉE/BURN · ESPACE poussée · ←→ gouverne', 'ALT 0.0 km · V 23 m/s · POUSSÉE/BURN · ESPACE poussée · ←→ gouverne']"
+        "ok": true,
+        "detail": "control strings: []"
       },
       {
         "name": "moon-mid-status-seen",
         "ok": true,
-        "detail": "mids seen: ['ALT 0.0 km · V 10 m/s · POUSSÉE/BURN · ESPACE poussée · ←→ gouverne', 'ALT 0.0 km · V 20 m/s · POUSSÉE/BURN · ESPACE poussée · ←→ gouverne', 'ALT 0.0 km · V 23 m/s · POUSSÉE/BURN · ESPACE poussée · ←→ gouverne']"
+        "detail": "mids seen: ['ALT 0.0 km · V 16 m/s · POUSSÉE/BURN', 'ALT 0.0 km · V 19 m/s · POUSSÉE/BURN', 'ALT 0.0 km · V 24 m/s · POUSSÉE/BURN']"
       },
       {
         "name": "moon-right-fits",
@@ -468,8 +468,8 @@
       },
       {
         "name": "moon-right-short-form",
-        "ok": false,
-        "detail": "non-short-form rights: ['VOL/FLIGHT 1', 'VOL/FLIGHT 1 · BEST 1.82 km', 'VOL/FLIGHT 2 · BEST 1.82 km']"
+        "ok": true,
+        "detail": "non-short-form rights: []"
       },
       {
         "name": "moon-collision-free",
