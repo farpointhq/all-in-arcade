@@ -359,6 +359,9 @@ export function create(level, api) {
     if (kind[c + "," + r] === "P") { spawnC = c; spawnR = r; break outer; }
 
   const wrapC = (c) => ((c % COLS) + COLS) % COLS;
+  // toroidal column distance — columns wrap through the tunnel, rows don't;
+  // exact on fractional tile positions (fx floats, issue #8)
+  const wdx = (a, b) => { const d = Math.abs(a - b); return Math.min(d, COLS - d); };
   const inTunnelRow = (r) => tunnelRows.includes(r);
   const isPen = (c, r) => r >= 0 && r < ROWS && kind[wrapC(c) + "," + r] === " " && !inTunnelRow(r);
   const corridorPass = (c, r) => { // shared by player + roaming ghosts + eyes' BFS
@@ -721,14 +724,16 @@ export function create(level, api) {
   function botStep(dt) {
     BOT.t -= dt;
     const threats = ghosts.filter((g) => !g.eaten && !g.fright && (g.phase === "roam" || g.phase === "exit"));
-    const near = threats.filter((g) => Math.abs(g.fx - P.fx) + Math.abs(g.fy - P.fy) <= 4);
+    // threat proximity judged toroidally (issue #8): a monster 2 tiles away
+    // THROUGH the wrap tunnel must read as 2, not ~19
+    const near = threats.filter((g) => wdx(g.fx, P.fx) + Math.abs(g.fy - P.fy) <= 4);
     if (near.length && G.fright <= 0) { // evade: maximize min distance to threats
       let best = null, bd = -Infinity;
       for (const d of TIE) {
         const nc = wrapC(P.fx + d.x), nr = P.fy + d.y;
         if (!corridorPass(nc, nr)) continue;
         let m = Infinity;
-        for (const g of near) m = Math.min(m, Math.abs(g.fx - nc) + Math.abs(g.fy - nr));
+        for (const g of near) m = Math.min(m, wdx(g.fx, nc) + Math.abs(g.fy - nr));
         if (m > bd) { bd = m; best = d; }
       }
       if (best) { P.want = best; return; }
@@ -737,7 +742,7 @@ export function create(level, api) {
     BOT.t = 0.1;
     const blocked = new Set();
     for (const g of threats) {
-      const dg = Math.abs(g.fx - P.fx) + Math.abs(g.fy - P.fy);
+      const dg = wdx(g.fx, P.fx) + Math.abs(g.fy - P.fy);
       if (dg > 9) continue;
       const shadow = dg <= 3 ? 2 : 1; // close threats get a wider shadow (not `R` — that's the RPG config)
       for (let dx = -shadow; dx <= shadow; dx++) for (let dy = -shadow; dy <= shadow; dy++) {
@@ -749,7 +754,16 @@ export function create(level, api) {
       if (blocked.has(cc + "," + rr2) || !corridorPass(cc, rr2)) continue;
       let ex = 0;
       for (const d of TIE) if (corridorPass(wrapC(cc + d.x), rr2 + d.y)) ex++;
-      if (ex === 1 && threats.some((g) => Math.abs(g.fx - cc) + Math.abs(g.fy - rr2) <= 7)) blocked.add(cc + "," + rr2);
+      if (ex === 1 && threats.some((g) => wdx(g.fx, cc) + Math.abs(g.fy - rr2) <= 7)) blocked.add(cc + "," + rr2);
+    }
+    // tunnel-entry guard (issue #8): while a threat is within wdx <= 6 of the
+    // player, block every tunnel-row cell within wdx <= 5 of it — the bot must
+    // not route into the wrap tunnel as a ghost enters the far end. Tunnel
+    // dots stay reachable via the wrap-gated raw fallback below.
+    for (const g of threats) {
+      if (wdx(g.fx, P.fx) + Math.abs(g.fy - P.fy) > 6) continue;
+      for (const tr of tunnelRows) for (let c = 0; c < COLS; c++)
+        if (wdx(g.fx, c) <= 5) blocked.add(c + "," + tr);
     }
     const pass = (c, r) => corridorPass(c, r) && !blocked.has(c + "," + r);
     const go = (path) => { if (path && path.length) { const t0 = path[0]; let dx = t0.c - P.fx, dy = t0.r - P.fy; if (dx > 1) dx = -1; else if (dx < -1) dx = 1; if (dy > 1) dy = -1; else if (dy < -1) dy = 1; const d = TIE.find((v) => v.x === dx && v.y === dy); if (d) { P.want = d; return true; } } return false; };
@@ -759,7 +773,7 @@ export function create(level, api) {
     }
     if (go(bfs(P.fx, P.fy, (t) => { const d = dots[t.c + "," + t.r]; return d && d.apple && !d.got; }, pass))) return; // runes/apples
     if (go(bfs(P.fx, P.fy, (t) => { const d = dots[t.c + "," + t.r]; return d && !d.got; }, pass))) return;       // nearest loot
-    if (threats.every((g) => Math.abs(g.fx - P.fx) + Math.abs(g.fy - P.fy) > 3)) // raw fallback only when no threat is breathing down the neck
+    if (threats.every((g) => wdx(g.fx, P.fx) + Math.abs(g.fy - P.fy) > 3)) // raw fallback only when no threat is breathing down the neck (toroidal — issue #8)
       if (go(bfs(P.fx, P.fy, (t) => { const d = dots[t.c + "," + t.r]; return d && !d.got; }, corridorPass))) return;
     // cornered: no route — still pick the move that maximizes distance to the nearest threat
     {
@@ -768,7 +782,7 @@ export function create(level, api) {
         const nc = wrapC(P.fx + d.x), nr = P.fy + d.y;
         if (!corridorPass(nc, nr)) continue;
         let m2 = Infinity;
-        for (const g of threats) m2 = Math.min(m2, Math.abs(g.fx - nc) + Math.abs(g.fy - nr));
+        for (const g of threats) m2 = Math.min(m2, wdx(g.fx, nc) + Math.abs(g.fy - nr));
         if (m2 > bd) { bd = m2; best = d; }
       }
       if (best) P.want = best;
@@ -1302,6 +1316,7 @@ export function create(level, api) {
       snapshot: () => ({
         status: G.status, t: +G.t.toFixed(1), score: G.score, lives: G.lives,
         facts: G.facts, totalFacts, fright: +G.fright.toFixed(1), bot: BOT.on,
+        player: { fx: P.fx, fy: P.fy, tx: P.tx, ty: P.ty, prog: +P.prog.toFixed(2) },
         xp: G.xp, xpLvl: G.xpLvl, shields: G.shields, invuln: +G.invuln.toFixed(2),
         board: { ox, oy, T, COLS, ROWS },
         ghosts: ghosts.map((g) => ({
