@@ -42,7 +42,7 @@ def save_flag(pg):
 
 
 with sync_playwright() as p:
-    b = p.chromium.launch()
+    b = p.chromium.launch(headless=True, args=["--mute-audio"])  # booth rule: the game never makes sound
     pg = b.new_page(viewport={"width": 1280, "height": 720})
     pg.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
     pg.on("pageerror", lambda e: errors.append(f"pageerror: {e}"))

@@ -9,8 +9,9 @@ Exit 0 iff all three contracts hold:
   1. CONTROLS  — every src/genres/*.js module carries a meta.controls string in the
                  blessed world-tour/rewind format: "EN: … FR: …" (EN first, FR after).
   2. DISPLAY   — every string literal in src/genres/*.js containing FR diacritics
-                 carries an EN sibling on the same literal: an "EN:"/"FR:" marker, the
+                 carries an EN sibling on the same literal: an "EN:" marker, the
                  bilingual " / " separator, or a word/word pair (e.g. ENTRÉE/ENTER).
+                 A bare "FR:" marker is NOT an EN sibling — FR-only copy must fail.
                  Comments are skipped; escapes and template ${…} nesting are handled.
   3. OBJECTIVES — every levels/*/level.json "objective" containing FR diacritics
                  carries an "FR:" tail (drawn dimmed under the EN line on canvas).
@@ -32,7 +33,13 @@ WORD_SLASH_WORD = re.compile(r"[A-Za-zÀ-ÿ]{2,}/[A-Za-zÀ-ÿ]{2,}")
 
 
 def has_en_sibling(s: str) -> bool:
-    return "EN:" in s or "FR:" in s or " / " in s or bool(WORD_SLASH_WORD.search(s))
+    # "FR:" counts as a bilingual marker ONLY with content before it (the
+    # "EN head… FR: tail" objective convention). An FR-only string like
+    # "FR: attrape-les" is exactly the leak this gate exists to catch (#16 e2e).
+    # \bEN: (not a bare substring) so "WHEN: …" can't masquerade as an EN marker.
+    fr = s.find("FR:")
+    en_head = fr > 0 and bool(s[:fr].strip())
+    return bool(re.search(r"\bEN:", s)) or en_head or " / " in s or bool(WORD_SLASH_WORD.search(s))
 
 
 def scan_js_literals(src: str):
