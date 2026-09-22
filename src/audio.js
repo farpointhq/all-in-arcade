@@ -96,6 +96,7 @@ const MUSIC_FILES = {
   space: "assets/audio/space.ogg",
 };
 const fileEls = {};
+const failedFiles = new Set(); // moods whose file track failed this session
 let fileKey = null;
 
 function stopFile() {
@@ -122,7 +123,11 @@ function ensure() {
     const d = noiseBuf.getChannelData(0);
     for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
   }
-  if (ac.state === "suspended") ac.resume();
+  if (ac.state === "suspended") {
+    // blocked pre-gesture (autoplay policy / booth autostart): swallow the
+    // rejection; the next gesture re-runs ensure() and retries the resume.
+    ac.resume().catch(() => {});
+  }
   // first real gesture: restart anything that was blocked by the autoplay policy
   if (pendingMood) {
     const k = pendingMood;
@@ -155,11 +160,17 @@ export const Audio = {
     timer = setInterval(pump, 60);
   },
   _startFile(key) {
+    if (failedFiles.has(key)) return false; // file failed earlier → synth fallback
     let el = fileEls[key];
     if (!el) {
       try { el = new (window.Audio || window.HTMLAudioElement)(MUSIC_FILES[key]); } catch (e) { return false; }
       el.loop = true; el.preload = "auto";
-      el.addEventListener("error", () => { fileEls[key] = null; if (fileKey === key) { stopFile(); Audio.playMusic(key); } }, { once: true });
+      el.addEventListener("error", () => {
+        el.remove();            // never leave a dead element in the DOM
+        fileEls[key] = null;
+        failedFiles.add(key);   // a missing file 404s forever — stop recreating it
+        if (fileKey === key) { stopFile(); Audio.playMusic(key); } // falls through to the synth
+      }, { once: true });
       el.style.display = "none";
       document.body.appendChild(el);
       fileEls[key] = el;

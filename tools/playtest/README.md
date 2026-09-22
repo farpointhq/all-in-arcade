@@ -56,6 +56,26 @@ Boot URL: `/?level=<id>&bot=1&flavor=<flavor>&debug=1&beats=1` (`&ap=1` for
 mazes). Beats tiles (`#beats img`, `?beats=1`) are expected for platformer,
 nano-cure, shooter, space-mission, rewind, world-tour.
 
+## Audio hardening checks (issue #18)
+
+```bash
+python3 tools/playtest/audio_hardening.py [--port 8618] [--checks 1,2,3]
+                                         [--seconds 180] [--sample-every 10] [--grace 15]
+```
+
+Pins the `src/audio.js` hardening acceptance criteria:
+
+| check | scenario | gate |
+|-------|----------|------|
+| 1 | blocked-audio boot (autoplay-policy flag, no input, `tense`-mood level → synth path) | zero unhandled rejections / pageerrors |
+| 2 | `**/assets/audio/**` route-aborted, level driven for `--seconds` | live `<audio>` count ≤ 9 at every sample and no growth (fail-once guard demotes the mood to the synth after one error) |
+| 3 | default policy, no abort (happy path) | exactly 1 file-backed element, stays in the DOM, `currentTime` advances |
+
+Exit 0 iff every selected check passes. Note: in current Playwright Chromium a
+blocked `ac.resume()` stays *pending* (console warning) rather than rejecting,
+so check 1 is a regression guard there — check 2 is the deterministic
+discriminator for the element-accumulation fix.
+
 ## Port allocation (issue #4 cascade)
 
 `8600 + (issue number % 200)`; playtest agents use 8604–8609 during phases 1–3:
