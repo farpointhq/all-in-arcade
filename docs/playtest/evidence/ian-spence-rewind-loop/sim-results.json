@@ -1,0 +1,643 @@
+{
+  "lid": "ian-spence-rewind-loop",
+  "genre": "rewind",
+  "port": 8604,
+  "flavor": "good",
+  "mode": "all",
+  "driver": "bot",
+  "seconds": 240,
+  "boot": {
+    "ok": true,
+    "ms": 196
+  },
+  "trace": [
+    {
+      "t": 1.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 4215, \"y\": 1223, \"vx\": -165.4, \"vy\": -439.9, \"cam\": 3520, \"ft\": 6, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 0.77, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 1.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 4148, \"y\": 1176, \"vx\": -165.4, \"vy\": 198.4, \"cam\": 3520, \"ft\": 9, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 1.18, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 2.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 4076, \"y\": 1101, \"vx\": -165.4, \"vy\": -257.3, \"cam\": 3520, \"ft\": 13, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 1.58, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 2.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 4009, \"y\": 1127, \"vx\": -165.4, \"vy\": 373.4, \"cam\": 3520, \"ft\": 16, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 1.99, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 2.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 3943, \"y\": 1020, \"vx\": -165.4, \"vy\": -51.7, \"cam\": 3513, \"ft\": 19, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 2.39, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 3.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 3872, \"y\": 1043, \"vx\": -165.4, \"vy\": -557.1, \"cam\": 3442, \"ft\": 22, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 2.79, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 3.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 3805, \"y\": 948, \"vx\": -165.4, \"vy\": 79.4, \"cam\": 3375, \"ft\": 25, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 3.2, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 4.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 3737, \"y\": 1113, \"vx\": -165.4, \"vy\": 716.9, \"cam\": 3307, \"ft\": 29, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 3.61, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 4.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 3671, \"y\": 1308, \"vx\": -165.4, \"vy\": -492.1, \"cam\": 3241, \"ft\": 32, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 4.01, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 4.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 3603, \"y\": 1240, \"vx\": -165.4, \"vy\": 144.9, \"cam\": 3173, \"ft\": 35, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 4.42, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 5.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 3536, \"y\": 1297, \"vx\": -165.4, \"vy\": -454, \"cam\": 3106, \"ft\": 38, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 4.82, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 5.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 3469, \"y\": 1243, \"vx\": -165.4, \"vy\": 170.9, \"cam\": 3039, \"ft\": 41, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 5.23, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 6.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 3402, \"y\": 1293, \"vx\": -165.4, \"vy\": -440.1, \"cam\": 2972, \"ft\": 45, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 5.63, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 6.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 3336, \"y\": 1245, \"vx\": -165.4, \"vy\": 190.3, \"cam\": 2906, \"ft\": 48, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 6.03, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 6.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 3267, \"y\": 1293, \"vx\": -165.4, \"vy\": -441, \"cam\": 2837, \"ft\": 51, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 6.44, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 7.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 3200, \"y\": 1245, \"vx\": -165.4, \"vy\": 190.6, \"cam\": 2770, \"ft\": 54, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 6.85, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 7.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 3134, \"y\": 1289, \"vx\": -165.4, \"vy\": -427.3, \"cam\": 2704, \"ft\": 57, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 7.25, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 8.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 3066, \"y\": 1248, \"vx\": -165.4, \"vy\": 209.8, \"cam\": 2636, \"ft\": 61, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 7.65, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 8.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 2999, \"y\": 1279, \"vx\": -165.4, \"vy\": -388, \"cam\": 2569, \"ft\": 64, \"loops\": 0, \"state\": \"play\", \"enemies\": 0, \"t\": 8.06, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": []}"
+    },
+    {
+      "t": 8.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 2932, \"y\": 1253, \"vx\": -165.4, \"vy\": 242.7, \"cam\": 2502, \"ft\": 67, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 8.47, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 2483, \"y\": 1380, \"vx\": 30}]}"
+    },
+    {
+      "t": 9.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 2865, \"y\": 1276, \"vx\": -165.4, \"vy\": -375.2, \"cam\": 2435, \"ft\": 70, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 8.87, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 2496, \"y\": 1380, \"vx\": 30}]}"
+    },
+    {
+      "t": 9.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 2798, \"y\": 1256, \"vx\": -165.4, \"vy\": 261.7, \"cam\": 2368, \"ft\": 73, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 9.28, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 2508, \"y\": 1380, \"vx\": 30}]}"
+    },
+    {
+      "t": 10.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 2730, \"y\": 1267, \"vx\": -165.4, \"vy\": -336.2, \"cam\": 2300, \"ft\": 77, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 9.68, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 2520, \"y\": 1380, \"vx\": 30}]}"
+    },
+    {
+      "t": 10.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 2664, \"y\": 1260, \"vx\": -165.4, \"vy\": 288.1, \"cam\": 2234, \"ft\": 80, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 10.08, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 2529, \"y\": 1380, \"vx\": 30}]}"
+    },
+    {
+      "t": 11.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 2596, \"y\": 1262, \"vx\": -165.4, \"vy\": -310, \"cam\": 2166, \"ft\": 83, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 10.49, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 2533, \"y\": 1380, \"vx\": 30}]}"
+    },
+    {
+      "t": 11.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 2530, \"y\": 1267, \"vx\": -165.4, \"vy\": 320.6, \"cam\": 2100, \"ft\": 86, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 10.9, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 2537, \"y\": 1380, \"vx\": 30}]}"
+    },
+    {
+      "t": 11.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 1,
+      "state": "{\"phase\": 1, \"x\": 2462, \"y\": 1257, \"vx\": -165.4, \"vy\": -284.1, \"cam\": 2032, \"ft\": 89, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 11.3, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 2542, \"y\": 1380, \"vx\": 30}]}"
+    },
+    {
+      "t": 12.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 2395, \"y\": 1273, \"vx\": -165.4, \"vy\": 346.4, \"cam\": 1965, \"ft\": 93, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 11.71, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 2546, \"y\": 1380, \"vx\": 30}]}"
+    },
+    {
+      "t": 12.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 2327, \"y\": 1253, \"vx\": -165.4, \"vy\": -258.2, \"cam\": 1897, \"ft\": 96, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 12.12, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 2556, \"y\": 1380, \"vx\": 30}, {\"k\": \"walker\", \"x\": 1855, \"y\": 1380, \"vx\": 32}]}"
+    },
+    {
+      "t": 13.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 2260, \"y\": 1279, \"vx\": -165.4, \"vy\": 372.3, \"cam\": 1830, \"ft\": 99, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 12.52, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 2568, \"y\": 1380, \"vx\": 30}, {\"k\": \"walker\", \"x\": 1868, \"y\": 1380, \"vx\": 32}]}"
+    },
+    {
+      "t": 13.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 2193, \"y\": 1249, \"vx\": -165.4, \"vy\": -232.2, \"cam\": 1763, \"ft\": 102, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 12.93, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 2581, \"y\": 1380, \"vx\": 30}, {\"k\": \"walker\", \"x\": 1881, \"y\": 1380, \"vx\": 32}]}"
+    },
+    {
+      "t": 13.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 2126, \"y\": 1287, \"vx\": -165.4, \"vy\": 404.8, \"cam\": 1696, \"ft\": 105, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 13.33, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 2593, \"y\": 1380, \"vx\": 30}, {\"k\": \"walker\", \"x\": 1894, \"y\": 1380, \"vx\": 32}]}"
+    },
+    {
+      "t": 14.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 2060, \"y\": 1246, \"vx\": -165.4, \"vy\": -207.5, \"cam\": 1630, \"ft\": 109, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 13.73, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 2605, \"y\": 1380, \"vx\": 30}, {\"k\": \"walker\", \"x\": 1905, \"y\": 1380, \"vx\": 32}]}"
+    },
+    {
+      "t": 14.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 1992, \"y\": 1294, \"vx\": -165.4, \"vy\": 431, \"cam\": 1562, \"ft\": 112, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 14.14, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 2618, \"y\": 1380, \"vx\": 30}, {\"k\": \"walker\", \"x\": 1909, \"y\": 1380, \"vx\": 32}]}"
+    },
+    {
+      "t": 15.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 1924, \"y\": 1241, \"vx\": -165.4, \"vy\": -166.9, \"cam\": 1494, \"ft\": 115, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 14.55, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1914, \"y\": 1380, \"vx\": 32}]}"
+    },
+    {
+      "t": 15.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 1857, \"y\": 1305, \"vx\": -165.4, \"vy\": 470.2, \"cam\": 1427, \"ft\": 118, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 14.96, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1918, \"y\": 1380, \"vx\": 32}]}"
+    },
+    {
+      "t": 15.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 1789, \"y\": 1237, \"vx\": -165.4, \"vy\": -127.9, \"cam\": 1359, \"ft\": 121, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 15.37, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1923, \"y\": 1380, \"vx\": 32}]}"
+    },
+    {
+      "t": 16.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 1722, \"y\": 1316, \"vx\": -165.4, \"vy\": 502.8, \"cam\": 1292, \"ft\": 125, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 15.77, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1932, \"y\": 1380, \"vx\": 32}]}"
+    },
+    {
+      "t": 16.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 1656, \"y\": 1236, \"vx\": -165.4, \"vy\": -115.6, \"cam\": 1226, \"ft\": 128, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 16.17, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1944, \"y\": 1380, \"vx\": 32}, {\"k\": \"walker\", \"x\": 1165, \"y\": 1380, \"vx\": 33}]}"
+    },
+    {
+      "t": 17.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 1588, \"y\": 1322, \"vx\": -165.4, \"vy\": 522.3, \"cam\": 1158, \"ft\": 131, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 16.58, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1957, \"y\": 1380, \"vx\": 32}, {\"k\": \"walker\", \"x\": 1178, \"y\": 1380, \"vx\": 33}]}"
+    },
+    {
+      "t": 17.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 1522, \"y\": 1235, \"vx\": -165.4, \"vy\": -90.2, \"cam\": 1092, \"ft\": 134, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 16.98, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1970, \"y\": 1380, \"vx\": 32}, {\"k\": \"walker\", \"x\": 1191, \"y\": 1380, \"vx\": 33}]}"
+    },
+    {
+      "t": 17.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 1455, \"y\": 1331, \"vx\": -165.4, \"vy\": 548, \"cam\": 1025, \"ft\": 137, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 17.39, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1983, \"y\": 1380, \"vx\": 32}, {\"k\": \"walker\", \"x\": 1205, \"y\": 1380, \"vx\": 33}]}"
+    },
+    {
+      "t": 18.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 1387, \"y\": 1233, \"vx\": -165.4, \"vy\": -50.9, \"cam\": 957, \"ft\": 141, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 17.8, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1996, \"y\": 1380, \"vx\": 32}, {\"k\": \"walker\", \"x\": 1218, \"y\": 1380, \"vx\": 33}]}"
+    },
+    {
+      "t": 18.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 1320, \"y\": 1345, \"vx\": -165.4, \"vy\": 586.1, \"cam\": 890, \"ft\": 144, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 18.2, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1223, \"y\": 1380, \"vx\": 33}]}"
+    },
+    {
+      "t": 19.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 1253, \"y\": 1233, \"vx\": -165.4, \"vy\": -23.6, \"cam\": 823, \"ft\": 147, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 18.6, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1228, \"y\": 1380, \"vx\": 33}]}"
+    },
+    {
+      "t": 19.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 1187, \"y\": 1351, \"vx\": -165.4, \"vy\": 600.1, \"cam\": 757, \"ft\": 150, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 19, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1232, \"y\": 1380, \"vx\": 33}]}"
+    },
+    {
+      "t": 19.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 1119, \"y\": 1233, \"vx\": -165.4, \"vy\": 2.2, \"cam\": 689, \"ft\": 153, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 19.41, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1237, \"y\": 1380, \"vx\": 33}, {\"k\": \"walker\", \"x\": 625, \"y\": 1380, \"vx\": 34}]}"
+    },
+    {
+      "t": 20.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 1052, \"y\": 1344, \"vx\": -165.4, \"vy\": -595.9, \"cam\": 622, \"ft\": 157, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 19.82, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1244, \"y\": 1380, \"vx\": 33}, {\"k\": \"walker\", \"x\": 639, \"y\": 1380, \"vx\": 34}]}"
+    },
+    {
+      "t": 20.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 985, \"y\": 1233, \"vx\": -165.4, \"vy\": 34.8, \"cam\": 555, \"ft\": 160, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 20.23, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1258, \"y\": 1380, \"vx\": 33}, {\"k\": \"walker\", \"x\": 653, \"y\": 1380, \"vx\": 34}]}"
+    },
+    {
+      "t": 21.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 918, \"y\": 1334, \"vx\": -165.4, \"vy\": -569.7, \"cam\": 488, \"ft\": 163, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 20.63, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1271, \"y\": 1380, \"vx\": 33}, {\"k\": \"walker\", \"x\": 666, \"y\": 1380, \"vx\": 34}]}"
+    },
+    {
+      "t": 21.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 850, \"y\": 1234, \"vx\": -165.4, \"vy\": 67.2, \"cam\": 420, \"ft\": 166, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 21.04, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1285, \"y\": 1380, \"vx\": 33}, {\"k\": \"walker\", \"x\": 680, \"y\": 1380, \"vx\": 34}]}"
+    },
+    {
+      "t": 21.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 783, \"y\": 1323, \"vx\": -165.4, \"vy\": -536.5, \"cam\": 353, \"ft\": 169, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 21.44, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1298, \"y\": 1380, \"vx\": 33}, {\"k\": \"walker\", \"x\": 685, \"y\": 1380, \"vx\": 34}]}"
+    },
+    {
+      "t": 22.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 716, \"y\": 1236, \"vx\": -165.4, \"vy\": 100.1, \"cam\": 286, \"ft\": 173, \"loops\": 0, \"state\": \"play\", \"enemies\": 2, \"t\": 21.85, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 1311, \"y\": 1380, \"vx\": 33}, {\"k\": \"walker\", \"x\": 690, \"y\": 1380, \"vx\": 34}]}"
+    },
+    {
+      "t": 22.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 648, \"y\": 1313, \"vx\": -165.4, \"vy\": -506.1, \"cam\": 218, \"ft\": 176, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 22.26, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 695, \"y\": 1380, \"vx\": 34}]}"
+    },
+    {
+      "t": 23.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 582, \"y\": 1238, \"vx\": -165.4, \"vy\": 118.8, \"cam\": 152, \"ft\": 179, \"loops\": 0, \"state\": \"play\", \"enemies\": 1, \"t\": 22.66, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 700, \"y\": 1380, \"vx\": 34}]}"
+    },
+    {
+      "t": 23.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 514, \"y\": 1304, \"vx\": -165.4, \"vy\": -479.6, \"cam\": 84, \"ft\": 182, \"loops\": 0, \"state\": \"play\", \"enemies\": 3, \"t\": 23.07, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 707, \"y\": 1380, \"vx\": 34}, {\"k\": \"walker\", \"x\": 89, \"y\": 1380, \"vx\": 35}, {\"k\": \"wraith\", \"x\": 121, \"y\": 1289, \"vx\": 0}]}"
+    },
+    {
+      "t": 23.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 448, \"y\": 1240, \"vx\": -165.4, \"vy\": 144.6, \"cam\": 18, \"ft\": 185, \"loops\": 0, \"state\": \"play\", \"enemies\": 3, \"t\": 23.47, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 721, \"y\": 1380, \"vx\": 34}, {\"k\": \"walker\", \"x\": 103, \"y\": 1380, \"vx\": 35}, {\"k\": \"wraith\", \"x\": 169, \"y\": 1274, \"vx\": 0}]}"
+    },
+    {
+      "t": 24.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 380, \"y\": 1297, \"vx\": -165.4, \"vy\": -454.9, \"cam\": 0, \"ft\": 189, \"loops\": 0, \"state\": \"play\", \"enemies\": 3, \"t\": 23.88, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 735, \"y\": 1380, \"vx\": 34}, {\"k\": \"walker\", \"x\": 118, \"y\": 1380, \"vx\": 35}, {\"k\": \"wraith\", \"x\": 213, \"y\": 1291, \"vx\": 0}]}"
+    },
+    {
+      "t": 24.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 313, \"y\": 1243, \"vx\": -165.4, \"vy\": 177.3, \"cam\": 0, \"ft\": 192, \"loops\": 0, \"state\": \"play\", \"enemies\": 3, \"t\": 24.28, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 749, \"y\": 1380, \"vx\": 34}, {\"k\": \"walker\", \"x\": 132, \"y\": 1380, \"vx\": 35}, {\"k\": \"wraith\", \"x\": 213, \"y\": 1291, \"vx\": 0}]}"
+    },
+    {
+      "t": 25.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 245, \"y\": 1288, \"vx\": -165.4, \"vy\": -420.9, \"cam\": 0, \"ft\": 195, \"loops\": 0, \"state\": \"play\", \"enemies\": 3, \"t\": 24.69, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 763, \"y\": 1380, \"vx\": 34}, {\"k\": \"walker\", \"x\": 138, \"y\": 1380, \"vx\": 35}, {\"k\": \"wraith\", \"x\": 213, \"y\": 1291, \"vx\": 0}]}"
+    },
+    {
+      "t": 25.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 241, \"y\": 1277, \"vx\": -165.4, \"vy\": -380.7, \"cam\": 0, \"ft\": 195, \"loops\": 0, \"state\": \"won\", \"enemies\": 3, \"t\": 25.1, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 764, \"y\": 1380, \"vx\": 34}, {\"k\": \"walker\", \"x\": 139, \"y\": 1380, \"vx\": 35}, {\"k\": \"wraith\", \"x\": 213, \"y\": 1291, \"vx\": 0}]}"
+    },
+    {
+      "t": 26.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 241, \"y\": 1277, \"vx\": -165.4, \"vy\": -380.7, \"cam\": 0, \"ft\": 195, \"loops\": 0, \"state\": \"won\", \"enemies\": 3, \"t\": 25.51, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 764, \"y\": 1380, \"vx\": 34}, {\"k\": \"walker\", \"x\": 139, \"y\": 1380, \"vx\": 35}, {\"k\": \"wraith\", \"x\": 213, \"y\": 1291, \"vx\": 0}]}"
+    },
+    {
+      "t": 26.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 241, \"y\": 1277, \"vx\": -165.4, \"vy\": -380.7, \"cam\": 0, \"ft\": 195, \"loops\": 0, \"state\": \"won\", \"enemies\": 3, \"t\": 25.91, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 764, \"y\": 1380, \"vx\": 34}, {\"k\": \"walker\", \"x\": 139, \"y\": 1380, \"vx\": 35}, {\"k\": \"wraith\", \"x\": 213, \"y\": 1291, \"vx\": 0}]}"
+    },
+    {
+      "t": 26.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 241, \"y\": 1277, \"vx\": -165.4, \"vy\": -380.7, \"cam\": 0, \"ft\": 195, \"loops\": 0, \"state\": \"won\", \"enemies\": 3, \"t\": 26.31, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 764, \"y\": 1380, \"vx\": 34}, {\"k\": \"walker\", \"x\": 139, \"y\": 1380, \"vx\": 35}, {\"k\": \"wraith\", \"x\": 213, \"y\": 1291, \"vx\": 0}]}"
+    },
+    {
+      "t": 27.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 241, \"y\": 1277, \"vx\": -165.4, \"vy\": -380.7, \"cam\": 0, \"ft\": 195, \"loops\": 0, \"state\": \"won\", \"enemies\": 3, \"t\": 26.72, \"portalsHit\": 0, \"completed\": false, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 764, \"y\": 1380, \"vx\": 34}, {\"k\": \"walker\", \"x\": 139, \"y\": 1380, \"vx\": 35}, {\"k\": \"wraith\", \"x\": 213, \"y\": 1291, \"vx\": 0}]}"
+    },
+    {
+      "t": 27.6,
+      "canvas": true,
+      "result": true,
+      "pause": false,
+      "resultText": "LEVEL CLEAR!",
+      "beats": 2,
+      "state": "{\"phase\": 1, \"x\": 241, \"y\": 1277, \"vx\": -165.4, \"vy\": -380.7, \"cam\": 0, \"ft\": 195, \"loops\": 0, \"state\": \"won\", \"enemies\": 3, \"t\": 27.13, \"portalsHit\": 0, \"completed\": true, \"decks\": 17, \"pulls\": [2257, 310, 501, 4340], \"detail\": [{\"k\": \"walker\", \"x\": 764, \"y\": 1380, \"vx\": 34}, {\"k\": \"walker\", \"x\": 139, \"y\": 1380, \"vx\": 35}, {\"k\": \"wraith\", \"x\": 213, \"y\": 1291, \"vx\": 0}]}"
+    }
+  ],
+  "console": [
+    "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "error:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "perr": [],
+  "sheets": [
+    "sheet-01.png",
+    "sheet-02.png",
+    "sheet-03.png"
+  ],
+  "stills": [
+    "still-boot.png",
+    "still-win.png"
+  ],
+  "url": "/?level=ian-spence-rewind-loop&bot=1&flavor=good&debug=1&beats=1",
+  "win": true,
+  "winAt": 27.60209894180298,
+  "badnet": [],
+  "consoleClean": true,
+  "noPageerror": true,
+  "netClean": true,
+  "beats": {
+    "expected": true,
+    "count": 2,
+    "ok": true
+  },
+  "video": "/tmp/playtest-raw/ian-spence-rewind-loop-1790059007.webm",
+  "gates": {
+    "boot": true,
+    "consoleClean": true,
+    "noPageerror": true,
+    "netClean": true,
+    "win": true
+  }
+}

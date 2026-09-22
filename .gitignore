@@ -18,3 +18,7 @@ tmp.benchmarks/
 tmp_worktree/
 .claude/
 *.map
+
+# playtest raw artifacts (cascade issue #4): raw video stays out of the repo
+docs/playtest/evidence/**/raw/
+*.webm

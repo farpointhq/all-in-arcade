@@ -1,0 +1,154 @@
+{
+  "lid": "bethany-cloudwalk",
+  "genre": "platformer",
+  "port": 8605,
+  "flavor": "good",
+  "mode": "live",
+  "driver": "keys",
+  "seconds": 240,
+  "boot": {
+    "ok": true,
+    "ms": 157
+  },
+  "trace": [
+    {
+      "t": 1.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "hold:ArrowRight",
+        "tap:Space",
+        "tap:ArrowUp"
+      ]
+    },
+    {
+      "t": 2.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 2.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 3.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 3.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 3.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 4.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp"
+      ]
+    },
+    {
+      "t": 5.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 5.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 5.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 6.3,
+      "canvas": true,
+      "result": true,
+      "pause": false,
+      "resultText": "TRY AGAIN",
+      "beats": 0
+    }
+  ],
+  "console": [
+    "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "error:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "perr": [],
+  "sheets": [
+    "sheet-01.png"
+  ],
+  "stills": [
+    "still-boot.png",
+    "still-error.png",
+    "still-win.png"
+  ],
+  "url": "/?level=bethany-cloudwalk&bot=1&flavor=good&debug=1&beats=1",
+  "verdictNote": "result overlay text did not clearly read as a win",
+  "win": true,
+  "winAt": 6.30263614654541,
+  "badnet": [],
+  "consoleClean": true,
+  "noPageerror": true,
+  "netClean": true,
+  "beats": {
+    "expected": true,
+    "count": 0,
+    "ok": false
+  },
+  "video": "/tmp/playtest-raw/bethany-cloudwalk-1790058045.webm",
+  "gates": {
+    "boot": true,
+    "consoleClean": true,
+    "noPageerror": true,
+    "netClean": true,
+    "win": null
+  }
+}

@@ -1,0 +1,591 @@
+{
+  "lid": "simone-death-star-run",
+  "genre": "star-racer",
+  "port": 8607,
+  "flavor": "good",
+  "mode": "all",
+  "driver": "keys",
+  "seconds": 240,
+  "boot": {
+    "ok": true,
+    "ms": 124
+  },
+  "trace": [
+    {
+      "t": 1.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "hold:ArrowUp",
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 2.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 3.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 4.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 4.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 6.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 6.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 7.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 8.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 9.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 9.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 11.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 11.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 12.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 13.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 14.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 15.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 16.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 16.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 18.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 18.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 19.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 20.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 21.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 22.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 23.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 23.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 25.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 25.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 26.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 27.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 28.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 28.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 30.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 30.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 31.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 32.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 33.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 34.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 35.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 35.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 37.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 37.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 38.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 39.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 40.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 41.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 42.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{}"
+    },
+    {
+      "t": 42.7,
+      "canvas": true,
+      "result": true,
+      "pause": false,
+      "resultText": "TRY AGAIN",
+      "beats": 0,
+      "state": "{}"
+    }
+  ],
+  "console": [
+    "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "error:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "perr": [],
+  "sheets": [
+    "sheet-01.png",
+    "sheet-02.png",
+    "sheet-03.png",
+    "sheet-04.png",
+    "sheet-05.png"
+  ],
+  "stills": [
+    "still-boot.png",
+    "still-error.png",
+    "still-win.png"
+  ],
+  "url": "/?level=simone-death-star-run&bot=1&flavor=good&debug=1&beats=1",
+  "verdictNote": "result overlay text did not clearly read as a win",
+  "win": true,
+  "winAt": 42.70849895477295,
+  "badnet": [],
+  "consoleClean": true,
+  "noPageerror": true,
+  "netClean": true,
+  "beats": {
+    "expected": false,
+    "count": 0,
+    "ok": null
+  },
+  "video": "/tmp/playtest-raw/simone-death-star-run-1790058183.webm",
+  "gates": {
+    "boot": true,
+    "consoleClean": true,
+    "noPageerror": true,
+    "netClean": true,
+    "win": null
+  }
+}
