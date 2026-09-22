@@ -9,10 +9,12 @@
 // Forever. The ONLY way to end the level is to die. Death IS the win: "Congratulations,
 // you won by dying — here's the next level."
 //
-// LEVEL SHAPE — the climb is a two-stage stair: a 4-deck RISE (up ~60-84 px per deck), then
-// a long TERRACE walk (flat planks left), alternating until the gate. So the march covers
-// ~200 ft of horizontal world while gaining ~10 screens of height. Phase 2 simply runs the
-// mirror: fall off terrace right-edges, drop stair-decks, land on the floor at the start.
+// LEVEL SHAPE — the climb is a two-stage stair: a 4-deck RISE (up ~58-84 px per deck), then
+// a long TERRACE walk (flat planks left), alternating until the gate, closed by a LADDER /
+// sky-bridge into the gate plateau. Every consecutive deck pair overlaps (>= 10 px, rise
+// <= 90 px) — no true gaps anywhere, so the whole next deck is always a landing window.
+// Phase 2 simply runs the mirror: fall off terrace right-edges, drop stair-decks, land on
+// the floor at the start.
 //
 // KIOSK RULES — no pits, no spikes, no stomp: falls always land somewhere safe and the
 // ratchet prevents wrong-way traps. Enemies are lethal on contact, which is precisely the
@@ -191,30 +193,64 @@ export function create(level, api) {
   const spawnX = data.spawnX || 4340, gate = data.gate || { x: 205, y: 150 };
   const worldH = data.worldH || 1780;
 
-  // -- deck generation: [RISE 4 decks] → [TERRACE 3-4 planks] → repeat, until the gate. -----
-  // Invariants per hop: rise 58..84 px (apex ≈ 120), left step 100..150 px, width 120..210 →
-  // the next deck's right edge overlaps the hop lane (or a ≤ 40 px true gap). Terraces are
-  // flat planks with small left steps — a breather between climbs.
+  // -- deck generation: OVERLAP stair (no true gaps anywhere) with a climb-aware x-budget. --
+  // Fix for issue #6: the old generator spent its x-budget on far-apart terrace planks
+  // (true gaps 110–146 px — unlandable: a full hop covers ~132 px) and starved the climb,
+  // walling the gate plateau off (549 px, no ladder) — the gate was unreachable for
+  // humans and bots alike. Two invariants now hold, asserted every run by sim.py's
+  // `layout` mode:
+  //   1. every consecutive deck pair overlaps >= 10 px with rise <= 90 px (hop apex ~124 px
+  //      leaves margin) — the WHOLE next deck is the landing window;
+  //   2. terrace planks are contiguous (overlapping, never gapped) and only emitted while
+  //      the remaining x affords the rest of the climb (~140 px per 71 px of climb + a
+  //      450 px reserve); a post-loop ladder + flat sky-bridge connects the stair to the
+  //      gate plateau (rise <= 90, overlap >= 10).
+  // Every non-plateau deck keeps y >= 296, so ONLY the plateau (y = gate.y + 62 = 212) can
+  // satisfy the flip predicate (deck y <= gate.y + 70 = 220 while x < gate.x + 170).
   const decks = [];
   {
-    let x = spawnX - 30, y = groundY - 70;
-    decks.push({ x, y: Math.round(y), w: 150 });               // first easy deck
-    x -= 120;
-    while (x > gate.x + 150 && y > gate.y + 90) {
-      for (let k = 0; k < 4 && x > gate.x + 150 && y > gate.y + 90; k++) {   // rise run
-        decks.push({ x, y: Math.round(y), w: Math.round(120 + R() * 80) });
-        x -= 100 + R() * 50;
-        y -= 58 + R() * 26;
+    const PY = gate.y + 62;                    // plateau top
+    const Y_TOP = gate.y + 150;                // main-loop climb target
+    const Y_SAFE = 296;                        // lowest non-plateau deck top — flip-safe
+    let x = spawnX - 190, y = groundY - 70;
+    // LAUNCH PAD — ONE flat deck ending ~90 px short of the spawn line (issue #6). The
+    // spawn hop's falling crossing comes down at spawnX - 110 ± 20 (rise 70 → offset ~110),
+    // so the pad still catches the climb's floor→chain step; but its right edge stops left
+    // of the exit portal's core: the phase-2 descent walks off the edge and drops onto the
+    // FLOOR ~63 px later, inside the park zone. (A pad overlapping the core's x strands the
+    // descending bot 45 px above the capture disc, ratchet-locked past it — measured.)
+    decks.push({ x, y: Math.round(y), w: 100 });
+    const step = (w, ov, rise) => {            // one overlap-coupled step up-left: the next
+      x = Math.max(160, x - (w - ov));         // deck's right edge tucks ov px past my left
+      y = Math.max(Y_SAFE, y - rise);          // edge (>= 10 px overlap) and rises <= 90 px
+    };
+    while (y > Y_TOP && x > gate.x + 150) {
+      for (let k = 0; k < 4 && y > Y_TOP && x > gate.x + 150; k++) {        // rise run
+        const w = Math.round(120 + R() * 80), ov = 10 + R() * 40;
+        step(w, ov, 58 + R() * 26);
+        decks.push({ x: Math.round(x), y: Math.round(y), w });
       }
-      if (y > gate.y + 120) {
-        for (let k = 0; k < 3 && x > gate.x + 200; k++) {                    // terrace walk
-          const w = Math.round(240 + R() * 160);
-          decks.push({ x: x - w, y: Math.round(y), w });
-          x -= w + 90 + R() * 40;
-        }
+      for (let k = 0; k < 3 && x > gate.x + 200; k++) {                     // terrace walk
+        const w = Math.round(240 + R() * 160);
+        // budget guard: emit a breather plank only if the remaining x still affords the
+        // whole remaining climb (~140 px per 71 px of climb) plus the 450 px ladder reserve
+        if ((x - w) - (gate.x + 150) < 140 * Math.ceil((y - Y_TOP) / 71) + 450) break;
+        const ov = 10 + R() * 40;
+        step(w, ov, 0);                        // flat contiguous plank — overlap, no gap
+        decks.push({ x: Math.round(x), y: Math.round(y), w });
       }
     }
-    decks.push({ x: gate.x - 60, y: gate.y + 62, w: 300 });    // gate plateau
+    while (y - PY > 90) {                                    // ladder: bridge the last climb
+      const w = Math.round(120 + R() * 80), ov = 10 + R() * 40;
+      step(w, ov, 58 + R() * 26);
+      decks.push({ x: Math.round(x), y: Math.round(y), w });
+    }
+    while (x > 435) {                                        // sky-bridge: flat walk to the gate
+      const w = Math.round(240 + R() * 160), ov = 10 + R() * 40;
+      step(w, ov, 0);
+      decks.push({ x: Math.round(x), y: Math.round(y), w });
+    }
+    decks.push({ x: gate.x - 60, y: PY, w: 300 });            // gate plateau (unchanged)
   }
   // Data-driven portal anchors (deterministic from the seed):
   //  - "lane"   : a phase-1 clamp — it sits ON a deck's walk line: walk in and it catches you;
@@ -235,11 +271,23 @@ export function create(level, api) {
   for (let i = 0; i < decks.length - 1; i++) {
     if (R() < 0.55) trees.push({ x: decks[i].x - 26 - R() * 60, y: decks[i].y + 16 });
   }
-  // perchers: resident enemies on fixed decks (activate when the player is near).
+  // perchers: resident deck guardians (issue #6 pool restriction). A guardian may only
+  // sit on a deck that continues its right-hand neighbour's LEVEL — a contiguous
+  // same-height run (terrace planks, the sky-bridge). On a rise deck the guardian clamps
+  // to the deck's right edge — exactly where every hop from below must land — and its
+  // chase reversal closes the last ~20 px mid-air: with a ~132 px arc (air speed 165)
+  // the safe-jump window is ~1 px wide, i.e. unpassable for any policy. Same-height runs
+  // are passable: the hop crosses ~95 px above and sets down 34+ px past the clamp.
+  // Lane-portal anchor decks are excluded too, so no guardian shares a plank with a
+  // portal (protects the partial bot's park and keeps loops out of the good bot's climb).
+  // Pool restriction is the plan's sanctioned mitigation — the enemies are untouched.
   const perchers = [];
   {
     const R2 = mulberry32(seed ^ 0x5f5f);
-    const pool = decks.slice(3, decks.length - 1);
+    const laneDecks = new Set(data.portals.filter((p) => p.type === "lane").map((p) => Math.min(decks.length - 1, (p.idx | 0) + 2)));
+    const pool = [];
+    for (let i = 3; i < decks.length - 1; i++)
+      if (decks[i].y === decks[i - 1].y && !laneDecks.has(i)) pool.push(i);
     for (let i = 0; i < (EN.perchers || 4) && pool.length; i++) {
       const d = pool.splice(Math.floor(R2() * pool.length), 1)[0];
       perchers.push({ home: d.x + d.w * 0.5, x: d.x + d.w * 0.5, y: d.y, active: false, f: 0, deck: d });
@@ -350,9 +398,18 @@ export function create(level, api) {
   // ---- bot (in-module autopilot) ------------------------------------------------------------
   const bot = BOT ? { flavor: BOT, want: { left: false, right: false, jump: false } } : null;
   function threatNear() {
-    // a backwards-time enemy near my plane, closing: hop EARLY — with the walker
-    // hesitation window the arc clears it well before contact.
-    return enemies.some((e) => Math.abs(e.y - (st.y + 23)) < 64 && Math.abs(e.x - st.x) < 240);
+    // a backwards-time enemy near my plane, closing: hop EARLY for walkers — their
+    // hesitation window lets the arc clear them well before contact. Wraiths and birds
+    // close head-on at 332+ px/s, so hop LATE (~180 px) instead — the crossing then
+    // happens near the apex, ~45+ px clear. And only when they are at/below my center:
+    // one hovering ABOVE my walk line is passed UNDER (a hop rises straight through its
+    // kill sphere — measured d≈20 mid-ascent at f=1725; walking keeps dy≈49 > radius 30,
+    // and it only descends ~11 px during the 0.18 s pass).
+    return enemies.some((e) => {
+      if (Math.abs(e.y - (st.y + 23)) >= 64) return false;
+      if (e.kind !== "walker" && e.y < st.y + 23 - 12) return false;
+      return Math.abs(e.x - st.x) < (e.kind === "walker" ? 240 : 180);
+    });
   }
   function runBot() {
     const b = bot.want; b.left = false; b.right = false; b.jump = false;
@@ -362,10 +419,14 @@ export function create(level, api) {
     // portals never end the level — death does. No hopping after the loop.
     if (bot.flavor !== "clumsy" && st.loops >= 1) return b;
     if (bot.flavor === "partial" && st.phase === 1 && st.t > 6) {
-      // stunt: hold AT the first lane portal until the pull captures (bouncy approach, dodge
-      // walkers over long terraces; arrival = instant capture via the pull).
+      // stunt: HEIGHT-GATED park at the first lane portal (issue #6 fix). The old hold
+      // early-returned unconditionally and stopped platforming — it parked wherever the
+      // bot happened to be (the floor, 350 px below the capture core) and never got eaten.
+      // Now: only hold once the bot is near the portal AND on its deck line; otherwise
+      // fall through to the normal platform policy and climb the portal's deck line —
+      // then walk to p.x + 8 and the capture core takes it (portalsHit = 1).
       const p = portals.find((pp) => pp.type === "lane");
-      if (p) {
+      if (p && Math.abs(p.x - st.x) < 260 && Math.abs(st.y + PH / 2 - p.cy) < 80) {
         b.left = st.x > p.x + 8;
         b.jump = st.onGround && (threatNear() || st.frame % 12 === 0);
         return b;
@@ -378,16 +439,77 @@ export function create(level, api) {
       // walks blindly into whatever comes: the first terraced walker catches it fast.
       return b;
     }
+    // deck guardians (perchers) get STALK treatment (issue #6): a same-level guardian
+    // clamps to its deck's right edge — exactly where blind arcs set down — and chases
+    // the bot's x the whole way in. So: no cadence hops inside 280 px (a blind arc lands
+    // inside its kill sphere); walk in quiet, then hop once inside ~98 px — the arc
+    // crosses ~95 px above it and sets down 34+ px past its clamp, which then holds it.
+    // Detection is same-level only (|dy| < 30): a guardian a deck above is the climb
+    // policy's job, and its probe hop naturally touches down ~105 px clear of the clamp.
+    // laneAhead stays live so a portal is never walked into mid-stalk (a premature loop
+    // would freeze the run before the gate flip).
+    const dir = st.phase === 1 ? -1 : 1;
+    // portal hop: trigger 112 px (not 126 ≈ the ~132 px arc span) so the arc sets down
+    // ~20 px past the capture core, and only when the portal is at MY level — a portal a
+    // deck up is the above-hop's problem (issue #6 — the old trigger landed ON the core).
+    const laneAhead = portals.some((pp) => pp.type === "lane" && Math.abs(pp.x - st.x) < 112 &&
+      Math.abs(pp.cy - (st.y + 23)) < 30);
+    const guardian = perchers.find((p) => (p.x - st.x) * dir > 0 &&
+      Math.abs((p.y - 19) - (st.y + 23)) < 30 && Math.abs(p.x - st.x) < 280);
+    if (guardian) {
+      b.jump = st.onGround && (Math.abs(guardian.x - st.x) <= 98 || laneAhead);
+      return b;
+    }
+    // exit portal (phase 2): park on the core and hop in place (issue #6). The capture
+    // core sits 25 px ABOVE the floor-walk line — a walking pass can never touch d < 15,
+    // and blind hop phases misalign with the ~11 px capture windows (the bot walked past
+    // to the wall and stalled there). A vertical hop at dx ≤ 6 crosses the disc on every
+    // ascent (h ∈ 11-39 while |dx| ≤ 9), so: walk onto the core, stop, hop.
+    const exitP = st.phase === 2 ? portals.find((pp) => pp.type === "exit") : null;
+    if (exitP && Math.abs(exitP.x - st.x) < 40) {
+      b.right = st.x < exitP.x - 6;
+      b.jump = st.onGround && (threatNear() || st.frame % 12 === 0);
+      return b;
+    }
     // platform policy: probe ahead; jump if a deck rises OR a lane portal gapes ahead
     // OR a threat is closing (hop it — arcs clear the capture core). A cheap bounce keeps
     // good bots air-dominant over long terraces instead of nibbling walkers.
+    // Two hold rules keep the ~112 px falling crossing (rises 58-84) honest (issue #6):
+    //  - right-edge: the above-hop waits until probe < deck.right - 13, so the crossing
+    //    always touches down ON the target deck;
+    //  - portal dead-zone: when that deck hosts a lane portal, BOTH the above-hop and the
+    //    cadence hold until the crossing lands LEFT of the capture disc (a cadence hop at
+    //    pp.x+113 measured d=9 mid-descent — the disc is ~30 px wide on the landing line).
     if (st.onGround) {
-      const dir = st.phase === 1 ? -1 : 1;
       const probe = st.x + dir * 122;
-      const covers = (d) => probe > d.x - 12 && probe < d.x + d.w + 12;
-      const above = decks.some((d) => covers(d) && d.y + 16 <= st.y - 8);
-      const laneAhead = portals.some((pp) => pp.type === "lane" && Math.abs(pp.x - st.x) < 126);
-      b.jump = above || laneAhead || threatNear() || st.frame % 12 === 0;
+      const inReach = (d) => probe > d.x - 12 && probe < d.x + d.w - 13;
+      // any hop-reachable deck ahead (8-124 px above my feet) — the dead-zone hold must
+      // cover shallow rises too (deck16→17 is 59 px: cadence territory, above ignores it)
+      const reachable = decks.find((d) => d.y <= st.y + 38 && d.y >= st.y - 78 && inReach(d));
+      const above0 = decks.find((d) => d.y + 16 <= st.y - 8 && inReach(d));
+      let hold = false;
+      const t = reachable || above0;
+      if (t) {
+        const pp = portals.find((q) => q.type === "lane" && q.x > t.x && q.x < t.x + t.w);
+        if (pp) {
+          const rise = Math.max(0, (st.y + 46) - t.y);
+          const c = 165.4 * (622 + Math.sqrt(Math.max(0, 622 * 622 - 3120 * rise))) / 1560;
+          // hold ONLY inside the dead zone (a jump from here lands on the capture disc).
+          // Right of it, hop normally: the crossing lands right of the core and the
+          // same-level laneAhead hop then clears it. Holding any wider walks the bot off
+          // the current deck (measured: floor-fall at x=1788).
+          hold = st.x > pp.x - 20 + c && st.x < pp.x + 16 + c;
+        }
+      }
+      const above = !!above0 && !hold;
+      // wraiths/birds punish blind cadence hops (issue #6): they close head-on at 332+
+      // px/s and a wraith can rewind into the arc's landing zone — walk instead, then
+      // take the timed 180 px threat hop (or pass under a hovered one). Same on the exit
+      // approach: hops there overshoot the park zone and wall-stick past the core.
+      const flyerNear = enemies.some((e) => e.kind !== "walker" && Math.abs(e.x - st.x) < 320);
+      const exitNear = exitP && Math.abs(exitP.x - st.x) < 270;
+      b.jump = above || laneAhead || threatNear() ||
+        (!hold && !flyerNear && !exitNear && st.frame % 12 === 0);
     }
     return b;
   }
@@ -671,6 +793,15 @@ export function create(level, api) {
   if (DBG && typeof window !== "undefined") {
     window.__REW = {
       timeScale: 1,
+      // layout: the deterministic structural world (decks + portals + anchors) — read-only,
+      // additive, and asserted every run by sim.py's `layout` mode (traversability invariants).
+      layout: () => ({
+        decks: decks.map((d) => ({ x: d.x, y: d.y, w: d.w })),
+        portals: portals.map((p) => ({ type: p.type, x: p.x, cy: p.cy })),
+        gate: { x: gate.x, y: gate.y },
+        groundY, spawnX, worldW, worldH,
+        trees: trees.length, perchers: perchers.length,
+      }),
       state: () => ({ phase: st.phase, x: Math.round(st.x), y: Math.round(st.y), vx: +st.vx.toFixed(1),
         vy: +st.vy.toFixed(1), cam: Math.round(st.cam), ft: feet(), loops: st.loops, state: st.state,
         enemies: enemies.length, t: +st.t.toFixed(2), portalsHit: st.portalsHit, completed: st.completed,
