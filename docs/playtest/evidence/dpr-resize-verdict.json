@@ -20,47 +20,47 @@
       "dpr": 1
     },
     "dprOnly": {
-      "ok": false,
+      "ok": true,
       "cssUnchanged": true,
       "backing": [
-        1000,
-        640
+        2000,
+        1280
       ],
       "expected": [
         2000,
         1280
       ],
-      "appliedMs": null
+      "appliedMs": 11
     },
     "capSym": {
-      "ok": false,
-      "cap2x": false,
+      "ok": true,
+      "cap2x": true,
       "capBacking": [
-        1000,
-        640
+        2000,
+        1280
       ],
       "capExpected": 2000,
-      "fractional1_5": false,
+      "fractional1_5": true,
       "symmetricReturn": true
     },
     "paused": {
-      "ok": false,
+      "ok": true,
       "pauseScreen": true,
-      "appliedMs": null
+      "appliedMs": 23
     },
     "cdpReal": {
-      "ok": false,
+      "ok": true,
       "realDpr": 2,
       "cssUnchanged": true,
       "backing": [
-        1000,
-        640
+        2000,
+        1280
       ],
-      "appliedMs": null
+      "appliedMs": 24
     },
     "regression": {
       "ok": true,
-      "viewportResizeAppliedMs": 17,
+      "viewportResizeAppliedMs": 18,
       "letterboxS": 1.2292,
       "letterboxFinitePositive": true
     },
@@ -77,5 +77,5 @@
   ],
   "perr": [],
   "badnet": [],
-  "pass": false
+  "pass": true
 }

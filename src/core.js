@@ -347,7 +347,7 @@ export function createEngine(canvas) {
   };
 
   let last = performance.now();
-  let cssW = 0, cssH = 0;
+  let cssW = 0, cssH = 0, lastDpr = 0;
 
   function frame(now) {
     const dt = Math.min(0.05, (now - last) / 1000);
@@ -356,8 +356,8 @@ export function createEngine(canvas) {
 
     const cw = canvas.clientWidth, ch = canvas.clientHeight;
     const dpr = Math.min(2, window.devicePixelRatio || 1);
-    if (cw !== cssW || ch !== cssH) {
-      cssW = cw; cssH = ch;
+    if (cw !== cssW || ch !== cssH || dpr !== lastDpr) {
+      cssW = cw; cssH = ch; lastDpr = dpr;
       canvas.width = Math.max(1, Math.round(cw * dpr));
       canvas.height = Math.max(1, Math.round(ch * dpr));
     }
