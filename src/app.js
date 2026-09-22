@@ -25,16 +25,25 @@ const App = {
 
   // ---- boot ------------------------------------------------------------------
   async boot() {
+    // fatal surface FIRST (issue #9): storage is hostile input, so the handler
+    // must exist before Save.load()/UI.init() run — any boot crash paints the
+    // #fatal overlay, never a bare black screen. NOTE: boot() is async and
+    // App.boot() is fire-and-forget, so a sync throw inside this method
+    // REJECTS boot()'s promise — it never dispatches window "error" on its
+    // own. The unhandledrejection twin is what makes that path visible.
+    const showFatal = (e) => {
+      const msg = (e && e.message) || (e && e.reason && (e.reason.message || e.reason)) || "";
+      const f = $("#fatal");
+      f.style.display = "flex";
+      f.innerHTML = "Something broke in the booth game.<br><br>Find the Fabric agent in chat and say: <b>booth game is erroring</b><br><span style='opacity:.6'>" + msg + "</span>";
+    };
+    window.addEventListener("error", showFatal);
+    window.addEventListener("unhandledrejection", showFatal);
+
     console.info("%cALL IN ARCADE booting…", "color:#7dfcff;font-weight:bold");
     Save.load();
     UI.init(this);
     UI.flushPendingQueue(); // drain ideas queued while the booth server was down (fire-and-forget)
-
-    window.addEventListener("error", (e) => {
-      const f = $("#fatal");
-      f.style.display = "flex";
-      f.innerHTML = "Something broke in the booth game.<br><br>Find the Fabric agent in chat and say: <b>booth game is erroring</b><br><span style='opacity:.6'>" + (e.message || "") + "</span>";
-    });
 
     eng = createEngine($("#stage"));
     eng.setScene(attract);
