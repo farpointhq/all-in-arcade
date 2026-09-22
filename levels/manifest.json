@@ -57,6 +57,10 @@
     {
       "id": "ian-spence-rewind-loop",
       "enabled": true
+    },
+    {
+      "id": "miray-kavruk-world-tour",
+      "enabled": true
     }
   ]
 }
