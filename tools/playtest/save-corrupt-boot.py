@@ -159,7 +159,10 @@ def main():
     try:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=True)
+            # --mute-audio: booth rule — the game never makes sound (first gesture
+            # unlocks the AudioContext; sanitize-repair cases can flip muted back
+            # to false, so the launch flag is the real guarantee)
+            browser = pw.chromium.launch(headless=True, args=["--mute-audio"])
             try:
                 npass = 0
                 for label, payload, expect_continue in CASES:
