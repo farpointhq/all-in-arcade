@@ -1,5 +1,13 @@
 # EXCELLENT.md — Cloudwalk (Bethany's level, L1 of ALL IN ARCADE) — v9 (visual overhaul)
 
+> **Addendum (issue #20 contrast sweep, 2026-09-20 — engine-side, visual only):**
+> the shared platformer painter gained hero locatability fixes that apply here:
+> respawn blink is now an alpha flicker (0.35, never a skipped draw), the hero
+> renders 46 px (hitbox still 24×32) with a soft warm rim halo over the dark
+> bottom band, and cloud runs paint a soft underside shadow strip (α≤0.13,
+> strictly below the cloud base) so pits read as pits (B1/G2). `level.data`
+> rows remain byte-identical to v8/v9; physics path untouched.
+
 My own bar for what "excellent" means for the **first level a real attendee ever built** at the
 All In booth. Bethany asked for *"a platformer that looks something like the cloud level from
 Super Mario Bros."* — so the bar is SMB 1-1 energy: instant recognition, an easy main path,

@@ -1,5 +1,10 @@
 # EXCELLENT.md — Boules de Neige (le niveau de Nicolas, L7 of ALL IN ARCADE)
 
+> **Addendum v3 (issue #20 contrast sweep, 2026-09-20 — visual only):** one-stop
+> glacier tint on the grass cap `#f2f8ff` → `#d7e7f9` so the white snowball and
+> white snow pickups separate from the ground they stand on (A1/A3 intact —
+> still the arctic "pôle Nord" palette; rows, physics and economy untouched).
+
 Ma définition du « excellent » **pour CE niveau**. Nicolas a demandé, verbatim :
 *« je voudrais un jeu où on joue des boules de neige et, en fonction de la saison et en fonction
 de la hauteur du soleil, la boule de neige sera plus ou moins grosse. »*
