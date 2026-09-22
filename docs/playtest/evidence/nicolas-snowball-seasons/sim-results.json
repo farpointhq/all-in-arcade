@@ -1,14 +1,14 @@
 {
   "lid": "nicolas-snowball-seasons",
   "genre": "platformer",
-  "port": 8620,
+  "port": 8616,
   "flavor": "good",
-  "mode": "all",
+  "mode": "live",
   "driver": "keys",
   "seconds": 90,
   "boot": {
     "ok": true,
-    "ms": 131
+    "ms": 120
   },
   "trace": [
     {
@@ -118,7 +118,7 @@
   ],
   "url": "/?level=nicolas-snowball-seasons&bot=1&flavor=good&debug=1&beats=1",
   "win": true,
-  "winAt": 5.337315797805786,
+  "winAt": 5.32676100730896,
   "badnet": [],
   "consoleClean": true,
   "noPageerror": true,
@@ -128,7 +128,7 @@
     "count": 0,
     "ok": null
   },
-  "video": "/tmp/playtest-raw/nicolas-snowball-seasons-1790102921.webm",
+  "video": "/tmp/playtest-raw/nicolas-snowball-seasons-1790098498.webm",
   "gates": {
     "boot": true,
     "consoleClean": true,

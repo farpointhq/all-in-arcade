@@ -18,11 +18,11 @@
 // forceScore() } so playtests can measure honest start→finish clear times against the
 // rubric in levels/L04/EXCELLENT.md. It is inert without the query flag.
 
-import { W, H, clamp, drawText, drawBackdrop } from "../core.js";
+import { W, H, clamp, drawText, drawBilingualText, drawBackdrop } from "../core.js";
 
 export const meta = {
   name: "Shooter",
-  controls: "← → ↑ ↓ move (WASD too) · hold SPACE to fire · catch power-up orbs",
+  controls: "EN: ← → ↑ ↓ move (WASD too) · hold SPACE to fire · catch power-up orbs FR: ← → ↑ ↓ bouger (WASD aussi) · garde ESPACE pour tirer · attrape les orbes",
 };
 
 export function create(level, api) {
@@ -1130,7 +1130,7 @@ export function create(level, api) {
     if (status === "dying") {
       drawText(ctx, "SHIELDS DOWN", W / 2, H * 0.4, { size: 42, color: "#ff5f6d", weight: "bold", alpha: 0.55 + 0.45 * Math.abs(Math.sin(dyingT * 6)), shadow: "rgba(0,0,0,.8)" });
     } else if (t < 3.2) {
-      drawText(ctx, level.objective || "", W / 2, 468, { size: 18, color: "#fff", alpha: t > 2.6 ? (3.2 - t) / 0.6 : 1, shadow: "rgba(0,0,0,.8)" });
+      drawBilingualText(ctx, level.objective || "", W / 2, 468, { size: 18, color: "#fff", alpha: t > 2.6 ? (3.2 - t) / 0.6 : 1, shadow: "rgba(0,0,0,.8)" });
     }
   }
 

@@ -27,7 +27,7 @@ import { W, H, clamp, lerp, drawText, seasonTint, seasonNow } from "../core.js";
 
 export const meta = {
   name: "Nano Cure",
-  controls: "← ↑ ↓ → / ZQSD : conduire le nanobot · ESPACE : bombe anticorps · EN: arrows steer · SPACE: bomb — autofire + absorb are automatic",
+  controls: "EN: ← ↑ ↓ → / WASD steer the nanobot · SPACE: antibody bomb — autofire + absorb are automatic FR: ← ↑ ↓ → / ZQSD conduire le nanobot · ESPACE : bombe anticorps — tir auto + absorption automatiques",
 };
 
 // ---- palette: blood warmth + ALL IN brand tokens ---------------------------------------
@@ -221,8 +221,8 @@ export function create(level, api) {
     phase = tag; phaseT = 0; spawnT = 0.5;
     trace.push(tag + "@" + t.toFixed(1));
     if (tag === "capillaries") banner("CAPILLAIRES", "Absorbez les germes affaiblis — move into them / entrez dedans");
-    if (tag === "artery") banner("ARTÈRE", "Gros dangers : tirez d'abord, absorbez ensuite");
-    if (tag === "boss") { banner("PURGE FINALE", "Absorbez les spores pour ouvrir la membrane"); sfx("bossRoar"); }
+    if (tag === "artery") banner("ARTERY / ARTÈRE", "Gros dangers : tirez d'abord, absorbez ensuite");
+    if (tag === "boss") { banner("FINAL PURGE / PURGE FINALE", "Absorb the spores to open the membrane FR: Absorbez les spores pour ouvrir la membrane"); sfx("bossRoar"); }
     if (BEATS) snap(tag);
   }
   function corridorHw(y) {
@@ -285,7 +285,7 @@ export function create(level, api) {
     while (tier < TIERS.length - 1 && biomass >= TIERS[tier + 1].thr) {
       tier++;
       pl.r = TIERS[tier].r;
-      banner("ÉVOLUTION — " + TIERS[tier].name, "Biomasse " + biomass, 2.2);
+      banner("EVOLUTION / ÉVOLUTION — " + TIERS[tier].name, "Biomass " + biomass + " / Biomasse", 2.2);
       popup(pl.x, pl.y - 30, TIERS[tier].name, C.violet, 17);
       burst(pl.x, pl.y, C.violet, 18, 120); sfx("powerup");
     }
@@ -323,13 +323,13 @@ export function create(level, api) {
     if (status !== "playing") return;
     status = "lost";
     trace.push("lost@" + t.toFixed(1));
-    api.fail(msg || "L'infection prend le dessus — retente ta chance !");
+    api.fail(msg || "The infection takes over — try again! FR: L'infection prend le dessus — retente ta chance !");
   }
   function winNow() {
     if (status !== "playing") return;
     status = "won";
     trace.push("won@" + t.toFixed(1));
-    banner("SANG PROPRE ✓", "Amir Kermany (Clinytic) — Nano Cure", 6);
+    banner("CLEAN BLOOD ✓ / SANG PROPRE", "Amir Kermany (Clinytic) — Nano Cure", 6);
     api.complete({ t: +t.toFixed(1), biomass, absorbed, husked: kills, bombsUsed, season: seasonNow().id });
   }
 
@@ -337,7 +337,7 @@ export function create(level, api) {
   function ensureBoss() {
     boss = { x: W / 2, y: 132, r: 92, cycle: 0, meter: 0, hp: 0, open: false, openT: 0, sprayT: 1.1, aimT: 1.2, wob: 0 };
   }
-  function openCore() { boss.open = true; boss.openT = BOSS.openT; boss.hp = 0; boss.aimT = 0.7; sfx("alarm"); banner("MEMBRANE OUVERTE", "Tirez le noyau !", 1.6); }
+  function openCore() { boss.open = true; boss.openT = BOSS.openT; boss.hp = 0; boss.aimT = 0.7; sfx("alarm"); banner("MEMBRANE OPEN / MEMBRANE OUVERTE", "Shoot the core! FR: Tirez le noyau !", 1.6); }
   function closeCore(pop) {
     boss.open = false; boss.cycle++; boss.meter = 0;
     for (let i = 0; i < 8; i++) {
@@ -469,7 +469,7 @@ export function create(level, api) {
       const prog = clamp(phaseT / cfg.dur, 0, 1);
       upsurgeT -= dt;
       if (phase === "artery") {
-        if (!_upsurgeDone && phaseT >= ART.upsurgeAt) { _upsurgeDone = true; upsurgeT = ART.upsurgeDur; banner("UPSURGE", "La poussée bactérienne !", 1.8); sfx("alarm"); }
+        if (!_upsurgeDone && phaseT >= ART.upsurgeAt) { _upsurgeDone = true; upsurgeT = ART.upsurgeDur; banner("UPSURGE", "The bacterial upsurge! / La poussée bactérienne !", 1.8); sfx("alarm"); }
         for (const pk of artPick) {
           if (!pk.done && phaseT >= pk.at) { pk.done = true; spawnPickup(); }
         }
@@ -621,14 +621,14 @@ export function create(level, api) {
   }
   let _upsurgeDone = false;
   function upsurgeDone(pt) { return _upsurgeDone; }
-  function upsurgeStart() { _upsurgeDone = true; upsurgeT = ART.upsurgeDur; banner("UPSURGE", "La poussée bactérienne !", 1.8); sfx("alarm"); }
+  function upsurgeStart() { _upsurgeDone = true; upsurgeT = ART.upsurgeDur; banner("UPSURGE", "The bacterial upsurge! / La poussée bactérienne !", 1.8); sfx("alarm"); }
 
   function hudPaint() {
     let mid = "", right = "";
     if (phase === "inject") mid = "INJECTION";
     else if (phase === "capillaries") mid = "CAPILLAIRES " + Math.round(clamp(phaseT / CAP.dur, 0, 1) * 100) + "%";
-    else if (phase === "artery") mid = "ARTÈRE " + Math.round(clamp(phaseT / ART.dur, 0, 1) * 100) + "%";
-    else if (boss) mid = bossDying > 0 ? "PURGE FINALE — NETTOYAGE" : "PURGE FINALE — CYCLE " + Math.min(boss.cycle + 1, BOSS.cycles) + "/" + BOSS.cycles;
+    else if (phase === "artery") mid = "ARTERY/ARTÈRE " + Math.round(clamp(phaseT / ART.dur, 0, 1) * 100) + "%";
+    else if (boss) mid = bossDying > 0 ? "FINAL PURGE — CLEANUP / NETTOYAGE" : "FINAL PURGE — CYCLE " + Math.min(boss.cycle + 1, BOSS.cycles) + "/" + BOSS.cycles;
     right = "★ " + biomass + " · B ×" + bombs + " · " + TIERS[Math.min(tier, TIERS.length - 1)].name;
     const key = mid + "|" + right;
     if (key !== lastHud) { lastHud = key; try { api.hud({ mid, right }); } catch (e) { /* thumb-safe */ } }
@@ -848,7 +848,7 @@ export function create(level, api) {
         const frac = clamp((biomass - prev) / Math.max(1, next.thr - prev), 0, 1);
         ctx.fillStyle = "rgba(0,0,0,0.4)"; ctx.fillRect(W / 2 - 110, 18, 220, 8);
         ctx.fillStyle = C.violet; ctx.fillRect(W / 2 - 110, 18, 220 * frac, 8);
-        drawText(ctx, "ÉVOLUTION", W / 2, 38, { size: 11, color: "rgba(216,228,255,0.8)" });
+        drawText(ctx, "EVOLUTION / ÉVOLUTION", W / 2, 38, { size: 11, color: "rgba(216,228,255,0.8)" });
       }
     }
 

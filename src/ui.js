@@ -104,6 +104,7 @@ export const UI = {
     const btn = $("#muteBtn");
     if (btn) { btn.classList.toggle("muted", !!muted); btn.setAttribute("aria-pressed", muted ? "true" : "false"); }
     this.paintSound();
+    this.paintPauseMusic();
   },
   paintSound() {
     const m = Save.data.settings?.musicOn ?? true, s = Save.data.settings?.sfxOn ?? true;
@@ -120,6 +121,16 @@ export const UI = {
     else Audio.setSfxOn(on);
     this.applyAudioState();
     this.toast(on ? (key === "musicOn" ? "Music on" : "Sound FX on") : (key === "musicOn" ? "Music off" : "Sound FX off"), 1400);
+  },
+  // pause-overlay ♪ label — repainted from save state every time the overlay
+  // opens (openPause) and on every audio-flag change (applyAudioState), so it
+  // can't lie even if music was toggled from the SOUND screen mid-run
+  paintPauseMusic() {
+    const b = $("#pauseMusicBtn");
+    if (!b) return;
+    const on = Save.data.settings?.musicOn ?? true;
+    b.textContent = on ? "♪ MUSIC: ON" : "♪ MUSIC: OFF";
+    b.setAttribute("aria-pressed", on ? "true" : "false");
   },
   toggleMute() {
     Save.data.settings.muted = !Save.data.settings.muted;

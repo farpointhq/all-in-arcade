@@ -17,7 +17,7 @@
 // `?ap=1` boots a BFS autopilot and exposes window.__TEST_API__ so the harness
 // can drive full start→finish runs and collect timing evidence.
 
-import { W, H, clamp, drawText, hash, seasonTint, blit } from "../core.js";
+import { W, H, clamp, drawText, drawBilingualText, hash, seasonTint, blit } from "../core.js";
 
 const PI2 = Math.PI * 2;
 // classic tie-break canon: up > left > down > right (identity objects matter)
@@ -291,7 +291,7 @@ const SCROLL = (() => {
 // ---------- the genre ------------------------------------------------------------
 export const meta = {
   name: "Maze Muncher",
-  controls: "← ↑ → ↓ / WASD steer · clear the maze (school facts / dungeon loot)",
+  controls: "EN: ← ↑ → ↓ / WASD steer · clear the maze (school facts / dungeon loot) FR: ← ↑ → ↓ / ZQSD avancer · nettoie le labyrinthe (faits d'école / butin du donjon)",
 };
 
 export function create(level, api) {
@@ -1279,7 +1279,7 @@ export function create(level, api) {
     const cxm = ox + BW / 2, cym = oy + BH / 2;
     if (G.status === "ready") {
       drawText(ctx, DUNGEON ? "HERO ARISE!" : "READY!", cxm, cym - 12, { size: 34, color: GOLD, shadow: "rgba(0,0,0,.6)" });
-      drawText(ctx, level.objective || "Munch every fact!", cxm, cym + 18, { size: 14, color: "#fdf2d0", alpha: 0.95 });
+      drawBilingualText(ctx, level.objective || "Munch every fact!", cxm, cym + 18, { size: 14, color: "#fdf2d0", alpha: 0.95 });
       drawText(ctx, DUNGEON ? "rune stones = TERROR — strike down the pale monsters!" : "gold apples = RECESS power — chase the pale staff!", cxm, cym + 38, { size: 11, color: "#fdf2d0", alpha: 0.65 });
     } else if (G.status === "dying") {
       drawText(ctx, DUNGEON ? "FALLEN!" : "BUSTED!", cxm, cym - 6, { size: 34, color: "#ff6b5e", shadow: "rgba(0,0,0,.6)" });

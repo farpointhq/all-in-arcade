@@ -298,14 +298,14 @@ export function create(level, api) {
       if (asmT >= 1.6) {
         sat.x = BAYX + 70;
         setPhase("carry");
-        setBanner2("PHASE 2 — CARRY THE SATELLITE", "Transportez le satellite vers la fusée — mind the boulders");
+        setBanner2("PHASE 2 — CARRY THE SATELLITE", "Carry the satellite to the rocket — mind the boulders FR: Transportez le satellite vers la fusée");
         api.audio.sfx("select");
       }
     } else if (phase === "carry") {
       if (!carrying && Math.abs(pl.x - sat.x) < 44) {
         carrying = true;
         api.audio.sfx("push");
-        popup(sat.x, GROUND - 96, "SATELLITE PRÊT ✓", C.green);
+        popup(sat.x, GROUND - 96, "SATELLITE READY ✓ / PRÊT", C.green);
       }
       if (carrying && Math.abs(pl.x - PADX) < 50) { setPhase("integrate"); intT = 0; }
     } else if (phase === "integrate") {
@@ -358,7 +358,7 @@ export function create(level, api) {
     if (V3 && i === 0 && ship.twr < 1.02 && !strainShown) {
       strainShown = true;
       anomalies++;
-      setBanner2("TWR " + ship.twr.toFixed(2) + " — MOTEUR EN PEINE / STRAIN", "L'ascension ralentit, anomalie comptée — jamais mortel ✓ · The stack limps, anomaly counted — never lethal ✓");
+      setBanner2("TWR " + ship.twr.toFixed(2) + " — MOTEUR EN PEINE / STRAIN", "The stack limps, anomaly counted — never lethal ✓ FR: L'ascension ralentit, anomalie comptée — jamais mortel ✓");
       api.audio.sfx("alarm");
       popup(W / 2, GROUND - 210, "TWR < 1.02 — STRAIN ✓", C.danger);
     }
@@ -399,7 +399,7 @@ export function create(level, api) {
         api.audio.sfx("crash"); api.eng.shake(0.35);
         gauge.band = Math.max(0.08, gauge.band * SHRINK);
         gauge.c = 0.26 + hash(Math.floor(t * 13) + anomalies * 17) * 0.48;
-        popup(W / 2, H - 160, "ANOMALIE — ZONE DÉCALÉE", C.danger);
+        popup(W / 2, H - 160, "ANOMALY — OFFSET ZONE / ZONE DÉCALÉE", C.danger);
       }
     }
   }
@@ -820,7 +820,7 @@ export function create(level, api) {
       if (V3 && v3Result) {
         const capL = ship.launcher ? ship.launcher.capKg : 0;
         drawText(ctx, ship.contract.en + " · " + ship.contract.fr + " — " + ship.launcher.en + " · " + ship.launcher.fr + " · " + ship.kg + " kg — ★ " + v3Result.stars + "/4", W / 2, H / 2 + 40, { size: 13.5, color: C.gold, shadow: "#05060f" });
-        drawText(ctx, "marge Δv " + v3Result.margins.dvLeft.toFixed(2) + " km/s · réserve " + v3Result.margins.headroom.toFixed(2) + " kW · " + Math.max(0, Math.round(capL - ship.kg)) + " kg non dépensés / unspent", W / 2, H / 2 + 62, { size: 11.5, color: "#9aa4c6" });
+        drawText(ctx, "Δv margin " + v3Result.margins.dvLeft.toFixed(2) + " km/s · headroom " + v3Result.margins.headroom.toFixed(2) + " kW · " + Math.max(0, Math.round(capL - ship.kg)) + " kg unspent / non dépensés", W / 2, H / 2 + 62, { size: 11.5, color: "#9aa4c6" });
       }
       ctx.restore();
     }
@@ -1136,7 +1136,7 @@ export function create(level, api) {
     if (input.just("Enter")) {
       const S = mStack();
       if (S.twr <= 1.02) {
-        setBanner2("TWR " + S.twr.toFixed(2) + " — TROP LOURD / TOO HEAVY", "Ajoutez de la poussée ou allégez — TWR > 1.02 requis ✓ · add thrust — TWR > 1.02 required ✓");
+        setBanner2("TWR " + S.twr.toFixed(2) + " — TROP LOURD / TOO HEAVY", "Add thrust or shed mass — TWR > 1.02 required ✓ FR: Ajoutez de la poussée ou allégez — TWR > 1.02 requis ✓");
         api.audio.sfx("alarm");
       } else {
         setPhase("pump");
@@ -1160,7 +1160,7 @@ export function create(level, api) {
         gauge.band = Math.max(0.08, gauge.band * 0.72);
         gauge.c = 0.26 + hash(Math.floor(t * 13) + M.pumpMisses * 17) * 0.48;
         api.audio.sfx("hit");
-        popup(W / 2, H - 150, "POMPE RATÉE — RÉESSAI ✓", C.danger);
+        popup(W / 2, H - 150, "PUMP FAILED — RETRY ✓ / POMPE RATÉE", C.danger);
         if (M.pumpMisses % 3 === 0) { MQ.q = 0.9; gauge.on = false; moonFlightInit(); } // 3 strikes — the tank just launches sad
       }
     }
@@ -1466,7 +1466,7 @@ export function create(level, api) {
       const my = 210;
       ctx.save(); ctx.globalAlpha = 0.9 + Math.sin(t * 3) * 0.1;
       ctx.fillStyle = M.moonWish ? "rgba(70,242,180,.2)" : "rgba(232,182,76,.18)"; ctx.fillRect(W / 2 - 170, my, 340, 46);
-      drawText(ctx, M.moonWish ? "MISSION LUNAIRE ARMÉE ✓ — ENTRÉE/ENTER" : "MISSION LUNAIRE PRÊTE — [M] ✓", W / 2, my + 28, { size: 14, color: M.moonWish ? C.green : C.gold, shadow: "#05060f" });
+      drawText(ctx, M.moonWish ? "MISSION LUNAIRE ARMÉE ✓ — ENTRÉE/ENTER" : "MOON MISSION READY — [M] ✓ / MISSION LUNAIRE PRÊTE", W / 2, my + 28, { size: 14, color: M.moonWish ? C.green : C.gold, shadow: "#05060f" });
       ctx.restore();
     }
   }
@@ -1584,7 +1584,7 @@ export function create(level, api) {
     drawText(ctx, Math.max(0, Math.round(land.y)) + " m", W / 2, 84, { size: 40, color: "#fff", shadow: C.gold });
     const vv = Math.abs(land.vy);
     drawText(ctx, vv.toFixed(0) + " m/s " + (vv <= MR.landMax ? "✓" : "⚠ LENT/Low"), W / 2, 124, { size: 20, color: vv <= MR.landMax ? C.green : C.danger, shadow: "#05060f" });
-    drawText(ctx, "rétro " + Math.round(land.prop) + "/" + MLEGS.prop + " kg", W / 2, 152, { size: 12, color: "#9aa4c6", shadow: "#05060f" });
+    drawText(ctx, "retro-thruster/rétro " + Math.round(land.prop) + "/" + MLEGS.prop + " kg", W / 2, 152, { size: 12, color: "#9aa4c6", shadow: "#05060f" });
   }
 
   function drawMoonDebriefPanel(ctx) {

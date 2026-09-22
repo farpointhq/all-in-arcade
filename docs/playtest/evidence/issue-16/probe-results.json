@@ -1,0 +1,94 @@
+{
+ "checks": [
+  {
+   "name": "L02 hint has EN:",
+   "ok": true,
+   "detail": "EN: \u2191 accelerate \u00b7 \u2190 \u2192 steer \u00b7 \u2193 brake \u00b7 reach the finish FR: \u2191 acc\u00e9l\u00e8re \u00b7 \u2190 \u2192 tourne \u00b7 \u2193 "
+  },
+  {
+   "name": "L02 hint has FR:",
+   "ok": true,
+   "detail": "EN: \u2191 accelerate \u00b7 \u2190 \u2192 steer \u00b7 \u2193 brake \u00b7 reach the finish FR: \u2191 acc\u00e9l\u00e8re \u00b7 \u2190 \u2192 tourne \u00b7 \u2193 "
+  },
+  {
+   "name": "pause \u266a label ON",
+   "ok": true,
+   "detail": "\u266a MUSIC: ON"
+  },
+  {
+   "name": "pause \u266a aria-pressed true",
+   "ok": true,
+   "detail": "true"
+  },
+  {
+   "name": "pause \u266a label OFF after click",
+   "ok": true,
+   "detail": "\u266a MUSIC: OFF"
+  },
+  {
+   "name": "pause \u266a aria-pressed false",
+   "ok": true,
+   "detail": "false"
+  },
+  {
+   "name": "save musicOn=false",
+   "ok": true,
+   "detail": "False"
+  },
+  {
+   "name": "toast 'Music off'",
+   "ok": true,
+   "detail": "Music off"
+  },
+  {
+   "name": "no playing <audio>",
+   "ok": true,
+   "detail": "0"
+  },
+  {
+   "name": "pause \u266a label back ON",
+   "ok": true,
+   "detail": "\u266a MUSIC: ON"
+  },
+  {
+   "name": "save musicOn=true",
+   "ok": true,
+   "detail": "True"
+  },
+  {
+   "name": "reopened pause keeps ON",
+   "ok": true,
+   "detail": "\u266a MUSIC: ON"
+  },
+  {
+   "name": "toggle OFF before quit",
+   "ok": true,
+   "detail": "False"
+  },
+  {
+   "name": "L03 pause label OFF (persisted)",
+   "ok": true,
+   "detail": "\u266a MUSIC: OFF"
+  },
+  {
+   "name": "restored ON",
+   "ok": true,
+   "detail": "True"
+  },
+  {
+   "name": "marc hint EN+FR",
+   "ok": true,
+   "detail": "EN: SPACE / \u2191 jump (\u00d72 = double jump, hold = hover) FR: ESPACE / \u2191 sauter (\u00d72 = double sau"
+  }
+ ],
+ "console_errors": [
+  "Failed to load resource: the server responded with a status of 404 (Not Found)",
+  "Failed to load resource: the server responded with a status of 404 (Not Found)",
+  "Failed to load resource: the server responded with a status of 404 (Not Found)",
+  "Failed to load resource: the server responded with a status of 404 (Not Found)",
+  "Failed to load resource: the server responded with a status of 404 (Not Found)",
+  "Failed to load resource: the server responded with a status of 404 (Not Found)",
+  "Failed to load resource: the server responded with a status of 404 (Not Found)",
+  "Failed to load resource: the server responded with a status of 404 (Not Found)"
+ ]
+}

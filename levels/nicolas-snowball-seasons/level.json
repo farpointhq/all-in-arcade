@@ -16,7 +16,7 @@
   "created": "2026-09-16T08:04:00",
   "prompt": "Game. No, actually, I want a platformer. Euh, je voudrais un jeu où on joue des boules de neige et, en fonction de la saison et en fonction de la hauteur du soleil, la boule de neige sera plus ou moins grosse.",
   "brief": "Une boule de neige qui roule, qui grandit avec la neige, qui fond au soleil — et dont la vitesse de fonte dépend de la saison choisie dans l'interface.",
-  "objective": "Attrape la neige pour grossir — le soleil monte et fait fondre ta boule. Atteins le drapeau !",
+  "objective": "Catch snow to grow — the sun rises and melts your ball. Reach the flag! FR: Attrape la neige pour grossir — le soleil monte et fait fondre ta boule. Atteins le drapeau !",
   "win": {
     "type": "reach_goal"
   },

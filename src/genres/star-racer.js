@@ -10,7 +10,7 @@
 //
 // Rendered like the racer genre (segment projector) but the road is a trench: corridor floor plus
 // two wall faces, curved by segment data. All sprites procedural (Route A), zero assets, no emoji.
-import { W, H, clamp, drawText, drawBackdrop, hash, fmtTime } from "../core.js";
+import { W, H, clamp, drawText, drawBilingualText, drawBackdrop, hash, fmtTime } from "../core.js";
 
 const SEG_LEN = 6;          // world units per segment (matches racer.js)
 const ROAD_W = 74;          // corridor half-width in world units
@@ -191,7 +191,7 @@ function paintBolt(g, cx, cy, s) {
 
 export const meta = {
   name: "Star Racer",
-  controls: "← → steer · ↑ ↓ / W S fly high-low · X = blaster (turrets & fighters drop energy) · SPACE: torpedo when fully charged",
+  controls: "EN: ← → steer · ↑ ↓ / W S fly high-low · X = blaster · SPACE: torpedo when charged FR: ← → tourner · ↑ ↓ / W S monter-descendre · X = blaster · ESPACE : torpille chargée",
 };
 
 export function create(level, api) {
@@ -755,7 +755,7 @@ export function create(level, api) {
         W / 2, H * 0.52, { size: 26, color: armed ? "#7dfcff" : "#ffe066", shadow: "rgba(0,0,0,.8)" });
     }
     if (runT < 3.4) {
-      drawText(ctx, level.objective || "", W / 2, H * 0.42, { size: 20, color: "#fff", alpha: runT > 2.6 ? (3.4 - runT) / 0.8 : 1, shadow: "rgba(0,0,0,.8)" });
+      drawBilingualText(ctx, level.objective || "", W / 2, H * 0.42, { size: 20, color: "#fff", alpha: runT > 2.6 ? (3.4 - runT) / 0.8 : 1, shadow: "rgba(0,0,0,.8)" });
     }
   }
 
