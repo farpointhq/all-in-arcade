@@ -391,48 +391,74 @@ export function create(level, api) {
     just: () => BOT_IN.bombJust, jumpJust: () => false, anyJust: () => false,
     endFrame() { BOT_IN.bombJust = false; },
   };
-  function botThink() {
+  function botThink(dt) {
     BOT_IN.l = BOT_IN.r = BOT_IN.u = BOT_IN.d = false;
     if (phase === "inject" || status !== "playing") return;
     if (FLAVOR === "clumsy") { BOT_IN.u = Math.sin(t * 2) > 0; return; } // never dodges, never farms
-    if (FLAVOR === "partial" && fumbleT > 0) { fumbleT -= 1 / 60; BOT_IN.r = true; return; }
-    // danger dodge (same-frame reads)
+    if (FLAVOR === "partial" && fumbleT > 0) { fumbleT -= dt; BOT_IN.r = true; return; }
+    // danger dodge (same-frame reads). Projectiles: sidestep the SHOT LINE — a radial
+    // flee runs down the projectile's own path and gets pinned against the corridor
+    // wall (the live-death mechanism: one bacmaj glob herded the bot 200 px into the
+    // corner clamp, then the next volley finished it). Push along the player's existing
+    // perpendicular offset from the line — the shortest way out of its way.
     let sx = 0, sy = 0;
     for (const b of globs) {
       const dx = pl.x - b.x, dy = pl.y - b.y, d = Math.hypot(dx, dy);
-      if (d < 150 && (b.vy > 0 || dy < 0)) { sx += (dx / (d || 1)) * (150 - d); sy += (dy / (d || 1)) * (150 - d); }
+      if (d >= 150 || !(b.vy > 0 || dy < 0)) continue;
+      const sp = Math.hypot(b.vx, b.vy) || 1;
+      const ux = b.vx / sp, uy = b.vy / sp; // unit vector along the shot line
+      const along = dx * ux + dy * uy;
+      if (along < 0) continue; // already past the player's plane — it will miss
+      const px = dx - along * ux, py = dy - along * uy;
+      const pd = Math.hypot(px, py);
+      const nx = pd > 1 ? px / pd : uy, ny = pd > 1 ? py / pd : -ux; // on the line: sidestep left of travel
+      const w = 150 - d;
+      sx += nx * w; sy += ny * w;
+      if (along < 30) { sx -= ux * w * 0.5; sy -= uy * w * 0.5; } // shot about to cross: also back off along it
     }
     for (const g of germs) {
       if (g.husk || g.r + 2 <= pl.r) continue;
       const dx = pl.x - g.x, dy = pl.y - g.y, d = Math.hypot(dx, dy);
       if (d < pl.r + g.r + 46) { sx += (dx / (d || 1)) * (pl.r + g.r + 46 - d); sy += (dy / (d || 1)) * (pl.r + g.r + 46 - d); }
     }
-    if (boss && !boss.open && Math.abs(pl.x - boss.x) < boss.r + 20 && pl.y - boss.y < boss.r + 60 && pl.y > boss.y) { sy -= 120; }
+    if (boss && !boss.open && Math.abs(pl.x - boss.x) < boss.r + 20 && pl.y - boss.y < boss.r + 60 && pl.y > boss.y) { sy += 120; } // keep-out: push back DOWN below the band (was -= 120, which shoved the bot up into the membrane)
     if (Math.hypot(sx, sy) > 22) {
       sx *= 1.3; // lateral bias — vertical dodges drift you into the flow
       BOT_IN.l = sx < 0; BOT_IN.r = sx > 0; BOT_IN.u = sy < -8; BOT_IN.d = sy > 8; return;
     }
-    // seek nearest absorbable (prefer in-progress + closest)
-    let best = null, bd = 1e9;
-    for (const g of germs) {
-      if (!absorbable(g)) continue;
-      const dy2 = g.y - pl.y; if (dy2 < -60) continue;
-      const d = Math.hypot(g.x - pl.x, g.y - pl.y) - (g.p || 0) * 60;
-      if (d < bd) { bd = d; best = g; }
-    }
-    if (best) {
-      const dx = best.x - pl.x, dy = best.y - pl.y;
-      if (FLAVOR === "partial" && (best.p || 0) > 0.75 && fumbles < 2) {
-        fumbles++; fumbleT = 0.45; trace.push("fumble" + fumbles + "@" + t.toFixed(1));
-        BOT_IN.r = true; return;
+    // seek nearest absorbable (prefer in-progress + closest) — in the boss phase, seek
+    // only SPORES (the phase goal): they fall near the boss column, whereas chasing
+    // stray husks can drag the bot into corners under bacmaj sniper fire. Suppressed
+    // entirely during the open window: channeling drops you to 0.45× speed while aimed
+    // volleys are inbound.
+    if (!(boss && boss.open)) {
+      let best = null, bd = 1e9;
+      for (const g of germs) {
+        if (!absorbable(g)) continue;
+        if (boss && g.kind !== "spore") continue;
+        const dy2 = g.y - pl.y; if (dy2 < -60) continue;
+        const d = Math.hypot(g.x - pl.x, g.y - pl.y) - (g.p || 0) * 60;
+        if (d < bd) { bd = d; best = g; }
       }
-      if (Math.abs(dx) > 8) { BOT_IN.l = dx < 0; BOT_IN.r = dx > 0; }
-      if (Math.abs(dy) > 10) { BOT_IN.u = dy < 0; BOT_IN.d = dy > 0; }
-      return;
+      if (best) {
+        const dx = best.x - pl.x, dy = best.y - pl.y;
+        if (FLAVOR === "partial" && (best.p || 0) > 0.75 && fumbles < 2) {
+          fumbles++; fumbleT = 0.45; trace.push("fumble" + fumbles + "@" + t.toFixed(1));
+          BOT_IN.r = true; return;
+        }
+        if (Math.abs(dx) > 8) { BOT_IN.l = dx < 0; BOT_IN.r = dx > 0; }
+        if (Math.abs(dy) > 10) { BOT_IN.u = dy < 0; BOT_IN.d = dy > 0; }
+        return;
+      }
     }
-    // boss: hold below core, slightly off-axis; stray germs still absorbed by seek above
+    // boss: coherent positioning (F2). Closed: hold below the keep-out band, slightly
+    // off-axis (darts clink off the sealed membrane harmlessly); stray germs still
+    // absorbed by the seek above. Open: deliberately align x to the core axis so darts
+    // land on the nucleus by intent, not wander — hold at shooting distance below.
     if (boss) {
-      const wantX = boss.x + 46, wantY = boss.y + 150;
+      const open = boss.open;
+      const wantX = open ? boss.x : boss.x + 46;
+      const wantY = open ? boss.y + 150 : boss.y + 180; // 180 = below the 152 px keep-out band
       const dx = wantX - pl.x, dy = wantY - pl.y;
       if (Math.abs(dx) > 10) { BOT_IN.l = dx < 0; BOT_IN.r = dx > 0; }
       if (Math.abs(dy) > 10) { BOT_IN.u = dy < 0; BOT_IN.d = dy > 0; }
@@ -452,7 +478,7 @@ export function create(level, api) {
     const flow = FLOW * (upsurgeT > 0 ? 1.5 : 1);
     scroll += dt * flow * 3.4;
 
-    if (BOT) botThink();
+    if (BOT) botThink(dt);
     if (BOT) input = BOT_IN;
 
     // phase machine ------------------------------------------------------------------------
@@ -493,8 +519,12 @@ export function create(level, api) {
     const dirX = (input.left() ? -1 : 0) + (input.right() ? 1 : 0);
     const dirY = (input.up() ? -1 : 0) + (input.downKey() ? 1 : 0);
     const sp = MOVE * (channelTarget ? 0.45 : 1);
-    pl.vx = lerp(pl.vx, dirX * sp, 0.22);
-    pl.vy = lerp(pl.vy, dirY * sp * 0.9, 0.22);
+    // dt-normalized approach lerp: exactly the fixed-step 0.22 at dt = 1/60 (sim behavior
+    // bit-identical), same wall-clock convergence at any fps — a per-frame constant converges
+    // 3× slower per second at 20 Hz, which erased the dodge margin under booth jank.
+    const k = 1 - Math.pow(1 - 0.22, dt * 60);
+    pl.vx = lerp(pl.vx, dirX * sp, k);
+    pl.vy = lerp(pl.vy, dirY * sp * 0.9, k);
     pl.x += pl.vx * dt;
     pl.y += pl.vy * dt + flow * 0.5 * dt;
     const hw = corridorHw(pl.y);
