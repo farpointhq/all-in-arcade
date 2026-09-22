@@ -1,8 +1,13 @@
 {
   "lid": "ian-spence-rewind-loop",
   "modes": [
-    "sims"
+    "all"
   ],
+  "layout": {
+    "ok": true,
+    "notes": [],
+    "decks": 23
+  },
   "sims": {
     "ok": true,
     "notes": [],
@@ -35,5 +40,112 @@
         "season": "na"
       }
     }
+  },
+  "live": {
+    "ok": true,
+    "notes": [],
+    "trace": {
+      "flip": 24.0,
+      "loop": 48.9,
+      "death": 72.2
+    },
+    "end": {
+      "phase": 1,
+      "x": 4340,
+      "y": 1354,
+      "vx": 0,
+      "vy": 0,
+      "cam": 3520,
+      "ft": 0,
+      "loops": 1,
+      "state": "won",
+      "enemies": 9,
+      "t": 72.22,
+      "portalsHit": 1,
+      "completed": true,
+      "decks": 23,
+      "pulls": [
+        2615,
+        1330,
+        1100,
+        4340
+      ],
+      "detail": [
+        {
+          "k": "walker",
+          "x": 4216,
+          "y": 1380,
+          "vx": 45
+        },
+        {
+          "k": "wraith",
+          "x": 4309,
+          "y": 1377,
+          "vx": 0
+        },
+        {
+          "k": "walker",
+          "x": 4173,
+          "y": 1380,
+          "vx": 46
+        },
+        {
+          "k": "walker",
+          "x": 4072,
+          "y": 1380,
+          "vx": 47
+        },
+        {
+          "k": "walker",
+          "x": 3972,
+          "y": 1380,
+          "vx": 48
+        },
+        {
+          "k": "walker",
+          "x": 3839,
+          "y": 1380,
+          "vx": 49
+        }
+      ]
+    },
+    "beats": [
+      "boot-view",
+      "mid-climb",
+      "gate-flip",
+      "phase2-descent",
+      "loop-1"
+    ],
+    "resource404": [
+      "http://127.0.0.1:8197/assets/logo-in.svg",
+      "http://127.0.0.1:8197/assets/logo-all.svg",
+      "http://127.0.0.1:8197/assets/logo-all.svg",
+      "http://127.0.0.1:8197/assets/logo-in.svg",
+      "http://127.0.0.1:8197/assets/logo-in.svg",
+      "http://127.0.0.1:8197/assets/logo-all.svg",
+      "http://127.0.0.1:8197/assets/logo-all.svg",
+      "http://127.0.0.1:8197/assets/logo-in.svg",
+      "http://127.0.0.1:8197/assets/logo-all.svg",
+      "http://127.0.0.1:8197/assets/logo-in.svg",
+      "http://127.0.0.1:8197/assets/logo-all.svg",
+      "http://127.0.0.1:8197/assets/logo-in.svg"
+    ],
+    "console": [
+      "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "error:Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "perr": []
+  },
+  "thumbs": {
+    "ok": true,
+    "bytes": 21459
   }
 }

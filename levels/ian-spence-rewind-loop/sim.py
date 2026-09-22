@@ -141,7 +141,9 @@ def run():
             browser = pw.chromium.launch(headless=True, args=["--mute-audio"])
             page = browser.new_page(viewport={"width": 1000, "height": 640})
             console, perr = [], []
+            resource404 = []   # network-level 4xx/5xx URLs (console 404 text carries no URL)
             page.on("console", lambda m: console.append("%s:%s" % (m.type, m.text)) if m.type in ("error", "warning") else None)
+            page.on("response", lambda r: resource404.append(r.url) if r.status >= 400 else None)
             page.on("pageerror", lambda e: perr.append(str(e)))
 
             # ---------------- layout (structural invariants of the deterministic world) -----
@@ -280,14 +282,21 @@ def run():
                 result_visible = page.evaluate(
                     "() => !!document.querySelector('#screen-result.active')")
                 page.screenshot(path=os.path.join(HERE, "shot-live-end.png"))
-                errs = [c for c in console if c.startswith("error:")]
+                # Resource-load 404s surface in the console WITHOUT their URL, so the
+                # known-logo filter can't match them there — judge them from the network
+                # listener instead: drop the URL-less echoes, keep every other 4xx/5xx URL
+                # that the known-missing-booth-assets filter does not cover.
+                errs = [c for c in console if c.startswith("error:")
+                        and "Failed to load resource" not in c]
+                errs += ["404 %s" % u for u in resource404
+                         if not any(t in u for t in BOOTH_FILTER)]
                 ok = bool(seen["death"]) and result_visible and not filtered(perr) and not filtered(errs)
                 notes = []
                 if not result_visible: notes.append("result overlay never appeared")
                 for k, v in seen.items():
                     if v is None: ok = False; notes.append("live: missing beat '%s'" % k)
                 results["live"] = {"ok": ok, "notes": notes, "trace": seen,
-                                    "end": last, "beats": beats,
+                                    "end": last, "beats": beats, "resource404": resource404,
                                     "console": filtered(console)[-10:], "perr": filtered(perr)}
                 print("[live]", "PASS" if ok else "FAIL", notes)
 
