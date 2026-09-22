@@ -4,6 +4,10 @@
 Booth protocol: rAF throttling kills the shared Fabric tab, so the live verdict runs on
 headless Chromium (compositor alive) against a PRIVATE serve.py port. modes:
 
+  layout  structural asserts on the deterministic deck/portal layout (every consecutive
+          deck pair overlaps >= 10 px with rise <= 90 px; the gate plateau is connected;
+          only the plateau can satisfy the flip predicate; lane portals sit on a deck walk
+          line; exit portal at spawn) — reads window.__REW.layout() from the debug seam.
   live    boot ?level=<LID>&bot=1&flavor=good&debug=1&beats=1 at 4x, poll window.__REW,
           assert the whole paradox trace (climb → gate flip → descent → loop → death-win),
           capture a shot, assert #beats tiles + zero console errors (logo 404 filtered).
@@ -57,6 +61,26 @@ async (flavor) => {
     if (calls.complete.length) break;
   }
   return { flavor, timeline: tl, complete: calls.complete, fails: calls.fail, hud: calls.hud };
+}
+"""
+
+LAYOUT_EVAL = r"""
+async () => {
+  const lvl = await (await fetch("/levels/ian-spence-rewind-loop/level.json")).json();
+  const mod = await import("/src/genres/rewind.js?v=" + Date.now());
+  const neutral = {
+    down: () => false, just: () => false, left: () => false, right: () => false,
+    up: () => false, downKey: () => false, jumpJust: () => false, anyJust: () => false,
+    endFrame() {},
+  };
+  const api = {
+    eng: { shake() {}, flash: 0, input: neutral },
+    audio: { ensure() { return null; }, unlocked: false, sfx() {}, setVolume() {}, playMusic() {}, stopMusic() {} },
+    hud() {}, complete() {}, fail() {},
+    lives: { get: () => 3, spend: () => true, gain: () => true, enabled: true },
+  };
+  mod.create(lvl, api);
+  return window.__REW && window.__REW.layout ? window.__REW.layout() : null;
 }
 """
 
@@ -119,6 +143,68 @@ def run():
             console, perr = [], []
             page.on("console", lambda m: console.append("%s:%s" % (m.type, m.text)) if m.type in ("error", "warning") else None)
             page.on("pageerror", lambda e: perr.append(str(e)))
+
+            # ---------------- layout (structural invariants of the deterministic world) -----
+            if "all" in modes or "layout" in modes:
+                page.goto(BASE + "/?sim=1&debug=1&bot=1&flavor=good")
+                L, layout_error = None, None
+                try:
+                    L = page.evaluate(LAYOUT_EVAL)
+                except Exception as e:
+                    layout_error = str(e)
+                notes = []
+                if not L or not L.get("decks"):
+                    notes.append("layout seam missing/empty" + (" (" + layout_error + ")" if layout_error else ""))
+                else:
+                    decks, portals = L["decks"], L["portals"]
+                    gate, groundY, spawnX = L["gate"], L["groundY"], L["spawnX"]
+                    PY = gate["y"] + 62                      # plateau top
+                    plateau = decks[-1]
+                    if plateau["y"] != PY or plateau["x"] != gate["x"] - 60:
+                        notes.append("plateau moved: y=%s x=%s (want y=%s x=%s)" %
+                                     (plateau["y"], plateau["x"], PY, gate["x"] - 60))
+                    # 1. every consecutive deck pair: overlap >= 10 px, rise <= 90 px
+                    for i in range(len(decks) - 1):
+                        a, b = decks[i], decks[i + 1]
+                        ov = min(a["x"] + a["w"], b["x"] + b["w"]) - max(a["x"], b["x"])
+                        if ov < 10:
+                            notes.append("pair %d-%d overlap %s < 10" % (i, i + 1, ov))
+                        rise = abs(b["y"] - a["y"])
+                        if rise > 90:
+                            notes.append("pair %d-%d rise %s > 90" % (i, i + 1, rise))
+                    # 2. the last pre-plateau deck connects to the gate plateau
+                    pre = decks[-2]
+                    ov = min(pre["x"] + pre["w"], plateau["x"] + plateau["w"]) - max(pre["x"], plateau["x"])
+                    if ov < 10:
+                        notes.append("plateau overlap %s < 10" % ov)
+                    if pre["y"] - PY > 90:
+                        notes.append("plateau rise %s > 90" % (pre["y"] - PY))
+                    # 3. no deck other than the plateau may satisfy the flip predicate
+                    #    (standing feet <= gate.y + 70 while x < gate.x + 170)
+                    for i, d in enumerate(decks[:-1]):
+                        if d["y"] <= gate["y"] + 70 and d["x"] < gate["x"] + 170:
+                            notes.append("deck %d false-triggers flip (y=%s x=%s)" % (i, d["y"], d["x"]))
+                    # 4. portals: lane portals on a deck walk line; exactly one exit portal at spawn
+                    exits = 0
+                    for p in portals:
+                        if p["type"] == "lane":
+                            on = any(abs(d["y"] - 23 - p["cy"]) <= 0.5 and
+                                     d["x"] - 6 <= p["x"] <= d["x"] + d["w"] + 6 for d in decks)
+                            if not on:
+                                notes.append("lane portal (%s,%s) off every deck walk line" % (p["x"], p["cy"]))
+                        elif p["type"] == "exit":
+                            exits += 1
+                            if p["x"] != spawnX or p["cy"] != groundY - 48:
+                                notes.append("exit portal moved: (%s,%s)" % (p["x"], p["cy"]))
+                    if exits != 1:
+                        notes.append("exit portals: %d (want 1)" % exits)
+                    # 5. enough decks that the idx+2 portal anchors don't collide
+                    if len(decks) < 21:
+                        notes.append("only %d decks — portal anchors (idx+2 up to 20) collide" % len(decks))
+                ok = not notes
+                deck_count = len(L.get("decks") or []) if L else 0
+                results["layout"] = {"ok": ok, "notes": notes, "decks": deck_count}
+                print("[layout]", "PASS" if ok else "FAIL", notes)
 
             # ---------------- sims (fixed dt, deterministic, one page per flavor) ----------
             if "all" in modes or "sims" in modes:

@@ -670,6 +670,15 @@ export function create(level, api) {
   if (DBG && typeof window !== "undefined") {
     window.__REW = {
       timeScale: 1,
+      // layout: the deterministic structural world (decks + portals + anchors) — read-only,
+      // additive, and asserted every run by sim.py's `layout` mode (traversability invariants).
+      layout: () => ({
+        decks: decks.map((d) => ({ x: d.x, y: d.y, w: d.w })),
+        portals: portals.map((p) => ({ type: p.type, x: p.x, cy: p.cy })),
+        gate: { x: gate.x, y: gate.y },
+        groundY, spawnX, worldW, worldH,
+        trees: trees.length, perchers: perchers.length,
+      }),
       state: () => ({ phase: st.phase, x: Math.round(st.x), y: Math.round(st.y), vx: +st.vx.toFixed(1),
         vy: +st.vy.toFixed(1), cam: Math.round(st.cam), ft: feet(), loops: st.loops, state: st.state,
         enemies: enemies.length, t: +st.t.toFixed(2), portalsHit: st.portalsHit, completed: st.completed,
