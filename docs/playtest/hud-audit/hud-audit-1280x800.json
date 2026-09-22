@@ -1,0 +1,501 @@
+{
+  "kristopher-federico-study-hall-scramble": {
+    "lid": "kristopher-federico-study-hall-scramble",
+    "viewport": "1280x800",
+    "ok": false,
+    "checks": [
+      {
+        "name": "collision-free",
+        "ok": false,
+        "detail": "overlapping: ['#hudLeft .t×#hudMid', '#hudMid×#hudLeft .a']"
+      },
+      {
+        "name": "title-capped-ellipsis",
+        "ok": false,
+        "detail": "scrollW=534 clientW=534 cap=410 ellipsis=clip ws=normal"
+      },
+      {
+        "name": "title-attr-mirrors-full-text",
+        "ok": false,
+        "detail": "title='' text='KRISTOPHER-FEDERICO-STUDY-HALL-SCRAMBLE · STUDY HALL SCRAMBLE'"
+      },
+      {
+        "name": "mid-fits-slot",
+        "ok": true,
+        "detail": "scrollW=253 clientW=253 text='SCORE 00000 · FACTS 136/136'"
+      },
+      {
+        "name": "hearts-class+style",
+        "ok": false,
+        "detail": "text='♥♥♥♥' cls='' size=15 color=rgb(255, 255, 255)"
+      },
+      {
+        "name": "dim-token:#hudLeft .a",
+        "ok": false,
+        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+      },
+      {
+        "name": "dim-token:#hudLeft .lives .lc",
+        "ok": false,
+        "detail": "color=rgb(154, 164, 198) size=9(>=10.0) shadow='rgba(255, 61, 154, 0.35) 0px 0px 12px'"
+      },
+      {
+        "name": "dim-token:#hudHint",
+        "ok": false,
+        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+      },
+      {
+        "name": "contrast-recorded-light:#hudLeft .a",
+        "ok": true,
+        "detail": "ratio=8.18 sample=[6, 6, 11] (mechanism asserted)"
+      },
+      {
+        "name": "contrast-recorded-light:#hudLeft .lives .lc",
+        "ok": true,
+        "detail": "ratio=7.50 sample=[18, 20, 17] (mechanism asserted)"
+      },
+      {
+        "name": "contrast-recorded-light:#hudHint",
+        "ok": true,
+        "detail": "ratio=8.18 sample=[5, 6, 15] (mechanism asserted)"
+      },
+      {
+        "name": "boot-canvas+hud",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "console-clean",
+        "ok": true,
+        "detail": "warning:Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+      },
+      {
+        "name": "no-pageerror",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "network-clean",
+        "ok": true,
+        "detail": ""
+      }
+    ]
+  },
+  "louis-philippe-gaulin-knight-s-dungeon-scramble": {
+    "lid": "louis-philippe-gaulin-knight-s-dungeon-scramble",
+    "viewport": "1280x800",
+    "ok": false,
+    "checks": [
+      {
+        "name": "collision-free",
+        "ok": false,
+        "detail": "overlapping: ['#hudLeft .t×#hudMid', '#hudMid×#hudLeft .a']"
+      },
+      {
+        "name": "title-capped-ellipsis",
+        "ok": false,
+        "detail": "scrollW=662 clientW=662 cap=410 ellipsis=clip ws=normal"
+      },
+      {
+        "name": "title-attr-mirrors-full-text",
+        "ok": false,
+        "detail": "title='' text=\"LOUIS-PHILIPPE-GAULIN-KNIGHT-S-DUNGEON-SCRAMBLE · KNIGHT'S DUNGEON SCRAMBLE\""
+      },
+      {
+        "name": "mid-fits-slot",
+        "ok": true,
+        "detail": "scrollW=423 clientW=423 text='GLORY 00000 · FACTS 136/136 · XP SQUIRE 0/1000'"
+      },
+      {
+        "name": "hearts-class+style",
+        "ok": false,
+        "detail": "text='♥♥♥' cls='' size=15 color=rgb(255, 255, 255)"
+      },
+      {
+        "name": "dim-token:#hudLeft .a",
+        "ok": false,
+        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+      },
+      {
+        "name": "dim-token:#hudLeft .lives .lc",
+        "ok": false,
+        "detail": "color=rgb(154, 164, 198) size=9(>=10.0) shadow='rgba(255, 61, 154, 0.35) 0px 0px 12px'"
+      },
+      {
+        "name": "dim-token:#hudHint",
+        "ok": false,
+        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+      },
+      {
+        "name": "contrast-recorded-light:#hudLeft .a",
+        "ok": true,
+        "detail": "ratio=8.19 sample=[5, 6, 11] (mechanism asserted)"
+      },
+      {
+        "name": "contrast-recorded-light:#hudLeft .lives .lc",
+        "ok": true,
+        "detail": "ratio=7.88 sample=[15, 12, 12] (mechanism asserted)"
+      },
+      {
+        "name": "contrast-recorded-light:#hudHint",
+        "ok": true,
+        "detail": "ratio=8.18 sample=[5, 6, 15] (mechanism asserted)"
+      },
+      {
+        "name": "boot-canvas+hud",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "console-clean",
+        "ok": true,
+        "detail": "warning:Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+      },
+      {
+        "name": "no-pageerror",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "network-clean",
+        "ok": true,
+        "detail": ""
+      }
+    ]
+  },
+  "L01": {
+    "lid": "L01",
+    "viewport": "1280x800",
+    "ok": false,
+    "checks": [
+      {
+        "name": "collision-free",
+        "ok": true,
+        "detail": "overlapping: none"
+      },
+      {
+        "name": "short-title-not-clipped",
+        "ok": true,
+        "detail": "scrollW=184 clientW=184"
+      },
+      {
+        "name": "title-attr-mirrors-full-text",
+        "ok": false,
+        "detail": "title=''"
+      },
+      {
+        "name": "mid-fits-slot",
+        "ok": true,
+        "detail": "scrollW=52 clientW=52 text='★ 0/7'"
+      },
+      {
+        "name": "hearts-class+style",
+        "ok": false,
+        "detail": "text='♥♥♥' cls='' size=15 color=rgb(255, 255, 255)"
+      },
+      {
+        "name": "dim-token:#hudLeft .a",
+        "ok": false,
+        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+      },
+      {
+        "name": "dim-token:#hudLeft .lives .lc",
+        "ok": false,
+        "detail": "color=rgb(154, 164, 198) size=9(>=10.0) shadow='rgba(255, 61, 154, 0.35) 0px 0px 12px'"
+      },
+      {
+        "name": "dim-token:#hudHint",
+        "ok": false,
+        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+      },
+      {
+        "name": "contrast-recorded-light:#hudLeft .a",
+        "ok": true,
+        "detail": "ratio=7.81 sample=[11, 14, 21] (mechanism asserted)"
+      },
+      {
+        "name": "contrast-recorded-light:#hudLeft .lives .lc",
+        "ok": true,
+        "detail": "ratio=1.10 sample=[110, 163, 197] (mechanism asserted)"
+      },
+      {
+        "name": "contrast-recorded-light:#hudHint",
+        "ok": true,
+        "detail": "ratio=8.18 sample=[5, 6, 15] (mechanism asserted)"
+      },
+      {
+        "name": "boot-canvas+hud",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "console-clean",
+        "ok": true,
+        "detail": "warning:Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+      },
+      {
+        "name": "no-pageerror",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "network-clean",
+        "ok": true,
+        "detail": ""
+      }
+    ]
+  },
+  "L03": {
+    "lid": "L03",
+    "viewport": "1280x800",
+    "ok": false,
+    "checks": [
+      {
+        "name": "collision-free",
+        "ok": true,
+        "detail": "overlapping: none"
+      },
+      {
+        "name": "short-title-not-clipped",
+        "ok": true,
+        "detail": "scrollW=141 clientW=141"
+      },
+      {
+        "name": "title-attr-mirrors-full-text",
+        "ok": false,
+        "detail": "title=''"
+      },
+      {
+        "name": "mid-fits-slot",
+        "ok": true,
+        "detail": "scrollW=155 clientW=155 text='CRATES 0/3 placed'"
+      },
+      {
+        "name": "hearts-class-absent-on-non-hearts",
+        "ok": true,
+        "detail": "text='0 moves' cls=''"
+      },
+      {
+        "name": "dim-token:#hudLeft .a",
+        "ok": false,
+        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+      },
+      {
+        "name": "dim-token:#hudLeft .lives .lc",
+        "ok": false,
+        "detail": "color=rgb(154, 164, 198) size=9(>=10.0) shadow='rgba(255, 61, 154, 0.35) 0px 0px 12px'"
+      },
+      {
+        "name": "dim-token:#hudHint",
+        "ok": false,
+        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+      },
+      {
+        "name": "contrast-recorded-light:#hudLeft .a",
+        "ok": true,
+        "detail": "ratio=7.80 sample=[12, 14, 21] (mechanism asserted)"
+      },
+      {
+        "name": "contrast-recorded-light:#hudLeft .lives .lc",
+        "ok": true,
+        "detail": "ratio=1.00 sample=[133, 168, 206] (mechanism asserted)"
+      },
+      {
+        "name": "contrast-recorded-light:#hudHint",
+        "ok": true,
+        "detail": "ratio=8.18 sample=[5, 6, 15] (mechanism asserted)"
+      },
+      {
+        "name": "boot-canvas+hud",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "console-clean",
+        "ok": true,
+        "detail": "warning:Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+      },
+      {
+        "name": "no-pageerror",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "network-clean",
+        "ok": true,
+        "detail": ""
+      }
+    ]
+  },
+  "L04": {
+    "lid": "L04",
+    "viewport": "1280x800",
+    "ok": false,
+    "checks": [
+      {
+        "name": "collision-free",
+        "ok": true,
+        "detail": "overlapping: none"
+      },
+      {
+        "name": "short-title-not-clipped",
+        "ok": true,
+        "detail": "scrollW=169 clientW=169"
+      },
+      {
+        "name": "title-attr-mirrors-full-text",
+        "ok": false,
+        "detail": "title=''"
+      },
+      {
+        "name": "mid-fits-slot",
+        "ok": true,
+        "detail": "scrollW=60 clientW=60 text='0/9000'"
+      },
+      {
+        "name": "hearts-class+style",
+        "ok": false,
+        "detail": "text='♥♥♥' cls='' size=15 color=rgb(255, 255, 255)"
+      },
+      {
+        "name": "dim-token:#hudLeft .a",
+        "ok": false,
+        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+      },
+      {
+        "name": "dim-token:#hudLeft .lives .lc",
+        "ok": false,
+        "detail": "color=rgb(154, 164, 198) size=9(>=10.0) shadow='rgba(255, 61, 154, 0.35) 0px 0px 12px'"
+      },
+      {
+        "name": "dim-token:#hudHint",
+        "ok": false,
+        "detail": "color=rgb(154, 164, 198) size=11(>=12.0) shadow='none'"
+      },
+      {
+        "name": "contrast>=4.5-dark:#hudLeft .a",
+        "ok": true,
+        "detail": "ratio=8.23 sample=[5, 5, 11] tainted=False"
+      },
+      {
+        "name": "contrast>=4.5-dark:#hudLeft .lives .lc",
+        "ok": true,
+        "detail": "ratio=8.26 sample=[4, 4, 15] tainted=False"
+      },
+      {
+        "name": "contrast>=4.5-dark:#hudHint",
+        "ok": true,
+        "detail": "ratio=8.18 sample=[5, 6, 15] tainted=False"
+      },
+      {
+        "name": "boot-canvas+hud",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "console-clean",
+        "ok": true,
+        "detail": "warning:Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+      },
+      {
+        "name": "no-pageerror",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "network-clean",
+        "ok": true,
+        "detail": ""
+      }
+    ]
+  },
+  "mark-abdallah-slingshot-duck-season": {
+    "lid": "mark-abdallah-slingshot-duck-season",
+    "viewport": "1280x800",
+    "ok": false,
+    "checks": [
+      {
+        "name": "ammo-mid",
+        "ok": false,
+        "detail": "mid='FLIGHT 1/3 · ✓ 0 · ♥ 3'"
+      },
+      {
+        "name": "hearts-class-absent-on-non-hearts",
+        "ok": true,
+        "detail": "text='★ 0' cls=''"
+      },
+      {
+        "name": "boot-canvas+hud",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "console-clean",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "no-pageerror",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "network-clean",
+        "ok": true,
+        "detail": ""
+      }
+    ]
+  },
+  "matt-mayer-mda-space-mission": {
+    "lid": "matt-mayer-mda-space-mission",
+    "viewport": "1280x800",
+    "ok": false,
+    "checks": [
+      {
+        "name": "moon-mid-status-only",
+        "ok": false,
+        "detail": "control strings: ['ALT 0.0 km · V 10 m/s · POUSSÉE/BURN · ESPACE poussée · ←→ gouverne', 'ALT 0.0 km · V 20 m/s · POUSSÉE/BURN · ESPACE poussée · ←→ gouverne', 'ALT 0.0 km · V 23 m/s · POUSSÉE/BURN · ESPACE poussée · ←→ gouverne']"
+      },
+      {
+        "name": "moon-mid-status-seen",
+        "ok": true,
+        "detail": "mids seen: ['ALT 0.0 km · V 10 m/s · POUSSÉE/BURN · ESPACE poussée · ←→ gouverne', 'ALT 0.0 km · V 20 m/s · POUSSÉE/BURN · ESPACE poussée · ←→ gouverne', 'ALT 0.0 km · V 23 m/s · POUSSÉE/BURN · ESPACE poussée · ←→ gouverne']"
+      },
+      {
+        "name": "moon-right-fits",
+        "ok": true,
+        "detail": "clipped rights: []"
+      },
+      {
+        "name": "moon-right-short-form",
+        "ok": false,
+        "detail": "non-short-form rights: ['VOL/FLIGHT 1', 'VOL/FLIGHT 1 · BEST 1.82 km', 'VOL/FLIGHT 2 · BEST 1.82 km']"
+      },
+      {
+        "name": "moon-collision-free",
+        "ok": true,
+        "detail": "collided polls: 0"
+      },
+      {
+        "name": "boot-canvas+hud",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "console-clean",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "no-pageerror",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "network-clean",
+        "ok": true,
+        "detail": ""
+      }
+    ]
+  }
+}
