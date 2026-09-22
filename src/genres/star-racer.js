@@ -323,8 +323,11 @@ export function create(level, api) {
     speed += (target - speed) * Math.min(1, dt * (bossPhase ? 1.6 : 2.2));
 
     // ---- steering: full-corridor flight (lateral + vertical) ----
+    // playerY is an ALTITUDE, not screen-y: +0.95 = trench ceiling, -0.95 = floor
+    // (projection paints py = H - 70 - (playerY + 1) * 78). Don't re-copy the
+    // screen-y idiom from nano-cure here — its y grows downward, ours grows up.
     const steer = (input.left() ? -1 : 0) + (input.right() ? 1 : 0);
-    const climb = (input.up() ? -1 : 0) + (input.downKey() ? 1 : 0);
+    const climb = (input.up() ? 1 : 0) + (input.downKey() ? -1 : 0);
     steerVis = steer; bankVis = climb;
     const pct = clamp(speed / speedCfg.max, 0, 1);
     playerX += steer * dt * 1.6 * (0.4 + pct);

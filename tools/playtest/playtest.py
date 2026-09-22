@@ -77,7 +77,10 @@ DRIVER_SPECS = {
     "slingshot": {"holds": [], "taps": []},   # pointer-driven; DRAG handled specially
     "survival": {"holds": [], "taps": [("ArrowLeft", 1.9, 0.4), ("ArrowRight", 1.9, 0.4),
                                        ("ArrowUp", 2.6, 0.12), ("Space", 1.3, 0.06)]},
-    "star-racer": {"holds": ["ArrowUp"], "taps": [("ArrowLeft", 1.5, 0.45), ("ArrowRight", 1.5, 0.45)]},
+    # star-racer: holds [] post-issue-12 — the climb mapping is fixed (ArrowUp
+    # climbs), so holding ArrowUp would pin the ship to the ceiling for the whole
+    # evidence run; a mid-corridor cruise with steering taps is the neutral baseline.
+    "star-racer": {"holds": [], "taps": [("ArrowLeft", 1.5, 0.45), ("ArrowRight", 1.5, 0.45)]},
     "default": {"holds": [], "taps": [("Space", 1.2, 0.08)]},
 }
 
