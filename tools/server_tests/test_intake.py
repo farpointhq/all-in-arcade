@@ -159,6 +159,15 @@ class ServerCase(unittest.TestCase):
     def tearDownClass(cls):
         cls.sb.cleanup()
 
+    def setUp(self):
+        # fresh queue state per test — the class's sandbox server stays up, so
+        # tests must not see each other's appended records
+        for p in [self.sb.pending] + self.sb.rotated():
+            try:
+                os.remove(p)
+            except OSError:
+                pass
+
     def post(self, body, headers=None, path="/api/submit"):
         conn = http.client.HTTPConnection(HOST, self.sb.port, timeout=10)
         try:
