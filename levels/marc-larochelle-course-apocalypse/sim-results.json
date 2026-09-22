@@ -1,0 +1,2040 @@
+{
+  "lid": "marc-larochelle-course-apocalypse",
+  "port": 8614,
+  "modes": [
+    "all"
+  ],
+  "seed": 20260922,
+  "sims": {
+    "ok": true,
+    "notes": [],
+    "seed": 20260922,
+    "pins": {
+      "density": {
+        "events": [
+          {
+            "type": "spend",
+            "t": 20.25,
+            "left": 98
+          },
+          {
+            "type": "spend",
+            "t": 25.52,
+            "left": 97
+          }
+        ],
+        "complete": [],
+        "fails": [],
+        "spends": 2,
+        "gains": 0,
+        "bankLeft": 97,
+        "spawnTimeline": [
+          {
+            "t": 0.02,
+            "dist": 0,
+            "status": "playing"
+          },
+          {
+            "t": 0.12,
+            "dist": 1,
+            "status": "playing"
+          },
+          {
+            "t": 0.22,
+            "dist": 2,
+            "status": "playing"
+          },
+          {
+            "t": 0.32,
+            "dist": 3,
+            "status": "playing"
+          },
+          {
+            "t": 0.42,
+            "dist": 4,
+            "status": "playing"
+          },
+          {
+            "t": 0.52,
+            "dist": 5,
+            "status": "playing"
+          },
+          {
+            "t": 0.62,
+            "dist": 6,
+            "status": "playing"
+          },
+          {
+            "t": 0.72,
+            "dist": 7,
+            "status": "playing"
+          },
+          {
+            "t": 0.82,
+            "dist": 8,
+            "status": "playing"
+          },
+          {
+            "t": 0.92,
+            "dist": 9,
+            "status": "playing"
+          },
+          {
+            "t": 1.02,
+            "dist": 10,
+            "status": "playing"
+          },
+          {
+            "t": 1.12,
+            "dist": 11,
+            "status": "playing"
+          },
+          {
+            "t": 1.22,
+            "dist": 12,
+            "status": "playing"
+          },
+          {
+            "t": 1.32,
+            "dist": 13,
+            "status": "playing"
+          },
+          {
+            "t": 1.42,
+            "dist": 14,
+            "status": "playing"
+          },
+          {
+            "t": 1.52,
+            "dist": 15,
+            "status": "playing"
+          },
+          {
+            "t": 1.62,
+            "dist": 16,
+            "status": "playing"
+          },
+          {
+            "t": 1.72,
+            "dist": 17,
+            "status": "playing"
+          },
+          {
+            "t": 1.82,
+            "dist": 18,
+            "status": "playing"
+          },
+          {
+            "t": 1.92,
+            "dist": 19,
+            "status": "playing"
+          },
+          {
+            "t": 2.02,
+            "dist": 20,
+            "status": "playing"
+          },
+          {
+            "t": 2.12,
+            "dist": 21,
+            "status": "playing"
+          },
+          {
+            "t": 2.22,
+            "dist": 22,
+            "status": "playing"
+          },
+          {
+            "t": 2.32,
+            "dist": 23,
+            "status": "playing"
+          },
+          {
+            "t": 2.42,
+            "dist": 24,
+            "status": "playing"
+          },
+          {
+            "t": 2.52,
+            "dist": 25,
+            "status": "playing"
+          },
+          {
+            "t": 2.62,
+            "dist": 26,
+            "status": "playing"
+          },
+          {
+            "t": 2.72,
+            "dist": 27,
+            "status": "playing"
+          },
+          {
+            "t": 2.82,
+            "dist": 28,
+            "status": "playing"
+          },
+          {
+            "t": 2.92,
+            "dist": 29,
+            "status": "playing"
+          },
+          {
+            "t": 3.02,
+            "dist": 30,
+            "status": "playing"
+          },
+          {
+            "t": 3.12,
+            "dist": 31,
+            "status": "playing"
+          },
+          {
+            "t": 3.22,
+            "dist": 32,
+            "status": "playing"
+          },
+          {
+            "t": 3.32,
+            "dist": 33,
+            "status": "playing"
+          },
+          {
+            "t": 3.42,
+            "dist": 34,
+            "status": "playing"
+          },
+          {
+            "t": 3.52,
+            "dist": 35,
+            "status": "playing"
+          },
+          {
+            "t": 3.62,
+            "dist": 36,
+            "status": "playing"
+          },
+          {
+            "t": 3.72,
+            "dist": 37,
+            "status": "playing"
+          },
+          {
+            "t": 3.82,
+            "dist": 38,
+            "status": "playing"
+          },
+          {
+            "t": 3.92,
+            "dist": 39,
+            "status": "playing"
+          },
+          {
+            "t": 4.02,
+            "dist": 40,
+            "status": "playing"
+          },
+          {
+            "t": 4.12,
+            "dist": 41,
+            "status": "playing"
+          },
+          {
+            "t": 4.22,
+            "dist": 42,
+            "status": "playing"
+          },
+          {
+            "t": 4.32,
+            "dist": 43,
+            "status": "playing"
+          },
+          {
+            "t": 4.42,
+            "dist": 44,
+            "status": "playing"
+          },
+          {
+            "t": 4.52,
+            "dist": 45,
+            "status": "playing"
+          },
+          {
+            "t": 4.62,
+            "dist": 46,
+            "status": "playing"
+          },
+          {
+            "t": 4.72,
+            "dist": 47,
+            "status": "playing"
+          },
+          {
+            "t": 4.82,
+            "dist": 48,
+            "status": "playing"
+          },
+          {
+            "t": 4.92,
+            "dist": 49,
+            "status": "playing"
+          },
+          {
+            "t": 5.02,
+            "dist": 50,
+            "status": "playing"
+          },
+          {
+            "t": 5.12,
+            "dist": 51,
+            "status": "playing"
+          },
+          {
+            "t": 5.22,
+            "dist": 52,
+            "status": "playing"
+          },
+          {
+            "t": 5.32,
+            "dist": 53,
+            "status": "playing"
+          },
+          {
+            "t": 5.42,
+            "dist": 54,
+            "status": "playing"
+          },
+          {
+            "t": 5.52,
+            "dist": 55,
+            "status": "playing"
+          },
+          {
+            "t": 5.62,
+            "dist": 56,
+            "status": "playing"
+          },
+          {
+            "t": 5.72,
+            "dist": 57,
+            "status": "playing"
+          },
+          {
+            "t": 5.82,
+            "dist": 58,
+            "status": "playing"
+          },
+          {
+            "t": 5.92,
+            "dist": 59,
+            "status": "playing"
+          },
+          {
+            "t": 6.02,
+            "dist": 60,
+            "status": "playing"
+          },
+          {
+            "t": 6.12,
+            "dist": 61,
+            "status": "playing"
+          },
+          {
+            "t": 6.22,
+            "dist": 62,
+            "status": "playing"
+          },
+          {
+            "t": 6.32,
+            "dist": 63,
+            "status": "playing"
+          },
+          {
+            "t": 6.42,
+            "dist": 64,
+            "status": "playing"
+          },
+          {
+            "t": 6.52,
+            "dist": 65,
+            "status": "playing"
+          },
+          {
+            "t": 6.62,
+            "dist": 66,
+            "status": "playing"
+          },
+          {
+            "t": 6.72,
+            "dist": 67,
+            "status": "playing"
+          },
+          {
+            "t": 6.82,
+            "dist": 68,
+            "status": "playing"
+          },
+          {
+            "t": 6.92,
+            "dist": 69,
+            "status": "playing"
+          },
+          {
+            "t": 7.02,
+            "dist": 70,
+            "status": "playing"
+          },
+          {
+            "t": 7.12,
+            "dist": 71,
+            "status": "playing"
+          },
+          {
+            "t": 7.22,
+            "dist": 72,
+            "status": "playing"
+          },
+          {
+            "t": 7.32,
+            "dist": 73,
+            "status": "playing"
+          },
+          {
+            "t": 7.42,
+            "dist": 74,
+            "status": "playing"
+          },
+          {
+            "t": 7.52,
+            "dist": 75,
+            "status": "playing"
+          },
+          {
+            "t": 7.62,
+            "dist": 76,
+            "status": "playing"
+          },
+          {
+            "t": 7.72,
+            "dist": 77,
+            "status": "playing"
+          },
+          {
+            "t": 7.82,
+            "dist": 78,
+            "status": "playing"
+          },
+          {
+            "t": 7.92,
+            "dist": 79,
+            "status": "playing"
+          },
+          {
+            "t": 8.02,
+            "dist": 80,
+            "status": "playing"
+          },
+          {
+            "t": 8.12,
+            "dist": 81,
+            "status": "playing"
+          },
+          {
+            "t": 8.22,
+            "dist": 82,
+            "status": "playing"
+          },
+          {
+            "t": 8.32,
+            "dist": 83,
+            "status": "playing"
+          },
+          {
+            "t": 8.42,
+            "dist": 84,
+            "status": "playing"
+          },
+          {
+            "t": 8.52,
+            "dist": 85,
+            "status": "playing"
+          },
+          {
+            "t": 8.62,
+            "dist": 86,
+            "status": "playing"
+          },
+          {
+            "t": 8.72,
+            "dist": 87,
+            "status": "playing"
+          },
+          {
+            "t": 8.82,
+            "dist": 88,
+            "status": "playing"
+          },
+          {
+            "t": 8.92,
+            "dist": 89,
+            "status": "playing"
+          },
+          {
+            "t": 9.02,
+            "dist": 89,
+            "status": "playing"
+          },
+          {
+            "t": 9.12,
+            "dist": 90,
+            "status": "playing"
+          },
+          {
+            "t": 9.22,
+            "dist": 90,
+            "status": "playing"
+          },
+          {
+            "t": 9.32,
+            "dist": 90,
+            "status": "playing"
+          },
+          {
+            "t": 9.42,
+            "dist": 91,
+            "status": "playing"
+          },
+          {
+            "t": 9.52,
+            "dist": 92,
+            "status": "playing"
+          },
+          {
+            "t": 9.62,
+            "dist": 92,
+            "status": "playing"
+          },
+          {
+            "t": 9.72,
+            "dist": 93,
+            "status": "playing"
+          },
+          {
+            "t": 9.82,
+            "dist": 94,
+            "status": "playing"
+          },
+          {
+            "t": 9.92,
+            "dist": 95,
+            "status": "playing"
+          },
+          {
+            "t": 10.02,
+            "dist": 96,
+            "status": "playing"
+          },
+          {
+            "t": 10.12,
+            "dist": 97,
+            "status": "playing"
+          },
+          {
+            "t": 10.22,
+            "dist": 98,
+            "status": "playing"
+          },
+          {
+            "t": 10.32,
+            "dist": 99,
+            "status": "playing"
+          },
+          {
+            "t": 10.42,
+            "dist": 100,
+            "status": "playing"
+          },
+          {
+            "t": 10.52,
+            "dist": 101,
+            "status": "playing"
+          },
+          {
+            "t": 10.62,
+            "dist": 102,
+            "status": "playing"
+          },
+          {
+            "t": 10.72,
+            "dist": 103,
+            "status": "playing"
+          },
+          {
+            "t": 10.82,
+            "dist": 104,
+            "status": "playing"
+          },
+          {
+            "t": 10.92,
+            "dist": 104,
+            "status": "playing"
+          },
+          {
+            "t": 11.02,
+            "dist": 104,
+            "status": "playing"
+          },
+          {
+            "t": 11.12,
+            "dist": 105,
+            "status": "playing"
+          },
+          {
+            "t": 11.22,
+            "dist": 105,
+            "status": "playing"
+          },
+          {
+            "t": 11.32,
+            "dist": 106,
+            "status": "playing"
+          },
+          {
+            "t": 11.42,
+            "dist": 106,
+            "status": "playing"
+          },
+          {
+            "t": 11.52,
+            "dist": 107,
+            "status": "playing"
+          },
+          {
+            "t": 11.62,
+            "dist": 108,
+            "status": "playing"
+          },
+          {
+            "t": 11.72,
+            "dist": 109,
+            "status": "playing"
+          },
+          {
+            "t": 11.82,
+            "dist": 110,
+            "status": "playing"
+          },
+          {
+            "t": 11.92,
+            "dist": 111,
+            "status": "playing"
+          },
+          {
+            "t": 12.02,
+            "dist": 112,
+            "status": "playing"
+          },
+          {
+            "t": 12.12,
+            "dist": 113,
+            "status": "playing"
+          },
+          {
+            "t": 12.22,
+            "dist": 114,
+            "status": "playing"
+          },
+          {
+            "t": 12.32,
+            "dist": 115,
+            "status": "playing"
+          },
+          {
+            "t": 12.42,
+            "dist": 116,
+            "status": "playing"
+          },
+          {
+            "t": 12.52,
+            "dist": 117,
+            "status": "playing"
+          },
+          {
+            "t": 12.62,
+            "dist": 118,
+            "status": "playing"
+          },
+          {
+            "t": 12.72,
+            "dist": 119,
+            "status": "playing"
+          },
+          {
+            "t": 12.82,
+            "dist": 120,
+            "status": "playing"
+          },
+          {
+            "t": 12.92,
+            "dist": 121,
+            "status": "playing"
+          },
+          {
+            "t": 13.02,
+            "dist": 122,
+            "status": "playing"
+          },
+          {
+            "t": 13.12,
+            "dist": 123,
+            "status": "playing"
+          },
+          {
+            "t": 13.22,
+            "dist": 124,
+            "status": "playing"
+          },
+          {
+            "t": 13.32,
+            "dist": 125,
+            "status": "playing"
+          },
+          {
+            "t": 13.42,
+            "dist": 126,
+            "status": "playing"
+          },
+          {
+            "t": 13.52,
+            "dist": 127,
+            "status": "playing"
+          },
+          {
+            "t": 13.62,
+            "dist": 128,
+            "status": "playing"
+          },
+          {
+            "t": 13.72,
+            "dist": 129,
+            "status": "playing"
+          },
+          {
+            "t": 13.82,
+            "dist": 130,
+            "status": "playing"
+          },
+          {
+            "t": 13.92,
+            "dist": 131,
+            "status": "playing"
+          },
+          {
+            "t": 14.02,
+            "dist": 132,
+            "status": "playing"
+          },
+          {
+            "t": 14.12,
+            "dist": 133,
+            "status": "playing"
+          },
+          {
+            "t": 14.22,
+            "dist": 134,
+            "status": "playing"
+          },
+          {
+            "t": 14.32,
+            "dist": 135,
+            "status": "playing"
+          },
+          {
+            "t": 14.42,
+            "dist": 136,
+            "status": "playing"
+          },
+          {
+            "t": 14.52,
+            "dist": 137,
+            "status": "playing"
+          },
+          {
+            "t": 14.62,
+            "dist": 138,
+            "status": "playing"
+          },
+          {
+            "t": 14.72,
+            "dist": 139,
+            "status": "playing"
+          },
+          {
+            "t": 14.82,
+            "dist": 140,
+            "status": "playing"
+          },
+          {
+            "t": 14.92,
+            "dist": 141,
+            "status": "playing"
+          },
+          {
+            "t": 15.02,
+            "dist": 142,
+            "status": "playing"
+          },
+          {
+            "t": 15.12,
+            "dist": 143,
+            "status": "playing"
+          },
+          {
+            "t": 15.22,
+            "dist": 144,
+            "status": "playing"
+          },
+          {
+            "t": 15.32,
+            "dist": 145,
+            "status": "playing"
+          },
+          {
+            "t": 15.42,
+            "dist": 146,
+            "status": "playing"
+          },
+          {
+            "t": 15.52,
+            "dist": 147,
+            "status": "playing"
+          },
+          {
+            "t": 15.62,
+            "dist": 148,
+            "status": "playing"
+          },
+          {
+            "t": 15.72,
+            "dist": 149,
+            "status": "playing"
+          },
+          {
+            "t": 15.82,
+            "dist": 150,
+            "status": "playing"
+          },
+          {
+            "t": 15.92,
+            "dist": 151,
+            "status": "playing"
+          },
+          {
+            "t": 16.02,
+            "dist": 152,
+            "status": "playing"
+          },
+          {
+            "t": 16.12,
+            "dist": 153,
+            "status": "playing"
+          },
+          {
+            "t": 16.22,
+            "dist": 154,
+            "status": "playing"
+          },
+          {
+            "t": 16.32,
+            "dist": 155,
+            "status": "playing"
+          },
+          {
+            "t": 16.42,
+            "dist": 156,
+            "status": "playing"
+          },
+          {
+            "t": 16.52,
+            "dist": 157,
+            "status": "playing"
+          },
+          {
+            "t": 16.62,
+            "dist": 158,
+            "status": "playing"
+          },
+          {
+            "t": 16.72,
+            "dist": 159,
+            "status": "playing"
+          },
+          {
+            "t": 16.82,
+            "dist": 160,
+            "status": "playing"
+          },
+          {
+            "t": 16.92,
+            "dist": 161,
+            "status": "playing"
+          },
+          {
+            "t": 17.02,
+            "dist": 162,
+            "status": "playing"
+          },
+          {
+            "t": 17.12,
+            "dist": 163,
+            "status": "playing"
+          },
+          {
+            "t": 17.22,
+            "dist": 164,
+            "status": "playing"
+          },
+          {
+            "t": 17.32,
+            "dist": 164,
+            "status": "playing"
+          },
+          {
+            "t": 17.42,
+            "dist": 164,
+            "status": "playing"
+          },
+          {
+            "t": 17.52,
+            "dist": 165,
+            "status": "playing"
+          },
+          {
+            "t": 17.62,
+            "dist": 165,
+            "status": "playing"
+          },
+          {
+            "t": 17.72,
+            "dist": 166,
+            "status": "playing"
+          },
+          {
+            "t": 17.82,
+            "dist": 167,
+            "status": "playing"
+          },
+          {
+            "t": 17.92,
+            "dist": 167,
+            "status": "playing"
+          },
+          {
+            "t": 18.02,
+            "dist": 168,
+            "status": "playing"
+          },
+          {
+            "t": 18.12,
+            "dist": 169,
+            "status": "playing"
+          },
+          {
+            "t": 18.22,
+            "dist": 170,
+            "status": "playing"
+          },
+          {
+            "t": 18.32,
+            "dist": 171,
+            "status": "playing"
+          },
+          {
+            "t": 18.42,
+            "dist": 172,
+            "status": "playing"
+          },
+          {
+            "t": 18.52,
+            "dist": 173,
+            "status": "playing"
+          },
+          {
+            "t": 18.62,
+            "dist": 174,
+            "status": "playing"
+          },
+          {
+            "t": 18.72,
+            "dist": 175,
+            "status": "playing"
+          },
+          {
+            "t": 18.82,
+            "dist": 176,
+            "status": "playing"
+          },
+          {
+            "t": 18.92,
+            "dist": 177,
+            "status": "playing"
+          },
+          {
+            "t": 19.02,
+            "dist": 178,
+            "status": "playing"
+          },
+          {
+            "t": 19.12,
+            "dist": 179,
+            "status": "playing"
+          },
+          {
+            "t": 19.22,
+            "dist": 180,
+            "status": "playing"
+          },
+          {
+            "t": 19.32,
+            "dist": 181,
+            "status": "playing"
+          },
+          {
+            "t": 19.42,
+            "dist": 182,
+            "status": "playing"
+          },
+          {
+            "t": 19.52,
+            "dist": 183,
+            "status": "playing"
+          },
+          {
+            "t": 19.62,
+            "dist": 184,
+            "status": "playing"
+          },
+          {
+            "t": 19.72,
+            "dist": 185,
+            "status": "playing"
+          },
+          {
+            "t": 19.82,
+            "dist": 186,
+            "status": "playing"
+          },
+          {
+            "t": 19.92,
+            "dist": 187,
+            "status": "playing"
+          },
+          {
+            "t": 20.02,
+            "dist": 188,
+            "status": "playing"
+          },
+          {
+            "t": 20.12,
+            "dist": 189,
+            "status": "playing"
+          },
+          {
+            "t": 20.22,
+            "dist": 190,
+            "status": "playing"
+          },
+          {
+            "t": 20.32,
+            "dist": 191,
+            "status": "playing"
+          },
+          {
+            "t": 20.42,
+            "dist": 192,
+            "status": "playing"
+          },
+          {
+            "t": 20.52,
+            "dist": 193,
+            "status": "playing"
+          },
+          {
+            "t": 20.62,
+            "dist": 194,
+            "status": "playing"
+          },
+          {
+            "t": 20.72,
+            "dist": 195,
+            "status": "playing"
+          },
+          {
+            "t": 20.82,
+            "dist": 196,
+            "status": "playing"
+          },
+          {
+            "t": 20.92,
+            "dist": 197,
+            "status": "playing"
+          },
+          {
+            "t": 21.02,
+            "dist": 198,
+            "status": "playing"
+          },
+          {
+            "t": 21.12,
+            "dist": 199,
+            "status": "playing"
+          },
+          {
+            "t": 21.22,
+            "dist": 200,
+            "status": "playing"
+          },
+          {
+            "t": 21.32,
+            "dist": 201,
+            "status": "playing"
+          },
+          {
+            "t": 21.42,
+            "dist": 202,
+            "status": "playing"
+          },
+          {
+            "t": 21.52,
+            "dist": 203,
+            "status": "playing"
+          },
+          {
+            "t": 21.62,
+            "dist": 203,
+            "status": "playing"
+          },
+          {
+            "t": 21.72,
+            "dist": 203,
+            "status": "playing"
+          },
+          {
+            "t": 21.82,
+            "dist": 204,
+            "status": "playing"
+          },
+          {
+            "t": 21.92,
+            "dist": 205,
+            "status": "playing"
+          },
+          {
+            "t": 22.02,
+            "dist": 205,
+            "status": "playing"
+          },
+          {
+            "t": 22.12,
+            "dist": 206,
+            "status": "playing"
+          },
+          {
+            "t": 22.22,
+            "dist": 207,
+            "status": "playing"
+          },
+          {
+            "t": 22.32,
+            "dist": 208,
+            "status": "playing"
+          },
+          {
+            "t": 22.42,
+            "dist": 209,
+            "status": "playing"
+          },
+          {
+            "t": 22.52,
+            "dist": 210,
+            "status": "playing"
+          },
+          {
+            "t": 22.62,
+            "dist": 211,
+            "status": "playing"
+          },
+          {
+            "t": 22.72,
+            "dist": 212,
+            "status": "playing"
+          },
+          {
+            "t": 22.82,
+            "dist": 213,
+            "status": "playing"
+          },
+          {
+            "t": 22.92,
+            "dist": 214,
+            "status": "playing"
+          },
+          {
+            "t": 23.02,
+            "dist": 215,
+            "status": "playing"
+          },
+          {
+            "t": 23.12,
+            "dist": 216,
+            "status": "playing"
+          },
+          {
+            "t": 23.22,
+            "dist": 217,
+            "status": "playing"
+          },
+          {
+            "t": 23.32,
+            "dist": 218,
+            "status": "playing"
+          },
+          {
+            "t": 23.42,
+            "dist": 219,
+            "status": "playing"
+          },
+          {
+            "t": 23.52,
+            "dist": 220,
+            "status": "playing"
+          },
+          {
+            "t": 23.62,
+            "dist": 221,
+            "status": "playing"
+          },
+          {
+            "t": 23.72,
+            "dist": 222,
+            "status": "playing"
+          },
+          {
+            "t": 23.82,
+            "dist": 223,
+            "status": "playing"
+          },
+          {
+            "t": 23.92,
+            "dist": 224,
+            "status": "playing"
+          },
+          {
+            "t": 24.02,
+            "dist": 225,
+            "status": "playing"
+          },
+          {
+            "t": 24.12,
+            "dist": 226,
+            "status": "playing"
+          },
+          {
+            "t": 24.22,
+            "dist": 227,
+            "status": "playing"
+          },
+          {
+            "t": 24.32,
+            "dist": 228,
+            "status": "playing"
+          },
+          {
+            "t": 24.42,
+            "dist": 229,
+            "status": "playing"
+          },
+          {
+            "t": 24.52,
+            "dist": 230,
+            "status": "playing"
+          },
+          {
+            "t": 24.62,
+            "dist": 231,
+            "status": "playing"
+          },
+          {
+            "t": 24.72,
+            "dist": 232,
+            "status": "playing"
+          },
+          {
+            "t": 24.82,
+            "dist": 233,
+            "status": "playing"
+          },
+          {
+            "t": 24.92,
+            "dist": 234,
+            "status": "playing"
+          },
+          {
+            "t": 25.02,
+            "dist": 235,
+            "status": "playing"
+          },
+          {
+            "t": 25.12,
+            "dist": 236,
+            "status": "playing"
+          },
+          {
+            "t": 25.22,
+            "dist": 237,
+            "status": "playing"
+          },
+          {
+            "t": 25.32,
+            "dist": 237,
+            "status": "playing"
+          },
+          {
+            "t": 25.42,
+            "dist": 238,
+            "status": "playing"
+          },
+          {
+            "t": 25.52,
+            "dist": 237,
+            "status": "playing"
+          },
+          {
+            "t": 25.62,
+            "dist": 238,
+            "status": "playing"
+          },
+          {
+            "t": 25.72,
+            "dist": 239,
+            "status": "playing"
+          },
+          {
+            "t": 25.82,
+            "dist": 240,
+            "status": "playing"
+          },
+          {
+            "t": 25.92,
+            "dist": 241,
+            "status": "playing"
+          },
+          {
+            "t": 26.02,
+            "dist": 242,
+            "status": "playing"
+          },
+          {
+            "t": 26.12,
+            "dist": 243,
+            "status": "playing"
+          },
+          {
+            "t": 26.22,
+            "dist": 244,
+            "status": "playing"
+          },
+          {
+            "t": 26.32,
+            "dist": 245,
+            "status": "playing"
+          },
+          {
+            "t": 26.42,
+            "dist": 246,
+            "status": "playing"
+          },
+          {
+            "t": 26.52,
+            "dist": 247,
+            "status": "playing"
+          },
+          {
+            "t": 26.62,
+            "dist": 248,
+            "status": "playing"
+          },
+          {
+            "t": 26.72,
+            "dist": 249,
+            "status": "playing"
+          },
+          {
+            "t": 26.82,
+            "dist": 250,
+            "status": "playing"
+          },
+          {
+            "t": 26.92,
+            "dist": 251,
+            "status": "playing"
+          },
+          {
+            "t": 27.02,
+            "dist": 252,
+            "status": "playing"
+          },
+          {
+            "t": 27.12,
+            "dist": 253,
+            "status": "playing"
+          },
+          {
+            "t": 27.22,
+            "dist": 254,
+            "status": "playing"
+          },
+          {
+            "t": 27.32,
+            "dist": 255,
+            "status": "playing"
+          },
+          {
+            "t": 27.42,
+            "dist": 256,
+            "status": "playing"
+          },
+          {
+            "t": 27.52,
+            "dist": 257,
+            "status": "playing"
+          },
+          {
+            "t": 27.62,
+            "dist": 258,
+            "status": "playing"
+          },
+          {
+            "t": 27.72,
+            "dist": 259,
+            "status": "playing"
+          },
+          {
+            "t": 27.82,
+            "dist": 260,
+            "status": "playing"
+          },
+          {
+            "t": 27.92,
+            "dist": 261,
+            "status": "playing"
+          },
+          {
+            "t": 28.02,
+            "dist": 262,
+            "status": "playing"
+          },
+          {
+            "t": 28.12,
+            "dist": 263,
+            "status": "playing"
+          },
+          {
+            "t": 28.22,
+            "dist": 264,
+            "status": "playing"
+          },
+          {
+            "t": 28.32,
+            "dist": 265,
+            "status": "playing"
+          },
+          {
+            "t": 28.42,
+            "dist": 266,
+            "status": "playing"
+          },
+          {
+            "t": 28.52,
+            "dist": 267,
+            "status": "playing"
+          },
+          {
+            "t": 28.62,
+            "dist": 268,
+            "status": "playing"
+          },
+          {
+            "t": 28.72,
+            "dist": 269,
+            "status": "playing"
+          },
+          {
+            "t": 28.82,
+            "dist": 270,
+            "status": "playing"
+          },
+          {
+            "t": 28.92,
+            "dist": 271,
+            "status": "playing"
+          },
+          {
+            "t": 29.02,
+            "dist": 272,
+            "status": "playing"
+          },
+          {
+            "t": 29.12,
+            "dist": 272,
+            "status": "playing"
+          },
+          {
+            "t": 29.22,
+            "dist": 273,
+            "status": "playing"
+          },
+          {
+            "t": 29.32,
+            "dist": 273,
+            "status": "playing"
+          },
+          {
+            "t": 29.42,
+            "dist": 274,
+            "status": "playing"
+          },
+          {
+            "t": 29.52,
+            "dist": 274,
+            "status": "playing"
+          },
+          {
+            "t": 29.62,
+            "dist": 275,
+            "status": "playing"
+          },
+          {
+            "t": 29.72,
+            "dist": 276,
+            "status": "playing"
+          },
+          {
+            "t": 29.82,
+            "dist": 276,
+            "status": "playing"
+          },
+          {
+            "t": 29.92,
+            "dist": 277,
+            "status": "playing"
+          },
+          {
+            "t": 30.02,
+            "dist": 278,
+            "status": "playing"
+          },
+          {
+            "t": 30.12,
+            "dist": 279,
+            "status": "playing"
+          },
+          {
+            "t": 30.22,
+            "dist": 280,
+            "status": "playing"
+          },
+          {
+            "t": 30.32,
+            "dist": 281,
+            "status": "playing"
+          },
+          {
+            "t": 30.42,
+            "dist": 282,
+            "status": "playing"
+          },
+          {
+            "t": 30.52,
+            "dist": 283,
+            "status": "playing"
+          },
+          {
+            "t": 30.62,
+            "dist": 284,
+            "status": "playing"
+          },
+          {
+            "t": 30.72,
+            "dist": 285,
+            "status": "playing"
+          },
+          {
+            "t": 30.82,
+            "dist": 286,
+            "status": "playing"
+          },
+          {
+            "t": 30.92,
+            "dist": 287,
+            "status": "playing"
+          },
+          {
+            "t": 31.02,
+            "dist": 288,
+            "status": "playing"
+          },
+          {
+            "t": 31.12,
+            "dist": 289,
+            "status": "playing"
+          },
+          {
+            "t": 31.22,
+            "dist": 290,
+            "status": "playing"
+          },
+          {
+            "t": 31.32,
+            "dist": 291,
+            "status": "playing"
+          },
+          {
+            "t": 31.42,
+            "dist": 292,
+            "status": "playing"
+          },
+          {
+            "t": 31.52,
+            "dist": 293,
+            "status": "playing"
+          },
+          {
+            "t": 31.62,
+            "dist": 294,
+            "status": "playing"
+          },
+          {
+            "t": 31.72,
+            "dist": 295,
+            "status": "playing"
+          },
+          {
+            "t": 31.82,
+            "dist": 296,
+            "status": "playing"
+          },
+          {
+            "t": 31.92,
+            "dist": 297,
+            "status": "playing"
+          },
+          {
+            "t": 32.02,
+            "dist": 298,
+            "status": "playing"
+          },
+          {
+            "t": 32.12,
+            "dist": 299,
+            "status": "playing"
+          },
+          {
+            "t": 32.22,
+            "dist": 300,
+            "status": "playing"
+          },
+          {
+            "t": 32.32,
+            "dist": 301,
+            "status": "playing"
+          },
+          {
+            "t": 32.42,
+            "dist": 302,
+            "status": "playing"
+          },
+          {
+            "t": 32.52,
+            "dist": 303,
+            "status": "playing"
+          },
+          {
+            "t": 32.62,
+            "dist": 304,
+            "status": "playing"
+          },
+          {
+            "t": 32.72,
+            "dist": 305,
+            "status": "playing"
+          },
+          {
+            "t": 32.82,
+            "dist": 306,
+            "status": "playing"
+          },
+          {
+            "t": 32.92,
+            "dist": 307,
+            "status": "playing"
+          },
+          {
+            "t": 33.02,
+            "dist": 308,
+            "status": "playing"
+          },
+          {
+            "t": 33.12,
+            "dist": 309,
+            "status": "playing"
+          },
+          {
+            "t": 33.22,
+            "dist": 310,
+            "status": "playing"
+          },
+          {
+            "t": 33.32,
+            "dist": 311,
+            "status": "playing"
+          },
+          {
+            "t": 33.42,
+            "dist": 312,
+            "status": "playing"
+          },
+          {
+            "t": 33.52,
+            "dist": 313,
+            "status": "playing"
+          },
+          {
+            "t": 33.62,
+            "dist": 314,
+            "status": "playing"
+          },
+          {
+            "t": 33.72,
+            "dist": 315,
+            "status": "playing"
+          },
+          {
+            "t": 33.82,
+            "dist": 316,
+            "status": "playing"
+          },
+          {
+            "t": 33.92,
+            "dist": 317,
+            "status": "playing"
+          },
+          {
+            "t": 34.02,
+            "dist": 318,
+            "status": "playing"
+          },
+          {
+            "t": 34.12,
+            "dist": 319,
+            "status": "playing"
+          },
+          {
+            "t": 34.22,
+            "dist": 320,
+            "status": "playing"
+          },
+          {
+            "t": 34.32,
+            "dist": 321,
+            "status": "playing"
+          },
+          {
+            "t": 34.42,
+            "dist": 322,
+            "status": "playing"
+          },
+          {
+            "t": 34.52,
+            "dist": 323,
+            "status": "playing"
+          },
+          {
+            "t": 34.62,
+            "dist": 324,
+            "status": "playing"
+          },
+          {
+            "t": 34.72,
+            "dist": 324,
+            "status": "playing"
+          },
+          {
+            "t": 34.82,
+            "dist": 325,
+            "status": "playing"
+          },
+          {
+            "t": 34.92,
+            "dist": 325,
+            "status": "playing"
+          },
+          {
+            "t": 35.02,
+            "dist": 326,
+            "status": "playing"
+          },
+          {
+            "t": 35.12,
+            "dist": 326,
+            "status": "playing"
+          },
+          {
+            "t": 35.22,
+            "dist": 327,
+            "status": "playing"
+          },
+          {
+            "t": 35.32,
+            "dist": 328,
+            "status": "playing"
+          },
+          {
+            "t": 35.42,
+            "dist": 329,
+            "status": "playing"
+          }
+        ],
+        "spawnTotal": {
+          "total": 7,
+          "aimed": 2,
+          "aimedTele": 2
+        },
+        "maxDist": 329,
+        "tEnd": 35.5,
+        "grace": null,
+        "livesSeen": 97,
+        "verdict": {
+          "total": 7,
+          "aimed": 2,
+          "aimedFrac": 0.286
+        }
+      },
+      "losepath": {
+        "events": [
+          {
+            "type": "spend",
+            "t": 13.03,
+            "left": 2
+          },
+          {
+            "type": "spend",
+            "t": 16.4,
+            "left": 1
+          },
+          {
+            "type": "spend",
+            "t": 20.4,
+            "left": 0
+          },
+          {
+            "type": "fail",
+            "t": 24.65
+          }
+        ],
+        "complete": [],
+        "fails": [
+          "La horde t'a rattrapé… — 220 m parcourus"
+        ],
+        "spends": 3,
+        "gains": 1,
+        "bankLeft": 0,
+        "spawnTimeline": null,
+        "spawnTotal": {
+          "total": 2,
+          "aimed": 1,
+          "aimedTele": 1
+        },
+        "maxDist": 220,
+        "tEnd": 24.65,
+        "grace": null,
+        "livesSeen": 0
+      },
+      "ducktype": {
+        "events": [
+          {
+            "type": "fail",
+            "t": 13.03
+          }
+        ],
+        "complete": [],
+        "fails": [
+          "La horde t'a rattrapé… — 120 m parcourus"
+        ],
+        "spends": 0,
+        "gains": 0,
+        "bankLeft": 0,
+        "spawnTimeline": null,
+        "spawnTotal": {
+          "total": 2,
+          "aimed": 1,
+          "aimedTele": 1
+        },
+        "maxDist": 120,
+        "tEnd": 13.03,
+        "grace": null,
+        "livesSeen": null,
+        "verdict": {
+          "failAtT": 13.03
+        }
+      },
+      "grace": {
+        "events": [
+          {
+            "type": "spend",
+            "t": 20.25,
+            "left": 98
+          }
+        ],
+        "complete": [],
+        "fails": [],
+        "spends": 1,
+        "gains": 0,
+        "bankLeft": 98,
+        "spawnTimeline": null,
+        "spawnTotal": {
+          "total": 5,
+          "aimed": 2,
+          "aimedTele": 2
+        },
+        "maxDist": 232,
+        "tEnd": 24.77,
+        "grace": {
+          "respawnT": 20.25,
+          "spawnsAtRespawn": 4,
+          "spawnT": 24.77
+        },
+        "livesSeen": 98,
+        "verdict": {
+          "respawnT": 20.25,
+          "spawnT": 24.77,
+          "gap": 4.52
+        }
+      }
+    }
+  },
+  "dodge": {
+    "ok": true,
+    "target": 450,
+    "runs": [
+      {
+        "run": 1,
+        "maxDist": 411,
+        "deaths": [
+          {
+            "t": 13.0,
+            "dist": 120
+          },
+          {
+            "t": 20.2,
+            "dist": 184
+          },
+          {
+            "t": 40.4,
+            "dist": 353
+          }
+        ],
+        "endStatus": "lost",
+        "cause": "La horde t'a rattrapé…",
+        "reached": null,
+        "tEnd": 46.75,
+        "hardOverlay": true,
+        "ok": false,
+        "console": [],
+        "perr": [],
+        "badnet": []
+      },
+      {
+        "run": 2,
+        "maxDist": 307,
+        "deaths": [
+          {
+            "t": 16.1,
+            "dist": 148
+          },
+          {
+            "t": 22.2,
+            "dist": 182
+          },
+          {
+            "t": 31.1,
+            "dist": 268
+          }
+        ],
+        "endStatus": "lost",
+        "cause": "La horde t'a rattrapé…",
+        "reached": null,
+        "tEnd": 35.58,
+        "hardOverlay": true,
+        "ok": false,
+        "console": [],
+        "perr": [],
+        "badnet": []
+      },
+      {
+        "run": 3,
+        "maxDist": 477,
+        "deaths": [
+          {
+            "t": 30.6,
+            "dist": 290
+          },
+          {
+            "t": 40.9,
+            "dist": 389
+          },
+          {
+            "t": 46.8,
+            "dist": 422
+          }
+        ],
+        "endStatus": "lost",
+        "cause": "La horde t'a rattrapé…",
+        "reached": 49.9,
+        "tEnd": 52.84,
+        "hardOverlay": true,
+        "ok": true,
+        "console": [],
+        "perr": [],
+        "badnet": []
+      }
+    ]
+  },
+  "noinput": {
+    "ok": true,
+    "obs": {
+      "overlay": true,
+      "lives": 0,
+      "cause": "La horde t'a rattrapé…",
+      "maxDist": 256,
+      "tOverlay": 30.3,
+      "deaths": [
+        {
+          "t": 13.1,
+          "dist": 121
+        },
+        {
+          "t": 16.4,
+          "dist": 148
+        },
+        {
+          "t": 20.5,
+          "dist": 184
+        }
+      ]
+    },
+    "console": [],
+    "perr": [],
+    "badnet": []
+  }
+}
