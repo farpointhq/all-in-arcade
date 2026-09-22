@@ -1,11 +1,39 @@
 {
   "lid": "ian-spence-rewind-loop",
   "modes": [
-    "layout"
+    "sims"
   ],
-  "layout": {
+  "sims": {
     "ok": true,
     "notes": [],
-    "decks": 24
+    "payloads": {
+      "good": {
+        "cause": "died",
+        "killer": "rewind-wraith",
+        "loops": 1,
+        "ft": 0,
+        "survived": 57.6,
+        "portalsHit": 1,
+        "season": "na"
+      },
+      "partial": {
+        "cause": "died",
+        "killer": "rewind-wraith",
+        "loops": 1,
+        "ft": 0,
+        "survived": 58,
+        "portalsHit": 1,
+        "season": "na"
+      },
+      "clumsy": {
+        "cause": "died",
+        "killer": "tape-walker",
+        "loops": 0,
+        "ft": 103,
+        "survived": 12.6,
+        "portalsHit": 0,
+        "season": "na"
+      }
+    }
   }
 }
