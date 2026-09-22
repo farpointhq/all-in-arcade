@@ -28,6 +28,7 @@ const App = {
     console.info("%cALL IN ARCADE booting…", "color:#7dfcff;font-weight:bold");
     Save.load();
     UI.init(this);
+    UI.flushPendingQueue(); // drain ideas queued while the booth server was down (fire-and-forget)
 
     window.addEventListener("error", (e) => {
       const f = $("#fatal");
