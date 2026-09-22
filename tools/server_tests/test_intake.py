@@ -399,6 +399,8 @@ class ClientFlushE2E(ServerCase):
                          "backlog must be delivered in order")
         left = page.evaluate("localStorage.getItem('allin-pending')")
         self.assertEqual(json.loads(left or "[]"), [], "queue must be emptied after flush")
+        toast = page.text_content("#toast") or ""
+        self.assertIn("Delivered 2 saved ideas", toast, "delivery toast must confirm the flush")
         page.close()
 
     def test_failed_submit_queues_offline_and_server_sees_nothing(self):
