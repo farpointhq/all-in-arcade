@@ -1,0 +1,48 @@
+{
+ "level": "L03",
+ "mode": "live",
+ "findings": [
+  {
+   "area": "robustness",
+   "severity": "low",
+   "summary": "RIG (fixed during cascade): the scripted puzzle driver never sent ArrowDown/Z undo/R restart — a manual probe proved all three work in-game (puzzle.js:90,181-182). The driver spec was fixed and the level re-run at the full 240s budget: all keys now fire (tap:ArrowDown/z/r + mash in trace) and the edge phase exercises, but the blind driver still places 0/3 crates — Sokoban-style puzzles need deliberate multi-push sequences a scripted tap loop cannot synthesize. Kept as a rig-coverage note, not a game defect.",
+   "evidence": {
+    "t": 240,
+    "sheet": null,
+    "still": "still-final.png"
+   },
+   "files": [
+    "tools/playtest/playtest.py:72",
+    "src/genres/puzzle.js:90",
+    "src/genres/puzzle.js:181"
+   ]
+  },
+  {
+   "area": "graphics",
+   "severity": "low",
+   "summary": "The cross-level 'LIVES' caption in the left HUD (9px, dim gray) is nearly invisible against this level's light ice backdrop — '♥ ×3' reads fine but its label washes out at booth distance.",
+   "evidence": {
+    "t": 100,
+    "sheet": null,
+    "still": "still-hud-zoom.png"
+   },
+   "files": [
+    "index.html:39",
+    "src/ui.js:154"
+   ]
+  },
+  {
+   "area": "ux",
+   "severity": "low",
+   "summary": "No auto-pause on window blur: trace t=197.4 blur event left #screen-pause inactive and play continued until refocus at t=201.9 (held keys are cleared on blur per src/core.js:321, so no stuck-key risk, but an unfocused booth level keeps running and burning state); acceptable if intended, otherwise add a pause-on-blur for the booth.",
+   "evidence": {
+    "t": 197.4,
+    "sheet": null,
+    "still": null
+   },
+   "files": [
+    "src/core.js:321"
+   ]
+  }
+ ]
+}

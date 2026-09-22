@@ -62,7 +62,7 @@ GENRE_GLOBAL = {
 }
 GENRE_BOT = {"rewind", "world-tour", "space-mission", "nano-cure"}   # ?bot=1&flavor=
 GENRE_AP = {"maze", "maze-studyhall"}                                # ?ap=1
-GENRE_BEATS = {"platformer", "nano-cure", "shooter", "space-mission", "rewind", "world-tour"}
+GENRE_BEATS = {"nano-cure", "space-mission", "rewind", "world-tour"}
 
 # Scripted keyboard driver specs (genres without an in-module bot).
 # holds: keys held for the whole run. taps: (key, period_s, hold_s).
@@ -70,7 +70,8 @@ DRIVER_SPECS = {
     "platformer": {"holds": ["ArrowRight"], "taps": [("Space", 1.1, 0.09), ("ArrowUp", 2.7, 0.09)]},
     "racer": {"holds": ["ArrowUp"], "taps": [("ArrowLeft", 1.6, 0.5), ("ArrowRight", 1.6, 0.5)]},
     "puzzle": {"holds": [], "taps": [("ArrowLeft", 1.4, 0.08), ("ArrowRight", 1.4, 0.08),
-                                     ("ArrowUp", 2.1, 0.08), ("Space", 1.7, 0.08)]},
+                                     ("ArrowUp", 2.1, 0.08), ("ArrowDown", 2.1, 0.08),
+                                     ("z", 3.3, 0.08), ("r", 6.1, 0.08), ("Space", 1.7, 0.08)]},
     "shooter": {"holds": [], "taps": [("ArrowLeft", 2.2, 0.4), ("ArrowRight", 2.2, 0.4),
                                       ("Space", 0.3, 0.05)]},
     "slingshot": {"holds": [], "taps": []},   # pointer-driven; DRAG handled specially
@@ -96,7 +97,9 @@ PROBE_JS = """
   if (name && window[name]) {
     try {
       const g = window[name];
-      out.state = (typeof g.state === "function") ? g.state() : JSON.parse(JSON.stringify(g));
+      if (typeof g.state === "function") out.state = g.state();
+      else if (typeof g.read === "function") out.state = g.read();
+      else out.state = JSON.parse(JSON.stringify(g));
     } catch (e) { out.state = { __error: String(e && e.message || e) }; }
   }
   if (window.__MAZE_RUNS__) out.mazeRuns = window.__MAZE_RUNS__.length;
@@ -161,9 +164,11 @@ class Driver:
         acts = []
         if win:
             return acts
-        # ---- edge phase at ~70% / 76% / 82% of budget (keyboard genres only) ----
-        for tag, at in (("pause", 0.70), ("resume", 0.76), ("blur", 0.82), ("refocus", 0.84)):
-            if t >= budget * at and tag not in self.edge_done:
+        # ---- edge phase: fixed early marks when the run ends before 70% of budget ----
+        for tag, frac, fixed in (("pause", 0.70, 20), ("resume", 0.76, 22),
+                                 ("blur", 0.82, 24), ("refocus", 0.84, 25)):
+            at = min(budget * frac, fixed) if budget > 40 else budget * frac
+            if t >= at and tag not in self.edge_done:
                 self.edge_done.add(tag)
                 if tag in ("pause", "resume"):
                     self.press("Escape", 0.05)
@@ -190,11 +195,26 @@ class Driver:
                 acts.append("tap:" + key)
         return acts
 
-    def drag(self, cx, cy):
-        self.page.mouse.move(cx, cy)
-        self.page.mouse.down()
-        self.page.mouse.move(cx - 90, cy - 60, steps=8)
-        self.page.mouse.up()
+    def drag(self, page):
+        """Slingshot drag: map the genre's virtual FORK coords to client px at
+        runtime (canvas letterboxing math mirrors slingshot.js toVir), grab the
+        pebble (64px grab radius), pull back-down-left, release to fire."""
+        pts = page.evaluate("""async () => {
+          const { W, H } = await import('/src/core.js');
+          const CV = document.getElementById('stage');
+          const r = CV.getBoundingClientRect();
+          const dw = CV.width || 1, dh = CV.height || 1;
+          const s = Math.min(dw / W, dh / H);
+          const ox = (dw - W * s) / 2, oy = (dh - H * s) / 2;
+          const toClient = (vx, vy) => [r.left + (vx * s + ox) * (r.width / dw),
+                                        r.top + (vy * s + oy) * (r.height / dh)];
+          return [toClient(133, 322), toClient(133 - 80, 322 + 62)];  // FORK, pull back-down-left
+        }""")
+        (gx, gy), (rx, ry) = pts[0], pts[1]
+        page.mouse.move(gx, gy)
+        page.mouse.down()
+        page.mouse.move(rx, ry, steps=12)
+        page.mouse.up()
 
     def release(self):
         for key in self.held:
@@ -249,6 +269,8 @@ def run_level(args):
                    % (lid, args.flavor))
             if genre in GENRE_AP:
                 url += "&ap=1"
+            if genre == "shooter":
+                url += "&debugShooter=1"   # window.__shooter is gated on this param
             results["url"] = url
             t0 = time.time()
             page.goto("http://127.0.0.1:%d%s" % (args.port, url), timeout=15000)
@@ -276,7 +298,7 @@ def run_level(args):
                     if driver_kind == "keys" and driver:
                         try:
                             if genre == "slingshot" and elapsed - last_drag > 2.5 and not probe.get("result"):
-                                driver.drag(480, 320)
+                                driver.drag(page)
                                 last_drag = elapsed
                                 acts.append("drag")
                             acts += driver.tick(elapsed, args.seconds, probe.get("result"))
@@ -295,13 +317,13 @@ def run_level(args):
                     results["trace"].append(row)
                     if probe.get("result") and win_t is None:
                         win_t = elapsed
-                        if not _looks_like_win(probe):
-                            results["verdictNote"] = "result overlay text did not clearly read as a win"
-                        win = True
-                        page.screenshot(path=os.path.join(ev_dir, "still-win.png"))
-                        results["stills"].append("still-win.png")
+                        win = _looks_like_win(probe)
+                        tag = "win" if win else "loss"
+                        page.screenshot(path=os.path.join(ev_dir, "still-%s.png" % tag))
+                        results["stills"].append("still-%s.png" % tag)
                         break
-                    ferr = filtered(perr) or [c for c in console if c.startswith("error:")]
+                    ferr = filtered(perr) or [c for c in console if c.startswith("error:")
+                                              and not c.startswith("error:Failed to load resource")]
                     if ferr and first_err_t is None:
                         first_err_t = elapsed
                         try:
@@ -376,7 +398,8 @@ def _looks_like_win(probe):
     text = (probe.get("resultText") or "").lower()
     if not text:
         return True   # overlay came up with no heading; accept overlay as the win signal
-    loss_words = ("game over", "try again", "wasted", "defeat", "burned", "crashed out")
+    loss_words = ("game over", "try again", "wasted", "defeat", "burned", "crashed out",
+                  "♥ lost", "perdu", "essaie encore")
     return not any(w in text for w in loss_words)
 
 

@@ -1,0 +1,97 @@
+{
+  "level": "static-review",
+  "mode": "static",
+  "findings": [
+    {
+      "area": "robustness",
+      "severity": "high",
+      "summary": "Save.load() runs the version-1 migration shim outside the try/catch that guards JSON.parse, so a valid-JSON-but-wrong-typed v1 save (e.g. {\"version\":1,\"settings\":\"x\"}) makes the ??=/||= inits throw (strict-mode assignment on a primitive), aborting boot to a black screen before createEngine runs.",
+      "evidence": { "t": null, "sheet": null, "still": null, "file": "src/save.js:27" },
+      "files": ["src/save.js:24", "src/save.js:27"]
+    },
+    {
+      "area": "performance",
+      "severity": "medium",
+      "summary": "The engine resizes the canvas backing store only when clientWidth/clientHeight change, so a devicePixelRatio change (browser zoom or a monitor handoff at the booth) with an unchanged CSS size leaves the backing store at the old DPR scale, yielding a blurry / wrongly-scaled canvas.",
+      "evidence": { "t": null, "sheet": null, "still": null, "file": "src/core.js:358" },
+      "files": ["src/core.js:357"]
+    },
+    {
+      "area": "robustness",
+      "severity": "medium",
+      "summary": "submitKiosk pushes a failed submission into the allin-pending localStorage queue but nothing ever re-submits or flushes that queue, so a visitor's idea captured during a server outage stays stranded on the booth machine and never reaches the build queue.",
+      "evidence": { "t": null, "sheet": null, "still": null, "file": "src/ui.js:346" },
+      "files": ["src/ui.js:346", "src/ui.js:350"]
+    },
+    {
+      "area": "robustness",
+      "severity": "low",
+      "summary": "Save_hasProgress() reads the allin-arcade-save-v1 key directly and treats any truthy non-object 'completed' (e.g. a string) as progress, enabling Continue and miscounting cleared levels; it also parses the same JSON twice.",
+      "evidence": { "t": null, "sheet": null, "still": null, "file": "src/ui.js:376" },
+      "files": ["src/ui.js:374", "src/ui.js:376"]
+    },
+    {
+      "area": "robustness",
+      "severity": "low",
+      "summary": "serve.py's path-containment check compares against os.path.normpath(ROOT + os.sep), which carries no trailing separator, so a sibling directory whose name begins with the root name (e.g. /…/repo-evil/…) would also pass the startswith guard.",
+      "evidence": { "t": null, "sheet": null, "still": null, "file": "serve.py:79" },
+      "files": ["serve.py:79"]
+    },
+    {
+      "area": "robustness",
+      "severity": "low",
+      "summary": "/api/submit silently truncates the request body to 64KB via min(Content-Length, 64000), so a legitimate long prompt is cut off and rejected as 'bad json'; a missing Content-Length reads 0 bytes and also returns 400.",
+      "evidence": { "t": null, "sheet": null, "still": null, "file": "serve.py:121" },
+      "files": ["serve.py:121"]
+    },
+    {
+      "area": "robustness",
+      "severity": "low",
+      "summary": "The rAF loop clamps dt to 0.05 (good) but there is no visibilitychange listener anywhere; while a booth tab is hidden the loop pauses and the audio setInterval(pump,60) keeps scheduling against real-time ac.currentTime, and on resume the first frame receives a large-but-clamped dt, with no guard against a negative (now-last).",
+      "evidence": { "t": null, "sheet": null, "still": null, "file": "src/core.js:353" },
+      "files": ["src/core.js:353", "src/audio.js:155"]
+    },
+    {
+      "area": "ux",
+      "severity": "low",
+      "summary": "rewind.js schedules a setTimeout in create() with no clearTimeout on level exit, so exiting the level before ~350ms lets beatOnce fire against a torn-down closure, and rapid re-entry stacks duplicate timers.",
+      "evidence": { "t": null, "sheet": null, "still": null, "file": "src/genres/rewind.js:681" },
+      "files": ["src/genres/rewind.js:681"]
+    },
+    {
+      "area": "audio",
+      "severity": "low",
+      "summary": "ensure() calls ac.resume() without awaiting/catching it, so if it runs outside a recognised user gesture (e.g. playMusic at boot via ?level=) the returned promise can reject as an unhandled rejection; the gesture unlock itself (pointerdown/keydown) is correct.",
+      "evidence": { "t": null, "sheet": null, "still": null, "file": "src/audio.js:125" },
+      "files": ["src/audio.js:125", "src/app.js:44"]
+    },
+    {
+      "area": "performance",
+      "severity": "low",
+      "summary": "_startFile appends one <audio> element to document.body per mood and never removes it, so fileEls accumulates up to ~9 detached-but-present elements for the whole app lifetime.",
+      "evidence": { "t": null, "sheet": null, "still": null, "file": "src/audio.js:164" },
+      "files": ["src/audio.js:160"]
+    },
+    {
+      "area": "bug",
+      "severity": "low",
+      "summary": "No genre implements the engine's exit() hook and the shared playScene has no cleanup, so any module-level listener/cache/timer a genre ever registers is never torn down on level change; today the per-level state is recreated inside each create() closure so gameplay does not leak, but the missing exit() is a latent leak.",
+      "evidence": { "t": null, "sheet": null, "still": null, "file": "src/app.js:440" },
+      "files": ["src/app.js:440", "src/core.js:342"]
+    },
+    {
+      "area": "robustness",
+      "severity": "low",
+      "summary": "The maze genres push to window.__MAZE_RUNS__ (initialised once, never reset) and rewrite window.__TEST_API__ in create(); the thumbnail hot-import path (app.js) can re-run create() and stomp __TEST_API__ mid-playtest — test-harness only.",
+      "evidence": { "t": null, "sheet": null, "still": null, "file": "src/genres/maze.js:667" },
+      "files": ["src/genres/maze.js:667", "src/genres/maze-studyhall.js:522", "src/app.js:286"]
+    },
+    {
+      "area": "robustness",
+      "severity": "low",
+      "summary": "/api/submit appends to submissions/pending.jsonl with no rotation or cap, so the pending queue grows unboundedly over a long booth session (drained only by an external claimant process).",
+      "evidence": { "t": null, "sheet": null, "still": null, "file": "serve.py:138" },
+      "files": ["serve.py:138"]
+    }
+  ]
+}

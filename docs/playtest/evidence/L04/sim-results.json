@@ -1,0 +1,1306 @@
+{
+  "lid": "L04",
+  "genre": "shooter",
+  "port": 8607,
+  "flavor": "good",
+  "mode": "all",
+  "driver": "keys",
+  "seconds": 240,
+  "boot": {
+    "ok": true,
+    "ms": 48
+  },
+  "trace": [
+    {
+      "t": 1.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 2.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 2.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 3.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 4.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 5.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 5.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 6.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 7.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 7.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 9.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 9.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 10.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 11.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 11.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 12.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 12.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 13.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 14.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 14.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 15.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 16.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 17.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 17.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 17.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 19.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 19.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 20.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 21.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 21.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 22.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 23.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 24.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 24.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 25.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 26.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 26.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 28.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 28.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 29.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 30.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 30.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 31.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 32.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 32.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 33.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 33.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 35.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 35.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 36.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 37.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 37.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 38.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 38.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 40.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 40.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 40.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 42.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 42.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 43.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 43.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 44.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 45.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 45.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 47.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 47.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 48.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 49.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 49.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 50.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 51.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 52.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 52.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 53.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 54.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 54.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 55.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 56.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 56.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 57.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 57.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 59.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 59.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 60.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 61.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 61.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 62.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 63.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 63.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 64.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 64.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 66.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 66.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 67.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 68.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 68.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 69.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 70.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 71.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 71.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 71.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 73.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 73.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 74.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 75.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 75.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 76.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 77.6,
+      "canvas": true,
+      "result": true,
+      "pause": false,
+      "resultText": "TRY AGAIN",
+      "beats": 0
+    }
+  ],
+  "console": [
+    "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "error:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "perr": [],
+  "sheets": [
+    "sheet-01.png",
+    "sheet-02.png",
+    "sheet-03.png",
+    "sheet-04.png",
+    "sheet-05.png",
+    "sheet-06.png",
+    "sheet-07.png",
+    "sheet-08.png"
+  ],
+  "stills": [
+    "still-boot.png",
+    "still-loss.png",
+    "still-final.png"
+  ],
+  "url": "/?level=L04&bot=1&flavor=good&debug=1&beats=1",
+  "win": false,
+  "winAt": 77.58934998512268,
+  "badnet": [],
+  "consoleClean": true,
+  "noPageerror": true,
+  "netClean": true,
+  "beats": {
+    "expected": true,
+    "count": 0,
+    "ok": false
+  },
+  "video": "/tmp/playtest-raw/L04-1790059659.webm",
+  "gates": {
+    "boot": true,
+    "consoleClean": true,
+    "noPageerror": true,
+    "netClean": true,
+    "win": null
+  }
+}

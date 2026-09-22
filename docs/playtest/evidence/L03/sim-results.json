@@ -1,0 +1,5026 @@
+{
+  "lid": "L03",
+  "genre": "puzzle",
+  "port": 8604,
+  "flavor": "good",
+  "mode": "all",
+  "driver": "keys",
+  "seconds": 240,
+  "boot": {
+    "ok": true,
+    "ms": 80
+  },
+  "trace": [
+    {
+      "t": 1.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:z",
+        "tap:r",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 2.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 2.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 3.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 3.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 4.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 4.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 5.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 5.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 6.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 6.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 7.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:r",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 8.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 8.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 9.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 9.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 10.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 10.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 11.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 11.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 12.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 12.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 13.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 14.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 14.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 15.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 15.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 16.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 16.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 17.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 18.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 18.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 18.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 19.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 20.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "pause",
+        "tap:r",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 20.7,
+      "canvas": true,
+      "result": false,
+      "pause": true,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 21.3,
+      "canvas": true,
+      "result": false,
+      "pause": true,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 21.7,
+      "canvas": true,
+      "result": false,
+      "pause": true,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 22.3,
+      "canvas": true,
+      "result": false,
+      "pause": true,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "resume",
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 23.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 23.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 23.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 24.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "blur",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 25.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "refocus"
+      ]
+    },
+    {
+      "t": 25.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 26.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 26.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z",
+        "tap:r",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 27.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 28.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 28.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 28.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 29.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 30.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 30.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 31.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 31.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 32.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 32.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 33.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 33.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 34.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 34.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 35.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 36.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 36.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 37.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 37.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 38.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 38.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 39.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 39.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 40.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 40.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 41.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 42.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 42.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 43.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 43.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 44.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 44.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 45.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 45.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:r",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 46.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 47.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 47.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 47.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 48.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 49.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 49.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 50.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 50.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 51.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 51.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 52.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 53.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 53.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 54.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 54.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 55.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 55.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 56.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 56.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 57.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 57.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 58.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 59.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 59.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 60.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 60.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 61.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 61.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 62.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 62.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 63.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 64.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 64.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 65.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 65.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 66.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 66.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 67.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 67.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 68.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 69.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 69.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 70.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 70.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 71.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 71.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 72.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 72.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 73.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 73.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 74.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 74.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 75.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 76.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 76.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 76.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 77.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 78.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z",
+        "tap:r"
+      ]
+    },
+    {
+      "t": 78.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 79.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 79.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 80.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 80.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 81.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 81.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 82.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 83.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 83.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 84.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 84.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:r"
+      ]
+    },
+    {
+      "t": 85.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 85.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 86.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 86.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 87.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 88.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 88.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 88.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 89.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 90.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 90.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 91.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 91.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 92.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 93.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 93.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 93.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 94.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 95.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 95.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 96.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 96.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 97.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 97.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 98.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 98.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 99.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 100.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 100.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 101.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 101.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 102.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 102.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 103.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 103.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 104.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 104.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 105.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 106.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 106.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 107.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 107.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 108.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 108.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 109.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 109.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 110.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 110.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z",
+        "tap:r"
+      ]
+    },
+    {
+      "t": 111.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 112.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 112.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 113.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 113.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 114.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 114.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 115.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 115.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 116.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 116.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 117.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:r"
+      ]
+    },
+    {
+      "t": 118.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 118.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 119.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 119.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 120.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 120.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 121.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 121.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 122.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 123.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 123.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 124.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 124.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 125.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 125.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 126.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 126.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 127.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 127.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 128.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 128.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 129.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 130.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 130.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 131.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 131.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 132.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 132.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 133.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 134.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 134.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 134.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 135.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 136.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 136.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 137.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 137.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 138.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 139.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 139.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 139.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 140.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 141.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 141.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 142.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 142.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 143.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 143.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z",
+        "tap:r"
+      ]
+    },
+    {
+      "t": 144.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 144.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 145.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 145.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 146.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 147.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 147.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 147.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 148.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 149.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 149.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 150.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:r"
+      ]
+    },
+    {
+      "t": 150.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 151.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 151.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 152.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 152.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 153.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 154.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 154.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 155.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 155.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 156.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 156.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 157.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 157.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 158.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 158.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 159.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 160.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 160.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 161.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 161.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 162.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 162.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 163.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 163.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 164.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 165.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 165.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 166.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 166.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 167.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 167.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 168.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 168.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 169.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 170.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 170.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 171.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 171.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 172.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 172.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 173.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 173.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 174.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 174.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 175.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 175.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 176.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z",
+        "tap:r"
+      ]
+    },
+    {
+      "t": 177.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 177.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 178.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 178.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 179.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 179.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 180.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 180.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 181.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 181.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 182.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 182.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:r",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 183.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 184.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 184.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 185.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 185.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 186.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 186.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 187.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 187.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 188.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 189.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 189.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 190.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 190.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 191.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 191.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 192.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 193.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 193.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 193.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 194.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 195.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 195.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 196.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 196.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 197.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 197.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 198.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 198.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 199.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 200.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 200.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 201.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 201.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 202.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 202.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:r"
+      ]
+    },
+    {
+      "t": 203.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 203.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 204.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 204.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 205.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:z"
+      ]
+    },
+    {
+      "t": 206.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 206.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 207.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 207.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 208.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 208.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 209.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z",
+        "tap:r"
+      ]
+    },
+    {
+      "t": 209.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 210.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 210.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 211.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 211.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 212.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 213.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:z"
+      ]
+    },
+    {
+      "t": 213.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight",
+        "tap:ArrowUp",
+        "tap:ArrowDown"
+      ]
+    },
+    {
+      "t": 214.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 214.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 215.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 215.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "tap:ArrowUp",
+        "tap:ArrowDown",
+        "tap:r"
+      ]
+    },
+    {
+      "t": 216.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 217.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 217.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 218.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 219.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 220.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 220.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 221.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 222.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 222.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 223.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 224.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 225.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 225.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 226.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 227.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 228.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 228.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 229.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 230.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 230.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 231.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 232.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 233.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 233.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 234.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 235.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 236.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 236.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 237.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 238.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 239.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 239.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    },
+    {
+      "t": 240.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "keys": [
+        "mash:ArrowLeft",
+        "mash:ArrowRight",
+        "mash:ArrowUp",
+        "mash:ArrowDown",
+        "mash:z",
+        "mash:r",
+        "mash:Space"
+      ]
+    }
+  ],
+  "console": [
+    "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "error:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "perr": [],
+  "sheets": [
+    "sheet-01.png",
+    "sheet-02.png",
+    "sheet-03.png",
+    "sheet-04.png",
+    "sheet-05.png",
+    "sheet-06.png",
+    "sheet-07.png",
+    "sheet-08.png",
+    "sheet-09.png",
+    "sheet-10.png",
+    "sheet-11.png",
+    "sheet-12.png",
+    "sheet-13.png",
+    "sheet-14.png",
+    "sheet-15.png",
+    "sheet-16.png",
+    "sheet-17.png",
+    "sheet-18.png",
+    "sheet-19.png",
+    "sheet-20.png",
+    "sheet-21.png",
+    "sheet-22.png",
+    "sheet-23.png",
+    "sheet-24.png",
+    "sheet-25.png"
+  ],
+  "stills": [
+    "still-boot.png",
+    "still-final.png"
+  ],
+  "url": "/?level=L03&bot=1&flavor=good&debug=1&beats=1",
+  "win": false,
+  "winAt": null,
+  "badnet": [],
+  "consoleClean": true,
+  "noPageerror": true,
+  "netClean": true,
+  "beats": {
+    "expected": false,
+    "count": 0,
+    "ok": null
+  },
+  "video": "/tmp/playtest-raw/L03-1790060448.webm",
+  "gates": {
+    "boot": true,
+    "consoleClean": true,
+    "noPageerror": true,
+    "netClean": true,
+    "win": null
+  }
+}
