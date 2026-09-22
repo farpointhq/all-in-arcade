@@ -2,7 +2,7 @@
   "lid": "marc-larochelle-course-apocalypse",
   "port": 8614,
   "modes": [
-    "sims"
+    "all"
   ],
   "seed": 20260922,
   "sims": {
@@ -1922,5 +1922,119 @@
         }
       }
     }
+  },
+  "dodge": {
+    "ok": true,
+    "target": 450,
+    "runs": [
+      {
+        "run": 1,
+        "maxDist": 411,
+        "deaths": [
+          {
+            "t": 13.0,
+            "dist": 120
+          },
+          {
+            "t": 20.2,
+            "dist": 184
+          },
+          {
+            "t": 40.4,
+            "dist": 353
+          }
+        ],
+        "endStatus": "lost",
+        "cause": "La horde t'a rattrapé…",
+        "reached": null,
+        "tEnd": 46.75,
+        "hardOverlay": true,
+        "ok": false,
+        "console": [],
+        "perr": [],
+        "badnet": []
+      },
+      {
+        "run": 2,
+        "maxDist": 307,
+        "deaths": [
+          {
+            "t": 16.1,
+            "dist": 148
+          },
+          {
+            "t": 22.2,
+            "dist": 182
+          },
+          {
+            "t": 31.1,
+            "dist": 268
+          }
+        ],
+        "endStatus": "lost",
+        "cause": "La horde t'a rattrapé…",
+        "reached": null,
+        "tEnd": 35.58,
+        "hardOverlay": true,
+        "ok": false,
+        "console": [],
+        "perr": [],
+        "badnet": []
+      },
+      {
+        "run": 3,
+        "maxDist": 477,
+        "deaths": [
+          {
+            "t": 30.6,
+            "dist": 290
+          },
+          {
+            "t": 40.9,
+            "dist": 389
+          },
+          {
+            "t": 46.8,
+            "dist": 422
+          }
+        ],
+        "endStatus": "lost",
+        "cause": "La horde t'a rattrapé…",
+        "reached": 49.9,
+        "tEnd": 52.84,
+        "hardOverlay": true,
+        "ok": true,
+        "console": [],
+        "perr": [],
+        "badnet": []
+      }
+    ]
+  },
+  "noinput": {
+    "ok": true,
+    "obs": {
+      "overlay": true,
+      "lives": 0,
+      "cause": "La horde t'a rattrapé…",
+      "maxDist": 256,
+      "tOverlay": 30.3,
+      "deaths": [
+        {
+          "t": 13.1,
+          "dist": 121
+        },
+        {
+          "t": 16.4,
+          "dist": 148
+        },
+        {
+          "t": 20.5,
+          "dist": 184
+        }
+      ]
+    },
+    "console": [],
+    "perr": [],
+    "badnet": []
   }
 }

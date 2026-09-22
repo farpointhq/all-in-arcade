@@ -286,7 +286,8 @@ def _net_and_console(page, console, perr, badnet):
 
 def run_dodge(pw, results):
     """AC1 — live boots, jump taps only (Space 1.3 s / ArrowUp 2.6 s, committed cadence)."""
-    browser = pw.chromium.launch(headless=True)
+    # audio off on every launch (standing rule)
+    browser = pw.chromium.launch(headless=True, args=["--mute-audio"])
     runs = []
     for i in range(DODGE_RUNS):
         ctx = browser.new_context(viewport={"width": 1000, "height": 640})  # fresh storage → bank=3
@@ -351,7 +352,8 @@ def run_dodge(pw, results):
 
 def run_noinput(pw, results):
     """AC2 — live boot, zero keys: the bank MUST drain → hard TRY AGAIN overlay."""
-    browser = pw.chromium.launch(headless=True)
+    # audio off on every launch (standing rule)
+    browser = pw.chromium.launch(headless=True, args=["--mute-audio"])
     ctx = browser.new_context(viewport={"width": 1000, "height": 640})
     page = ctx.new_page()
     console, perr, badnet = [], [], []
