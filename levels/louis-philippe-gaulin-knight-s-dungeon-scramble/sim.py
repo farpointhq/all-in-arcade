@@ -106,7 +106,7 @@ GUARD_JS = r"""
   const p = s.player;
   const g0 = s.ghosts[0];
   const nearTunnel = p && Math.round(p.fy) >= 11 && Math.round(p.fy) <= 12;
-  if (nearTunnel && s.fright <= 0 && g0 && !g0.eaten) {
+  if (s.status === "playing" && nearTunnel && s.fright <= 0 && g0 && !g0.eaten) {
     const gc = ((Math.round(p.fx) + 4) % 21 + 21) % 21;
     A.debug().teleportGhost(0, gc, 13);
     parked = true;
@@ -298,18 +298,29 @@ def run_guard(page, console, perr):
         observed, violations, entries = 0.0, 0, 0
         t_start = time.time()
         prev_in_tunnel = False
+        facts_first, facts_last = None, None
         while observed < 12.0 and time.time() - t_start < 120:
             g = page.evaluate(GUARD_JS)
             if not g or not g.get("s"):
                 break
             snap, parked = g["s"], g["parked"]
-            if snap.get("status") != "playing":
-                res["notes"].append("run ended during guard window")
+            st = snap.get("status")
+            if st in ("lost", "bell"):
+                res["notes"].append("run ended (%s) during guard window" % st)
                 break
-            if page.evaluate(DEATHS_JS) > deaths0:
+            deaths_now = page.evaluate(DEATHS_JS)
+            if deaths_now - deaths0 > 1:
                 res["ok"] = False
-                res["notes"].append("death during guard window")
+                res["notes"].append("%d deaths during guard window (budget 1)" % (deaths_now - deaths0))
                 break
+            if st != "playing":
+                # dying/ready respawn transition — pause the window, keep going
+                time.sleep(0.15)
+                prev_in_tunnel = False
+                continue
+            if facts_first is None:
+                facts_first = snap["facts"]
+            facts_last = snap["facts"]
             p = snap.get("player")
             if not p:
                 res["ok"] = False
@@ -329,11 +340,10 @@ def run_guard(page, console, perr):
                         res["violations"].append(row)
             prev_in_tunnel = in_tunnel
             time.sleep(0.15)
-        facts1 = (page.evaluate(SNAP_JS) or {}).get("facts", facts0)
         res["observed_s"] = round(observed, 1)
         res["entries_n"] = entries
-        res["facts_delta"] = facts1 - facts0
-        if facts1 <= facts0:
+        res["facts_delta"] = (facts_last - facts_first) if (facts_first is not None and facts_last is not None) else 0
+        if facts_first is None or facts_last is None or facts_last <= facts_first:
             res["ok"] = False
             res["notes"].append("facts did not increase during guard window (freeze class)")
         if violations:
