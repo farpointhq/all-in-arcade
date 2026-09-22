@@ -1,0 +1,81 @@
+{
+  "issue": 13,
+  "port": 8613,
+  "url": "/?level=ian-spence-rewind-loop&debug=1",
+  "gates": {
+    "boot": {
+      "ok": true,
+      "backing": [
+        1000,
+        640
+      ],
+      "expected": [
+        1000,
+        640
+      ],
+      "css": [
+        1000,
+        640
+      ],
+      "dpr": 1
+    },
+    "dprOnly": {
+      "ok": false,
+      "cssUnchanged": true,
+      "backing": [
+        1000,
+        640
+      ],
+      "expected": [
+        2000,
+        1280
+      ],
+      "appliedMs": null
+    },
+    "capSym": {
+      "ok": false,
+      "cap2x": false,
+      "capBacking": [
+        1000,
+        640
+      ],
+      "capExpected": 2000,
+      "fractional1_5": false,
+      "symmetricReturn": true
+    },
+    "paused": {
+      "ok": false,
+      "pauseScreen": true,
+      "appliedMs": null
+    },
+    "cdpReal": {
+      "ok": false,
+      "realDpr": 2,
+      "cssUnchanged": true,
+      "backing": [
+        1000,
+        640
+      ],
+      "appliedMs": null
+    },
+    "regression": {
+      "ok": true,
+      "viewportResizeAppliedMs": 17,
+      "letterboxS": 1.2292,
+      "letterboxFinitePositive": true
+    },
+    "hygiene": {
+      "ok": true,
+      "consoleClean": true,
+      "noPageerror": true,
+      "netClean": true
+    }
+  },
+  "console": [
+    "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "error:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "perr": [],
+  "badnet": [],
+  "pass": false
+}
