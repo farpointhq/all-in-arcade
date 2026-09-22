@@ -31,6 +31,13 @@ export const UI = {
       b.addEventListener("click", (e) => { e.preventDefault(); app.action(b.dataset.act); }));
 
     $("#kioskForm").addEventListener("submit", (e) => { e.preventDefault(); this.submitKiosk(app); });
+
+    // offline backlog re-flush triggers (issue #17): boot is wired in app.js;
+    // here we catch connectivity/visibility changes while the booth is live
+    window.addEventListener("online", () => this.flushPendingQueue());
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") this.flushPendingQueue();
+    });
     $("#resultPrimary").addEventListener("click", () => app.action("result-primary"));
     $("#resultSecondary").addEventListener("click", () => app.action("levels"));
     $("#muteBtn")?.addEventListener("click", () => this.toggleMute());
@@ -170,7 +177,10 @@ export const UI = {
     const n = levels.length, b = builders.size;
     $("#titleStats").textContent =
       `${n} LEVEL${n === 1 ? "" : "S"} · ${b} BUILDER${b === 1 ? "" : "S"} · A FABRIC PRODUCTION`.toUpperCase();
-    const hasProgress = Save_hasProgress();
+    // hasProgress() reads the SANITIZED in-memory save (issue #9) — re-reading
+    // localStorage directly here bypassed the repair and could enable Continue
+    // off a corrupt/truthy completed value.
+    const hasProgress = Save.hasProgress();
     $("#btnContinue").disabled = !hasProgress;
     // level medallions — real vector sigils, one per live level (DOM layer)
     const SIGILS = {
@@ -332,27 +342,103 @@ export const UI = {
     };
     const status = $("#kioskStatus");
     status.textContent = "Transmitting…";
+    status.classList.remove("err");
     try {
       const r = await fetch("/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+      if (r.status === 413) {
+        // the server can never accept this body — queueing it would plant a
+        // poison pill that every future flush would retry forever
+        status.textContent = "Idea too long — trim it a bit and send again";
+        status.classList.add("err");
+        return;
+      }
       const j = await r.json();
       if (!r.ok || !j.ok) throw new Error(j.error || "server said no");
       status.textContent = "✓ Received! Your idea is in the build queue — watch it come alive on this screen.";
       this.toast(`Logged for ${payload.name}! The Fabric agent will start building soon.`, 4000);
+      this.flushPendingQueue(); // a success means the server is back — drain any backlog
       this.app.action("back-title");
     } catch (e) {
-      try {
-        const q = JSON.parse(localStorage.getItem("allin-pending") || "[]");
-        q.push({ ts: new Date().toISOString(), ...payload });
-        localStorage.setItem("allin-pending", JSON.stringify(q));
+      if (this.queuePending(payload)) {
         status.textContent = "Booth server not reachable — your idea was saved on this machine. Flag the Fabric agent!";
-      } catch {
+      } else {
         status.textContent = "Couldn't send — flag the Fabric agent and just tell them your idea directly!";
       }
     }
+  },
+
+  // ---- offline idea queue (issue #17) ----------------------------------------
+  // Ideas captured while the booth server is down land in localStorage
+  // ["allin-pending"] and are re-flushed on boot / window online / visibility
+  // / after any successful direct submit. Records keep their original ts and
+  // replay:true so the agent can dedupe the rare crash-mid-flush duplicate.
+  queuePending(payload) {
+    try {
+      const q = JSON.parse(localStorage.getItem("allin-pending") || "[]");
+      q.push({
+        ts: new Date().toISOString(),
+        id: Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8),
+        replay: true,
+        ...payload,
+      });
+      while (q.length > 50) q.shift(); // cap the queue — oldest dropped
+      localStorage.setItem("allin-pending", JSON.stringify(q));
+      return true;
+    } catch {
+      return false; // storage full/broken — caller shows the tell-the-agent fallback
+    }
+  },
+
+  async flushPendingQueue() {
+    if (this._flushing) return; // re-entrancy guard: boot/online/visible can collide
+    this._flushing = true;
+    let delivered = 0;
+    try {
+      for (;;) {
+        let q = [];
+        try { q = JSON.parse(localStorage.getItem("allin-pending") || "[]"); } catch { break; }
+        if (!Array.isArray(q) || !q.length) break;
+        const rec = q[0];
+        let r = null;
+        try {
+          r = await fetch("/api/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(rec),
+          });
+        } catch { break; } // server still down — stop, leave the rest queued
+        if (r.status === 413) {
+          // oversized backlog record: the server can never accept it — drop forever
+          console.warn("[kiosk] dropped an oversized queued idea (413)");
+          this._pendingRemove(rec.id);
+          continue;
+        }
+        if (!r.ok) break; // 5xx or odd status — keep the record for the next trigger
+        let j = null;
+        try { j = await r.json(); } catch { /* non-JSON error page from a proxy */ }
+        if (!j || !j.ok) break;
+        this._pendingRemove(rec.id); // removed immediately after ITS success
+        delivered++;
+      }
+    } finally {
+      this._flushing = false;
+    }
+    if (delivered > 0) this.toast(`✓ Delivered ${delivered} saved idea${delivered === 1 ? "" : "s"}`);
+  },
+
+  _pendingRemove(id) {
+    try {
+      const q = JSON.parse(localStorage.getItem("allin-pending") || "[]");
+      const i = q.findIndex((r) => r.id === id);
+      if (i >= 0) {
+        q.splice(i, 1);
+        localStorage.setItem("allin-pending", JSON.stringify(q));
+      }
+    } catch { /* queue unreadable — leave as-is */ }
   },
 
   // ---- result / pause ----------------------------------------------------------
@@ -370,10 +456,3 @@ export const UI = {
     this.show("result");
   },
 };
-
-function Save_hasProgress() {
-  try {
-    return JSON.parse(localStorage.getItem("allin-arcade-save-v1") || "{}").completed &&
-      Object.keys(JSON.parse(localStorage.getItem("allin-arcade-save-v1")).completed).length > 0;
-  } catch { return false; }
-}

@@ -4,7 +4,8 @@
 Modes (default all):
   live   — boots the REAL app at ?level=amir-kermany-nano-cure-2&bot=1&flavor=good
            &debug=1&beats=1, polls window.__NANO, saves shot-<phase>.png,
-           console-clean proof (R1) — known booth-wide logo-404 noise is filtered.
+           console-clean proof (R1) — booth masthead noise filtered by URL/BOOTH_FILTER;
+           all other 4xx/5xx fail via the URL-attributed badnet list.
   sims   — fixed-dt determinism: good / partial / clumsy with fresh ?v= import,
            fake api recording complete/fail, threshold asserts (R5-R9).
   thumbs — thumbnail-pipeline equivalent: stub api + 70 neutral steps + draw + toDataURL.
@@ -20,6 +21,7 @@ from playwright.sync_api import sync_playwright
 BASE = "http://localhost:8181"
 LID = "amir-kermany-nano-cure-2"
 HERE = os.path.dirname(os.path.abspath(__file__))
+BOOTH_FILTER = ("logo-all.svg", "logo-in.svg", "favicon")
 MODULE = f"{BASE}/src/genres/nano-cure.js"
 results = {"live": None, "sims": {}, "thumbs": None, "shots": [], "fails": []}
 
@@ -71,7 +73,7 @@ THUMB_BODY = """async (a) => {
 
 
 def run_live():
-    out = {"console_errors": [], "page_error": None, "won": False, "state": None, "trace": []}
+    out = {"console_errors": [], "badnet": [], "page_error": None, "won": False, "state": None, "trace": []}
     with sync_playwright() as pw:
         b = pw.chromium.launch(args=["--disable-gpu"])
         page = b.new_page()
@@ -81,10 +83,14 @@ def run_live():
             if m.type != "error":
                 return
             t = m.text or ""
-            if "logo-all.svg" in t or "logo-in.svg" in t or "Failed to load resource" in t or "404" in t:
-                return  # booth-wide masthead 404, not this lane (maze-genre note)
+            if any(f in t for f in BOOTH_FILTER):
+                return  # booth masthead assets, named — narrow filter only
             out["console_errors"].append(t)
         page.on("console", on_console)
+        # network layer: 4xx/5xx carry their URL here (a resource 404's console
+        # text does NOT), so genuine asset failures stay visible with attribution
+        page.on("response", lambda r: out["badnet"].append("%s %s" % (r.status, r.url))
+                if r.status >= 400 else None)
 
         bust = int(time.time() * 1000)
         url = f"{BASE}/?level={LID}&bot=1&flavor=good&debug=1&beats=1&bust={bust}"
@@ -109,7 +115,8 @@ def run_live():
             page.wait_for_timeout(800)
         b.close()
     out["won"] = (out["state"] or {}).get("status") == "won"
-    out["clean"] = bool(out["won"]) and not out["page_error"] and not out["console_errors"]
+    out["clean"] = bool(out["won"]) and not out["page_error"] and not out["console_errors"] \
+        and not out["badnet"]
     results["live"] = out
     try:  # final-state tile even on failure
         if not out["won"]:
