@@ -1,70 +1,177 @@
 {
   "live": {
-    "console_errors": [],
-    "page_error": null,
-    "won": true,
-    "state": {
-      "t": 67.12,
-      "phase": "boss",
-      "status": "won",
-      "trace": [
-        "capillaries@0.1",
-        "artery@22.0",
-        "boss@46.0",
-        "won@67.1"
-      ],
-      "hearts": 1,
-      "biomass": 468,
-      "tier": 3,
-      "r": 26,
-      "absorbed": 48,
-      "kills": 3,
-      "bombs": 1,
-      "fumbles": 0,
-      "boss": {
-        "cycle": 3,
-        "meter": 2,
-        "hp": 5,
-        "open": false,
-        "dying": false
+    "runs": [
+      {
+        "run": 0,
+        "console_errors": [],
+        "page_error": null,
+        "won": true,
+        "hearts": 1,
+        "state": {
+          "t": 67.21,
+          "phase": "boss",
+          "status": "won",
+          "trace": [
+            "capillaries@0.1",
+            "artery@22.0",
+            "boss@46.0",
+            "won@67.2"
+          ],
+          "hearts": 1,
+          "biomass": 338,
+          "tier": 3,
+          "r": 26,
+          "absorbed": 33,
+          "kills": 2,
+          "bombs": 1,
+          "fumbles": 0,
+          "boss": {
+            "cycle": 3,
+            "meter": 3,
+            "hp": 5,
+            "open": false,
+            "dying": false
+          },
+          "player": {
+            "x": 397,
+            "y": 410
+          },
+          "counts": {
+            "germs": 19,
+            "globs": 5,
+            "darts": 10
+          },
+          "season": "autumn"
+        },
+        "trace": [
+          "capillaries@0.1",
+          "artery@22.0",
+          "boss@46.0",
+          "won@67.2"
+        ],
+        "clean": true
       },
-      "player": {
-        "x": 587,
-        "y": 490
+      {
+        "run": 1,
+        "console_errors": [],
+        "page_error": null,
+        "won": true,
+        "hearts": 3,
+        "state": {
+          "t": 64.07,
+          "phase": "boss",
+          "status": "won",
+          "trace": [
+            "capillaries@0.1",
+            "artery@22.0",
+            "boss@46.0",
+            "won@64.1"
+          ],
+          "hearts": 3,
+          "biomass": 247,
+          "tier": 2,
+          "r": 23,
+          "absorbed": 25,
+          "kills": 6,
+          "bombs": 1,
+          "fumbles": 0,
+          "boss": {
+            "cycle": 3,
+            "meter": 0,
+            "hp": 5,
+            "open": false,
+            "dying": false
+          },
+          "player": {
+            "x": 544,
+            "y": 390
+          },
+          "counts": {
+            "germs": 13,
+            "globs": 5,
+            "darts": 4
+          },
+          "season": "autumn"
+        },
+        "trace": [
+          "capillaries@0.1",
+          "artery@22.0",
+          "boss@46.0",
+          "won@64.1"
+        ],
+        "clean": true
       },
-      "counts": {
-        "germs": 22,
-        "globs": 5,
-        "darts": 11
-      },
-      "season": "autumn"
-    },
-    "trace": [
-      "capillaries@0.1",
-      "artery@22.0",
-      "boss@46.0",
-      "won@67.1"
+      {
+        "run": 2,
+        "console_errors": [],
+        "page_error": null,
+        "won": true,
+        "hearts": 3,
+        "state": {
+          "t": 59.24,
+          "phase": "boss",
+          "status": "won",
+          "trace": [
+            "capillaries@0.1",
+            "artery@22.0",
+            "boss@46.0",
+            "won@59.2"
+          ],
+          "hearts": 3,
+          "biomass": 322,
+          "tier": 3,
+          "r": 26,
+          "absorbed": 35,
+          "kills": 6,
+          "bombs": 1,
+          "fumbles": 0,
+          "boss": {
+            "cycle": 3,
+            "meter": 0,
+            "hp": 5,
+            "open": false,
+            "dying": false
+          },
+          "player": {
+            "x": 364,
+            "y": 420
+          },
+          "counts": {
+            "germs": 17,
+            "globs": 5,
+            "darts": 13
+          },
+          "season": "autumn"
+        },
+        "trace": [
+          "capillaries@0.1",
+          "artery@22.0",
+          "boss@46.0",
+          "won@59.2"
+        ],
+        "clean": true
+      }
     ],
     "clean": true
   },
   "sims": {
     "good": {
       "state": {
-        "t": 77.03,
+        "t": 68.77,
         "phase": "boss",
         "status": "won",
         "trace": [
           "capillaries@0.1",
           "artery@22.1",
           "boss@46.1",
-          "won@77.0"
+          "won@68.8"
         ],
         "hearts": 1,
-        "biomass": 286,
+        "biomass": 306,
         "tier": 3,
         "r": 26,
-        "absorbed": 29,
-        "kills": 6,
+        "absorbed": 32,
+        "kills": 1,
         "bombs": 1,
         "fumbles": 0,
         "boss": {
@@ -75,22 +182,22 @@
           "dying": false
         },
         "player": {
-          "x": 599,
-          "y": 496
+          "x": 400,
+          "y": 403
         },
         "counts": {
-          "germs": 20,
-          "globs": 5,
-          "darts": 15
+          "germs": 16,
+          "globs": 7,
+          "darts": 16
         },
         "season": "autumn"
       },
       "recs": {
         "complete": {
-          "t": 77,
-          "biomass": 286,
-          "absorbed": 29,
-          "husked": 88,
+          "t": 68.8,
+          "biomass": 306,
+          "absorbed": 32,
+          "husked": 79,
           "bombsUsed": 0,
           "season": "autumn"
         },
@@ -99,7 +206,7 @@
     },
     "partial": {
       "state": {
-        "t": 69.05,
+        "t": 58.02,
         "phase": "boss",
         "status": "won",
         "trace": [
@@ -108,40 +215,40 @@
           "fumble2@10.7",
           "artery@22.1",
           "boss@46.1",
-          "won@69.0"
+          "won@58.0"
         ],
-        "hearts": 2,
-        "biomass": 392,
+        "hearts": 3,
+        "biomass": 333,
         "tier": 3,
         "r": 26,
-        "absorbed": 42,
-        "kills": 7,
+        "absorbed": 37,
+        "kills": 8,
         "bombs": 3,
         "fumbles": 2,
         "boss": {
           "cycle": 3,
-          "meter": 1,
+          "meter": 0,
           "hp": 5,
           "open": false,
           "dying": false
         },
         "player": {
-          "x": 286,
-          "y": 496
+          "x": 562,
+          "y": 368
         },
         "counts": {
-          "germs": 17,
-          "globs": 8,
-          "darts": 16
+          "germs": 21,
+          "globs": 5,
+          "darts": 15
         },
         "season": "autumn"
       },
       "recs": {
         "complete": {
-          "t": 69,
-          "biomass": 392,
-          "absorbed": 42,
-          "husked": 112,
+          "t": 58,
+          "biomass": 333,
+          "absorbed": 37,
+          "husked": 67,
           "bombsUsed": 0,
           "season": "autumn"
         },
@@ -180,15 +287,77 @@
       },
       "recs": {
         "complete": null,
-        "fail": "L'infection prend le dessus \u2014 retente ta chance !"
+        "fail": "L'infection prend le dessus \u2014 retente ta chance ! / The infection takes over \u2014 try again!"
       }
     }
+  },
+  "jank": {
+    "state": {
+      "t": 60.58,
+      "phase": "boss",
+      "status": "won",
+      "trace": [
+        "capillaries@0.1",
+        "artery@22.0",
+        "boss@46.0",
+        "won@60.6"
+      ],
+      "hearts": 3,
+      "biomass": 361,
+      "tier": 3,
+      "r": 26,
+      "absorbed": 36,
+      "kills": 4,
+      "bombs": 2,
+      "fumbles": 0,
+      "boss": {
+        "cycle": 3,
+        "meter": 1,
+        "hp": 5,
+        "open": false,
+        "dying": false
+      },
+      "player": {
+        "x": 352,
+        "y": 429
+      },
+      "counts": {
+        "germs": 20,
+        "globs": 5,
+        "darts": 10
+      },
+      "season": "autumn"
+    },
+    "recs": {
+      "complete": {
+        "t": 60.6,
+        "biomass": 361,
+        "absorbed": 36,
+        "husked": 87,
+        "bombsUsed": 0,
+        "season": "autumn"
+      },
+      "fail": null
+    }
+  },
+  "strings": {
+    "ok": true,
+    "checked": 7,
+    "missing": []
   },
   "thumbs": {
     "ok": true,
     "bytes": 15003
   },
   "shots": [
+    "shot-capillaries.png",
+    "shot-artery.png",
+    "shot-boss.png",
+    "shot-won.png",
+    "shot-capillaries.png",
+    "shot-artery.png",
+    "shot-boss.png",
+    "shot-won.png",
     "shot-capillaries.png",
     "shot-artery.png",
     "shot-boss.png",
