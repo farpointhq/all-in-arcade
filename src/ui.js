@@ -143,14 +143,25 @@ export const UI = {
   // ---- HUD ------------------------------------------------------------------
   hudOn(on) { this.HUD.root.classList.toggle("on", !!on); },
   setLevelHead(level, blurb) {
-    this.HUD.t.textContent = level.id.toUpperCase() + " · " + (level.title || "").toUpperCase() +
+    const head = level.id.toUpperCase() + " · " + (level.title || "").toUpperCase() +
       (level.status === "draft" ? "  ▌TEST BUILD" : "");
+    this.HUD.t.textContent = head;
+    this.HUD.t.title = head; // full string survives the slot cap (issue #15 A)
     this.HUD.a.textContent = blurb || authorLabel(level);
+    this.HUD.a.title = this.HUD.a.textContent;
   },
   setHint(text) { this.HUD.hint.textContent = text || ""; },
   setHUD(patch) {
-    if (patch.mid !== undefined) this.HUD.mid.textContent = patch.mid;
-    if (patch.right !== undefined) this.HUD.right.textContent = patch.right;
+    if (patch.mid !== undefined) {
+      this.HUD.mid.textContent = patch.mid;
+      this.HUD.mid.title = patch.mid; // full string survives the slot cap (issue #15 A)
+    }
+    if (patch.right !== undefined) {
+      this.HUD.right.textContent = patch.right;
+      this.HUD.right.title = patch.right;
+      // pure ♥-runs get the readable hearts style; ★ scores and mixed payloads don't (issue #15 C)
+      this.HUD.right.classList.toggle("hearts", /^♥+$/.test(patch.right));
+    }
   },
   // cross-level lives bank → #hudLeft (the meta bank; genres draw their own hearts elsewhere)
   paintLives(count) {

@@ -554,7 +554,7 @@ export function create(level, api) {
     if (phase === "intro") mid = "FLIGHT " + (flight + 1) + "/" + flightsCfg.length + " — the dog hunts...";
     else if (phase === "tally") mid = "FLIGHT PASSED — " + flightHits + "/" + flightTotal + " ducks";
     else if (phase === "laugh") mid = "The dog laughs...";
-    else mid = "FLIGHT " + (flight + 1) + "/" + flightsCfg.length + " · ✓ " + hitsTotal + " · ♥ " + Math.max(0, pebbles);
+    else mid = "FLIGHT " + (flight + 1) + "/" + flightsCfg.length + " · ✓ " + hitsTotal + " · AMMO " + Math.max(0, pebbles); // issue #15 E: ♥ is reserved for lives — pebbles get a plain word
     setHud(mid, "★ " + score);
 
     if (DEBUG && beacon) {
