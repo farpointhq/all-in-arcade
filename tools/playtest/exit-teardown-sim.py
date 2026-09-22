@@ -143,7 +143,7 @@ def run():
     try:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=True)
+            browser = pw.chromium.launch(headless=True, args=["--mute-audio"])  # house rule: never audible
             page = browser.new_page(viewport={"width": 1000, "height": 640})
             console, perr, bad_resp = [], [], []
             page.on("console", lambda m: console.append("%s:%s" % (m.type, m.text)) if m.type in ("error", "warning") else None)
