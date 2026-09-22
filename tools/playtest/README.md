@@ -113,3 +113,17 @@ repo only carries curated sheets ≤8/level + finding stills).
 The rig's verdict on `ian-spence-rewind-loop` must agree with that level's own
 deterministic rig (`levels/ian-spence-rewind-loop/sim.py`) — the known-good
 reference used to accept the generic rig into the cascade.
+
+## exit() teardown contract (issue #19)
+
+`python3 tools/playtest/exit-teardown-sim.py [--port P]` drives the REAL scene
+layer — boot → pause → level select → re-enter, level→level, plus a title
+thumbnail sweep — and pins the teardown contract: every level change runs the
+outgoing genre instance's `exit()` (`playScene.exit()`, drained before the next
+`create()`), rewind's boot `setTimeout` dies with the session (no stray
+"boot-view" beat after a sub-350 ms exit), and the `window.__REW` debug seam is
+deleted on exit (never resurrects across genre switches). The per-level
+`sim.py` rigs can't catch this class of bug — they call `mod.create()` directly
+and never exercise the scene layer. Exit 0 only if all requested modes
+(`live`, `thumbs`, default `all`) pass; writes
+`exit-teardown-sim-results.json` + evidence shots in this folder.

@@ -92,23 +92,42 @@ const STAR_COIN = sprite("p-coin", 96, (g, w, h) => {
   g.beginPath(); g.ellipse(cx - R * 0.16, cy - R * 0.24, R * 0.14, R * 0.2, -0.5, 0, PI2); g.fill();
 });
 
-// snow pickup (seasons mechanic): six-arm crystal with cool glow
+// snow pickup (seasons mechanic): six-arm crystal with cool glow. N1 fix
+// (issue #20 contrast sweep): this was the only actor painter with no ink
+// outline — white arms + white glow read as invisible on the pale ice sky.
+// Star-coin treatment, adapted: soft DARK halo first (separates from pale
+// sky), cool glow, arms double-stroked (wide INK under-stroke -> #e8f4ff
+// over-stroke), white core dot with an ink ring. Still a snowflake; edges.
 const SNOW_CRYSTAL = sprite("p-snow", 96, (g, w, h) => {
   const cx = w / 2, cy = h / 2, R = w * 0.38;
-  const glow = g.createRadialGradient(cx, cy, R * 0.05, cx, cy, R * 1.3);
-  glow.addColorStop(0, "rgba(214,240,255,.95)"); glow.addColorStop(1, "rgba(214,240,255,0)");
+  const halo = g.createRadialGradient(cx, cy, R * 0.2, cx, cy, R * 1.45);
+  halo.addColorStop(0, "rgba(29,20,51,.28)");
+  halo.addColorStop(0.62, "rgba(29,20,51,.16)");
+  halo.addColorStop(1, "rgba(29,20,51,0)");
+  g.fillStyle = halo;
+  g.beginPath(); g.arc(cx, cy, R * 1.45, 0, PI2); g.fill();
+  const glow = g.createRadialGradient(cx, cy, R * 0.05, cx, cy, R * 1.25);
+  glow.addColorStop(0, "rgba(214,240,255,.9)"); glow.addColorStop(1, "rgba(214,240,255,0)");
   g.fillStyle = glow;
-  g.beginPath(); g.arc(cx, cy, R * 1.3, 0, PI2); g.fill();
-  g.strokeStyle = "#eef8ff"; g.lineWidth = w * 0.072; g.lineCap = "round";
-  for (let i = 0; i < 6; i++) {
-    g.save(); g.translate(cx, cy); g.rotate((i * Math.PI) / 3);
-    g.beginPath(); g.moveTo(0, 0); g.lineTo(0, -R); g.stroke();
-    g.beginPath(); g.moveTo(0, -R * 0.58); g.lineTo(-R * 0.26, -R * 0.8); g.moveTo(0, -R * 0.58); g.lineTo(R * 0.26, -R * 0.8); g.stroke();
-    g.beginPath(); g.moveTo(0, -R * 0.30); g.lineTo(-R * 0.15, -R * 0.44); g.moveTo(0, -R * 0.30); g.lineTo(R * 0.15, -R * 0.42); g.stroke();
-    g.restore();
-  }
+  g.beginPath(); g.arc(cx, cy, R * 1.25, 0, PI2); g.fill();
+  g.lineCap = "round"; g.lineJoin = "round";
+  const arms = () => {
+    for (let i = 0; i < 6; i++) {
+      g.save(); g.translate(cx, cy); g.rotate((i * Math.PI) / 3);
+      g.beginPath(); g.moveTo(0, 0); g.lineTo(0, -R); g.stroke();
+      g.beginPath(); g.moveTo(0, -R * 0.58); g.lineTo(-R * 0.26, -R * 0.8); g.moveTo(0, -R * 0.58); g.lineTo(R * 0.26, -R * 0.8); g.stroke();
+      g.beginPath(); g.moveTo(0, -R * 0.30); g.lineTo(-R * 0.15, -R * 0.44); g.moveTo(0, -R * 0.30); g.lineTo(R * 0.15, -R * 0.42); g.stroke();
+      g.restore();
+    }
+  };
+  g.strokeStyle = INK; g.lineWidth = w * 0.115;
+  arms();
+  g.strokeStyle = "#e8f4ff"; g.lineWidth = w * 0.055;
+  arms();
   g.fillStyle = "#ffffff";
   g.beginPath(); g.arc(cx, cy, w * 0.055, 0, PI2); g.fill();
+  g.strokeStyle = INK; g.lineWidth = w * 0.024;
+  g.beginPath(); g.arc(cx, cy, w * 0.055, 0, PI2); g.stroke();
 });
 
 // waving gold pennant drawn live (cheap path ops) — replaces the goal glyph
@@ -354,7 +373,22 @@ export function create(level, api) {
       if (run.c1 < c0 || run.c0 > c1) continue;
       const x0 = run.c0 * T, x1 = (run.c1 + 1) * T;
       if (st.platform === "cloud") {
-        drawCloud(ctx, (x0 + x1) / 2, run.r * T - 6, x1 - x0 + 10);
+        // pit depth cue (issue #20 B3): a soft dark strip strictly BELOW the
+        // cloud base line — clouds float, pits read as pits. Painted here
+        // (not in core.drawCloud) so the shared painter, also used
+        // decoratively by the "clouds" backdrop preset, stays untouched.
+        // alpha <= 0.13 and no collision change: falls pass through exactly
+        // as before, the strip never reads as a walkable platform.
+        const cw = x1 - x0 + 10;
+        const ch = Math.max(10, cw * 0.22);        // drawCloud height for this width
+        const top = run.r * T - 6 + ch * 1.3;      // base line + below the puffs
+        const sh = ctx.createLinearGradient(0, top, 0, top + 16);
+        sh.addColorStop(0, "rgba(16,18,46,0)");
+        sh.addColorStop(0.5, "rgba(16,18,46,.13)");
+        sh.addColorStop(1, "rgba(16,18,46,0)");
+        ctx.fillStyle = sh;
+        ctx.fillRect(x0 + 6, top, x1 - x0 - 12, 16);
+        drawCloud(ctx, (x0 + x1) / 2, run.r * T - 6, cw);
       } else {
         ctx.fillStyle = st.accent || "#ffd23e";
         ctx.fillRect(x0, run.r * T + 2, x1 - x0, 10);
@@ -388,26 +422,46 @@ export function create(level, api) {
     drawFlagCloth(ctx, goal.x + 3, goal.y - 77, t);
     drawText(ctx, level.title, goal.x, goal.y - 96, { size: 15, color: st.accent || "#fff" });
 
-    // player
-    if (inv <= 0 || Math.floor(t * 14) % 2 === 0) {
-      const lean = clamp(P.vx * 0.06, -0.18, 0.18);
-      if (MECH) {
-        const R = 11 + melt * 13;
-        const g = ctx.createRadialGradient(P.x - R * 0.3, P.y - R * 0.3, R * 0.25, P.x, P.y, R);
-        g.addColorStop(0, "#ffffff"); g.addColorStop(1, "#cfe4ff");
-        ctx.fillStyle = g;
-        ctx.beginPath(); ctx.arc(P.x, P.y, R, 0, Math.PI * 2); ctx.fill();
-      } else {
-        // hero: baked mushroom-runner, contact shadow, run/idle frames, facing flip
-        const moving = Math.abs(P.vx) > 0.5 && P.onGround;
-        const hero = moving && Math.floor(t * 9) % 2 === 1 ? HERO_RUN : HERO_IDLE;
-        ctx.save();
-        ctx.globalAlpha = 0.24;
-        ctx.fillStyle = "#10122e";
-        ctx.beginPath(); ctx.ellipse(P.x, P.y + 18, 13, 4.4, 0, 0, Math.PI * 2); ctx.fill();
-        ctx.restore();
-        blit(ctx, hero, P.x, P.y, 40, { rot: lean, flip: P.face === -1 ? -1 : 1 });
-      }
+    // player — respawn i-frames flicker via ALPHA instead of skipping the
+    // draw (issue #20 B2: a 50%-duty skip made the hero fully vanish for
+    // 1.2 s; an honest 0.35 flicker never does). Mushroom renders 46 px
+    // (B1: hitbox stays 24x32); warm rim halo keeps falling frames alive
+    // over the dark bottom band (B1); snowball gains edge stop + ink ring
+    // + contact shadow (N2: separation, white-ball identity kept — A1).
+    const heroAlpha = inv > 0 && Math.floor(t * 14) % 2 === 1 ? 0.35 : 1;
+    const lean = clamp(P.vx * 0.06, -0.18, 0.18);
+    if (MECH) {
+      const R = 11 + melt * 13;
+      ctx.save();
+      ctx.globalAlpha = 0.24 * heroAlpha;
+      ctx.fillStyle = "#10122e";
+      ctx.beginPath(); ctx.ellipse(P.x, P.y + R * 0.95, R * 0.8, R * 0.26, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+      ctx.save();
+      ctx.globalAlpha = heroAlpha;
+      const g = ctx.createRadialGradient(P.x - R * 0.3, P.y - R * 0.3, R * 0.25, P.x, P.y, R);
+      g.addColorStop(0, "#ffffff"); g.addColorStop(0.72, "#cfe4ff"); g.addColorStop(1, "#c9def5");
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(P.x, P.y, R, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = INK;
+      ctx.lineWidth = clamp(R * 0.22, 2.5, 3.5);   // survives the shrink to melt 34%
+      ctx.stroke();
+      ctx.restore();
+    } else {
+      // hero: baked mushroom-runner, contact shadow, run/idle frames, facing flip
+      const moving = Math.abs(P.vx) > 0.5 && P.onGround;
+      const hero = moving && Math.floor(t * 9) % 2 === 1 ? HERO_RUN : HERO_IDLE;
+      ctx.save();
+      ctx.globalAlpha = 0.16 * heroAlpha;            // warm rim halo (B1)
+      ctx.fillStyle = "rgb(255,244,214)";
+      ctx.beginPath(); ctx.arc(P.x, P.y, 32, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+      ctx.save();
+      ctx.globalAlpha = 0.24 * heroAlpha;
+      ctx.fillStyle = "#10122e";
+      ctx.beginPath(); ctx.ellipse(P.x, P.y + 20.5, 13, 4.4, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+      blit(ctx, hero, P.x, P.y, 46, { alpha: heroAlpha, rot: lean, flip: P.face === -1 ? -1 : 1 });
     }
     ctx.restore();
     seasonTint(ctx);

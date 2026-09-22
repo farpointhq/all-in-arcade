@@ -342,6 +342,7 @@ export function create(level, api) {
       host.appendChild(img);
     } catch (e) {}
   }
+  let bootTimer = 0; // issue #19: tracked so exit() can kill the boot beat of a dead session
   const beatAt = {};
   function beatOnce(key, label) { if (!beatAt[key]) { beatAt[key] = true; beat(label || key); } }
 
@@ -678,6 +679,12 @@ export function create(level, api) {
     };
   }
 
-  setTimeout(() => beatOnce("boot", "boot-view"), 350);
-  return { update, draw, meta };
+  // ---- teardown (issue #19): the scene layer calls exit() on every level change ----
+  function exit() {
+    clearTimeout(bootTimer);                                        // no beats from a dead session
+    if (DBG && typeof window !== "undefined") delete window.__REW; // seam dies with the level
+  }
+
+  bootTimer = setTimeout(() => beatOnce("boot", "boot-view"), 350);
+  return { update, draw, meta, exit };
 }

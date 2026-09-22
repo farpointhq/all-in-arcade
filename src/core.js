@@ -353,7 +353,9 @@ export function createEngine(canvas) {
     W, H, t: 0, scene: null, paused: false, shakeK: 0,
     input: createInput(canvas),
     setScene(scene, params) {
-      eng.scene?.exit?.();
+      // exit the scene you LEAVE; same-object re-entry is caller-managed
+      // (startLevel drains the old level before the next create()).
+      if (eng.scene && eng.scene !== scene) eng.scene.exit?.();
       eng.scene = scene;
       scene.enter?.(params, eng);
     },

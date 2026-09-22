@@ -116,7 +116,8 @@ def run():
     try:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=True)
+            # booth rule: the game never makes sound (matches tools/playtest/playtest.py:255)
+            browser = pw.chromium.launch(headless=True, args=["--mute-audio"])
             page = browser.new_page(viewport={"width": 1000, "height": 640})
             console, perr = [], []
             page.on("console", lambda m: console.append("%s:%s" % (m.type, m.text)) if m.type in ("error", "warning") else None)
@@ -140,10 +141,13 @@ def run():
                 ys = [s["playerY"] for s in samples if s["playerY"] is not None]
                 statuses = {s["status"] for s in samples}
                 shot = None
-                if direction > 0 and hit and not os.path.exists(shots["up"]):
+                # capture unconditionally on every passing phase: a exists-guard made the
+                # first-ever shot sticky, so stale captures from an older dev run shipped
+                # alongside fresh sim-results.json and contradicted it (E2E finding F4)
+                if direction > 0 and hit:
                     page.screenshot(path=shots["up"])  # ship visibly high — visual evidence
                     shot = "up"
-                if direction < 0 and hit and not os.path.exists(shots["down"]):
+                if direction < 0 and hit:
                     page.screenshot(path=shots["down"])  # ship visibly low — visual evidence
                     shot = "down"
                 # the crossing must happen DURING this hold: net movement in the

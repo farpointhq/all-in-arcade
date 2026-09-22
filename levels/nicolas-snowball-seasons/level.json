@@ -3,7 +3,7 @@
   "id": "nicolas-snowball-seasons",
   "title": "Boules de Neige",
   "genre": "platformer",
-  "version": 2,
+  "version": 3,
   "authors": [
     {
       "name": "Nicolas Begey",
@@ -29,7 +29,7 @@
     ],
     "accent": "#9ecbff",
     "ground": "#7d9bbf",
-    "grass": "#f2f8ff",
+    "grass": "#d7e7f9",
     "platform": "ice",
     "mech": "snowball",
     "ballStart": 0.62,

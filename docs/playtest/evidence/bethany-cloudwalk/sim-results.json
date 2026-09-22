@@ -1,14 +1,14 @@
 {
   "lid": "bethany-cloudwalk",
   "genre": "platformer",
-  "port": 8605,
+  "port": 8620,
   "flavor": "good",
-  "mode": "live",
+  "mode": "all",
   "driver": "keys",
-  "seconds": 240,
+  "seconds": 90,
   "boot": {
     "ok": true,
-    "ms": 157
+    "ms": 125
   },
   "trace": [
     {
@@ -25,7 +25,7 @@
       ]
     },
     {
-      "t": 2.1,
+      "t": 2.0,
       "canvas": true,
       "result": false,
       "pause": false,
@@ -33,7 +33,15 @@
       "beats": 0
     },
     {
-      "t": 2.5,
+      "t": 2.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 2.8,
       "canvas": true,
       "result": false,
       "pause": false,
@@ -44,7 +52,7 @@
       ]
     },
     {
-      "t": 3.1,
+      "t": 3.3,
       "canvas": true,
       "result": false,
       "pause": false,
@@ -52,7 +60,7 @@
       "beats": 0
     },
     {
-      "t": 3.5,
+      "t": 3.7,
       "canvas": true,
       "result": false,
       "pause": false,
@@ -60,29 +68,19 @@
       "beats": 0
     },
     {
-      "t": 3.9,
+      "t": 4.1,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
       "keys": [
-        "tap:Space"
-      ]
-    },
-    {
-      "t": 4.4,
-      "canvas": true,
-      "result": false,
-      "pause": false,
-      "resultText": null,
-      "beats": 0,
-      "keys": [
+        "tap:Space",
         "tap:ArrowUp"
       ]
     },
     {
-      "t": 5.0,
+      "t": 4.7,
       "canvas": true,
       "result": false,
       "pause": false,
@@ -90,7 +88,15 @@
       "beats": 0
     },
     {
-      "t": 5.4,
+      "t": 5.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0
+    },
+    {
+      "t": 5.6,
       "canvas": true,
       "result": false,
       "pause": false,
@@ -101,7 +107,7 @@
       ]
     },
     {
-      "t": 5.9,
+      "t": 6.1,
       "canvas": true,
       "result": false,
       "pause": false,
@@ -109,7 +115,7 @@
       "beats": 0
     },
     {
-      "t": 6.3,
+      "t": 6.5,
       "canvas": true,
       "result": true,
       "pause": false,
@@ -127,23 +133,22 @@
   ],
   "stills": [
     "still-boot.png",
-    "still-error.png",
-    "still-win.png"
+    "still-loss.png",
+    "still-final.png"
   ],
   "url": "/?level=bethany-cloudwalk&bot=1&flavor=good&debug=1&beats=1",
-  "verdictNote": "result overlay text did not clearly read as a win",
-  "win": true,
-  "winAt": 6.30263614654541,
+  "win": false,
+  "winAt": 6.513172149658203,
   "badnet": [],
   "consoleClean": true,
   "noPageerror": true,
   "netClean": true,
   "beats": {
-    "expected": true,
+    "expected": false,
     "count": 0,
-    "ok": false
+    "ok": null
   },
-  "video": "/tmp/playtest-raw/bethany-cloudwalk-1790058045.webm",
+  "video": "/tmp/playtest-raw/bethany-cloudwalk-1790102993.webm",
   "gates": {
     "boot": true,
     "consoleClean": true,

@@ -245,6 +245,7 @@ const App = {
       lives: livesBank, // published before the genre module is created
     };
     UI.setHUD({ mid: "", right: "" });
+    playScene.exit?.(); // drain the previous level FIRST — teardown must precede the next create()
     try {
       playScene.plat = genreMod.create(lvl, api);
     } catch (e) {
@@ -385,6 +386,7 @@ const App = {
       for (let i = 0; i < steps; i++) if (typeof plat.update === "function") plat.update(1 / 60, neutralInput);
       plat.draw(ctx);
     } catch (e) { return null; }
+    try { plat.exit?.(); } catch (e) {} // out-of-scene instance — adopt the teardown contract (issue #19)
     try { return canvas.toDataURL("image/jpeg", 0.55); } catch (e) { return null; }
   },
 
@@ -470,6 +472,10 @@ const attract = {
 const playScene = {
   plat: null,
   enter() {},
+  // teardown contract (issue #19): on every level change run the genre's
+  // exit() (optional — genres may stay closure-only) and drop the instance
+  // so timers/seams/caches it registered can be reclaimed.
+  exit() { this.plat?.exit?.(); this.plat = null; },
   update(dt, input, engref) { this.plat?.update(dt, input); },
   draw(ctx, engref) { this.plat?.draw(ctx); },
 };

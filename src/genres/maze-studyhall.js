@@ -243,6 +243,9 @@ export function create(level, api) {
     if (kind[c + "," + r] === "P") { spawnC = c; spawnR = r; break outer; }
 
   const wrapC = (c) => ((c % COLS) + COLS) % COLS;
+  // toroidal column distance — columns wrap through the tunnel, rows don't;
+  // exact on fractional tile positions (fx floats, issue #8)
+  const wdx = (a, b) => { const d = Math.abs(a - b); return Math.min(d, COLS - d); };
   const inTunnelRow = (r) => tunnelRows.includes(r);
   const isPen = (c, r) => r >= 0 && r < ROWS && kind[wrapC(c) + "," + r] === " " && !inTunnelRow(r);
   const corridorPass = (c, r) => { // shared by player + roaming ghosts + eyes' BFS
@@ -594,7 +597,10 @@ export function create(level, api) {
       }
     }
     const ev = (c, r) => (eta.has(wrapC(c) + "," + r) ? eta.get(wrapC(c) + "," + r) : 99);
-    const near = threats.length ? Math.min(...threats.map((g) => Math.abs(g.fx - P.fx) + Math.abs(g.fy - P.fy))) : 99;
+    // threat proximity judged toroidally (issue #8): a staff member 2 tiles
+    // away THROUGH the wrap tunnel must read as 2, not ~19 — this one value
+    // drives the immediate-danger, apple-hunt and stranded gates below
+    const near = threats.length ? Math.min(...threats.map((g) => wdx(g.fx, P.fx) + Math.abs(g.fy - P.fy))) : 99;
     // immediate danger: maximize staff-eta among neighbors (no hysteresis)
     if (near <= 2) {
       botHold.until = 0;
@@ -632,10 +638,19 @@ export function create(level, api) {
       const fg = ghosts.filter((g) => g.fright && !g.eaten && (g.phase === "roam" || g.phase === "exit"));
       if (fg.length && setWant(bfs(P.fx, P.fy, (t) => fg.some((g) => g.fx === t.c && g.fy === t.r), corridorPass))) return;
     }
+    // tunnel-entry guard (issue #8): don't route into the wrap tunnel while a
+    // staff member is in or near it — that's the head-on death the bot used to
+    // eat. The tunnel carries dots, so when no safe route exists the fact BFS
+    // falls back to the unguarded pass below (fallback keeps tunnel dots
+    // reachable — no facts-freeze), and the now wrap-aware immediate-danger
+    // branch handles survival inside the tunnel.
+    const tunnelHot = (c, r) => inTunnelRow(r) && threats.some((g) => wdx(g.fx, c) + Math.abs(g.fy - r) <= 5);
+    const passSafe = (c, r) => corridorPass(c, r) && !tunnelHot(c, r);
     if (near >= 7) { // grab apples when not hunted
-      if (setWant(bfs(P.fx, P.fy, (t) => { const d = dots[t.c + "," + t.r]; return d && d.apple && !d.got; }, corridorPass))) return;
+      if (setWant(bfs(P.fx, P.fy, (t) => { const d = dots[t.c + "," + t.r]; return d && d.apple && !d.got; }, passSafe))) return;
     }
-    if (setWant(bfs(P.fx, P.fy, (t) => { const d = dots[t.c + "," + t.r]; return d && !d.got; }, corridorPass))) return;
+    if (setWant(bfs(P.fx, P.fy, (t) => { const d = dots[t.c + "," + t.r]; return d && !d.got; }, passSafe))) return;
+    if (setWant(bfs(P.fx, P.fy, (t) => { const d = dots[t.c + "," + t.r]; return d && !d.got; }, corridorPass))) return; // unguarded fallback: tunnel dots stay reachable
     // stranded: run from the nearest threat
     if (near <= 6) {
       let best = null, bv = -Infinity;
@@ -1055,6 +1070,13 @@ export function create(level, api) {
         },
         ghostToPlayer: (idx) => { const g = ghosts[idx]; if (!g) return false; g.fx = P.fx; g.fy = P.fy; g.tx = null; g.prog = 0; g.script = null; g.done = null; g.phase = "roam"; return true; },
         freezePlayer: () => { P.tx = null; P.ty = null; P.prog = 0; P.want = null; return true; },
+        teleportPlayer: (c, r) => {
+          c = wrapC(c);
+          if (r < 0 || r >= ROWS || !corridorPass(c, r)) return false;
+          P.fx = c; P.fy = r; P.tx = null; P.ty = null; P.prog = 0; P.dir = null; P.want = null;
+          if (G.status === "playing") eatAt(c, r);
+          return { c, r, status: G.status };
+        },
       }),
     };
     window.__MAZE_RUNS__ = window.__MAZE_RUNS__ || [];

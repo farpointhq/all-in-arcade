@@ -1,0 +1,2793 @@
+{
+  "lid": "louis-philippe-gaulin-knight-s-dungeon-scramble",
+  "genre": "maze",
+  "port": 8608,
+  "flavor": "good",
+  "mode": "bot",
+  "driver": "keys",
+  "seconds": 240,
+  "boot": {
+    "ok": true,
+    "ms": 122
+  },
+  "trace": [
+    {
+      "t": 1.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 1.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 2.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 2.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 3.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 3.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 3.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 4.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 4.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 5.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 5.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 6.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 6.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 7.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 7.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 7.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 8.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 8.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 9.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 9.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 10.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 10.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 10.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 11.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 11.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 12.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 12.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 13.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 13.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 13.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 14.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 14.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 15.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 15.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 16.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 16.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 17.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 17.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 17.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 18.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 18.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 19.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 19.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 20.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "pause"
+      ]
+    },
+    {
+      "t": 20.6,
+      "canvas": true,
+      "result": false,
+      "pause": true,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 21.0,
+      "canvas": true,
+      "result": false,
+      "pause": true,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 21.5,
+      "canvas": true,
+      "result": false,
+      "pause": true,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 21.9,
+      "canvas": true,
+      "result": false,
+      "pause": true,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 22.3,
+      "canvas": true,
+      "result": false,
+      "pause": true,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "resume",
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 22.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 23.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 23.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 24.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "blur"
+      ]
+    },
+    {
+      "t": 24.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 25.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 25.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "refocus"
+      ]
+    },
+    {
+      "t": 25.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 26.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 26.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 27.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 27.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 28.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 28.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 28.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 29.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 29.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 30.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 30.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 31.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 31.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 32.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 32.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 32.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 33.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 33.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 34.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 34.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 35.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 35.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 36.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 36.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 36.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 37.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 37.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 38.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 38.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 39.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 39.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 39.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 40.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 40.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 41.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 41.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 42.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 42.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 42.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 43.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 43.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 44.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 44.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 45.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 45.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 46.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 46.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 46.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 47.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 47.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 48.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}"
+    },
+    {
+      "t": 48.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 0,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 49.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 49.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 49.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 50.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 50.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 51.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 51.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 52.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 52.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 53.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 53.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 53.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 54.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 54.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 55.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 55.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 56.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 56.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 57.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 57.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 57.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 58.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 58.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 59.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 59.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 60.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 60.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 61.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 61.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 61.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 62.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 62.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 63.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 63.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 64.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 64.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 64.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 65.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 65.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 66.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 66.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 67.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 67.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 67.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 68.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 68.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 69.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 69.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 70.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 70.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 70.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 71.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 71.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 72.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 72.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 73.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}"
+    },
+    {
+      "t": 73.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 1,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 74.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 74.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 74.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 75.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 75.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 76.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 76.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 77.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 77.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 78.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 78.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 78.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 79.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 79.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 80.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 80.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 81.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 81.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 82.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 82.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 82.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 83.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 83.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 84.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 84.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 85.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 85.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 85.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 86.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 86.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 87.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 87.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 88.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 88.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 88.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 89.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 89.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 90.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 90.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 91.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 91.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 92.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 92.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 92.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 93.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 93.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 94.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 94.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 95.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 95.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 95.9,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 96.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 96.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 97.2,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 97.7,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 98.1,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 2,
+      "state": "{}"
+    },
+    {
+      "t": 98.5,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 3,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 99.0,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 3,
+      "state": "{}"
+    },
+    {
+      "t": 99.4,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 3,
+      "state": "{}"
+    },
+    {
+      "t": 99.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "mazeRuns": 0,
+      "mazeDeaths": 3,
+      "state": "{}",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 100.3,
+      "canvas": true,
+      "result": true,
+      "pause": false,
+      "resultText": "TRY AGAIN",
+      "beats": 0,
+      "mazeRuns": 1,
+      "mazeDeaths": 3,
+      "state": "{}"
+    }
+  ],
+  "console": [
+    "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "error:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "perr": [],
+  "sheets": [
+    "sheet-01.png",
+    "sheet-02.png",
+    "sheet-03.png",
+    "sheet-04.png",
+    "sheet-05.png",
+    "sheet-06.png",
+    "sheet-07.png",
+    "sheet-08.png",
+    "sheet-09.png",
+    "sheet-10.png",
+    "sheet-11.png"
+  ],
+  "stills": [
+    "still-boot.png",
+    "still-loss.png",
+    "still-final.png"
+  ],
+  "url": "/?level=louis-philippe-gaulin-knight-s-dungeon-scramble&bot=1&flavor=good&debug=1&beats=1&ap=1",
+  "win": false,
+  "winAt": 100.29466581344604,
+  "badnet": [],
+  "consoleClean": true,
+  "noPageerror": true,
+  "netClean": true,
+  "beats": {
+    "expected": false,
+    "count": 0,
+    "ok": null
+  },
+  "video": "/tmp/playtest-raw/louis-philippe-gaulin-knight-s-dungeon-scramble-1790105906.webm",
+  "gates": {
+    "boot": true,
+    "consoleClean": true,
+    "noPageerror": true,
+    "netClean": true,
+    "win": false
+  }
+}

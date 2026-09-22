@@ -60,6 +60,16 @@ const AIMED_P = 0.60;            // ~60% of impacts aim AT the runner's road (a 
 const AIMED_TELE_MIN = 0.90;     // aimed missiles are telegraphed ≥0.9 s (fair dodge window)
 const AIMED_TELE_MAX = 1.15;
 const AIMED_WINDOW = 90;         // aimed blast lands within the runner ± 90 px at impact
+// ISSUE #14 early on-ramp (playtest: a blind-tap first-timer drained the 3-heart bank by
+// t≈33 s): the first 35 s read as a learn window — 1-missile salvos, 1.7× wider gaps,
+// 45 % aimed, 4.5 s continue grace — then difficulty fully restores. Late game untouched.
+const EARLY_T = 35;              // s — learn-window length (≈350 m of the 900 m run)
+const EARLY_GAP_MULT = 1.7;      // × salvo interval while t < EARLY_T
+const AIMED_P_EARLY = 0.45;      // aimed share while t < EARLY_T (AIMED_P afterwards)
+const CONTINUE_GRACE = 4.5;      // s of clean road after a checkpoint continue (was 2.2)
+const TIP_MAX = 4;               // "▲ SAUTE !" teaching popups per run (anti-spam cap)
+const TIP_COOLDOWN = 1.2;        // s between teaching popups
+const TIP_WINDOW_T = 60;         // s — teaching beat only while the run is young
 const OBSTACLE_MIN_GAP = 380;
 const WARMUP_M = 70;             // metres of clean road before the first obstacle
 
@@ -100,6 +110,7 @@ export function create(level, api) {
   // double jump + hover + pickups + lives (all optional-chained toward api.lives)
   let airJumps = MAX_AIR_JUMPS, hoverT = 0, hoverOn = false, jetOn = false, doubleJumpT = 0;
   let pickups = [], lastSafeWx = 0, lifeBanner = 0, catchCount = 0;
+  let tipN = 0, tipCool = 0;               // issue #14: "▲ SAUTE !" teaching beat
 
   const dist = () => Math.floor(wx / PX_PER_M);
   const hordeGap = () => wx - hordeX;
@@ -156,7 +167,7 @@ export function create(level, api) {
   // "ahead of you" near-miss (lands 0.15–0.5 s ahead so it just missed you, dodge by timing).
   function spawnMissile(idx) {
     if (missiles.length >= CAPS.missiles) return;
-    const aimed = Math.random() < AIMED_P;
+    const aimed = Math.random() < (t < EARLY_T ? AIMED_P_EARLY : AIMED_P); // issue #14: softer early aim
     const tele = aimed
       ? clamp(lerp(AIMED_TELE_MAX, AIMED_TELE_MIN, Math.random()), AIMED_TELE_MIN, AIMED_TELE_MAX)
       : clamp(lerp(0.95, 0.62, Math.random()) + (idx || 0) * 0.22, 0.62, 0.96);
@@ -183,10 +194,13 @@ export function create(level, api) {
   function scheduleMissiles(now) {
     if (!missilesOn) return;
     if (now < nextMissileAt) return;
-    const salvo = 1 + Math.floor(Math.random() * (diff > 0.55 ? 3 : diff > 0.3 ? 2 : 1.6));
+    const early = now < EARLY_T; // issue #14: learn window — 1-missile salvos, wider gaps
+    const salvo = early ? 1 : 1 + Math.floor(Math.random() * (diff > 0.55 ? 3 : diff > 0.3 ? 2 : 1.6));
     for (let i = 0; i < salvo; i++) spawnMissile(i);
     const ramp = lerp(1, 0.55, clamp(dist() / targetM, 0, 1)); // denser late
-    nextMissileAt = now + lerp(2.6, 1.4, diff) * ramp * (1.0 + Math.random() * 0.5);
+    let gap = lerp(2.6, 1.4, diff) * ramp * (1.0 + Math.random() * 0.5);
+    if (early) gap *= EARLY_GAP_MULT; // issue #14: on-ramp — ~3.6–5.4 s between early salvos
+    nextMissileAt = now + gap;
   }
 
   // ---- fails & deaths --------------------------------------------------------
@@ -216,7 +230,7 @@ export function create(level, api) {
     iframe = 1.2; stumble = 0; sinceFail = 0; fails = 0;
     hordeX = wx - HORDE_START; hordeSurge = 0;              // push the pack back to a comfortable lead
     missiles.length = 0; explosions.length = 0;             // clear any looming threat at the respawn
-    nextMissileAt = t + 2.2;                                // small grace before the next salvo
+    nextMissileAt = t + CONTINUE_GRACE;                     // issue #14: 4.5 s of clean road to learn with (was 2.2)
     lastSafeWx = wx;
     banner = 0; lifeBanner = 1.7;
     popup(PLAYER_X, GROUND_Y - 88, "♥ LIFE SPENT", "#7de2a8", 20, 1.5);
@@ -254,6 +268,7 @@ export function create(level, api) {
     t += dt;
     banner = Math.max(0, banner - dt);
     lifeBanner = Math.max(0, lifeBanner - dt);
+    tipCool = Math.max(0, tipCool - dt);
     sinceFail += dt; stumble = Math.max(0, stumble - dt); iframe = Math.max(0, iframe - dt);
 
     // cruise: constant speed, seulement stumbles cripple it (never a full stop)
@@ -358,6 +373,13 @@ export function create(level, api) {
     for (let i = missiles.length - 1; i >= 0; i--) {
       const m = missiles[i];
       m.y += m.vy * dt; m.tHit = Math.max(0, m.tHit - dt);
+      // issue #14 teaching beat: tie the pulsing red marker to the jump verb — an AIMED
+      // missile about to land while the runner is grounded pops "▲ SAUTE !" near him.
+      // Capped (TIP_MAX/run), cooled, early-run only; zero collision/telemetry impact.
+      if (m.aimed && m.tHit <= 0.5 && onGround && t < TIP_WINDOW_T && tipN < TIP_MAX && tipCool <= 0) {
+        tipN++; tipCool = TIP_COOLDOWN;
+        popup(PLAYER_X, py - 86, "▲ SAUTE !", "#ffd166", 20, 1.1);
+      }
       // rare direct body hit mid-air (the marker is the real threat)
       if (Math.abs(m.x - wx) < 22 + PLAYER_HALF && m.y > py - PLAYER_H && m.y < py + 4 && iframe <= 0) {
         missiles.splice(i, 1); boom(m.x, py); die("Hit by a missile… FR: Touché par un missile…"); continue;

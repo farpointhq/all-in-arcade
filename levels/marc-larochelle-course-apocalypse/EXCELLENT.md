@@ -136,3 +136,55 @@ pas d'un accent, d'une ellipse ni d'un « Euh… ».
 - **Pickup cœur** : attrapé à 440 m dans la sim (le cœur de 220 m a été raté par le bot à cause
   d'un saut d'obstacle simultané — un joueur qui règle son saut l'attrape ; la mécanique `+1 ♥`
   est prouvée).
+
+## Relecture issue #14 (2026-09-22 — on-ramp missile début de partie)
+
+**Constat mesuré (preuve d'origine, cascade sur origin/main)** : un joueur « blind-tap »
+vidait la banque de 3 ♥ vers **t≈33 s** — `sim-results.json` : « TRY AGAIN — Touché par un
+missile… 282 m » avec ♥ ×0 ; **14 spawns** de missiles dans les 35 premières s, ~60 % visés,
+intervalles 2.1–3.2 s, grace de continuation **2.2 s**, et **aucune affordance** n'apprenait
+que ESPACE échappe à la marque rouge.
+
+**Correctif (4 leviers, fenêtre d'apprentissage `EARLY_T = 35 s` uniquement — la fin de
+partie est inchangée)** — mesuré par le rig du niveau `sim.py` (port 8614, Playwright
+headless, PRNG seedé 20260922 pour les pins déterministes) :
+
+18. **On-ramp début de partie** ✅ — `scheduleMissiles` : salvo forcée à **1** et intervalle
+    **× 1.7** tant que `t < 35 s` → ~3.6–5.4 s entre salves ; `spawnMissile` : part de tir
+    visée **0.45** (au lieu de 0.60). Preuves (pin « density », driver tap AC1, t = 35 s) :
+    - spawns **14 → 7** (borne ≤ 10) ; fraction visée **0.286** (borne ≤ 0.5) ;
+    - télégraphe ≥ 0.9 s intact (`aimedTele == aimed`) ; `MISSILE_MIN_GAP` + garde anti-face
+      inchangés (même code path).
+19. **Grace de continuation 2.2 → 4.5 s** ✅ — pin « grace » : continuation à `t=20.25`,
+    première salve post-respawn à `t=24.77` → **écart 4.52 s** (≥ 4.5 exigé).
+20. **Chemin de la défaite préservé (AC2)** ✅ — pin « losepath » (banque factice de 3,
+    gain() no-op pour isoler) : **exactement 3 spend(1)** → 4ᵉ mort → **api.fail exactement
+    une fois** (t=24.65, « La horde t'a rattrapé… — 220 m »). Pin « ducktype » : sans
+    `api.lives`, la première mort échoue sec à **t=13.03** (comportement « day-0 » intact).
+    Sonde live « noinput » (zéro touche) : overlay **TRY AGAIN** avec `lives === 0`.
+21. **Beat pédagogique « ▲ SAUTE ! »** ✅ — quand un missile **visé** arrive à ≤ 0.5 s de
+    l'impact et que le coureur est au sol : popup jaune au-dessus de lui (glyphe autorisé ▲
+    + mot simple, zéro emoji), **max 4/run, cooldown 1.2 s, seulement t < 60 s** ; aucune
+    collision/télémétrie changée. Relecture vidéo (contact sheets ffmpeg) : le popup
+    co-occurre avec la marque rouge sur les premières menaces, puis disparaît après la
+    fenêtre — jamais de spam.
+
+**Sonde live AC1 « dodge »** (3 runs, taps ESPACE 1.3 s / ↑ 2.6 s — cadence du rig commité
+moins les flèches inertes) : **571 / 441 / 290 m** — la run 1 atteint **450 m à t=49.4 s**
+(acceptation ≥ 1/3 ; avant correctif : 396/196/459 m, aucun ≥ 450 au cœur de la fenêtre).
+La run 3 meurt encore à 290 m : le jeu reste létal pour un joueur qui n'apprend pas.
+
+**Edge cases re-vérifiés** : pause ESC gèle `t` (la fenêtre ne tick qu'en `playing`) ;
+`livesEnabled: false` → mort sèche à la première mort (duck-type inchangé) ; zéro
+`api.complete` sur tous les runs perdus (pins) ; `levelctl validate` OK.
+
+### ⚠ Transparence
+- Les pins `sims` seedent le PRNG (Math.random pilote salves/visée) — déterminisme run-à-run.
+- Pins « grace »/« density » utilisent le **driver tap** (cadence AC1) et non l'entrée
+  totalement neutre : mesuré, un runner 100 % neutre se verrouille contre le premier mur
+  (morts toutes les ~3.4 s), ce qui refermait la fenêtre d'observation de la grace et
+  sous-mesurait la densité (3 spawns). Le stub « losepath » no-op `gain()` pour isoler le
+  chemin de défaite de l'économie des cœurs (la mécanique ♥ reste prouvée item 17).
+- Une `pageerror` unique et non reproduite (« reading 't' ») a été observée une fois sur
+  main pendant la calibration ; 20 min de conduite identique + 4 runs live du rig final :
+  **0 erreur**. Non reproductible, hors périmètre de ce fix, signalée au chat propriétaire.
