@@ -107,7 +107,7 @@ def run_live_once(idx):
     out = {"run": idx, "console_errors": [], "badnet": [], "page_error": None, "won": False,
            "hearts": None, "state": None, "trace": []}
     with sync_playwright() as pw:
-        b = pw.chromium.launch(args=["--disable-gpu"])
+        b = pw.chromium.launch(args=["--disable-gpu", "--mute-audio"])
         page = b.new_page()  # fresh browser context per run — localStorage bank state isolated
         page.on("pageerror", lambda e: out.__setitem__("page_error", str(e)))
 
@@ -182,7 +182,7 @@ def run_jank():
     Reproduces the live-vs-sims divergence headlessly; must win once fixes land."""
     ok = True
     with sync_playwright() as pw:
-        b = pw.chromium.launch(args=["--disable-gpu"])
+        b = pw.chromium.launch(args=["--disable-gpu", "--mute-audio"])
         page = b.new_page()
         bust = int(time.time() * 1000)
         try:
@@ -228,7 +228,7 @@ def run_strings():
 def run_sims():
     ok = True
     with sync_playwright() as pw:
-        b = pw.chromium.launch(args=["--disable-gpu"])
+        b = pw.chromium.launch(args=["--disable-gpu", "--mute-audio"])
         ctx = b.new_context()
         for flavor, maxT in [("good", 175), ("partial", 175), ("clumsy", 120)]:
             page = ctx.new_page()
@@ -276,7 +276,7 @@ def run_sims():
 
 def run_thumbs():
     with sync_playwright() as pw:
-        b = pw.chromium.launch(args=["--disable-gpu"])
+        b = pw.chromium.launch(args=["--disable-gpu", "--mute-audio"])
         page = b.new_page()
         bust = int(time.time() * 1000)
         page.goto(f"{BASE}/?level={LID}&bust={bust}", wait_until="domcontentloaded")
