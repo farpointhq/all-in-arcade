@@ -440,6 +440,65 @@ class ClientFlushE2E(ServerCase):
         self.assertEqual(queued, 0, "a 413 must never be queued (poison pill)")
         ctx.close()
 
+    def test_422_direct_submit_shows_honest_error_and_is_not_queued(self):
+        # whitespace-only prompt passes HTML5 `required` but the server 422s it.
+        # The UI must say so honestly (NOT "server not reachable") and must not
+        # queue the record — a queued 422 head-of-line blocks the whole queue.
+        page = self.ctx.new_page()
+        page.goto(self.base)
+        page.click('button[data-act="kiosk"]')
+        page.fill("#kFirst", "Wendy")
+        page.fill("#kLast", "Whitespace")
+        page.fill("#kEmail", "wendy@example.com")
+        page.fill("#kPrompt", "   ")
+        page.click('#kioskForm button[type="submit"]')
+        wait_for(lambda: "check the form" in (page.text_content("#kioskStatus") or "").lower())
+        self.assertIn("err", (page.get_attribute("#kioskStatus", "class") or ""),
+                      "validation failure must be styled as an error")
+        queued = page.evaluate("JSON.parse(localStorage.getItem('allin-pending')||'[]').length")
+        self.assertEqual(queued, 0, "a 422 must never be queued (poison pill)")
+        self.assertEqual(self.sb.pending_lines(), [], "server must not record the whitespace idea")
+        page.close()
+
+    def test_flush_drops_permanent_4xx_and_delivers_rest(self):
+        # a 422-able record ahead of a valid one must not block delivery forever
+        page = self.ctx.new_page()
+        page.add_init_script(
+            "localStorage.setItem('allin-pending', JSON.stringify(["
+            "{ts:'2026-01-01T00:00:00.000Z',id:'bad-1',replay:true,name:'',"
+            "email:'b@x.io',prompt:''},"
+            "{ts:'2026-01-01T00:00:01.000Z',id:'good-1',replay:true,name:'Good Row',"
+            "email:'g@x.io',prompt:'fine idea behind a bad one'}"
+            "]));")
+        page.goto(self.base)
+        wait_for(lambda: page.evaluate(
+            "JSON.parse(localStorage.getItem('allin-pending')||'[]').length") == 0, timeout=15)
+        recs = self.sb.pending_lines()
+        self.assertEqual([r["id"] for r in recs], ["good-1"],
+                         "undeliverable 4xx record must be dropped, not block the queue")
+        page.close()
+
+    def test_flush_drops_oversized_record_client_side(self):
+        # 61KB record: under the server's 64000 limit but above the client's own
+        # 60000 flush guard — must be dropped WITHOUT a round trip (a >1MB body
+        # would die mid-upload on flaky Wi-Fi and stick in the queue forever)
+        page = self.ctx.new_page()
+        big = "x" * 61000
+        page.add_init_script(
+            "localStorage.setItem('allin-pending', JSON.stringify(["
+            "{ts:'2026-01-01T00:00:00.000Z',id:'big-1',replay:true,name:'Big Row',"
+            "email:'big@x.io',prompt:'" + big + "'},"
+            "{ts:'2026-01-01T00:00:01.000Z',id:'ok-1',replay:true,name:'Ok Row',"
+            "email:'ok@x.io',prompt:'small and fine'}"
+            "]));")
+        page.goto(self.base)
+        wait_for(lambda: page.evaluate(
+            "JSON.parse(localStorage.getItem('allin-pending')||'[]').length") == 0, timeout=15)
+        recs = self.sb.pending_lines()
+        self.assertEqual([r["id"] for r in recs], ["ok-1"],
+                         "oversized record must be dropped client-side, small one delivered")
+        page.close()
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
