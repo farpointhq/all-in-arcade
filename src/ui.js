@@ -170,7 +170,10 @@ export const UI = {
     const n = levels.length, b = builders.size;
     $("#titleStats").textContent =
       `${n} LEVEL${n === 1 ? "" : "S"} · ${b} BUILDER${b === 1 ? "" : "S"} · A FABRIC PRODUCTION`.toUpperCase();
-    const hasProgress = Save_hasProgress();
+    // hasProgress() reads the SANITIZED in-memory save (issue #9) — re-reading
+    // localStorage directly here bypassed the repair and could enable Continue
+    // off a corrupt/truthy completed value.
+    const hasProgress = Save.hasProgress();
     $("#btnContinue").disabled = !hasProgress;
     // level medallions — real vector sigils, one per live level (DOM layer)
     const SIGILS = {
@@ -370,10 +373,3 @@ export const UI = {
     this.show("result");
   },
 };
-
-function Save_hasProgress() {
-  try {
-    return JSON.parse(localStorage.getItem("allin-arcade-save-v1") || "{}").completed &&
-      Object.keys(JSON.parse(localStorage.getItem("allin-arcade-save-v1")).completed).length > 0;
-  } catch { return false; }
-}
