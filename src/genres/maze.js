@@ -756,14 +756,19 @@ export function create(level, api) {
       for (const d of TIE) if (corridorPass(wrapC(cc + d.x), rr2 + d.y)) ex++;
       if (ex === 1 && threats.some((g) => wdx(g.fx, cc) + Math.abs(g.fy - rr2) <= 7)) blocked.add(cc + "," + rr2);
     }
-    // tunnel-entry guard (issue #8): while a threat is within wdx <= 6 of the
-    // player, block every tunnel-row cell within wdx <= 5 of it — the bot must
-    // not route into the wrap tunnel as a ghost enters the far end. Tunnel
-    // dots stay reachable via the wrap-gated raw fallback below.
+    // tunnel-entry guard (issue #8): block every tunnel-row cell within
+    // toroidal reach 5 of any roaming threat — the SAME predicate as
+    // studyhall's tunnelHot (wdx + row distance ≤ 5). The row term matters:
+    // without it a threat anywhere in the column would seal the tunnel. A
+    // player-proximity variant was tried first and left the tunnel-mouth
+    // standoff open: the bot paced at the seam while a ghost patrolled
+    // mid-tunnel (the facts=98 dither, 3 corner deaths). With the tunnel
+    // consistently blocked the bot routes away, the chaser follows it out,
+    // and the tunnel clears. Tunnel dots stay reachable via the wrap-gated
+    // raw fallback below.
     for (const g of threats) {
-      if (wdx(g.fx, P.fx) + Math.abs(g.fy - P.fy) > 6) continue;
       for (const tr of tunnelRows) for (let c = 0; c < COLS; c++)
-        if (wdx(g.fx, c) <= 5) blocked.add(c + "," + tr);
+        if (wdx(g.fx, c) + Math.abs(g.fy - tr) <= 5) blocked.add(c + "," + tr);
     }
     const pass = (c, r) => corridorPass(c, r) && !blocked.has(c + "," + r);
     const go = (path) => { if (path && path.length) { const t0 = path[0]; let dx = t0.c - P.fx, dy = t0.r - P.fy; if (dx > 1) dx = -1; else if (dx < -1) dx = 1; if (dy > 1) dy = -1; else if (dy < -1) dy = 1; const d = TIE.find((v) => v.x === dx && v.y === dy); if (d) { P.want = d; return true; } } return false; };
