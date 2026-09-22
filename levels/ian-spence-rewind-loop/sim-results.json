@@ -4,21 +4,8 @@
     "layout"
   ],
   "layout": {
-    "ok": false,
-    "notes": [
-      "pair 3-4 overlap 6.684320444241166 < 10",
-      "pair 4-5 overlap -146.08561573550105 < 10",
-      "pair 5-6 overlap -128.0436881352216 < 10",
-      "pair 6-7 overlap -110.61899696476758 < 10",
-      "pair 11-12 overlap -118.19151124218479 < 10",
-      "pair 12-13 overlap -122.84255417063832 < 10",
-      "pair 13-14 overlap -94.05748550780118 < 10",
-      "pair 15-16 overlap -42.29162340890616 < 10",
-      "pair 15-16 rise 549 > 90",
-      "plateau overlap -42.29162340890616 < 10",
-      "plateau rise 549 > 90",
-      "only 17 decks — portal anchors (idx+2 up to 20) collide"
-    ],
-    "decks": 17
+    "ok": true,
+    "notes": [],
+    "decks": 24
   }
 }
