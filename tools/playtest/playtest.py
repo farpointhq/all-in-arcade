@@ -173,9 +173,10 @@ class Driver:
                 if tag in ("pause", "resume"):
                     self.press("Escape", 0.05)
                 elif tag == "blur":
-                    self.page.evaluate(BLUR_JS)
+                    self.page.evaluate(BLUR_JS)  # issue #10: this now auto-pauses the run
                 else:
                     self.page.evaluate(FOCUS_JS)
+                    self.press("Escape", 0.05)  # issue #10: no auto-resume — ESC un-pauses after the blur edge
                 acts.append(tag)
         mashing = t >= budget * 0.90
         for key in self.spec["holds"]:
