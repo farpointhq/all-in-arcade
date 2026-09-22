@@ -25,6 +25,13 @@ Pins the two hardening acceptance criteria + the happy path:
            that stays in the DOM (not failed/removed) and actually plays
            (currentTime advances).
 
+  check 4  synth scheduler bound: at most ONE live setInterval(pump, 60).
+           Route-aborts all assets, boots the title screen, unlocks and churns
+           music OFF/ON ×3. Fails on PR #25 as merged: pendingMood armed by the
+           play() rejection + the error-handler's synth fallthrough re-enter
+           playMusic via ensure() and leak a second pump interval (created ≥ 2
+           in one tick, live permanently ≥ 2).
+
 Usage:
   python3 tools/playtest/audio_hardening.py [--port 8618] [--seconds 180]
                                             [--sample-every 10] [--grace 15]
@@ -56,6 +63,34 @@ CHECK1_LEVEL = "amir-kermany-nano-cure-2"
 CHECK23_LEVEL = "bethany-cloudwalk"
 
 MAX_POOL = 9  # file-backed moods = worst-case live element pool
+MAX_PUMPS = 1  # synth scheduler: exactly one live setInterval(pump, 60) at any time
+
+# check 4 init: wraps setInterval/clearInterval to track LIVE 60ms timers (pump() is
+# the only setInterval(..., 60) in src/), so a leaked scheduler is directly countable.
+INTERVAL_INIT = """
+window.__pump60 = { created: 0, live: 0 };
+window.__evlog = [];
+(() => {
+  const mark = (ev) => { try { window.__evlog.push([Math.round(performance.now()), ev]); } catch (e) {} };
+  const pp = HTMLMediaElement.prototype.play;
+  HTMLMediaElement.prototype.play = function () {
+    const p = pp.apply(this, arguments);
+    if (p && p.catch) p.catch((e) => mark("playRej:" + String(this.currentSrc || this.src || "").split("/").pop()));
+    return p;
+  };
+  window.addEventListener("error", (e) => {
+    if (e.target && e.target.tagName === "AUDIO") mark("audioErr:" + String(e.target.currentSrc || e.target.src || "").split("/").pop());
+  }, true);
+  const live = new Set();
+  const si = window.setInterval.bind(window), ci = window.clearInterval.bind(window);
+  window.setInterval = function () {
+    const id = si.apply(null, arguments);
+    if (arguments[1] === 60) { window.__pump60.created++; live.add(id); window.__pump60.live = live.size; mark("si60+live=" + live.size); }
+    return id;
+  };
+  window.clearInterval = function (id) { live.delete(id); window.__pump60.live = live.size; return ci(id); };
+})();
+"""
 
 UNHANDLED_INIT = """
 window.__unhandled = [];
@@ -64,6 +99,11 @@ window.addEventListener("unhandledrejection", (e) => {
   const msg = reason && reason.message ? String(reason.message) : String(reason);
   window.__unhandled.push(msg);
 });
+// Build-identity guard: stale serve.py leftovers from parallel agents squat ports and
+// answer with a DIFFERENT worktree's build (seen 2026-09-22 on ports 18716/18719).
+// Every page fetches the served audio.js and records whether the #25 fix is present;
+// checks compare against --expect-failed-files and refuse to pass an impostor build.
+fetch("/src/audio.js").then((r) => r.text()).then((t) => { window.__buildFailedFiles = t.includes("failedFiles"); });
 """
 
 COUNT_JS = "() => document.querySelectorAll('audio').length"
@@ -102,13 +142,15 @@ def start_server(port):
     raise SystemExit("[audio-hardening] server failed to start on %s" % base)
 
 
-def new_page(ctx, url):
+def new_page(ctx, url, extra_init=None):
     """New page with unhandled-rejection collection + console/pageerror taps.
     Network 4xx/5xx are collected URL-based (a resource 404's console text has
     no URL, so BOOTH_FILTER can't match it there — mirrors playtest.py) and
     reported but never gated: check 2 aborts audio requests on purpose."""
     page = ctx.new_page()
     page.add_init_script(UNHANDLED_INIT)
+    if extra_init:
+        page.add_init_script(extra_init)
     page.on("console", lambda m: page.__console.append("%s:%s" % (m.type, m.text))
             if m.type in ("error", "warning") else None)
     page.on("pageerror", lambda e: page.__perr.append(str(e)))
@@ -117,6 +159,30 @@ def new_page(ctx, url):
     page.__console, page.__perr, page.__badnet = [], [], []
     page.goto(url, timeout=15000)
     return page
+
+
+def build_flag(page):
+    """True when the SERVED build contains the #25 fix (impostor guard)."""
+    try:
+        return page.evaluate("() => window.__buildFailedFiles")
+    except Exception:
+        return None
+
+
+def impostor(out, page, args):
+    """Record the served-build flag; fail the check when it disagrees with the
+    expected era (--expect-failed-files). Guards every check against stale
+    serve.py squatters answering for a foreign worktree's build."""
+    flag = build_flag(page)
+    out["buildFailedFiles"] = flag
+    expected = bool(args.expect_failed_files)
+    if flag is not expected:
+        out["impostor"] = True
+        out.setdefault("perr", []).append(
+            "IMPOSTOR BUILD: served audio.js failedFiles=%s, expected %s — "
+            "a stale serve.py is squatting this port; lsof -iTCP:<port> and kill it" % (flag, expected))
+        return True
+    return False
 
 
 def badnet_of(page):
@@ -145,6 +211,7 @@ def check1(args, base):
         out["perr"] = filtered(page.__perr)
         out["badnet"] = badnet_of(page)[-10:]
         out["console"] = filtered(page.__console)[-10:]
+        impostor(out, page, args)
         ctx.close()
         browser.close()
     out["ok"] = not out["unhandled"] and not out["perr"]
@@ -192,6 +259,7 @@ def check2(args, base):
             out["samples"].append({"t": round(t, 1), "audioEls": count})
             time.sleep(args.sample_every)
         out["perr"] = filtered(page.__perr)[-5:]
+        impostor(out, page, args)
         ctx.close()
         browser.close()
 
@@ -199,7 +267,7 @@ def check2(args, base):
     if counts:
         out["first"], out["last"], out["max"] = counts[0], counts[-1], max(counts)
         out["ok"] = (out["max"] <= MAX_POOL and out["last"] <= out["first"]
-                     and not out.get("probeErrors"))
+                     and not out.get("probeErrors") and not out.get("impostor"))
     return out
 
 
@@ -226,6 +294,7 @@ def check3(args, base):
         s1 = page.evaluate(STATE_JS)
         out["perr"] = filtered(page.__perr)[-5:]
         out["badnet"] = badnet_of(page)[-10:]
+        impostor(out, page, args)
         ctx.close()
         browser.close()
     out["first"], out["second"] = s0, s1
@@ -238,7 +307,67 @@ def check3(args, base):
     return out
 
 
-CHECKS = {1: check1, 2: check2, 3: check3}
+def check4(args, base):
+    """Fallback + toggle churn → at most ONE live 60ms pump interval, never nested.
+
+    Fails on PR #25 as merged: a failing file arms pendingMood (el.play() rejects
+    before the error event fires), the error handler's playMusic → synth → ensure()
+    replays it re-entrantly, and the outer call leaks a second setInterval(pump, 60)
+    that survives music-off. Fixed by clearing pendingMood at playMusic entry.
+    """
+    out = {"check": 4, "samples": [], "ok": False}
+    from playwright.sync_api import sync_playwright
+    with sync_playwright() as pw:
+        browser = launch(pw, blocked=False)
+        ctx = browser.new_context(viewport={"width": 1000, "height": 640})
+        page = ctx.new_page()
+        page.add_init_script(INTERVAL_INIT)
+        page.add_init_script(UNHANDLED_INIT)
+        page.__console, page.__perr, page.__badnet = [], [], []
+        page.on("console", lambda m: page.__console.append("%s:%s" % (m.type, m.text))
+                if m.type in ("error", "warning") else None)
+        page.on("pageerror", lambda e: page.__perr.append(str(e)))
+        page.on("response", lambda r: page.__badnet.append("%s %s" % (r.status, r.url))
+                if r.status >= 400 else None)
+        page.route("**/assets/audio/**", lambda route: route.abort())
+        page.goto("%s/" % base, timeout=15000)  # title screen: title.mp3 fails at boot
+        try:
+            page.wait_for_selector("canvas", timeout=10000)
+        except Exception as e:
+            out["error"] = "canvas: %s" % e
+            ctx.close()
+            browser.close()
+            return out
+        time.sleep(1.0)
+        page.mouse.click(500, 320)  # unlock (may start a level — more mood churn)
+        time.sleep(2.0)
+        for _ in range(3):  # music OFF/ON churn under all-failed assets
+            page.evaluate("document.querySelector('#btnMusic').click()")
+            time.sleep(1.0)
+            out["samples"].append({"phase": "off", **page.evaluate("() => window.__pump60")})
+            page.evaluate("document.querySelector('#btnMusic').click()")
+            time.sleep(1.0)
+            out["samples"].append({"phase": "on", **page.evaluate("() => window.__pump60")})
+        out["unhandled"] = page.evaluate("() => window.__unhandled")
+        out["perr"] = filtered(page.__perr)[-5:]
+        try:
+            out["evlog"] = page.evaluate("() => (window.__evlog || []).slice(-40)")
+        except Exception:
+            pass
+        impostor(out, page, args)
+        ctx.close()
+        browser.close()
+    lives = [s["live"] for s in out["samples"]]
+    creates = [s["created"] for s in out["samples"]]
+    out["maxLive"], out["created"] = max(lives) if lives else -1, creates[-1] if creates else -1
+    nested = any(creates[i] - creates[i - 1] >= 2 for i in range(1, len(creates)))
+    out["nestedCreate"] = nested
+    out["ok"] = (out["maxLive"] <= MAX_PUMPS and not nested
+                 and not out["unhandled"] and not out["perr"] and not out.get("impostor"))
+    return out
+
+
+CHECKS = {1: check1, 2: check2, 3: check3, 4: check4}
 
 
 def main():
@@ -247,7 +376,10 @@ def main():
     ap.add_argument("--seconds", type=int, default=180, help="check 2 drive window")
     ap.add_argument("--sample-every", type=int, default=10, help="check 2 sample period (s)")
     ap.add_argument("--grace", type=int, default=15, help="window before first sample (s)")
-    ap.add_argument("--checks", default="1,2,3")
+    ap.add_argument("--checks", default="1,2,3,4")
+    ap.add_argument("--expect-failed-files", type=int, default=1,
+                    help="1 when the served tree should contain the #25 fix; "
+                         "pass 0 to RED-test the checks against older trees")
     args = ap.parse_args()
     want = [int(c) for c in args.checks.split(",")]
 
