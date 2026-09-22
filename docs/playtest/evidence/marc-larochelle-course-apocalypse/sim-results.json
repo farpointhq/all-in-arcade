@@ -1,14 +1,14 @@
 {
   "lid": "marc-larochelle-course-apocalypse",
   "genre": "survival",
-  "port": 8604,
+  "port": 8616,
   "flavor": "good",
-  "mode": "all",
+  "mode": "live",
   "driver": "keys",
-  "seconds": 240,
+  "seconds": 90,
   "boot": {
     "ok": true,
-    "ms": 113
+    "ms": 139
   },
   "trace": [
     {
@@ -18,7 +18,7 @@
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 1.06, \"frame\": 124, \"dist\": 10, \"target\": 900, \"player\": {\"wx\": 423, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 0, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 423, \"minGap\": 360, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacles\": [",
+      "state": "{\"t\": 1.12, \"frame\": 129, \"dist\": 11, \"target\": 900, \"player\": {\"wx\": 447, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 0, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 427, \"minGap\": 360, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacles\": [",
       "keys": [
         "tap:ArrowLeft",
         "tap:ArrowRight",
@@ -27,131 +27,131 @@
       ]
     },
     {
-      "t": 2.6,
+      "t": 2.7,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 2.5, \"frame\": 296, \"dist\": 24, \"target\": 900, \"player\": {\"wx\": 999, \"py\": 302, \"vy\": 392, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 510, \"minGap\": 360, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacles",
+      "state": "{\"t\": 2.57, \"frame\": 300, \"dist\": 25, \"target\": 900, \"player\": {\"wx\": 1029, \"py\": 311, \"vy\": 436, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 514, \"minGap\": 360, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacl",
       "keys": [
         "tap:Space"
       ]
     },
     {
-      "t": 3.1,
+      "t": 3.2,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 2.98, \"frame\": 353, \"dist\": 29, \"target\": 900, \"player\": {\"wx\": 1190, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 539, \"minGap\": 360, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacles\"",
+      "state": "{\"t\": 3.05, \"frame\": 358, \"dist\": 30, \"target\": 900, \"player\": {\"wx\": 1222, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 543, \"minGap\": 360, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacles\"",
       "keys": [
         "tap:ArrowLeft",
         "tap:ArrowRight"
       ]
     },
     {
-      "t": 4.3,
+      "t": 4.4,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 4.21, \"frame\": 501, \"dist\": 42, \"target\": 900, \"player\": {\"wx\": 1683, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 613, \"minGap\": 360, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacles\"",
+      "state": "{\"t\": 4.28, \"frame\": 505, \"dist\": 42, \"target\": 900, \"player\": {\"wx\": 1713, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 617, \"minGap\": 360, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacles\"",
       "keys": [
         "tap:ArrowUp",
         "tap:Space"
       ]
     },
     {
-      "t": 4.9,
+      "t": 5.0,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 4.81, \"frame\": 573, \"dist\": 48, \"target\": 900, \"player\": {\"wx\": 1925, \"py\": 302, \"vy\": 391, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 620, \"minGap\": 360, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacl"
+      "state": "{\"t\": 4.9, \"frame\": 578, \"dist\": 49, \"target\": 900, \"player\": {\"wx\": 1960, \"py\": 307, \"vy\": 418, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 620, \"minGap\": 360, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacle"
     },
     {
-      "t": 5.3,
+      "t": 5.4,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 5.23, \"frame\": 623, \"dist\": 52, \"target\": 900, \"player\": {\"wx\": 2090, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 620, \"minGap\": 360, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacles\"",
+      "state": "{\"t\": 5.31, \"frame\": 627, \"dist\": 53, \"target\": 900, \"player\": {\"wx\": 2123, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 620, \"minGap\": 360, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacles\"",
       "keys": [
         "tap:ArrowLeft",
         "tap:ArrowRight"
       ]
     },
     {
-      "t": 6.6,
+      "t": 6.7,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 6.45, \"frame\": 771, \"dist\": 64, \"target\": 900, \"player\": {\"wx\": 2582, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 620, \"minGap\": 360, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacles\"",
+      "state": "{\"t\": 6.56, \"frame\": 777, \"dist\": 65, \"target\": 900, \"player\": {\"wx\": 2625, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 620, \"minGap\": 360, \"fails\": 0}, \"missiles\": [{\"x\": 3286, \"tHit\": 0.902, \"tele\": 0.972, \"y\": 93, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\",",
       "keys": [
         "tap:Space"
       ]
     },
     {
-      "t": 7.1,
+      "t": 7.2,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 6.94, \"frame\": 830, \"dist\": 69, \"target\": 900, \"player\": {\"wx\": 2775, \"py\": 269, \"vy\": 139, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 620, \"minGap\": 360, \"fails\": 0}, \"missiles\": [{\"x\": 3286, \"tHit\": 0.662, \"tele\": 1.104, \"y\": 184, \"aimed\": true}, {\"x\": 3516, \"tHit\": 0.518, \"tele\": 0.96, \"y\": 239, \"aimed\": false}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"k",
+      "state": "{\"t\": 7.05, \"frame\": 835, \"dist\": 70, \"target\": 900, \"player\": {\"wx\": 2818, \"py\": 269, \"vy\": 140, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 620, \"minGap\": 360, \"fails\": 0}, \"missiles\": [{\"x\": 3286, \"tHit\": 0.418, \"tele\": 0.972, \"y\": 277, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"hea",
       "keys": [
         "tap:ArrowUp"
       ]
     },
     {
-      "t": 7.6,
+      "t": 7.7,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 7.49, \"frame\": 895, \"dist\": 74, \"target\": 900, \"player\": {\"wx\": 2987, \"py\": 374, \"vy\": 0, \"onGround\": true, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 494, \"minGap\": 360, \"fails\": 1}, \"missiles\": [{\"x\": 3286, \"tHit\": 0.112, \"tele\": 1.104, \"y\": 393, \"aimed\": true}], \"explosions\": [{\"x\": 3516, \"t\": 0.187}], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": fal",
+      "state": "{\"t\": 7.59, \"frame\": 900, \"dist\": 74, \"target\": 900, \"player\": {\"wx\": 2997, \"py\": 374, \"vy\": 0, \"onGround\": true, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 455, \"minGap\": 360, \"fails\": 1}, \"missiles\": [], \"explosions\": [{\"x\": 3286, \"t\": 0.087}], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"l",
       "keys": [
         "tap:ArrowLeft",
         "tap:ArrowRight"
       ]
     },
     {
-      "t": 8.9,
+      "t": 9.0,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 8.75, \"frame\": 1046, \"dist\": 83, \"target\": 900, \"player\": {\"wx\": 3348, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 392, \"minGap\": 360, \"fails\": 1}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacles",
+      "state": "{\"t\": 8.85, \"frame\": 1046, \"dist\": 84, \"target\": 900, \"player\": {\"wx\": 3388, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 394, \"minGap\": 360, \"fails\": 1}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacles",
       "keys": [
         "tap:Space"
       ]
     },
     {
-      "t": 9.3,
+      "t": 9.5,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 9.23, \"frame\": 1102, \"dist\": 88, \"target\": 900, \"player\": {\"wx\": 3538, \"py\": 269, \"vy\": 137, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 402, \"minGap\": 360, \"fails\": 1}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstac"
+      "state": "{\"t\": 9.33, \"frame\": 1103, \"dist\": 89, \"target\": 900, \"player\": {\"wx\": 3582, \"py\": 269, \"vy\": 144, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 404, \"minGap\": 360, \"fails\": 1}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstac"
     },
     {
-      "t": 9.8,
+      "t": 9.9,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 9.63, \"frame\": 1151, \"dist\": 90, \"target\": 900, \"player\": {\"wx\": 3621, \"py\": 407, \"vy\": 655, \"onGround\": false, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 185, \"minGap\": 185, \"fails\": 2}, \"missiles\": [{\"x\": 4486, \"tHit\": 0.888, \"tele\": 0.946, \"y\": 99, \"aimed\": true}, {\"x\": 4716, \"tHit\": 0.901, \"tele\": 0.96, \"y\": 94, \"aimed\": false}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind",
+      "state": "{\"t\": 9.74, \"frame\": 1152, \"dist\": 91, \"target\": 900, \"player\": {\"wx\": 3642, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": false, \"t\": 0, \"can\": false, \"catches\": 0}, \"horde\": {\"gap\": 170, \"minGap\": 170, \"fails\": 2}, \"missiles\": [{\"x\": 3950, \"tHit\": 0.648, \"tele\": 0.948, \"y\": 190, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\",",
       "keys": [
         "tap:ArrowLeft",
         "tap:ArrowRight",
@@ -159,140 +159,140 @@
       ]
     },
     {
-      "t": 11.1,
+      "t": 11.3,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 11, \"frame\": 1315, \"dist\": 102, \"target\": 900, \"player\": {\"wx\": 4095, \"py\": 281, \"vy\": 260, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 183, \"minGap\": 168, \"fails\": 2}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstacles",
+      "state": "{\"t\": 11.08, \"frame\": 1302, \"dist\": 103, \"target\": 900, \"player\": {\"wx\": 4128, \"py\": 282, \"vy\": 266, \"onGround\": false, \"stumble\": false, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 372, \"minGap\": 170, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 2, \"obstacl",
       "keys": [
         "tap:Space"
       ]
     },
     {
-      "t": 11.6,
+      "t": 11.7,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 11.47, \"frame\": 1372, \"dist\": 107, \"target\": 900, \"player\": {\"wx\": 4287, \"py\": 162, \"vy\": 247, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 192, \"minGap\": 168, \"fails\": 2}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 3, \"obstac"
+      "state": "{\"t\": 11.57, \"frame\": 1360, \"dist\": 108, \"target\": 900, \"player\": {\"wx\": 4326, \"py\": 167, \"vy\": 258, \"onGround\": false, \"stumble\": false, \"iframe\": true, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 382, \"minGap\": 170, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 2, \"obstacl"
     },
     {
-      "t": 12.0,
+      "t": 12.2,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 11.88, \"frame\": 1421, \"dist\": 111, \"target\": 900, \"player\": {\"wx\": 4450, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 201, \"minGap\": 168, \"fails\": 2}, \"missiles\": [{\"x\": 5092, \"tHit\": 0.883, \"tele\": 1.141, \"y\": 100, \"aimed\": true}, {\"x\": 5322, \"tHit\": 0.795, \"tele\": 1.054, \"y\": 134, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kin",
+      "state": "{\"t\": 11.98, \"frame\": 1409, \"dist\": 112, \"target\": 900, \"player\": {\"wx\": 4490, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 390, \"minGap\": 170, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 2, \"obstacles",
       "keys": [
         "tap:ArrowLeft",
         "tap:ArrowRight"
       ]
     },
     {
-      "t": 13.2,
+      "t": 13.4,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 13.1, \"frame\": 1567, \"dist\": 120, \"target\": 900, \"player\": {\"wx\": 4832, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 0, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 362, \"minGap\": 7, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 2, \"obstacles\": [{\"",
+      "state": "{\"t\": 13.22, \"frame\": 1557, \"dist\": 121, \"target\": 900, \"player\": {\"wx\": 4869, \"py\": 381, \"vy\": 0, \"onGround\": true, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 171, \"minGap\": 170, \"fails\": 1}, \"missiles\": [{\"x\": 5690, \"tHit\": 0.547, \"tele\": 1.072, \"y\": 228, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\",",
       "keys": [
         "tap:ArrowUp",
         "tap:Space"
       ]
     },
     {
-      "t": 13.8,
+      "t": 14.0,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 13.7, \"frame\": 1640, \"dist\": 126, \"target\": 900, \"player\": {\"wx\": 5072, \"py\": 220, \"vy\": 220, \"onGround\": false, \"stumble\": false, \"iframe\": true, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 374, \"minGap\": 7, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 2, \"obstacles\""
+      "state": "{\"t\": 13.82, \"frame\": 1630, \"dist\": 126, \"target\": 900, \"player\": {\"wx\": 5075, \"py\": 171, \"vy\": 237, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 174, \"minGap\": 170, \"fails\": 1}, \"missiles\": [], \"explosions\": [{\"x\": 5690, \"t\": 0.153}], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false"
     },
     {
-      "t": 14.2,
+      "t": 14.4,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 14.12, \"frame\": 1691, \"dist\": 130, \"target\": 900, \"player\": {\"wx\": 5238, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 382, \"minGap\": 7, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 2, \"obstacles\": ",
+      "state": "{\"t\": 14.23, \"frame\": 1679, \"dist\": 130, \"target\": 900, \"player\": {\"wx\": 5238, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 183, \"minGap\": 170, \"fails\": 1}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 2, \"obstacles",
       "keys": [
         "tap:ArrowLeft",
         "tap:ArrowRight"
       ]
     },
     {
-      "t": 15.5,
+      "t": 15.6,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 15.35, \"frame\": 1838, \"dist\": 139, \"target\": 900, \"player\": {\"wx\": 5577, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 154, \"minGap\": 7, \"fails\": 1}, \"missiles\": [{\"x\": 6289, \"tHit\": 0.939, \"tele\": 1.064, \"y\": 79, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x",
+      "state": "{\"t\": 15.46, \"frame\": 1827, \"dist\": 141, \"target\": 900, \"player\": {\"wx\": 5658, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 0, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 375, \"minGap\": 6, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacles\": [{",
       "keys": [
         "tap:Space"
       ]
     },
     {
-      "t": 16.0,
+      "t": 16.1,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 15.82, \"frame\": 1896, \"dist\": 144, \"target\": 900, \"player\": {\"wx\": 5769, \"py\": 268, \"vy\": 127, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 163, \"minGap\": 7, \"fails\": 1}, \"missiles\": [{\"x\": 6289, \"tHit\": 0.461, \"tele\": 1.064, \"y\": 261, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"hear",
+      "state": "{\"t\": 15.94, \"frame\": 1884, \"dist\": 146, \"target\": 900, \"player\": {\"wx\": 5848, \"py\": 269, \"vy\": 138, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 384, \"minGap\": 6, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacle",
       "keys": [
         "tap:ArrowUp"
       ]
     },
     {
-      "t": 16.5,
+      "t": 16.7,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 16.36, \"frame\": 1960, \"dist\": 149, \"target\": 900, \"player\": {\"wx\": 5984, \"py\": 168, \"vy\": 370, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 174, \"minGap\": 7, \"fails\": 1}, \"missiles\": [], \"explosions\": [{\"x\": 6289, \"t\": 0.136}], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}]",
+      "state": "{\"t\": 16.48, \"frame\": 1948, \"dist\": 151, \"target\": 900, \"player\": {\"wx\": 6063, \"py\": 168, \"vy\": 368, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 395, \"minGap\": 6, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacle",
       "keys": [
         "tap:ArrowLeft",
         "tap:ArrowRight"
       ]
     },
     {
-      "t": 17.7,
+      "t": 17.9,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 17.59, \"frame\": 2107, \"dist\": 161, \"target\": 900, \"player\": {\"wx\": 6475, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 199, \"minGap\": 7, \"fails\": 1}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 2, \"obstacles\":",
+      "state": "{\"t\": 17.71, \"frame\": 2096, \"dist\": 163, \"target\": 900, \"player\": {\"wx\": 6556, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 419, \"minGap\": 6, \"fails\": 0}, \"missiles\": [{\"x\": 7158, \"tHit\": 0.185, \"tele\": 0.96, \"y\": 366, \"aimed\": false}], \"explosions\": [{\"x\": 6928, \"t\": 0.119}], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": fa",
       "keys": [
         "tap:Space"
       ]
     },
     {
-      "t": 18.2,
+      "t": 18.4,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 18.07, \"frame\": 2165, \"dist\": 166, \"target\": 900, \"player\": {\"wx\": 6667, \"py\": 269, \"vy\": 147, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 208, \"minGap\": 7, \"fails\": 1}, \"missiles\": [{\"x\": 7080, \"tHit\": 0.682, \"tele\": 0.699, \"y\": 177, \"aimed\": false}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"hea"
+      "state": "{\"t\": 18.19, \"frame\": 2153, \"dist\": 165, \"target\": 900, \"player\": {\"wx\": 6631, \"py\": 152, \"vy\": 129, \"onGround\": false, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 184, \"minGap\": 6, \"fails\": 1}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacles\""
     },
     {
-      "t": 18.6,
+      "t": 18.8,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 18.48, \"frame\": 2214, \"dist\": 170, \"target\": 900, \"player\": {\"wx\": 6830, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 217, \"minGap\": 7, \"fails\": 1}, \"missiles\": [{\"x\": 7080, \"tHit\": 0.275, \"tele\": 0.699, \"y\": 332, \"aimed\": false}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\"",
+      "state": "{\"t\": 18.59, \"frame\": 2201, \"dist\": 168, \"target\": 900, \"player\": {\"wx\": 6758, \"py\": 379, \"vy\": 978, \"onGround\": false, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 184, \"minGap\": 6, \"fails\": 1}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacles\"",
       "keys": [
         "tap:ArrowLeft",
         "tap:ArrowRight",
@@ -300,109 +300,102 @@
       ]
     },
     {
-      "t": 20.0,
+      "t": 20.1,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 19.83, \"frame\": 2377, \"dist\": 184, \"target\": 900, \"player\": {\"wx\": 7370, \"py\": 280, \"vy\": 251, \"onGround\": false, \"stumble\": false, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 377, \"minGap\": 7, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacles",
+      "state": "{\"t\": 19.96, \"frame\": 2364, \"dist\": 182, \"target\": 900, \"player\": {\"wx\": 7303, \"py\": 281, \"vy\": 260, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 211, \"minGap\": 6, \"fails\": 1}, \"missiles\": [{\"x\": 7685, \"tHit\": 0.635, \"tele\": 0.909, \"y\": 195, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"hear",
       "keys": [
+        "pause",
         "tap:Space"
       ]
     },
     {
-      "t": 20.4,
+      "t": 20.7,
       "canvas": true,
       "result": false,
-      "pause": false,
+      "pause": true,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 20.31, \"frame\": 2434, \"dist\": 189, \"target\": 900, \"player\": {\"wx\": 7564, \"py\": 162, \"vy\": 238, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 387, \"minGap\": 7, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacle"
+      "state": "{\"t\": 19.96, \"frame\": 2365, \"dist\": 182, \"target\": 900, \"player\": {\"wx\": 7306, \"py\": 283, \"vy\": 278, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 211, \"minGap\": 6, \"fails\": 1}, \"missiles\": [{\"x\": 7685, \"tHit\": 0.626, \"tele\": 0.909, \"y\": 198, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"hear"
     },
     {
-      "t": 20.8,
+      "t": 21.1,
       "canvas": true,
       "result": false,
-      "pause": false,
+      "pause": true,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 20.71, \"frame\": 2482, \"dist\": 193, \"target\": 900, \"player\": {\"wx\": 7724, \"py\": 429, \"vy\": 1078, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 395, \"minGap\": 7, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacl",
+      "state": "{\"t\": 19.96, \"frame\": 2365, \"dist\": 182, \"target\": 900, \"player\": {\"wx\": 7306, \"py\": 283, \"vy\": 278, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 211, \"minGap\": 6, \"fails\": 1}, \"missiles\": [{\"x\": 7685, \"tHit\": 0.626, \"tele\": 0.909, \"y\": 198, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"hear",
       "keys": [
         "tap:ArrowLeft",
         "tap:ArrowRight"
       ]
     },
     {
-      "t": 22.1,
+      "t": 22.3,
       "canvas": true,
       "result": false,
-      "pause": false,
+      "pause": true,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 21.95, \"frame\": 2629, \"dist\": 203, \"target\": 900, \"player\": {\"wx\": 8121, \"py\": 312, \"vy\": 0, \"onGround\": true, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 177, \"minGap\": 7, \"fails\": 1}, \"missiles\": [{\"x\": 8406, \"tHit\": 0.126, \"tele\": 0.914, \"y\": 388, \"aimed\": true}, {\"x\": 8636, \"tHit\": 0.172, \"tele\": 0.96, \"y\": 371, \"aimed\": false}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": ",
+      "state": "{\"t\": 19.96, \"frame\": 2365, \"dist\": 182, \"target\": 900, \"player\": {\"wx\": 7306, \"py\": 283, \"vy\": 278, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 211, \"minGap\": 6, \"fails\": 1}, \"missiles\": [{\"x\": 7685, \"tHit\": 0.626, \"tele\": 0.909, \"y\": 198, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"hear",
       "keys": [
+        "resume",
         "tap:ArrowUp",
         "tap:Space"
       ]
     },
     {
-      "t": 22.7,
+      "t": 23.0,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 22.56, \"frame\": 2702, \"dist\": 207, \"target\": 900, \"player\": {\"wx\": 8311, \"py\": 99, \"vy\": 247, \"onGround\": false, \"stumble\": false, \"iframe\": true, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 179, \"minGap\": 7, \"fails\": 1}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacles\""
-    },
-    {
-      "t": 23.1,
-      "canvas": true,
-      "result": false,
-      "pause": false,
-      "resultText": null,
-      "beats": 0,
-      "state": "{\"t\": 22.97, \"frame\": 2751, \"dist\": 211, \"target\": 900, \"player\": {\"wx\": 8474, \"py\": 378, \"vy\": 1104, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 187, \"minGap\": 7, \"fails\": 1}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacl",
+      "state": "{\"t\": 20.63, \"frame\": 2445, \"dist\": 189, \"target\": 900, \"player\": {\"wx\": 7574, \"py\": 235, \"vy\": 500, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 225, \"minGap\": 6, \"fails\": 1}, \"missiles\": [], \"explosions\": [{\"x\": 7685, \"t\": 0.17}], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}],",
       "keys": [
         "tap:ArrowLeft",
         "tap:ArrowRight"
       ]
     },
     {
-      "t": 24.3,
+      "t": 24.2,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 24.19, \"frame\": 2895, \"dist\": 221, \"target\": 900, \"player\": {\"wx\": 8875, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 0, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 365, \"minGap\": 7, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacles\": [{\"x\": 8799, \"w\": 61, \"h\": 62, \"type\": \"debris\"}, {\"x\": 952",
+      "state": "{\"t\": 21.86, \"frame\": 2591, \"dist\": 201, \"target\": 900, \"player\": {\"wx\": 8064, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 249, \"minGap\": 6, \"fails\": 1}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacles\":",
       "keys": [
+        "blur",
         "tap:Space"
       ]
     },
     {
-      "t": 24.8,
+      "t": 24.7,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 24.66, \"frame\": 2952, \"dist\": 226, \"target\": 900, \"player\": {\"wx\": 9064, \"py\": 268, \"vy\": 129, \"onGround\": false, \"stumble\": false, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 374, \"minGap\": 7, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacles\": [{\"x\": 9524, \"w\": 121, \"h\": 109, \"type\": \"house\"}, {\"x",
-      "keys": [
-        "tap:ArrowUp"
-      ]
+      "state": "{\"t\": 22.34, \"frame\": 2649, \"dist\": 203, \"target\": 900, \"player\": {\"wx\": 8143, \"py\": 312, \"vy\": 0, \"onGround\": true, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 13, \"minGap\": 6, \"fails\": 2}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacles\": [{"
     },
     {
-      "t": 25.3,
+      "t": 25.1,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 25.19, \"frame\": 3016, \"dist\": 231, \"target\": 900, \"player\": {\"wx\": 9277, \"py\": 166, \"vy\": 360, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 385, \"minGap\": 7, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacles\": [{\"x\": 9524, \"w\": 121, \"h\": 109, \"type\": \"house\"}, {\"",
+      "state": "{\"t\": 22.75, \"frame\": 2698, \"dist\": 206, \"target\": 900, \"player\": {\"wx\": 8269, \"py\": 360, \"vy\": 438, \"onGround\": false, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 13, \"minGap\": 6, \"fails\": 2}, \"missiles\": [{\"x\": 9084, \"tHit\": 0.458, \"tele\": 0.692, \"y\": 262, \"aimed\": false}, {\"x\": 9314, \"tHit\": 0.726, \"tele\": 0.96, \"y\": 160, \"aimed\": false}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind",
       "keys": [
+        "refocus",
         "tap:ArrowLeft",
-        "tap:ArrowRight"
+        "tap:ArrowRight",
+        "tap:ArrowUp"
       ]
     },
     {
@@ -412,19 +405,19 @@
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 26.42, \"frame\": 3163, \"dist\": 240, \"target\": 900, \"player\": {\"wx\": 9628, \"py\": 327, \"vy\": 0, \"onGround\": true, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 161, \"minGap\": 7, \"fails\": 1}, \"missiles\": [{\"x\": 9907, \"tHit\": 0.371, \"tele\": 0.638, \"y\": 295, \"aimed\": false}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obs",
+      "state": "{\"t\": 24.1, \"frame\": 2860, \"dist\": 220, \"target\": 900, \"player\": {\"wx\": 8811, \"py\": 280, \"vy\": 251, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 39, \"minGap\": 6, \"fails\": 2}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacles\"",
       "keys": [
         "tap:Space"
       ]
     },
     {
-      "t": 27.0,
+      "t": 26.9,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 26.9, \"frame\": 3221, \"dist\": 245, \"target\": 900, \"player\": {\"wx\": 9809, \"py\": 160, \"vy\": 139, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 166, \"minGap\": 7, \"fails\": 1}, \"missiles\": [], \"explosions\": [{\"x\": 9907, \"t\": 0.103}], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacles\": [{\"x\": 10247, \"w\": 93, \"h\": 54,"
+      "state": "{\"t\": 24.59, \"frame\": 2918, \"dist\": 225, \"target\": 900, \"player\": {\"wx\": 9004, \"py\": 162, \"vy\": 236, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 49, \"minGap\": 6, \"fails\": 2}, \"missiles\": [{\"x\": 9870, \"tHit\": 0.87, \"tele\": 0.97, \"y\": 105, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\","
     },
     {
       "t": 27.4,
@@ -433,68 +426,70 @@
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 27.31, \"frame\": 3270, \"dist\": 249, \"target\": 900, \"player\": {\"wx\": 9972, \"py\": 395, \"vy\": 995, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 174, \"minGap\": 7, \"fails\": 1}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 1, \"obstacles\": [{\"x\": 10247, \"w\": 93, \"h\": 54, \"type\": \"debris\"}, {\"",
-      "keys": [
-        "tap:ArrowLeft",
-        "tap:ArrowRight",
-        "tap:ArrowUp"
-      ]
-    },
-    {
-      "t": 28.8,
-      "canvas": true,
-      "result": false,
-      "pause": false,
-      "resultText": null,
-      "beats": 0,
-      "state": "{\"t\": 28.66, \"frame\": 3435, \"dist\": 261, \"target\": 900, \"player\": {\"wx\": 10441, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 0, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 371, \"minGap\": 5, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [{\"x\": 10917, \"w\": 135, \"h\": 300, \"type\": \"tunnel\"}, {\"x\":",
-      "keys": [
-        "tap:Space"
-      ]
-    },
-    {
-      "t": 29.3,
-      "canvas": true,
-      "result": false,
-      "pause": false,
-      "resultText": null,
-      "beats": 0,
-      "state": "{\"t\": 29.14, \"frame\": 3493, \"dist\": 265, \"target\": 900, \"player\": {\"wx\": 10634, \"py\": 268, \"vy\": 133, \"onGround\": false, \"stumble\": false, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 380, \"minGap\": 5, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [{\"x\": 10917, \"w\": 135, \"h\": 300, \"type\": \"tunnel\"}, "
-    },
-    {
-      "t": 29.7,
-      "canvas": true,
-      "result": false,
-      "pause": false,
-      "resultText": null,
-      "beats": 0,
-      "state": "{\"t\": 29.55, \"frame\": 3542, \"dist\": 269, \"target\": 900, \"player\": {\"wx\": 10797, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 388, \"minGap\": 5, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [{\"x\": 10917, \"w\": 135, \"h\": 300, \"type\": \"tunnel\"}, {\"",
+      "state": "{\"t\": 24.99, \"frame\": 2966, \"dist\": 229, \"target\": 900, \"player\": {\"wx\": 9166, \"py\": 433, \"vy\": 1086, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 57, \"minGap\": 6, \"fails\": 2}, \"missiles\": [{\"x\": 9870, \"tHit\": 0.465, \"tele\": 0.97, \"y\": 259, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart",
       "keys": [
         "tap:ArrowLeft",
         "tap:ArrowRight"
       ]
     },
     {
-      "t": 30.9,
+      "t": 28.6,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 30.78, \"frame\": 3690, \"dist\": 282, \"target\": 900, \"player\": {\"wx\": 11288, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 413, \"minGap\": 5, \"fails\": 0}, \"missiles\": [{\"x\": 11908, \"tHit\": 0.419, \"tele\": 0.864, \"y\": 277, \"aimed\": false}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, ",
+      "state": "{\"t\": 26.22, \"frame\": 3114, \"dist\": 241, \"target\": 900, \"player\": {\"wx\": 9656, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 0, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 367, \"minGap\": 5, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [{",
       "keys": [
         "tap:ArrowUp",
         "tap:Space"
       ]
     },
     {
-      "t": 31.5,
+      "t": 29.2,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 31.39, \"frame\": 3764, \"dist\": 288, \"target\": 900, \"player\": {\"wx\": 11534, \"py\": 219, \"vy\": 239, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 425, \"minGap\": 5, \"fails\": 0}, \"missiles\": [], \"explosions\": [{\"x\": 11908, \"t\": 0.02}], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [{\"x\": 11632, \"w\": 52, \"h\": 5"
+      "state": "{\"t\": 26.82, \"frame\": 3185, \"dist\": 247, \"target\": 900, \"player\": {\"wx\": 9894, \"py\": 223, \"vy\": 209, \"onGround\": false, \"stumble\": false, \"iframe\": true, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 379, \"minGap\": 5, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles"
+    },
+    {
+      "t": 29.6,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{\"t\": 27.24, \"frame\": 3234, \"dist\": 251, \"target\": 900, \"player\": {\"wx\": 10061, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 388, \"minGap\": 5, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\"",
+      "keys": [
+        "tap:ArrowLeft",
+        "tap:ArrowRight"
+      ]
+    },
+    {
+      "t": 30.8,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{\"t\": 28.47, \"frame\": 3381, \"dist\": 260, \"target\": 900, \"player\": {\"wx\": 10404, \"py\": 404, \"vy\": 298, \"onGround\": false, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 161, \"minGap\": 5, \"fails\": 1}, \"missiles\": [{\"x\": 10675, \"tHit\": 0.307, \"tele\": 0.724, \"y\": 319, \"aimed\": false}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"hea",
+      "keys": [
+        "tap:Space"
+      ]
+    },
+    {
+      "t": 31.3,
+      "canvas": true,
+      "result": false,
+      "pause": false,
+      "resultText": null,
+      "beats": 0,
+      "state": "{\"t\": 28.95, \"frame\": 3439, \"dist\": 264, \"target\": 900, \"player\": {\"wx\": 10596, \"py\": 287, \"vy\": 237, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 168, \"minGap\": 5, \"fails\": 1}, \"missiles\": [], \"explosions\": [{\"x\": 10675, \"t\": 0.037}], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false",
+      "keys": [
+        "tap:ArrowUp"
+      ]
     },
     {
       "t": 31.9,
@@ -503,20 +498,20 @@
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 31.8, \"frame\": 3814, \"dist\": 292, \"target\": 900, \"player\": {\"wx\": 11697, \"py\": 380, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 433, \"minGap\": 5, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [{\"x\": 11632, \"w\": 52, \"h\": 56, \"type\": \"debris\"}, {\"x\":",
+      "state": "{\"t\": 29.5, \"frame\": 3504, \"dist\": 270, \"target\": 900, \"player\": {\"wx\": 10812, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.08, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 179, \"minGap\": 5, \"fails\": 1}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\"",
       "keys": [
         "tap:ArrowLeft",
         "tap:ArrowRight"
       ]
     },
     {
-      "t": 33.2,
+      "t": 33.1,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 33.03, \"frame\": 3964, \"dist\": 304, \"target\": 900, \"player\": {\"wx\": 12188, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 458, \"minGap\": 5, \"fails\": 0}, \"missiles\": [{\"x\": 12641, \"tHit\": 0.548, \"tele\": 1.139, \"y\": 228, \"aimed\": true}, {\"x\": 12871, \"tHit\": 0.438, \"tele\": 1.029, \"y\": 269, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"k",
+      "state": "{\"t\": 30.73, \"frame\": 3651, \"dist\": 282, \"target\": 900, \"player\": {\"wx\": 11306, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.08, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 204, \"minGap\": 5, \"fails\": 1}, \"missiles\": [{\"x\": 11908, \"tHit\": 0.391, \"tele\": 1, \"y\": 287, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", ",
       "keys": [
         "tap:Space"
       ]
@@ -528,53 +523,16 @@
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 33.51, \"frame\": 4021, \"dist\": 309, \"target\": 900, \"player\": {\"wx\": 12380, \"py\": 269, \"vy\": 148, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 467, \"minGap\": 5, \"fails\": 0}, \"missiles\": [{\"x\": 12641, \"tHit\": 0.068, \"tele\": 1.139, \"y\": 410, \"aimed\": true}], \"explosions\": [{\"x\": 12871, \"t\": 0.178}], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caug",
-      "keys": [
-        "tap:ArrowUp"
-      ]
+      "state": "{\"t\": 31.21, \"frame\": 3708, \"dist\": 287, \"target\": 900, \"player\": {\"wx\": 11499, \"py\": 269, \"vy\": 137, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 214, \"minGap\": 5, \"fails\": 1}, \"missiles\": [], \"explosions\": [{\"x\": 11908, \"t\": 0.12}], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}"
     },
     {
-      "t": 34.2,
+      "t": 34.0,
       "canvas": true,
       "result": false,
       "pause": false,
       "resultText": null,
       "beats": 0,
-      "state": "{\"t\": 34.05, \"frame\": 4086, \"dist\": 314, \"target\": 900, \"player\": {\"wx\": 12597, \"py\": 169, \"vy\": 360, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 0, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 478, \"minGap\": 5, \"fails\": 0}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [{\"x\": 12991, \"w\": 118, \"h\": 104, \"type\": \"house\"}, ",
-      "keys": [
-        "tap:ArrowLeft",
-        "tap:ArrowRight"
-      ]
-    },
-    {
-      "t": 35.4,
-      "canvas": true,
-      "result": false,
-      "pause": false,
-      "resultText": null,
-      "beats": 0,
-      "state": "{\"t\": 35.29, \"frame\": 4233, \"dist\": 325, \"target\": 900, \"player\": {\"wx\": 13012, \"py\": 332, \"vy\": 0, \"onGround\": true, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 313, \"minGap\": 5, \"fails\": 1}, \"missiles\": [{\"x\": 13347, \"tHit\": 0.416, \"tele\": 0.946, \"y\": 278, \"aimed\": true}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"ob",
-      "keys": [
-        "tap:Space"
-      ]
-    },
-    {
-      "t": 35.9,
-      "canvas": true,
-      "result": false,
-      "pause": false,
-      "resultText": null,
-      "beats": 0,
-      "state": "{\"t\": 35.76, \"frame\": 4290, \"dist\": 328, \"target\": 900, \"player\": {\"wx\": 13134, \"py\": 164, \"vy\": 137, \"onGround\": false, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 296, \"minGap\": 5, \"fails\": 1}, \"missiles\": [], \"explosions\": [{\"x\": 13347, \"t\": 0.153}], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [{\"x\": 12991, \"w\": 118, \"h\": 1"
-    },
-    {
-      "t": 36.3,
-      "canvas": true,
-      "result": false,
-      "pause": false,
-      "resultText": null,
-      "beats": 0,
-      "state": "{\"t\": 36.17, \"frame\": 4339, \"dist\": 332, \"target\": 900, \"player\": {\"wx\": 13294, \"py\": 399, \"vy\": 995, \"onGround\": false, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 301, \"minGap\": 5, \"fails\": 1}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [{\"x\": 13698, \"w\": 140, \"h\": 300, \"type\": \"tunnel\"},",
+      "state": "{\"t\": 31.62, \"frame\": 3757, \"dist\": 290, \"target\": 900, \"player\": {\"wx\": 11628, \"py\": 380, \"vy\": 0, \"onGround\": true, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 60, \"minGap\": 5, \"fails\": 2}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [",
       "keys": [
         "tap:ArrowLeft",
         "tap:ArrowRight",
@@ -582,69 +540,13 @@
       ]
     },
     {
-      "t": 37.7,
-      "canvas": true,
-      "result": false,
-      "pause": false,
-      "resultText": null,
-      "beats": 0,
-      "state": "{\"t\": 37.54, \"frame\": 4502, \"dist\": 343, \"target\": 900, \"player\": {\"wx\": 13739, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 85, \"minGap\": 5, \"fails\": 2}, \"missiles\": [{\"x\": 14127, \"tHit\": 0.25, \"tele\": 0.766, \"y\": 341, \"aimed\": false}], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obs",
-      "keys": [
-        "tap:Space"
-      ]
-    },
-    {
-      "t": 38.1,
-      "canvas": true,
-      "result": false,
-      "pause": false,
-      "resultText": null,
-      "beats": 0,
-      "state": "{\"t\": 38.02, \"frame\": 4559, \"dist\": 347, \"target\": 900, \"player\": {\"wx\": 13884, \"py\": 269, \"vy\": 136, \"onGround\": false, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 85, \"minGap\": 5, \"fails\": 2}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [{\"x\": 13698, \"w\": 140, \"h\": 300, \"type\": \"tunnel\"}, {\""
-    },
-    {
-      "t": 38.6,
-      "canvas": true,
-      "result": false,
-      "pause": false,
-      "resultText": null,
-      "beats": 0,
-      "state": "{\"t\": 38.44, \"frame\": 4608, \"dist\": 351, \"target\": 900, \"player\": {\"wx\": 14048, \"py\": 436, \"vy\": 0, \"onGround\": true, \"stumble\": false, \"iframe\": false, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 93, \"minGap\": 5, \"fails\": 2}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [{\"x\": 14391, \"w\": 73, \"h\": 69, \"type\": \"debris\"}, {\"x\":",
-      "keys": [
-        "tap:ArrowLeft",
-        "tap:ArrowRight"
-      ]
-    },
-    {
-      "t": 39.8,
-      "canvas": true,
-      "result": false,
-      "pause": false,
-      "resultText": null,
-      "beats": 0,
-      "state": "{\"t\": 39.25, \"frame\": 4755, \"dist\": 359, \"target\": 900, \"player\": {\"wx\": 14376, \"py\": 367, \"vy\": 0, \"onGround\": false, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 5, \"minGap\": 5, \"fails\": 3}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [{\"x\": 14391, \"w\": 73, \"h\": 69, \"type\": \"debris\"}, {\"x\": 1",
-      "keys": [
-        "tap:ArrowUp",
-        "tap:Space"
-      ]
-    },
-    {
-      "t": 40.4,
-      "canvas": true,
-      "result": false,
-      "pause": false,
-      "resultText": null,
-      "beats": 0,
-      "state": "{\"t\": 39.25, \"frame\": 4827, \"dist\": 359, \"target\": 900, \"player\": {\"wx\": 14376, \"py\": 367, \"vy\": 0, \"onGround\": false, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 5, \"minGap\": 5, \"fails\": 3}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [{\"x\": 14391, \"w\": 73, \"h\": 69, \"type\": \"debris\"}, {\"x\": 1"
-    },
-    {
-      "t": 40.8,
+      "t": 35.3,
       "canvas": true,
       "result": true,
       "pause": false,
       "resultText": "TRY AGAIN",
       "beats": 0,
-      "state": "{\"t\": 39.25, \"frame\": 4876, \"dist\": 359, \"target\": 900, \"player\": {\"wx\": 14376, \"py\": 367, \"vy\": 0, \"onGround\": false, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 1}, \"horde\": {\"gap\": 5, \"minGap\": 5, \"fails\": 3}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [{\"x\": 14391, \"w\": 73, \"h\": 69, \"type\": \"debris\"}, {\"x\": 1"
+      "state": "{\"t\": 31.77, \"frame\": 3917, \"dist\": 291, \"target\": 900, \"player\": {\"wx\": 11647, \"py\": 380, \"vy\": 0, \"onGround\": true, \"stumble\": true, \"iframe\": true, \"airJumps\": 1, \"hover\": false, \"hoverT\": 2.2, \"jet\": false}, \"double\": {\"perm\": true, \"t\": 0, \"can\": true, \"catches\": 0}, \"horde\": {\"gap\": 8, \"minGap\": 5, \"fails\": 2}, \"missiles\": [], \"explosions\": [], \"pickups\": [{\"kind\": \"double\", \"x\": 6000, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 15200, \"y\": 314, \"caught\": false}, {\"kind\": \"double\", \"x\": 26000, \"y\": 314, \"caught\": false}, {\"kind\": \"heart\", \"x\": 8800, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 17600, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 26400, \"y\": 358, \"caught\": false}, {\"kind\": \"heart\", \"x\": 35200, \"y\": 358, \"caught\": false}], \"lives\": 0, \"obstacles\": [{"
     }
   ],
   "console": [
@@ -657,7 +559,12 @@
     "sheet-02.png",
     "sheet-03.png",
     "sheet-04.png",
-    "sheet-05.png"
+    "sheet-05.png",
+    "sheet-06.png",
+    "sheet-07.png",
+    "sheet-08.png",
+    "sheet-09.png",
+    "sheet-10.png"
   ],
   "stills": [
     "still-boot.png",
@@ -666,7 +573,7 @@
   ],
   "url": "/?level=marc-larochelle-course-apocalypse&bot=1&flavor=good&debug=1&beats=1",
   "win": false,
-  "winAt": 40.80512189865112,
+  "winAt": 35.329729080200195,
   "badnet": [],
   "consoleClean": true,
   "noPageerror": true,
@@ -676,7 +583,7 @@
     "count": 0,
     "ok": null
   },
-  "video": "/tmp/playtest-raw/marc-larochelle-course-apocalypse-1790059309.webm",
+  "video": "/tmp/playtest-raw/marc-larochelle-course-apocalypse-1790100999.webm",
   "gates": {
     "boot": true,
     "consoleClean": true,
