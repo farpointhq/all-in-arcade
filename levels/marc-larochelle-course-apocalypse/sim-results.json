@@ -1,0 +1,135 @@
+{
+  "lid": "marc-larochelle-course-apocalypse",
+  "port": 8614,
+  "modes": [
+    "dodge",
+    "noinput"
+  ],
+  "seed": 20260922,
+  "dodge": {
+    "ok": true,
+    "target": 450,
+    "runs": [
+      {
+        "run": 1,
+        "maxDist": 571,
+        "deaths": [
+          {
+            "t": 16.2,
+            "dist": 150
+          },
+          {
+            "t": 46.2,
+            "dist": 424
+          },
+          {
+            "t": 57.6,
+            "dist": 507
+          }
+        ],
+        "endStatus": "lost",
+        "cause": "La horde t'a rattrapé…",
+        "reached": 49.4,
+        "tEnd": 64.65,
+        "hardOverlay": true,
+        "ok": true,
+        "console": [
+          "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "error:Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ],
+        "perr": [],
+        "badnet": []
+      },
+      {
+        "run": 2,
+        "maxDist": 441,
+        "deaths": [
+          {
+            "t": 28.8,
+            "dist": 267
+          },
+          {
+            "t": 38.9,
+            "dist": 360
+          },
+          {
+            "t": 44.5,
+            "dist": 410
+          }
+        ],
+        "endStatus": "lost",
+        "cause": "La horde t'a rattrapé…",
+        "reached": null,
+        "tEnd": 48.1,
+        "hardOverlay": true,
+        "ok": false,
+        "console": [
+          "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "error:Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ],
+        "perr": [],
+        "badnet": []
+      },
+      {
+        "run": 3,
+        "maxDist": 290,
+        "deaths": [
+          {
+            "t": 15.2,
+            "dist": 144
+          },
+          {
+            "t": 20.6,
+            "dist": 193
+          },
+          {
+            "t": 30.8,
+            "dist": 265
+          }
+        ],
+        "endStatus": "lost",
+        "cause": "La horde t'a rattrapé…",
+        "reached": null,
+        "tEnd": 33.87,
+        "hardOverlay": true,
+        "ok": false,
+        "console": [
+          "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "error:Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ],
+        "perr": [],
+        "badnet": []
+      }
+    ]
+  },
+  "noinput": {
+    "ok": true,
+    "obs": {
+      "overlay": true,
+      "lives": 0,
+      "cause": "La horde t'a rattrapé…",
+      "maxDist": 256,
+      "tOverlay": 30.3,
+      "deaths": [
+        {
+          "t": 13.3,
+          "dist": 122
+        },
+        {
+          "t": 16.6,
+          "dist": 150
+        },
+        {
+          "t": 20.7,
+          "dist": 186
+        }
+      ]
+    },
+    "console": [
+      "error:Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "error:Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "perr": [],
+    "badnet": []
+  }
+}
