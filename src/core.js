@@ -327,6 +327,10 @@ function createInput(target) {
   window.addEventListener("keydown", (e) => {
     const t = e.target;
     if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT")) return;
+    // Pause-overlay buttons keep their native keyboard activation: Space/Enter on a
+    // focused button (e.g. the ♪ MUSIC toggle) must click it, so while the focus sits
+    // inside the active pause screen the key is not grabbed as game input (#16 e2e).
+    if (t && t.closest && t.closest("#screen-pause.active")) return;
     if (GAME_KEYS.has(e.code)) e.preventDefault();
     if (!e.repeat) justSet.add(e.code);
     downSet.add(e.code);
