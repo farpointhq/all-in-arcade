@@ -148,6 +148,13 @@ export const Audio = {
   playMusic(name) {
     const key = MOODS[name] ? name : "title";
     lastMood = key;
+    // A newer explicit request supersedes any queued blocked mood. Without this, the
+    // file-error fallback path (error handler → playMusic → synth → ensure()) finds the
+    // just-armed pendingMood and re-enters playMusic re-entrantly; the outer call then
+    // sets a second pump interval the inner one's clearInterval can never reach — a
+    // permanent 60ms scheduler leak per fallback with pendingMood armed (#18 follow-up,
+    // found by E2E adversarial testing of PR #25).
+    pendingMood = null;
     if (timer) { clearInterval(timer); timer = null; }
     if (fileKey !== key) stopFile();
     if (!musicOn) { mood = null; return; }
