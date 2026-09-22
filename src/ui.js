@@ -363,6 +363,13 @@ export const UI = {
       prompt: $("#kPrompt").value.trim(),
     };
     const status = $("#kioskStatus");
+    if (!payload.name || !payload.prompt) {
+      // whitespace passes HTML5 `required` but the server strips and rejects —
+      // fail fast here so no poison pill ever reaches the offline queue
+      status.textContent = "Check the form — a name and a prompt are needed.";
+      status.classList.add("err");
+      return;
+    }
     status.textContent = "Transmitting…";
     status.classList.remove("err");
     try {
@@ -375,6 +382,13 @@ export const UI = {
         // the server can never accept this body — queueing it would plant a
         // poison pill that every future flush would retry forever
         status.textContent = "Idea too long — trim it a bit and send again";
+        status.classList.add("err");
+        return;
+      }
+      if (r.status === 422) {
+        // the server read us and rejected the content — that record can never
+        // be accepted, so say so and don't queue it
+        status.textContent = "Check the form — a name, a real email and a prompt are needed.";
         status.classList.add("err");
         return;
       }
@@ -425,17 +439,27 @@ export const UI = {
         try { q = JSON.parse(localStorage.getItem("allin-pending") || "[]"); } catch { break; }
         if (!Array.isArray(q) || !q.length) break;
         const rec = q[0];
+        const body = JSON.stringify(rec);
+        if (body.length > 60000) {
+          // oversized backlog record: the server can never accept it (413 at
+          // 64000) — and a huge body can die mid-upload on flaky booth Wi-Fi,
+          // which would retry forever and head-of-line block the whole queue
+          console.warn("[kiosk] dropped an oversized queued idea");
+          this._pendingRemove(rec.id);
+          continue;
+        }
         let r = null;
         try {
           r = await fetch("/api/submit", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(rec),
+            body,
           });
         } catch { break; } // server still down — stop, leave the rest queued
-        if (r.status === 413) {
-          // oversized backlog record: the server can never accept it — drop forever
-          console.warn("[kiosk] dropped an oversized queued idea (413)");
+        if (r.status === 413 || r.status === 422 || r.status === 400) {
+          // 4xx = the server read us and said no — this record can never be
+          // accepted, so drop it instead of blocking the queue head-of-line
+          console.warn("[kiosk] dropped an undeliverable queued idea (HTTP " + r.status + ")");
           this._pendingRemove(rec.id);
           continue;
         }
