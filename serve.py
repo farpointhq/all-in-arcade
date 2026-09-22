@@ -181,6 +181,14 @@ class Handler(BaseHTTPRequestHandler):
         }
         if not record["name"] or not record["prompt"] or "@" not in record["email"]:
             return self._json({"ok": False, "error": "name, email and prompt are required"}, 422)
+        # replayed backlog records keep their ORIGINAL ts + replay marker + id
+        # (issue #17): the agent reading pending.jsonl dedupes on these
+        if payload.get("replay") is True:
+            record["replay"] = True
+            if isinstance(payload.get("id"), str) and payload["id"].strip():
+                record["id"] = payload["id"].strip()[:64]
+            if isinstance(payload.get("ts"), str) and payload["ts"].strip():
+                record["ts"] = payload["ts"].strip()[:40]
         for k, cap in FIELD_CAPS.items():  # kiosk-friendly truncate, after validation
             record[k] = record[k][:cap]
         os.makedirs(SUBMISSIONS_DIR, exist_ok=True)

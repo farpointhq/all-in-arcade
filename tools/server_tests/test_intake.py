@@ -258,6 +258,24 @@ class SubmitGuardTests(ServerCase):
         finally:
             conn.close()
 
+    # ---- replay metadata -----------------------------------------------------
+    def test_replayed_backlog_keeps_original_ts_and_replay_marker(self):
+        rec = dict(VALID, ts="2026-01-01T00:00:00.000Z", id="seed-1", replay=True)
+        status, _ = self.post(json.dumps(rec).encode("utf-8"))
+        self.assertEqual(status, 200)
+        line = self.sb.pending_lines()[0]
+        self.assertEqual(line["ts"], "2026-01-01T00:00:00.000Z")
+        self.assertEqual(line["replay"], True)
+        self.assertEqual(line["id"], "seed-1")
+
+    def test_direct_submit_gets_server_ts_and_no_replay_marker(self):
+        status, _ = self.post(json.dumps(VALID).encode("utf-8"))
+        self.assertEqual(status, 200)
+        line = self.sb.pending_lines()[0]
+        self.assertNotIn("replay", line)
+        self.assertNotIn("id", line)
+        self.assertTrue(line["ts"].startswith(time.strftime("%Y-%m-%dT")))
+
     # ---- field caps ----------------------------------------------------------
     def test_field_caps_truncate(self):
         long_rec = dict(VALID,

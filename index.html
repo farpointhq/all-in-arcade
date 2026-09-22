@@ -437,17 +437,17 @@
         <div class="duo">
           <div>
             <label>First name</label>
-            <input id="kFirst" required>
+            <input id="kFirst" required maxlength="40">
           </div>
           <div>
             <label>Last name</label>
-            <input id="kLast" required>
+            <input id="kLast" required maxlength="40">
           </div>
         </div>
         <label>Email <small>(private — for follow-ups only, never shown in credits)</small></label>
-        <input id="kEmail" type="email" placeholder="you@example.com" required>
+        <input id="kEmail" type="email" placeholder="you@example.com" required maxlength="120">
         <label>Handle (optional)</label>
-        <input id="kHandle" placeholder="@handle">
+        <input id="kHandle" placeholder="@handle" maxlength="40">
         <label>Level type</label>
         <select id="kGenre">
           <option value="surprise">Surprise me — pick what fits my idea</option>
@@ -457,7 +457,7 @@
           <option value="shooter">Shooter (arcade space blaster)</option>
         </select>
         <label>Describe your level</label>
-        <textarea id="kPrompt" rows="4" placeholder="Look, vibe, objective… any idea on your mind goes here." required></textarea>
+        <textarea id="kPrompt" rows="4" placeholder="Look, vibe, objective… any idea on your mind goes here." required maxlength="2000"></textarea>
         <div class="row">
           <button class="btn primary" type="submit">SEND TO FABRIC</button>
           <button class="btn" type="button" data-act="back-title">ESC · CANCEL</button>
