@@ -10,7 +10,7 @@
 // assets). Chip-tune SFX are synthesized locally on the shared AudioContext — audio.js is
 // a shared file and stays untouched. ?debug=1 exposes window.__DUCK.read() + a DOM beacon.
 
-import { W, H, clamp, hash, drawText, seasonTint, seasonNow } from "../core.js";
+import { W, H, clamp, hash, drawText, drawBilingualText, seasonTint, seasonNow } from "../core.js";
 
 // ---------- cell-raster bakery (baked once per key, blitted at integer-ish scale) ----------
 const BAKED = new Map();
@@ -196,7 +196,7 @@ function paintPebble(g) {
 // ---------- genre ----------
 export const meta = {
   name: "Slingshot Duck Season",
-  controls: "MOUSE — grab the pebble in the slingshot, drag back (force + angle), release to fire. 3 pebbles a take-off. Clear each flight's duck quota.",
+  controls: "EN: MOUSE — grab the pebble, drag back, release to fire · 3 pebbles a take-off · clear the duck quota FR: SOURIS — attrape le caillou, tire en arrière, lâche · 3 cailloux par décollage · atteins le quota",
 };
 
 export function create(level, api) {
@@ -799,7 +799,7 @@ export function create(level, api) {
       drawText(ctx, "GRAB THE PEBBLE · DRAG BACK · RELEASE", FORK.x + 230, GROUND + 42, { size: 16, color: "#ffffff", alpha: a, shadow: "rgba(0,0,0,.7)" });
     }
     if (runT < 3.6 && phase === "play" && flight === 0) {
-      drawText(ctx, level.objective || "", W / 2, H - 24, { size: 17, color: "#fff", alpha: runT > 2.8 ? (3.6 - runT) / 0.8 : 1, shadow: "rgba(0,0,0,.8)" });
+      drawBilingualText(ctx, level.objective || "", W / 2, H - 40, { size: 17, color: "#fff", alpha: runT > 2.8 ? (3.6 - runT) / 0.8 : 1, shadow: "rgba(0,0,0,.8)" });
     }
   }
 

@@ -3,7 +3,7 @@
 // level PNG sprites (L02) with procedural Route A fallbacks — no emoji glyphs.
 // Booth tuning (L02 Neon Coast GP): traffic AI keeps lane spacing + speed tiers,
 // curve-warning signs, speed lines, loop-closed hills, capped sprite sizes, crash FX.
-import { W, H, clamp, drawText, drawBackdrop, hash, fmtTime, sprite, blit } from "../core.js";
+import { W, H, clamp, drawText, drawBilingualText, drawBackdrop, hash, fmtTime, sprite, blit } from "../core.js";
 
 // Sprite helper: draws a transparent PNG (bottom-anchored at (x,y)) with rotation/flip.
 // When the image cannot load, renders the given procedural painter instead —
@@ -133,7 +133,7 @@ const CAR_CAP = 78;           // max traffic px size
 
 export const meta = {
   name: "Racer",
-  controls: "↑ accelerate · ← → steer · ↓ brake · dodge traffic · reach the finish",
+  controls: "EN: ↑ accelerate · ← → steer · ↓ brake · reach the finish FR: ↑ accélère · ← → tourne · ↓ freine · atteins l'arrivée",
 };
 
 export function create(level, api) {
@@ -559,7 +559,7 @@ export function create(level, api) {
     }
     drawText(ctx, ` ${fmtTime(runT)}`, W - 18, 64, { size: 18, color: "#fff", align: "right" });
 
-    if (runT < 3.2) drawText(ctx, level.objective || "", W / 2, 468, { size: 18, color: "#fff", alpha: runT > 2.6 ? (3.2 - runT) / 0.6 : 1, shadow: "rgba(0,0,0,.8)" });
+    if (runT < 3.2) drawBilingualText(ctx, level.objective || "", W / 2, 468, { size: 18, color: "#fff", alpha: runT > 2.6 ? (3.2 - runT) / 0.6 : 1, shadow: "rgba(0,0,0,.8)" });
   }
 
   function project(lateral, worldY, dz, camY) {

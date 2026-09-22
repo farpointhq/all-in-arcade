@@ -1,7 +1,7 @@
 // PLATFORMER genre — tile-based, data-driven, Route A procedural art only.
 // (operator rule 2026-09-17: actors are hand-drawn canvas sprites — no emoji,
 // no emoji fallbacks ever). Physics/logic untouched by the art pass.
-import { W, H, clamp, drawCloud, drawText, drawBackdrop, SEASONS, seasonNow, seasonTint, sprite, blit } from "../core.js";
+import { W, H, clamp, drawCloud, drawText, drawBilingualText, drawBackdrop, SEASONS, seasonNow, seasonTint, sprite, blit } from "../core.js";
 
 const T = 40; // tile size
 
@@ -137,7 +137,7 @@ function drawFlagCloth(ctx, x, y, t) {
 
 export const meta = {
   name: "Platformer",
-  controls: "← → / A D move · SPACE / ↑ jump · reach the flag",
+  controls: "EN: ← → / A D move · SPACE / ↑ jump · reach the flag FR: ← → / A D bouger · ESPACE / ↑ sauter · atteins le drapeau",
 };
 
 export function create(level, api) {
@@ -412,7 +412,7 @@ export function create(level, api) {
     ctx.restore();
     seasonTint(ctx);
 
-    if (t < 3.2) drawText(ctx, level.objective || "", W / 2, 468, { size: 20, color: "#fff", alpha: t > 2.6 ? (3.2 - t) / 0.6 : 1, shadow: "rgba(0,0,0,.8)" });
+    if (t < 3.2) drawBilingualText(ctx, level.objective || "", W / 2, 468, { size: 20, color: "#fff", alpha: t > 2.6 ? (3.2 - t) / 0.6 : 1, shadow: "rgba(0,0,0,.8)" });
   }
 
   return { update, draw, status: () => status };

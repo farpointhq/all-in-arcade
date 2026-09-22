@@ -24,11 +24,11 @@
 // autopilot policy can dodge missiles / hop ruins and measure honest win times against
 // levels/marc-larochelle-course-apocalypse/EXCELLENT.md. Inert without the flag.
 
-import { W, H, clamp, lerp, hash, drawText, seasonTint, seasonNow } from "../core.js";
+import { W, H, clamp, lerp, hash, drawText, drawBilingualText, seasonTint, seasonNow } from "../core.js";
 
 export const meta = {
   name: "Survival",
-  controls: "ESPACE / ↑ : sauter (×2 = double saut, maintenir = lévitation) · FR · EN: SPACE/↑ jump (×2 = double jump, hold = hover)",
+  controls: "EN: SPACE / ↑ jump (×2 = double jump, hold = hover) FR: ESPACE / ↑ sauter (×2 = double saut, maintenir = lévitation)",
 };
 
 // ---- tuning constants (world units: px; 40 px = 1 m) ------------------------
@@ -350,7 +350,7 @@ export function create(level, api) {
     hordeX = Math.max(hordeX + hSpeed * dt, wx - HORDE_GAP_MAX);
     const gap = hordeGap();
     minGapSeen = Math.min(minGapSeen, gap);
-    if (gap <= 8) die("La horde t'a rattrapé…"); // the horde is the fail-punisher: iframes can't protect you from it
+    if (gap <= 8) die("The horde caught you… FR: La horde t'a rattrapé…"); // the horde is the fail-punisher: iframes can't protect you from it
 
     // ---- missiles fall
     ensureObstacles();
@@ -360,7 +360,7 @@ export function create(level, api) {
       m.y += m.vy * dt; m.tHit = Math.max(0, m.tHit - dt);
       // rare direct body hit mid-air (the marker is the real threat)
       if (Math.abs(m.x - wx) < 22 + PLAYER_HALF && m.y > py - PLAYER_H && m.y < py + 4 && iframe <= 0) {
-        missiles.splice(i, 1); boom(m.x, py); die("Touché par un missile…"); continue;
+        missiles.splice(i, 1); boom(m.x, py); die("Hit by a missile… FR: Touché par un missile…"); continue;
       }
       if (m.y >= GROUND_Y) {
         missiles.splice(i, 1);
@@ -387,7 +387,7 @@ export function create(level, api) {
       status = "won";
       api.audio.sfx("win"); api.eng.flash = 0.7;
       api.complete({ distance: dist(), time: Math.round(t * 10) / 10 });
-      api.hud({ mid: `${targetM} m / ${targetM} m — survécu !`, right: "HORDE " + Math.ceil(gap / PX_PER_M) + "m" });
+      api.hud({ mid: `${targetM} m / ${targetM} m — survived! / survécu !`, right: "HORDE " + Math.ceil(gap / PX_PER_M) + "m" });
       return;
     }
 
@@ -895,11 +895,10 @@ export function create(level, api) {
     const a = clamp(banner / 0.8, 0, 1);
     ctx.save(); ctx.globalAlpha = a;
     ctx.fillStyle = "rgba(5,6,15,.55)"; ctx.fillRect(0, 150, W, 128);
-    drawText(ctx, "SURVIS " + targetM + " m — COURS !", W / 2, 196, { size: 34, color: "#fff", shadow: "#3ddcff" });
-    drawText(ctx, "Missiles : sors des zones d'impact · Ruines : saute (sauf les TUNNELS : cours dessous !) · Double saut + lévitation · La Horde arrive !",
-      W / 2, 238, { size: 15, color: "rgba(216,228,255,.85)" });
-    drawText(ctx, "EN: outrun " + targetM + " m — leave marked blast zones, jump the ruins (NOT tunnels: run under), use double jump + hover, stay ahead of the horde",
-      W / 2, 262, { size: 12, color: "rgba(216,228,255,.55)" });
+    drawText(ctx, "SURVIVE " + targetM + " m — RUN!", W / 2, 196, { size: 34, color: "#fff", shadow: "#3ddcff" });
+    drawText(ctx, "SURVIS " + targetM + " m — COURS !", W / 2, 224, { size: 14, color: "rgba(216,228,255,.85)" });
+    drawBilingualText(ctx, "Missiles: leave the marked blast zones · Ruins: jump (NOT tunnels: run under!) · Double jump + hover · The Horde is coming! FR: Missiles : sors des zones d'impact · Ruines : saute (sauf les TUNNELS : cours dessous !) · Double saut + lévitation · La Horde arrive !",
+      W / 2, 248, { size: 11, color: "rgba(216,228,255,.85)" });
     ctx.restore();
   }
   function drawLifeBanner(ctx) {

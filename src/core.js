@@ -67,6 +67,20 @@ export function drawText(ctx, text, x, y, { size = 20, color = "#fff", weight = 
   ctx.restore();
 }
 
+// Bilingual on-canvas text for the EN-first / FR-secondary booth convention.
+// Splits on "FR:" — the EN head renders exactly like drawText, and the FR tail
+// renders one line below at size−2 / alpha×0.6 (drawText never wraps, so a
+// combined EN+FR line would overflow the 960px canvas). Strings without an
+// "FR:" marker render exactly as today — single-language text is unaffected.
+export function drawBilingualText(ctx, text, x, y, opts = {}) {
+  const str = String(text || "");
+  const fr = str.indexOf("FR:");
+  if (fr === -1) return drawText(ctx, str, x, y, opts);
+  const size = opts.size ?? 20;
+  drawText(ctx, str.slice(0, fr).replace(/\s+$/, ""), x, y, opts);
+  drawText(ctx, str.slice(fr), x, y + size + 4, { ...opts, size: Math.max(10, size - 2), alpha: (opts.alpha ?? 1) * 0.6 });
+}
+
 // Fluffy hand-drawn cloud (no asset files): (cx,y) = top-centre, w = width.
 export function drawCloud(ctx, cx, y, w) {
   const h = Math.max(10, w * 0.22);

@@ -1,6 +1,6 @@
 // PUZZLE genre — grid Sokoban. Push every crate onto a glowing target.
 // data.rows: '#' wall · '.' target · 'o' crate · '@' player · ' ' floor ('O' crate-on-target, '+' player-on-target).
-import { W, H, hash, drawText, drawBackdrop, sprite, blit } from "../core.js";
+import { W, H, hash, drawText, drawBilingualText, drawBackdrop, sprite, blit } from "../core.js";
 
 // ---- Route A actor art (hand-drawn canvas sprites; no emoji anywhere) --------
 const INK = "#12233d", PI2 = Math.PI * 2;
@@ -70,7 +70,7 @@ const PORTER = sprite("q-porter", 72, (g, w, h) => {
 
 export const meta = {
   name: "Puzzle",
-  controls: "← ↑ → ↓ push crates · Z undo · R restart",
+  controls: "EN: ← ↑ → ↓ push crates · Z undo · R restart FR: ← ↑ → ↓ pousse les caisses · Z annule · R recommence",
 };
 
 export function create(level, api) {
@@ -294,7 +294,7 @@ export function create(level, api) {
         drawText(ctx, "Cornered crate? Z to undo · R to restart", W / 2, H - 14, { size: 14, color: "#fff", alpha: a, shadow: "rgba(0,0,0,.75)" });
     }
 
-    if (t < 3.4) drawText(ctx, level.objective || "", W / 2, H - 34, { size: 18, color: "#fff", alpha: t > 2.8 ? (3.4 - t) / 0.6 : 1, shadow: "rgba(0,0,0,.8)" });
+    if (t < 3.4) drawBilingualText(ctx, level.objective || "", W / 2, H - 46, { size: 18, color: "#fff", alpha: t > 2.8 ? (3.4 - t) / 0.6 : 1, shadow: "rgba(0,0,0,.8)" });
     if (crates.length === 0) { status = "lost"; api.fail(`${level.id} has no crates — level data error`); }
   }
 
