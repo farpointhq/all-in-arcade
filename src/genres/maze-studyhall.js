@@ -1070,6 +1070,13 @@ export function create(level, api) {
         },
         ghostToPlayer: (idx) => { const g = ghosts[idx]; if (!g) return false; g.fx = P.fx; g.fy = P.fy; g.tx = null; g.prog = 0; g.script = null; g.done = null; g.phase = "roam"; return true; },
         freezePlayer: () => { P.tx = null; P.ty = null; P.prog = 0; P.want = null; return true; },
+        teleportPlayer: (c, r) => {
+          c = wrapC(c);
+          if (r < 0 || r >= ROWS || !corridorPass(c, r)) return false;
+          P.fx = c; P.fy = r; P.tx = null; P.ty = null; P.prog = 0; P.dir = null; P.want = null;
+          if (G.status === "playing") eatAt(c, r);
+          return { c, r, status: G.status };
+        },
       }),
     };
     window.__MAZE_RUNS__ = window.__MAZE_RUNS__ || [];
