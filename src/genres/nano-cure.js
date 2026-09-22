@@ -221,8 +221,8 @@ export function create(level, api) {
     phase = tag; phaseT = 0; spawnT = 0.5;
     trace.push(tag + "@" + t.toFixed(1));
     if (tag === "capillaries") banner("CAPILLAIRES", "Absorbez les germes affaiblis — move into them / entrez dedans");
-    if (tag === "artery") banner("ARTÈRE", "Gros dangers : tirez d'abord, absorbez ensuite");
-    if (tag === "boss") { banner("PURGE FINALE", "Absorbez les spores pour ouvrir la membrane"); sfx("bossRoar"); }
+    if (tag === "artery") banner("ARTÈRE", "Tirez d'abord, absorbez ensuite / Shoot first, absorb after");
+    if (tag === "boss") { banner("PURGE FINALE", "Absorbez les spores pour ouvrir la membrane / Absorb spores to open the membrane"); sfx("bossRoar"); }
     if (BEATS) snap(tag);
   }
   function corridorHw(y) {
@@ -323,7 +323,7 @@ export function create(level, api) {
     if (status !== "playing") return;
     status = "lost";
     trace.push("lost@" + t.toFixed(1));
-    api.fail(msg || "L'infection prend le dessus — retente ta chance !");
+    api.fail(msg || "L'infection prend le dessus — retente ta chance ! / The infection takes over — try again!");
   }
   function winNow() {
     if (status !== "playing") return;
@@ -337,7 +337,7 @@ export function create(level, api) {
   function ensureBoss() {
     boss = { x: W / 2, y: 132, r: 92, cycle: 0, meter: 0, hp: 0, open: false, openT: 0, sprayT: 1.1, aimT: 1.2, wob: 0 };
   }
-  function openCore() { boss.open = true; boss.openT = BOSS.openT; boss.hp = 0; boss.aimT = 0.7; sfx("alarm"); banner("MEMBRANE OUVERTE", "Tirez le noyau !", 1.6); }
+  function openCore() { boss.open = true; boss.openT = BOSS.openT; boss.hp = 0; boss.aimT = 0.7; sfx("alarm"); banner("MEMBRANE OUVERTE", "Tirez le noyau ! / Shoot the nucleus!", 1.6); }
   function closeCore(pop) {
     boss.open = false; boss.cycle++; boss.meter = 0;
     for (let i = 0; i < 8; i++) {
@@ -378,7 +378,7 @@ export function create(level, api) {
           const a = Math.atan2(dy, dx) + off;
           globs.push({ x: boss.x, y: boss.y, vx: Math.cos(a) * 190, vy: Math.sin(a) * 190, r: 7 });
         }
-        boss.aimT = 1.0;
+        boss.aimT = BOSS.aimedEvery[Math.min(boss.cycle, BOSS.aimedEvery.length - 1)]; // authored cadence (level.json), was hardcoded 1.0 — 2.4× too fast in cycle 0
       }
       if (boss.openT <= 0) closeCore(false);
     }
@@ -495,7 +495,7 @@ export function create(level, api) {
       const prog = clamp(phaseT / cfg.dur, 0, 1);
       upsurgeT -= dt;
       if (phase === "artery") {
-        if (!_upsurgeDone && phaseT >= ART.upsurgeAt) { _upsurgeDone = true; upsurgeT = ART.upsurgeDur; banner("UPSURGE", "La poussée bactérienne !", 1.8); sfx("alarm"); }
+        if (!_upsurgeDone && phaseT >= ART.upsurgeAt) { _upsurgeDone = true; upsurgeT = ART.upsurgeDur; banner("UPSURGE", "La poussée bactérienne ! / Bacterial upsurge!", 1.8); sfx("alarm"); }
         for (const pk of artPick) {
           if (!pk.done && phaseT >= pk.at) { pk.done = true; spawnPickup(); }
         }
@@ -650,15 +650,13 @@ export function create(level, api) {
     hudPaint();
   }
   let _upsurgeDone = false;
-  function upsurgeDone(pt) { return _upsurgeDone; }
-  function upsurgeStart() { _upsurgeDone = true; upsurgeT = ART.upsurgeDur; banner("UPSURGE", "La poussée bactérienne !", 1.8); sfx("alarm"); }
 
   function hudPaint() {
     let mid = "", right = "";
     if (phase === "inject") mid = "INJECTION";
     else if (phase === "capillaries") mid = "CAPILLAIRES " + Math.round(clamp(phaseT / CAP.dur, 0, 1) * 100) + "%";
     else if (phase === "artery") mid = "ARTÈRE " + Math.round(clamp(phaseT / ART.dur, 0, 1) * 100) + "%";
-    else if (boss) mid = bossDying > 0 ? "PURGE FINALE — NETTOYAGE" : "PURGE FINALE — CYCLE " + Math.min(boss.cycle + 1, BOSS.cycles) + "/" + BOSS.cycles;
+    else if (boss) mid = bossDying > 0 ? "FINAL PURGE — CLEANSE" : "FINAL PURGE — CYCLE " + Math.min(boss.cycle + 1, BOSS.cycles) + "/" + BOSS.cycles;
     right = "★ " + biomass + " · B ×" + bombs + " · " + TIERS[Math.min(tier, TIERS.length - 1)].name;
     const key = mid + "|" + right;
     if (key !== lastHud) { lastHud = key; try { api.hud({ mid, right }); } catch (e) { /* thumb-safe */ } }

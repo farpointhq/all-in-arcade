@@ -256,8 +256,9 @@ def run_sims():
         ok = False
 
     c = results["sims"].get("clumsy", {})
-    if not c.get("error") and c.get("state", {}).get("status") == "lost" and c.get("recs", {}).get("fail"):
-        print("[sim clumsy] fail path proven: %r t=%s" % (c["recs"]["fail"], c["state"]["t"]))
+    fail_msg = c.get("recs", {}).get("fail") or ""
+    if not c.get("error") and c.get("state", {}).get("status") == "lost" and fail_msg and "The infection takes over" in fail_msg:
+        print("[sim clumsy] fail path proven (bilingual line): %r t=%s" % (fail_msg, c["state"]["t"]))
     else:
         print("[sim clumsy] FAILED %s" % json.dumps(c)[:500])
         ok = False
