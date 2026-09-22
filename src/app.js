@@ -38,6 +38,16 @@ const App = {
     eng = createEngine($("#stage"));
     eng.setScene(attract);
 
+    // focus-loss auto-pause (issue #10): a booth run must never degrade
+    // unattended. blur and visibilitychange→hidden both open the existing
+    // PAUSED overlay; the playing() + !eng.paused guard makes them no-ops on
+    // title/menus/result screens and idempotent when tab-switching fires both
+    // in quick succession. No auto-resume — the player returns deliberately.
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) this.autoPause();
+    });
+    window.addEventListener("blur", () => this.autoPause());
+
     await this.refreshData();
 
     // first user gesture unlocks audio
@@ -397,6 +407,10 @@ const App = {
 
   playing() {
     return this.activeLevel && !this.resultShown && $("#screen-title").classList.contains("active") === false;
+  },
+  autoPause() {
+    if (!this.playing() || eng.paused) return;
+    this.openPause();
   },
   openPause() {
     eng.paused = true;
