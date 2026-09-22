@@ -50,14 +50,27 @@ REWIND_TILES = BOOT_TILES  # "boot-view" is a rewind-only beat label
 HUD_ON = r'() => !!document.querySelector("#hud") && document.querySelector("#hud").classList.contains("on")'
 
 # Timing-critical: the whole exit must land inside the 350 ms boot-timer window.
-# In-page dispatch (real handlers: window keydown → App.key, button click →
-# data-act wiring) avoids Playwright actionability latency.
-QUICK_EXIT = r'''() => {
+# One in-page evaluate drives restart → wait-for-create (~2 ms granularity) → exit,
+# all through the REAL handlers (button clicks + window keydown → App.key); Python-side
+# polling (~50 ms/roundtrip) is too coarse and lets the timer win the race.
+# The seam is DELETED before the restart click: the poll must anchor on the FRESH
+# create() (startLevel drains the old instance only after its async module import,
+# so a pre-existing seam is the OLD one — polling on it exits a session that was
+# never created, and the in-flight startLevel then boots an orphaned instance).
+QUICK_RESTART_EXIT = r'''async () => {
+  const t0 = performance.now();
+  delete window.__REW; // anchor: the next "object" sighting is the NEW instance
+  document.querySelector('#screen-pause button[data-act="restart"]').click();
+  const created = await new Promise((res) => {
+    const tick = () => (typeof window.__REW === "object" ? res(performance.now()) : setTimeout(tick, 2));
+    tick();
+  });
   window.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", code: "Escape" }));
   const btn = document.querySelector('#screen-pause button[data-act="pause-levels"]');
-  if (!btn) return "no-btn";
+  if (!btn) return { error: "no-btn" };
   btn.click();
-  return "ok";
+  return { createdMs: Math.round(created - t0), exitedMs: Math.round(performance.now() - t0),
+           seamAfter: typeof window.__REW };
 }'''
 
 # Re-enter a level the way a user does: click the Nth .levelCard (N = manifest index).
@@ -99,6 +112,22 @@ def poll(page, js, want, timeout=8.0, interval=0.05):
             pass
         time.sleep(interval)
     return False
+
+
+def pick_card(page, lid, timeout=8.0):
+    """Click a level card by manifest id; retries until the grid is rendered."""
+    t0 = time.time()
+    while time.time() - t0 < timeout:
+        try:
+            r = page.evaluate(PICK_CARD, lid)
+            if r == "ok":
+                return "ok"
+            if r == "no-level":
+                return r  # genuine failure — retrying won't help
+        except Exception:
+            pass
+        time.sleep(0.1)
+    return "timeout"
 
 
 def run():
@@ -153,15 +182,15 @@ def run():
                 # -- 3. the leak: quick-exit INSIDE the 350 ms boot window --
                 page.keyboard.press("Escape")
                 page.wait_for_selector("#screen-pause.active", timeout=4000)
-                page.click('#screen-pause button[data-act="restart"]')
-                if not poll(page, SEAM_TYPE, lambda t: t == "object"):
-                    ok = False; notes.append("quick-exit: seam never returned on 2nd restart")
+                how = page.evaluate(QUICK_RESTART_EXIT)
+                if not isinstance(how, dict) or how.get("error"):
+                    ok = False; notes.append("quick-exit: in-page dispatch failed (%r)" % (how,))
                 else:
-                    how = page.evaluate(QUICK_EXIT)
-                    if how != "ok":
-                        ok = False; notes.append("quick-exit: in-page dispatch failed (%r)" % how)
-                    if page.evaluate(SEAM_TYPE) != "undefined":
+                    if how.get("seamAfter") != "undefined":
                         ok = False; notes.append("quick-exit: window.__REW still set after leaving — playScene.exit() not wired")
+                    if how.get("exitedMs", 9999) - how.get("createdMs", 0) > BOOT_WINDOW_MS:
+                        ok = False; notes.append("quick-exit: exit landed %d ms after create (must be inside the %d ms boot window)"
+                                                 % (how.get("exitedMs", 0) - how.get("createdMs", 0), BOOT_WINDOW_MS))
                 time.sleep(0.7)  # > BOOT_WINDOW_MS: a leaked timer would have fired here
                 tiles_after_quick_exit = page.evaluate(BOOT_TILES)
                 if tiles_after_quick_exit != tiles_after_restart:
@@ -172,16 +201,16 @@ def run():
                 page.screenshot(path=os.path.join(HERE, "shot-live-quick-exit.png"))
 
                 # -- 4. re-enter via the grid: seam back, exactly one boot beat --
-                picked = page.evaluate(PICK_CARD, LID)
+                picked = pick_card(page, LID)
                 if picked != "ok":
                     ok = False; notes.append("re-enter: card pick failed (%r)" % picked)
                 if not poll(page, SEAM_TYPE, lambda t: t == "object", timeout=10):
                     ok = False; notes.append("re-enter: seam never came back")
                 time.sleep(0.7)
                 tiles_reenter = page.evaluate(BOOT_TILES)
-                if tiles_reenter != tiles_after_restart + 1:
+                if tiles_reenter != tiles_after_quick_exit + 1:
                     ok = False; notes.append("re-enter: boot-view tiles=%d (want %d — exactly one new boot beat, no stacked duplicates)"
-                                             % (tiles_reenter, tiles_after_restart + 1))
+                                             % (tiles_reenter, tiles_after_quick_exit + 1))
                 page.screenshot(path=os.path.join(HERE, "shot-live-reenter.png"))
 
                 # -- 5. level→level: stale seam must not resurrect, HUD live --
@@ -191,7 +220,7 @@ def run():
                 page.wait_for_selector("#screen-levels.active", timeout=8000)
                 if page.evaluate(SEAM_TYPE) != "undefined":
                     ok = False; notes.append("level→level: seam still set on the levels grid")
-                picked = page.evaluate(PICK_CARD, PLATFORMER_ID)
+                picked = pick_card(page, PLATFORMER_ID)
                 if picked != "ok":
                     ok = False; notes.append("level→level: platformer card pick failed (%r)" % picked)
                 if not poll(page, HUD_ON, lambda on: on, timeout=8):
@@ -210,6 +239,7 @@ def run():
                 results["live"] = {"ok": ok, "notes": notes, "tiles": {
                     "boot": base_tiles, "restart": tiles_after_restart,
                     "quick_exit": tiles_after_quick_exit, "reenter": tiles_reenter},
+                    "quickExitTiming": how,
                     "console": filtered(console)[-10:], "perr": filtered(perr)}
                 print("[live]", "PASS" if ok else "FAIL", notes)
 
