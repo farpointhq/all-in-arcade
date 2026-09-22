@@ -395,8 +395,15 @@ def run_soak(page, console, perr, badnet):
             deaths = page.evaluate(DEATHS_JS)
             samples.append({"t": round(t, 1), "facts": snap["facts"],
                             "status": snap["status"], "deaths": deaths})
-            if snap["status"] != "playing":
-                res["ended"] = {"t": round(t, 1), "status": snap["status"],
+            st = snap["status"]
+            if st in ("dying", "ready"):
+                # respawn transition — pause the soak (facts can't move while
+                # dead) and keep the budget running
+                last_move = time.time()
+                time.sleep(0.5)
+                continue
+            if st != "playing":
+                res["ended"] = {"t": round(t, 1), "status": st,
                                 "facts": snap["facts"], "deaths": deaths}
                 break
             if snap["facts"] <= 0:
