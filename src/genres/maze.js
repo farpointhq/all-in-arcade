@@ -727,7 +727,15 @@ export function create(level, api) {
     // threat proximity judged toroidally (issue #8): a monster 2 tiles away
     // THROUGH the wrap tunnel must read as 2, not ~19
     const near = threats.filter((g) => wdx(g.fx, P.fx) + Math.abs(g.fy - P.fy) <= 4);
-    if (near.length && G.fright <= 0) { // evade: maximize min distance to threats
+    const minD = threats.length ? Math.min(...threats.map((g) => wdx(g.fx, P.fx) + Math.abs(g.fy - P.fy))) : 99;
+    // issue #8 follow-up (E2E of PR #42): the evade reflex used to hijack the
+    // WHOLE <= 4 band at 60 Hz, cancelling the planner's committed routes
+    // whenever a chaser hovered nearby — the bot never finished a food
+    // approach and facts froze (the soak stall class, facts=98 barrier).
+    // Survival reflex now owns only the immediate-danger band (<= 2, matching
+    // studyhall's priority order); the shadow/guard-aware planner owns
+    // 2 < d <= 4 at its paced cadence.
+    if (near.length && G.fright <= 0 && minD <= 2) { // evade: maximize min distance to threats
       let best = null, bd = -Infinity;
       for (const d of TIE) {
         const nc = wrapC(P.fx + d.x), nr = P.fy + d.y;
@@ -771,7 +779,7 @@ export function create(level, api) {
         if (wdx(g.fx, c) + Math.abs(g.fy - tr) <= 5) blocked.add(c + "," + tr);
     }
     const pass = (c, r) => corridorPass(c, r) && !blocked.has(c + "," + r);
-    const go = (path) => { if (path && path.length) { const t0 = path[0]; let dx = t0.c - P.fx, dy = t0.r - P.fy; if (dx > 1) dx = -1; else if (dx < -1) dx = 1; if (dy > 1) dy = -1; else if (dy < -1) dy = 1; const d = TIE.find((v) => v.x === dx && v.y === dy); if (d) { P.want = d; return true; } } return false; };
+    const go = (path) => { if (path && path.length) { const t0 = path[0]; let dx = t0.c - P.fx, dy = t0.r - P.fy; if (dx > 1) dx = -1; else if (dx < -1) dx = 1; if (dy > 1) dy = -1; else if (dy < -1) dy = 1; dx = dx >= 0.5 ? 1 : dx <= -0.5 ? -1 : 0; dy = dy >= 0.5 ? 1 : dy <= -0.5 ? -1 : 0; const d = TIE.find((v) => v.x === dx && v.y === dy); if (d) { P.want = d; return true; } } return false; };
     if (G.fright > 1.5) { // hunt pale staff for credit
       const fg = ghosts.filter((g) => g.fright && !g.eaten && (g.phase === "roam" || g.phase === "exit"));
       if (fg.length && go(bfs(P.fx, P.fy, (t) => fg.some((g) => g.fx === t.c && g.fy === t.r), pass))) return;

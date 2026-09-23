@@ -619,6 +619,10 @@ export function create(level, api) {
       let dx = t0.c - P.fx, dy = t0.r - P.fy;
       if (dx > 1) dx = -1; else if (dx < -1) dx = 1;
       if (dy > 1) dy = -1; else if (dy < -1) dy = 1;
+      // snap fractional deltas (mid-move) to the nearest integer direction —
+      // otherwise d0 misses and every planned route degrades to alts[0]
+      dx = dx >= 0.5 ? 1 : dx <= -0.5 ? -1 : 0;
+      dy = dy >= 0.5 ? 1 : dy <= -0.5 ? -1 : 0;
       const d0 = TIE.find((d) => d.x === dx && d.y === dy);
       // danger-tax route choice: stay on path unless a neighbor is clearly safer
       const alts = TIE.filter((d) => corridorPass(wrapC(P.fx + d.x), P.fy + d.y));

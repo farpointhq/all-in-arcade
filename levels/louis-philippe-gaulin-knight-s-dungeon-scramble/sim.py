@@ -46,7 +46,7 @@ import urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__))
 LID = "louis-philippe-gaulin-knight-s-dungeon-scramble"
 ROOT = os.path.dirname(os.path.dirname(HERE))
-PORT = 8608
+PORT = 18742
 BASE = "http://127.0.0.1:%d" % PORT
 COLS = 21
 ROWS = 15
@@ -122,7 +122,7 @@ GUARD_JS = r"""
 
 
 def start_server():
-    proc = subprocess.Popen([sys.executable, "serve.py", "--port", str(PORT)],
+    proc = subprocess.Popen([sys.executable, "serve.py", "--port", str(PORT), "--host", "127.0.0.1"],
                             cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
     for _ in range(60):
         try:
@@ -482,7 +482,7 @@ def run():
     try:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=True)
+            browser = pw.chromium.launch(headless=True, args=["--mute-audio"])
             page = browser.new_page(viewport={"width": 1000, "height": 640})
             console, perr, badnet = [], [], []
             page.on("console", lambda m: console.append("%s:%s" % (m.type, m.text)) if m.type in ("error", "warning") else None)
