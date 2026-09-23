@@ -4,92 +4,94 @@
       {
         "run": 0,
         "console_errors": [],
+        "badnet": [],
         "page_error": null,
         "won": true,
-        "hearts": 1,
+        "hearts": 3,
         "state": {
-          "t": 67.21,
+          "t": 60.97,
           "phase": "boss",
           "status": "won",
           "trace": [
             "capillaries@0.1",
             "artery@22.0",
-            "boss@46.0",
-            "won@67.2"
+            "boss@46.1",
+            "won@61.0"
           ],
-          "hearts": 1,
-          "biomass": 338,
+          "hearts": 3,
+          "biomass": 367,
           "tier": 3,
           "r": 26,
-          "absorbed": 33,
+          "absorbed": 37,
           "kills": 2,
           "bombs": 1,
           "fumbles": 0,
           "boss": {
             "cycle": 3,
-            "meter": 3,
+            "meter": 2,
             "hp": 5,
             "open": false,
             "dying": false
           },
           "player": {
-            "x": 397,
-            "y": 410
+            "x": 383,
+            "y": 496
           },
           "counts": {
-            "germs": 19,
+            "germs": 18,
             "globs": 5,
-            "darts": 10
+            "darts": 14
           },
           "season": "autumn"
         },
         "trace": [
           "capillaries@0.1",
           "artery@22.0",
-          "boss@46.0",
-          "won@67.2"
+          "boss@46.1",
+          "won@61.0"
         ],
         "clean": true
       },
       {
         "run": 1,
         "console_errors": [],
+        "badnet": [],
         "page_error": null,
         "won": true,
         "hearts": 3,
         "state": {
-          "t": 64.07,
+          "t": 61.16,
           "phase": "boss",
           "status": "won",
           "trace": [
             "capillaries@0.1",
             "artery@22.0",
             "boss@46.0",
-            "won@64.1"
+            "won@61.2"
           ],
           "hearts": 3,
-          "biomass": 247,
-          "tier": 2,
-          "r": 23,
-          "absorbed": 25,
-          "kills": 6,
+          "biomass": 328,
+          "tier": 3,
+          "r": 26,
+          "absorbed": 35,
+          "kills": 7,
           "bombs": 1,
           "fumbles": 0,
           "boss": {
             "cycle": 3,
-            "meter": 0,
+            "meter": 1,
             "hp": 5,
             "open": false,
             "dying": false
           },
           "player": {
-            "x": 544,
-            "y": 390
+            "x": 599,
+            "y": 480
           },
           "counts": {
-            "germs": 13,
+            "germs": 16,
             "globs": 5,
-            "darts": 4
+            "darts": 16
           },
           "season": "autumn"
         },
@@ -97,57 +99,58 @@
           "capillaries@0.1",
           "artery@22.0",
           "boss@46.0",
-          "won@64.1"
+          "won@61.2"
         ],
         "clean": true
       },
       {
         "run": 2,
         "console_errors": [],
+        "badnet": [],
         "page_error": null,
         "won": true,
         "hearts": 3,
         "state": {
-          "t": 59.24,
+          "t": 60.08,
           "phase": "boss",
           "status": "won",
           "trace": [
             "capillaries@0.1",
             "artery@22.0",
-            "boss@46.0",
-            "won@59.2"
+            "boss@46.1",
+            "won@60.1"
           ],
           "hearts": 3,
-          "biomass": 322,
+          "biomass": 308,
           "tier": 3,
           "r": 26,
-          "absorbed": 35,
-          "kills": 6,
-          "bombs": 1,
+          "absorbed": 30,
+          "kills": 5,
+          "bombs": 2,
           "fumbles": 0,
           "boss": {
             "cycle": 3,
-            "meter": 0,
+            "meter": 1,
             "hp": 5,
             "open": false,
             "dying": false
           },
           "player": {
-            "x": 364,
-            "y": 420
+            "x": 361,
+            "y": 452
           },
           "counts": {
-            "germs": 17,
+            "germs": 18,
             "globs": 5,
-            "darts": 13
+            "darts": 16
           },
           "season": "autumn"
         },
         "trace": [
           "capillaries@0.1",
           "artery@22.0",
-          "boss@46.0",
-          "won@59.2"
+          "boss@46.1",
+          "won@60.1"
         ],
         "clean": true
       }
@@ -287,7 +290,7 @@
       },
       "recs": {
         "complete": null,
-        "fail": "L'infection prend le dessus \u2014 retente ta chance ! / The infection takes over \u2014 try again!"
+        "fail": "The infection takes over \u2014 try again! FR: L'infection prend le dessus \u2014 retente ta chance !"
       }
     }
   },
@@ -342,7 +345,7 @@
   },
   "strings": {
     "ok": true,
-    "checked": 7,
+    "checked": 8,
     "missing": []
   },
   "thumbs": {
