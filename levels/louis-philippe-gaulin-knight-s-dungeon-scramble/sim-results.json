@@ -1,8 +1,10 @@
 {
   "lid": "louis-philippe-gaulin-knight-s-dungeon-scramble",
-  "port": 8608,
+  "port": 18742,
   "modes": [
-    "all"
+    "soak",
+    "parity",
+    "scenario"
   ],
   "issue": 8,
   "parity": {
@@ -17,7 +19,7 @@
       "ghosts_same_frame": true
     },
     "last": {
-      "fx": 4,
+      "fx": 3,
       "fy": 11,
       "nghosts": 4
     }
@@ -44,9 +46,9 @@
         },
         "samples": 32,
         "w_first": 5,
-        "w_min": 5,
-        "w_last": 12,
-        "trend": 4.12,
+        "w_min": 2,
+        "w_last": 9,
+        "trend": 1.25,
         "death": false,
         "ok": true
       }
@@ -54,37 +56,17 @@
     "ok": true,
     "notes": []
   },
-  "guard": {
-    "ok": true,
-    "notes": [],
-    "entries": [
-      {
-        "w": null,
-        "fx": 1,
-        "gfx": null
-      }
-    ],
-    "violations": [],
-    "observed_s": 24.1,
-    "entries_n": 1,
-    "seeds_n": 1,
-    "facts_delta": 25
-  },
   "soak": {
     "ok": false,
     "notes": [
-      "facts plateaued at 98 for >= 20 s (stall class)"
+      "facts plateaued at 85 for >= 20 s (stall class)",
+      "2 deaths (gate: <= 1)"
     ],
     "plateau": {
-      "t": 55.3,
-      "facts": 98
+      "t": 69.1,
+      "facts": 85
     },
-    "deaths": 1,
-    "samples": 110
-  },
-  "boot": {
-    "ok": true,
-    "notes": [],
-    "test_api": true
+    "deaths": 2,
+    "samples": 137
   }
 }

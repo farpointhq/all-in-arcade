@@ -363,6 +363,27 @@ export function create(level, api) {
   // exact on fractional tile positions (fx floats, issue #8)
   const wdx = (a, b) => { const d = Math.abs(a - b); return Math.min(d, COLS - d); };
   const inTunnelRow = (r) => tunnelRows.includes(r);
+  // steps-to-nearest-uneaten-dot field over corridors (multi-source BFS) —
+  // lets the starving autopilot dodge TOWARD food instead of into a pocket
+  const foodField = () => {
+    const dist = new Map();
+    let q = [];
+    for (const k in dots) if (!dots[k].got) { dist.set(k, 0); q.push(k); }
+    let d = 0;
+    while (q.length) {
+      const layer = q; q = []; d++;
+      for (const k of layer) {
+        const ci = k.indexOf(","), c = +k.slice(0, ci), r = +k.slice(ci + 1);
+        for (const dd of TIE) {
+          const nc = wrapC(c + dd.x), nr = r + dd.y, nk = nc + "," + nr;
+          if (dist.has(nk) || !corridorPass(nc, nr)) continue;
+          dist.set(nk, d);
+          q.push(nk);
+        }
+      }
+    }
+    return dist;
+  };
   const isPen = (c, r) => r >= 0 && r < ROWS && kind[wrapC(c) + "," + r] === " " && !inTunnelRow(r);
   const corridorPass = (c, r) => { // shared by player + roaming ghosts + eyes' BFS
     if (r < 0 || r >= ROWS) return false;
@@ -728,6 +749,14 @@ export function create(level, api) {
     // THROUGH the wrap tunnel must read as 2, not ~19
     const near = threats.filter((g) => wdx(g.fx, P.fx) + Math.abs(g.fy - P.fy) <= 4);
     const minD = threats.length ? Math.min(...threats.map((g) => wdx(g.fx, P.fx) + Math.abs(g.fy - P.fy))) : 99;
+    // starvation clock (issue #8 follow-up): seconds since the bot last ate —
+    // drives the escalation that breaks pursuit-starvation freezes
+    if (G.facts !== BOT.lastFacts) { BOT.lastFacts = G.facts; BOT.starve = 0; } else BOT.starve += dt;
+    const starving = BOT.starve > 6;
+    // hysteresis on the plan/evade boundary: a chaser patrolling right at the
+    // threshold used to flip the bot between plan and evade every ~0.2 s, and
+    // each flip is a mid-tile reversal, so no move ever completed
+    if (minD <= 2) BOT.ev = true; else if (minD >= 3) BOT.ev = false;
     // issue #8 follow-up (E2E of PR #42): the evade reflex used to hijack the
     // WHOLE <= 4 band at 60 Hz, cancelling the planner's committed routes
     // whenever a chaser hovered nearby — the bot never finished a food
@@ -735,17 +764,49 @@ export function create(level, api) {
     // Survival reflex now owns only the immediate-danger band (<= 2, matching
     // studyhall's priority order); the shadow/guard-aware planner owns
     // 2 < d <= 4 at its paced cadence.
-    if (near.length && G.fright <= 0 && minD <= 2) { // evade: maximize min distance to threats
-      let best = null, bd = -Infinity;
+    if (BOT.ev && near.length && G.fright <= 0) { // evade: max-min (hysteresis on <= 2, off >= 3)
+      BOT.route = null; // danger: abandon any committed plan
+      if (starving && (BOT.foodT === undefined || G.t - BOT.foodT > 0.1)) { BOT.foodT = G.t; BOT.food = foodField(); }
+      const cands = [];
       for (const d of TIE) {
         const nc = wrapC(P.fx + d.x), nr = P.fy + d.y;
         if (!corridorPass(nc, nr)) continue;
         let m = Infinity;
         for (const g of near) m = Math.min(m, wdx(g.fx, nc) + Math.abs(g.fy - nr));
-        if (m > bd) { bd = m; best = d; }
+        cands.push({ d, m, f: (starving && BOT.food) ? (BOT.food.get(wrapC(nc) + "," + nr) ?? 999) : 0 });
+      }
+      let bd = -Infinity;
+      for (const c of cands) if (c.m > bd) bd = c.m;
+      let best = null, bf = Infinity;
+      for (const c of cands) {
+        if (c.m < bd - (starving ? 0.75 : 0)) continue; // while starving: near-max-safety directions may trade 0.75 for food
+        if (best === null || c.f < bf || (c.f === bf && c.m > bd)) { bf = c.f; best = c.d; }
       }
       if (best) { P.want = best; return; }
     }
+    if (G.fright > 0) BOT.route = null; // power-pellet state re-plans freely
+    // issue #8 follow-up (E2E of PR #42): the movement layer resets BOT.t on
+    // every tile arrival (stepPlayer), so the planner re-ran at every tile;
+    // with the tunnel-mouth blocked-set flickering (roaming threats toggling
+    // tunnel-hot/shadow), consecutive re-plans gave contradictory first steps
+    // (up / back down / wrap-around) and the bot never finished a food
+    // approach — the facts=98 freeze. Commit to the planned route instead:
+    // follow it tile-by-tile and replan only on hard block, exhaustion, or
+    // the immediate-danger reflex above.
+    const go = (path) => { if (path && path.length) { const pc = wrapC(Math.round(P.fx)), pr = Math.round(P.fy); const t0 = path[0]; let dx = t0.c - pc, dy = t0.r - pr; if (dx > 1) dx = -1; else if (dx < -1) dx = 1; if (dy > 1) dy = -1; else if (dy < -1) dy = 1; const d = TIE.find((v) => v.x === dx && v.y === dy); if (d) { P.want = d; return true; } } return false; };
+    const followRoute = () => {
+      const rt = BOT.route;
+      if (!rt || !rt.length) { BOT.route = null; return false; }
+      while (rt.length && Math.abs(wrapC(rt[0].c) - P.fx) < 0.5 && Math.abs(rt[0].r - P.fy) < 0.5) rt.shift();
+      if (!rt.length) { BOT.route = null; return false; }
+      if (wdx(rt[0].c, P.fx) + Math.abs(rt[0].r - P.fy) > 1.6) { BOT.route = null; return false; }
+      if (!corridorPass(wrapC(rt[0].c), rt[0].r)) { BOT.route = null; return false; }
+      let m = Infinity; // per-cell safety floor: don't follow into a closing threat
+      for (const g of threats) m = Math.min(m, wdx(g.fx, rt[0].c) + Math.abs(g.fy - rt[0].r));
+      if (m < 2.5) { BOT.route = null; return false; } // per-cell safety floor
+      return go([rt[0]]);
+    };
+    if (BOT.route && followRoute()) return;
     if (BOT.t > 0 && P.want) return;
     BOT.t = 0.1;
     const blocked = new Set();
@@ -779,15 +840,18 @@ export function create(level, api) {
         if (wdx(g.fx, c) + Math.abs(g.fy - tr) <= 5) blocked.add(c + "," + tr);
     }
     const pass = (c, r) => corridorPass(c, r) && !blocked.has(c + "," + r);
-    const go = (path) => { if (path && path.length) { const t0 = path[0]; let dx = t0.c - P.fx, dy = t0.r - P.fy; if (dx > 1) dx = -1; else if (dx < -1) dx = 1; if (dy > 1) dy = -1; else if (dy < -1) dy = 1; dx = dx >= 0.5 ? 1 : dx <= -0.5 ? -1 : 0; dy = dy >= 0.5 ? 1 : dy <= -0.5 ? -1 : 0; const d = TIE.find((v) => v.x === dx && v.y === dy); if (d) { P.want = d; return true; } } return false; };
     if (G.fright > 1.5) { // hunt pale staff for credit
       const fg = ghosts.filter((g) => g.fright && !g.eaten && (g.phase === "roam" || g.phase === "exit"));
-      if (fg.length && go(bfs(P.fx, P.fy, (t) => fg.some((g) => g.fx === t.c && g.fy === t.r), pass))) return;
+      if (fg.length && go(bfs(wrapC(Math.round(P.fx)), Math.round(P.fy), (t) => fg.some((g) => g.fx === t.c && g.fy === t.r), pass))) return;
     }
-    if (go(bfs(P.fx, P.fy, (t) => { const d = dots[t.c + "," + t.r]; return d && d.apple && !d.got; }, pass))) return; // runes/apples
-    if (go(bfs(P.fx, P.fy, (t) => { const d = dots[t.c + "," + t.r]; return d && !d.got; }, pass))) return;       // nearest loot
-    if (threats.every((g) => wdx(g.fx, P.fx) + Math.abs(g.fy - P.fy) > 3)) // raw fallback only when no threat is breathing down the neck (toroidal — issue #8)
-      if (go(bfs(P.fx, P.fy, (t) => { const d = dots[t.c + "," + t.r]; return d && !d.got; }, corridorPass))) return;
+    { const ap = bfs(wrapC(Math.round(P.fx)), Math.round(P.fy), (t) => { const d = dots[t.c + "," + t.r]; return d && d.apple && !d.got; }, pass);
+      if (go(ap)) { BOT.route = ap; return; } } // runes/apples
+    { const lp = bfs(wrapC(Math.round(P.fx)), Math.round(P.fy), (t) => { const d = dots[t.c + "," + t.r]; return d && !d.got; }, pass);
+      if (go(lp)) { BOT.route = lp; return; } }                                   // nearest loot
+    if (starving || threats.every((g) => wdx(g.fx, P.fx) + Math.abs(g.fy - P.fy) > 3)) { // raw fallback (toroidal gate — issue #8); unconditionally available while starving (progress beats the freeze)
+      const rp = bfs(wrapC(Math.round(P.fx)), Math.round(P.fy), (t) => { const d = dots[t.c + "," + t.r]; return d && !d.got; }, corridorPass);
+      if (go(rp)) { BOT.route = rp; return; }
+    }
     // cornered: no route — still pick the move that maximizes distance to the nearest threat
     {
       let best = null, bd = -Infinity;
