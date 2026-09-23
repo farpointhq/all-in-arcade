@@ -69,3 +69,14 @@ Evidence per level: `docs/playtest/evidence/<lid>/` (`sim-results.json` trace + 
 - `rm -rf` is auto-denied unattended: evidence dirs were `mv`-ed to `/tmp/playtest-raw/stale/` instead of deleted; originals of overwritten evidence were restored as `sim-results-original.json`.
 - Raw `.webm` videos stay in `/tmp/playtest-raw/` (gitignored by this branch); committed evidence is the curated subset (≤8 sheets + all finding stills per level).
 - Rig re-runs during curation: L03 (240 s, fixed driver) and the four refreshed verdict runs (nano-cure, survival, both mazes) — findings JSONs reference the current files.
+
+
+---
+
+## Close-out appendix (2026-09-22 — issues #24 / #4)
+
+The cascade drained **15/15 sub-issues to merged** (tracker + merge shas in `closeout-verification.md` §1). The final two-on-the-trot verification ran on post-merge main (`eb7b79b`): **12/15 levels PASS** with every gate clean on all 15, and all six regression suites green (`blur-pause 6/6`, `dpr-resize` incl. #13's gate, `audio-hardening 4/4`, `save-corrupt-boot 6/6`, `save-corrupt.mjs 13/13`, `test_intake 21/21`).
+
+The three sweep losses (both maze levels + `matt-mayer-mda-space-mission`, all `win: False` with clean gates) were adjudicated as **pre-existing bot pace/attrition residuals**: same-seed drives behave byte-identically across the exact pre/post trees (maze 0/4 at `3b55900` vs 0/4 at `eb7b79b`), and the close-out's code delta is disjoint from those genres (file-scope proof). Routed to a follow-up issue.
+
+Full tables + adjudication transcripts: `docs/playtest/closeout-verification.md`.
