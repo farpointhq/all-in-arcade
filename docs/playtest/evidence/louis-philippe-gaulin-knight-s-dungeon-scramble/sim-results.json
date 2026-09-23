@@ -2,9 +2,7 @@
   "lid": "louis-philippe-gaulin-knight-s-dungeon-scramble",
   "port": 18742,
   "modes": [
-    "soak",
-    "parity",
-    "scenario"
+    "all"
   ],
   "issue": 8,
   "parity": {
@@ -46,9 +44,9 @@
         },
         "samples": 32,
         "w_first": 5,
-        "w_min": 2,
+        "w_min": 3,
         "w_last": 9,
-        "trend": 1.25,
+        "trend": 0.88,
         "death": false,
         "ok": true
       }
@@ -56,17 +54,44 @@
     "ok": true,
     "notes": []
   },
+  "guard": {
+    "ok": false,
+    "notes": [
+      "2 deaths during guard window (budget 1)"
+    ],
+    "entries": [
+      {
+        "w": null,
+        "fx": 1,
+        "gfx": null
+      },
+      {
+        "w": null,
+        "fx": 19,
+        "gfx": null
+      }
+    ],
+    "violations": [],
+    "observed_s": 22.0,
+    "entries_n": 2,
+    "seeds_n": 2,
+    "facts_delta": 34
+  },
   "soak": {
     "ok": false,
     "notes": [
-      "facts plateaued at 85 for >= 20 s (stall class)",
-      "2 deaths (gate: <= 1)"
+      "facts plateaued at 85 for >= 20 s (stall class)"
     ],
     "plateau": {
-      "t": 69.1,
+      "t": 54.4,
       "facts": 85
     },
-    "deaths": 2,
-    "samples": 137
+    "deaths": 1,
+    "samples": 108
+  },
+  "boot": {
+    "ok": true,
+    "notes": [],
+    "test_api": true
   }
 }

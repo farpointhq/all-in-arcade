@@ -1,6 +1,6 @@
 {
   "lid": "kristopher-federico-study-hall-scramble",
-  "port": 8608,
+  "port": 18742,
   "modes": [
     "all"
   ],
@@ -30,7 +30,7 @@
         "w_first": 5,
         "w_min": 5,
         "w_last": 10,
-        "trend": 4.62,
+        "trend": 4.5,
         "death": false,
         "ok": true
       }
@@ -51,14 +51,17 @@
   "soak": {
     "ok": false,
     "notes": [
-      "facts plateaued at 102 for >= 20 s (stall class)"
+      "4 deaths (gate: <= 1)"
     ],
-    "plateau": {
-      "t": 54.3,
-      "facts": 102
+    "plateau": null,
+    "ended": {
+      "t": 85.3,
+      "status": "lost",
+      "facts": 46,
+      "deaths": 4
     },
-    "deaths": 1,
-    "samples": 108
+    "deaths": 4,
+    "samples": 169
   },
   "boot": {
     "ok": true,
