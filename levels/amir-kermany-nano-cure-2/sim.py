@@ -38,15 +38,19 @@ BOOTH_FILTER = ("logo-all.svg", "logo-in.svg", "favicon")
 MODULE = f"{BASE}/src/genres/nano-cure.js"
 results = {"live": None, "sims": {}, "jank": None, "strings": None, "thumbs": None, "shots": [], "fails": []}
 
-# F4 bilingual sweep — every player-facing FR string must carry its EN echo.
+# Landed bilingual strings — pin the canonical EN-first sweep wording (PR #31, gate-
+# tightened by #47's tools/playtest/bilingual-check.py: "13 genre modules … bilingual-clean"),
+# superseding the F4 draft wording this list was originally written against (the merge
+# resolution kept the canonical sweep strings). Verified verbatim against the served module.
 STRINGS_REQUIRED = [
-    "Tirez d'abord, absorbez ensuite / Shoot first, absorb after",
-    "Absorbez les spores pour ouvrir la membrane / Absorb spores to open the membrane",
-    "L'infection prend le dessus — retente ta chance ! / The infection takes over — try again!",
-    "Tirez le noyau ! / Shoot the nucleus!",
-    "La poussée bactérienne ! / Bacterial upsurge!",
+    "ARTERY / ARTÈRE",
+    "Gros dangers : tirez d'abord, absorbez ensuite",
+    "FINAL PURGE / PURGE FINALE",
+    "Absorb the spores to open the membrane FR: Absorbez les spores pour ouvrir la membrane",
+    "The infection takes over — try again! FR: L'infection prend le dessus — retente ta chance !",
+    "The bacterial upsurge! / La poussée bactérienne !",
     "FINAL PURGE — CYCLE",
-    "FINAL PURGE — CLEANSE",
+    "FINAL PURGE — CLEANUP / NETTOYAGE",
 ]
 
 NEUTRAL = ("{ down: () => false, just: () => false, left: () => false, right: () => false,"
