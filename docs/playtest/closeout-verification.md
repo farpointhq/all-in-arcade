@@ -1,80 +1,110 @@
-# Issue #24 — Close-out verification record
+# Close-out verification — playtest cascade (issue #24 / #4)
 
-Final verification record for the meta playtest cascade (issue #24, twin #4):
-fleet tracker, regression-suite verdicts, and the 15-level boot smoke for the
-close-out of the full-game hardening cascade.
+**Run:** 2026-09-22, close-out driver chat. **Post-merge main under test:** `eb7b79b`.
+**Ports:** 9607 (repro), 9671/9672 (before/after), 9700 (sweep + post arm), 9701 (pre-#48 arm), 9702 (pre-#47 arm) — all `--host 127.0.0.1`.
 
-Run: 2026-09-22, close-out driver worktree `tmp_worktree/issue-24`
-(`fix/issue-24`), serve port `8624` (`8600 + (24 % 200)`) with
-`--host 127.0.0.1`. Small artifacts only (JSON verdicts + JPEG stills) —
-no regenerated sheet PNGs (evidence-bloat policy).
+## 1. Fleet tracker (final — 15/15 merged)
 
-## Baseline audit — sub-issue fleet tracker
+| # | Problem | Fix PR (squash sha) | Testing report | Status |
+|---|---------|--------------------|----------------|--------|
+| 6 | Rewind Gate never flips (good-bot regression) | #46 (`4e58127`) | [issue-6-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-6-testing/) | merged |
+| 7 | nano-cure live-vs-sims divergence — boss death | #48 (`eb7b79b`) | [issue-7-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-7-testing/) | merged (landed by close-out) |
+| 8 | maze autopilots lose every run — wrap-blind threat distance | #42 (`22dc288`) | [issue-8-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-8-testing/) | merged |
+| 9 | corrupt v1 save black-screens boot | #28 (`d8e0703`) | [issue-9-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-9-testing/) | merged |
+| 10 | auto-pause on blur/hidden tab (+ boot-race follow-up #34 `decf27b`) | #23 (`b9acc2b`) | [issue-10-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-10-testing/) | merged |
+| 11 | booth logo assets missing (2 boot 404s) | #26 (`79bf03d`) | [issue-11-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-11-testing/) | merged |
+| 12 | Death Star Run inverted climb mapping | #29 (`8f5ede5`) | [issue-12-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-12-testing/) | merged |
+| 13 | DPR backing-store rescale (blur after zoom) | #22 (`e1b4fe9`) | [issue-13-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-13-testing/) | merged |
+| 14 | survival volley heart-bank drain | #41 (`acf8584`) | [issue-14-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-14-testing/) | merged |
+| 15 | HUD collision + legibility sweep (6) | #30 (`47432aa`) | [issue-15-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-15-testing/) | merged |
+| 16 | bilingual + FTUE sweep (+ follow-up #47 `3b55900`) | #31 (`905595b`) | [issue-16-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-16-testing/) | merged |
+| 17 | kiosk intake hardening (+ follow-up #43 `8d0dae9`) | #27 (`0e879b6`) | [issue-17-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-17-testing/) | merged |
+| 18 | AudioContext unlock + element pool (+ follow-up #45 `4575f2a`) | #25 (`7128d62`) | [issue-18-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-18-testing/) | merged |
+| 19 | genre exit() teardown on level change | #36 (`a64fc0a`) | [issue-19-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-19-testing/) | merged |
+| 20 | contrast sweep (booth-distance readability) | #35 (`c7d2b0c`) | [issue-20-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-20-testing/) | merged |
 
-Snapshot **2026-09-22T20:20Z**. Baselines: `origin/main` = `22dc288` at audit
-end (was `8f5ede5` at audit start — the 20:11–20:15Z auto-merge wave landed
-PRs #30/#34/#35/#36/#41 mid-audit). Branch columns: tip vs `origin/main` at
-audit start. "Testing" links to the deployed plans-repo report.
+All 15 ticked on both meta twins (#24, #4) with `Fixed in #<PR>` comments. One sha correction applied mid-close-out: #41's real squash sha is `acf8584` (the `7a1f698` the API reported was the test-merge sha).
 
-| # | Sub-issue (short) | Prio | Issue | Branch tip (local = remote unless noted) | vs main | PR | Merged as | Testing report |
-|---|---|---|---|---|---|---|---|---|
-| 6 | Rewind Gate never flips (good-bot regression) | high | open | `1b7dd61` **local-only** (no remote ref), 2.5h stale | +2 / −7 | — | — | (none — pre-PR) |
-| 7 | nano-cure live-vs-sims divergence (boss death) | high | open | `3d9fbd3` **local-only** (no remote ref), 2.5h stale | +4 / −9 | — | — | (none — pre-PR) |
-| 8 | maze autopilots lose — wrap-blind threat distance | high | open | `6288a11` (remote ref absent; PR head live) | +7 / −7 | **#42 open** (updated 20:15Z) | — | [issue-8-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-8-testing/) |
-| 9 | corrupt v1 save black-screens boot | high | closed | — | — | #28 | `d8e0703` | [issue-9-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-9-testing/) |
-| 10 | auto-pause on blur/hidden tab | high | closed | — | — | #23 (+ #34 boot-race hardening) | `b9acc2b` (+ `decf27b`) | [issue-10-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-10-testing/) |
-| 11 | booth logo assets missing (boot 404s) | high | closed | — | — | #26 | `79bf03d` | [issue-11-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-11-testing/) |
-| 12 | Death Star Run inverted climb mapping | high | closed | — | — | #29 | `8f5ede5` | [issue-12-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-12-testing/) |
-| 13 | DPR resize blur | medium | closed | — | — | #22 | `e1b4fe9` | [issue-13-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-13-testing/) |
-| 14 | survival volley heart-bank drain (~33s) | medium | closed | `20307c0` | +? | #41 (merged 20:15:30Z) | `7a1f698` | [issue-14-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-14-testing/) |
-| 15 | HUD collision + legibility sweep | medium | closed | remote `8886595`; local `b87d978` (post-merge E2E round in flight) | +? | #30 (merged 20:11:40Z) | `47432aa` | [issue-15-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-15-testing/) |
-| 16 | bilingual + FTUE sweep | medium | open | `00874de` | +5 | **#31 open, DIRTY** (conflicts with main; quiet since 19:16Z) | — | [issue-16-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-16-testing/) |
-| 17 | kiosk intake hardening | high | closed | — | — | #27 | `0e879b6` | [issue-17-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-17-testing/) |
-| 18 | AudioContext unlock + element pool hardening | high | closed | — | — | #25 | `7128d62` | [issue-18-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-18-testing/) |
-| 19 | genre `exit()` teardown never runs (latent leak) | low | closed | `ad99d61` | +? | #36 (merged 20:15:23Z) | `a64fc0a` | [issue-19-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-19-testing/) |
-| 20 | contrast sweep (snow pickups, hero in clouds) | medium | closed | `7ce6f22` | +? | #35 (merged 20:15:18Z) | `c7d2b0c` | [issue-20-testing](https://farpointhq.github.io/all-in-arcade-plans/plans/issue-20-testing/) |
+## 2. Close-out drain log
 
-**Audit notes**
+- **Audit (read-only):** the sibling fleet was alive mid-merge-wave; liveness probes that worked: process table + worktree file mtimes (git timestamps lied). Ten PRs self-merged by sibling tabs during the audit window (#30/#35/#36/#41/#42/#31/#46/#43/#45/#47).
+- **Bookkeeping lane:** 15 checklist rows + 15 `Fixed in` comments across #24/#4/#sub-issues, identical wording on the twins.
+- **#7 landing (the only straggler — its fix tab died pre-PR):**
+  - Conflict-resolution merge onto current main: canonical PR #31 sweep strings kept, PR #26 URL-attributed badnet gate kept, gameplay fixes kept.
+  - House-rule fix: `--mute-audio` on all 4 rig Chromium launches (issue #40 item).
+  - Wrong-test fix: the sim strings gate pinned the discarded F4 draft wording → repointed at the landed canonical strings (justified in commit `4a50993`; canonical `bilingual-check.py` gate green: 13 modules + 16 level.json).
+  - **Minimal-change RED→GREEN repro** (one-file swap of `src/genres/nano-cure.js`, same server/port/seed, real runner `levels/amir-kermany-nano-cure-2/sim.py`):
 
-- **12/15 merged** at audit time; the plan's snapshot (7/15 + PR #30 + 7 in
-  flight) was overtaken by the 20:11–20:15Z auto-merge wave from the live fix
-  tabs. Remaining: **#6, #7** (PR-less, branches look complete but 2.5h
-  stale), **#8** (PR #42 open — its fix tab was live at 20:15Z), **#16**
-  (PR #31 open but dirty).
-- **Siblings are live.** Fleet tabs hold `8600 + (issue# % 200)` ports and are
-  still committing (e.g. `fix/issue-15` local `b87d978` at 20:15:14Z = a
-  post-merge E2E round). Close-out drain is strictly **one sub-issue at a
-  time**, re-checking PR/branch state immediately before each action, so a
-  sibling that lands its own PR first is skipped, not raced.
-- **Drain order** (plan's order, adapted to live state): bookkeeping for the
-  12 merged → #6 → #7 → #8 (re-check PR #42) → #16 (resolve PR #31 conflicts).
-  Both PR-less branches carry complete TDD arcs (fix + regenerated rig
-  evidence), so per the plan they take the *verify → PR → squash-merge* lane,
-  not the re-spawn lane (re-spawning a tab into a populated branch/worktree
-  would collide with the existing work).
-- No sub-issue carried a `Fixed in #<PR>` comment at audit time (the fix tabs
-  merged but skipped the comment step) — close-out adds them.
-- Out-of-fleet follow-ups (do **not** block close-out; filed by later E2E
-  passes): #32 fatal-overlay XSS, #33 kiosk head-of-line blocking, #38/#39
-  star-racer findings, #40 rig hardening (requestfailed gate, `--mute-audio`
-  in sims, single-logo fallback).
-- New-level work (issue #3, `level/miray-kavruk-world-tour`) is active in the
-  main checkout and out of scope here.
+    | | pre-fix (`e4ebaff`) | post-fix (landed) |
+    |---|---|---|
+    | `jank` (spike3 frames) | **FAILED — lost @ t=48.9**, boss@46.0, hearts 0 (issue #7's exact signature) | **PASSED — won @ t=60.6** |
+    | `sims` (fixed-dt) | good/partial/clumsy gameplay green (the divergence pair) | all green |
 
-## Bookkeeping lane
+  - Full battery green post-fix: live ×3 clean wins (hearts=3, console clean, badnet clean), jank won t=60.58, strings 8/8, thumbs ok. Evidence refreshed against the landed build and committed in #48.
 
-Filled in as checklists are ticked on #24 and #4 (see the meta-issue bodies;
-tick format carries `Fixed in #<PR>` + testing-report URL).
+## 3. Regression sweep (post-merge main `eb7b79b`, 15-level rig + fixed suites)
 
-## Regression sweep
+All 15 levels booted clean on every gate (`boot`, `consoleClean`, `noPageerror`, `netClean`). Win-gated results:
 
-Filled in after each merge during the drain (see "Drain log").
+| Level | Driver | Verdict |
+|-------|--------|---------|
+| amir-kermany-nano-cure-2 | nano-cure bot | PASS (won ×3 in battery) |
+| bethany-cloudwalk | platformer keys | PASS |
+| ian-spence-rewind-loop | rewind bot | PASS |
+| kristopher-federico-study-hall-scramble | maze-studyhall ap | **FAIL win:False** → §4 |
+| L01 | platformer keys | PASS |
+| L02 | racer keys | PASS |
+| L03 | puzzle keys | PASS |
+| L04 | shooter keys | PASS |
+| louis-philippe-gaulin-knight-s-dungeon-scramble | maze ap | **FAIL win:False** → §4 |
+| marc-larochelle-course-apocalypse | survival keys | PASS |
+| mark-abdallah-slingshot-duck-season | slingshot keys | PASS |
+| matt-mayer-mda-space-mission | space-mission bot | **FAIL win:False** → §4 |
+| miray-kavruk-world-tour | world-tour bot | PASS |
+| nicolas-snowball-seasons | platformer keys | PASS |
+| simone-death-star-run | star-racer keys | PASS |
 
-## Drain log
+Suites (all green): `blur_pause_check.py` 6/6 · `dpr_resize_check.py` (incl. #13's blur gate) · `audio_hardening.py` 4/4 · `save-corrupt-boot.py` 6/6 (boot smoke) · `tools/tests/save-corrupt.mjs` 13/13 · `tools/server_tests/test_intake.py` 21/21.
 
-Filled in per sub-issue during the fleet lane.
+**Result: 12/15 levels PASS, 3 bot-drive losses adjudicated below; 0 suite failures.**
 
-## Close-out verification pass
+## 4. Sweep-loss adjudication — pre-existing, not close-out regressions
 
-Filled in at the end: full 15-level rig run + 15/15 boot smoke + static
-booth-rule pass.
+**File-scope proof:** the close-out's only code delta (PR #48) touches `src/genres/nano-cure.js` + the nano-cure rig/evidence. `git diff --name-only 4e58127 eb7b79b` shows `src/core.js` and the playtest tools belong to #47 — maze and space-mission modules are **byte-identical** across the pre/post trees, so same-seed outcomes cannot differ due to the landed work.
+
+**Maze arms** (same-seed `playtest.py` drives, identical clean-gates `win: False` signature):
+
+| Level | `3b55900` (pre-#48) ×2 | `eb7b79b` (post-#48) ×2 |
+|-------|------------------------|-------------------------|
+| kristopher-federico-study-hall-scramble | FAIL win:False ×2 | FAIL win:False ×2 |
+| louis-philippe-gaulin-knight-s-dungeon-scramble | FAIL win:False ×2 | FAIL win:False ×2 |
+
+**8/8 identical** — deterministic, pre-existing. This is the documented #8 residual (maze-bot instruments note: "residual = bot pace/survival"), not introduced or worsened by the close-out.
+
+**Space-mission arm** (matt-mayer-mda-space-mission, `playtest.py` bot drives):
+
+| Tree | Runs | Result |
+|------|------|--------|
+| `3b55900` (pre-#48) | ×2 | FAIL win:False ×2 |
+| `eb7b79b` (post-#48) | ×2 | FAIL win:False ×2 |
+| `4e58127` (pre-#47) | ×2 | not executed (scratch checkout had been cleaned up) — excluded mechanistically instead: #47's `core.js` delta is keyboard-activation only and this level's bot path never sends keys |
+
+**4/4 executed runs identical** — the loss predates the close-out merge. With §4's file-scope proof, all three sweep losses are pre-existing bot pace/attrition residuals (follow-up issue filed from this record).
+
+## 5. Verdict
+
+- The close-out merge (`eb7b79b`) is **regression-free**: every sweep loss reproduces byte-identically on the exact pre-change trees (§4) and the delta is disjoint from those modules (file-scope).
+- Meta-issue DoD satisfied: generic rig drives all 15 levels · full playthrough evidence + findings report · 15 deduped sub-issues · meta PR · one fix per sub-issue (all merged) · two-level spot checks (L01-crew + L02 + save-corrupt + kiosk intake) recorded in the cascade.
+- Follow-ups routed (post-cascade findings, not cascade blockers): the bot pace/attrition residual (maze ×2 + space-mission) → follow-up issue filed from this record.
+
+## 6. Ops notes (what bit us)
+
+1. Shared `/tmp` plans repo races across fleet tabs (`git add -A` swept a sibling's in-progress files).
+2. Local branch names one fuzzy-match away (`fix/issue-1` vs `fix/issue-10`) — alias confusion.
+3. `gh pr create` with an unquoted heredoc body → zsh backtick substitution → garbled body; always `--body-file`.
+4. `gh pr view/edit --json` abort on this repo (classic-Projects GraphQL) → REST `gh api` + `-F body=@file`.
+5. Branch-vs-worktree drift — rebase/reset before trusting a worktree.
+6. Worktree liveness: processes + file mtimes beat git timestamps (sibling tabs self-merged mid-audit; "2.5h stale" branches were mid-rig-run).
+7. Plans Pages publishes only via `python3 -m mkdocs gh-deploy` — plain `git push` leaves every new report 404 (the CDN negative-caches those 404s for ~2 min; probe with a cache-buster).
+8. Bash `cwd` silently ignored — explicit `cd X && …` (caught a wrong-tree `serve.py` mid-repro).
+9. Test-merge sha ≠ squash sha (#41: `7a1f698` vs real `acf8584`) — trust `git log origin/main`.
