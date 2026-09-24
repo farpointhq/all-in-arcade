@@ -1,0 +1,21 @@
+{
+  "mode": "mute",
+  "launches": {
+    "sim_launch_with_flag": {
+      "passed_args": [
+        "--mute-audio"
+      ],
+      "mute_applied": true,
+      "proc_count": 1,
+      "cmdline_tail": "e=4,availablePointerTypes=4 --no-sandbox --mute-audio --user-data-dir=/var/folders/cc/4fx__qd15ybdvn19s1vnmxq40000gp/T/playwright_chromiumdev_profile-rK5SZO --remote-debugging-pipe --no-startup-window"
+    },
+    "no_args_control": {
+      "passed_args": [],
+      "mute_applied": true,
+      "proc_count": 1,
+      "cmdline_tail": "aryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/cc/4fx__qd15ybdvn19s1vnmxq40000gp/T/playwright_chromiumdev_profile-c6EuiT --remote-debugging-pipe --no-startup-window"
+    }
+  },
+  "playwright_default_mutes": true,
+  "sim_context_muted": true
+}

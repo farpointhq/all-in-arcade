@@ -39,7 +39,7 @@ def check(tag, row):
 def run_case(port, tag, flavor, v3, expect):
     url = f"{BASE}/{RIG}?bot=1&flavor={flavor}&v={int(time.time() * 1000)}{'&v3=0' if not v3 else '&v3=1'}"  # explicit path — never rely on the current default
     with sync_playwright() as p:
-        b = p.chromium.launch(headless=True)
+        b = p.chromium.launch(headless=True, args=["--mute-audio"])  # booth rule: the game never makes sound
         pg = b.new_page()
         pg.on("pageerror", lambda e: None)
         pg.goto(url, wait_until="domcontentloaded")

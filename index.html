@@ -509,9 +509,12 @@
   <div id="fatal"></div>
 
   <script>
-    // graceful logo fallback while we wait for the brand asset pull
+    // graceful logo fallback while we wait for the brand asset pull: if ANY brand
+    // logo fails to load, hide the (now lopsided) lockup and show the full h1
+    // wordmark instead — a single failed SVG must not render a lone letterform
+    // (issue #40)
     document.querySelectorAll("img.brandLogo").forEach((im) =>
-      im.addEventListener("error", () => { im.remove(); if (!document.querySelectorAll("img.brandLogo").length) document.body.classList.add("no-logo"); }));
+      im.addEventListener("error", () => { im.remove(); document.body.classList.add("no-logo"); }));
   </script>
   <script type="module" src="src/app.js"></script>
 </body>

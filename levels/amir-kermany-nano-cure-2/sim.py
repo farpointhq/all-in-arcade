@@ -108,8 +108,8 @@ THUMB_BODY = """async (a) => {
 
 def run_live_once(idx):
     """One headless live boot to a terminal state; full-res evidence on a loss."""
-    out = {"run": idx, "console_errors": [], "badnet": [], "page_error": None, "won": False,
-           "hearts": None, "state": None, "trace": []}
+    out = {"run": idx, "console_errors": [], "badnet": [], "requestfailed": [],
+           "page_error": None, "won": False, "hearts": None, "state": None, "trace": []}
     with sync_playwright() as pw:
         b = pw.chromium.launch(args=["--disable-gpu", "--mute-audio"])
         page = b.new_page()  # fresh browser context per run — localStorage bank state isolated
@@ -127,6 +127,12 @@ def run_live_once(idx):
         # text does NOT), so genuine asset failures stay visible with attribution
         page.on("response", lambda r: out["badnet"].append("%s %s" % (r.status, r.url))
                 if r.status >= 400 else None)
+        # issue #40: the response listener is blind to pre-response transport
+        # failures (dead backend / connection refused / aborted request) — they
+        # only surface as requestfailed. net::ERR_ABORTED is an intentional nav
+        # cancel, not a backend failure, so it is excluded from the gate.
+        page.on("requestfailed", lambda r: out["requestfailed"].append("%s %s" % (r.failure, r.url))
+                if "net::ERR_ABORTED" not in (r.failure or "") else None)
 
         bust = int(time.time() * 1000)
         url = f"{BASE}/?level={LID}&bot=1&flavor=good&debug=1&beats=1&bust={bust}"
@@ -160,10 +166,10 @@ def run_live_once(idx):
         b.close()
     out["won"] = (out["state"] or {}).get("status") == "won"
     out["clean"] = bool(out["won"]) and not out["page_error"] and not out["console_errors"] \
-        and not out["badnet"]
-    print("[live run %d] won=%s hearts=%s page_error=%s console_errors=%s badnet=%s trace=%s" % (
+        and not out["badnet"] and not out["requestfailed"]
+    print("[live run %d] won=%s hearts=%s page_error=%s console_errors=%s badnet=%s requestfailed=%s trace=%s" % (
         idx, out["won"], out["hearts"], out["page_error"], out["console_errors"],
-        out["badnet"], json.dumps(out["trace"])))
+        out["badnet"], out["requestfailed"], json.dumps(out["trace"])))
     if not out["won"]:
         print("[live run %d] final state: %s" % (idx, json.dumps(out["state"])))
     return out
