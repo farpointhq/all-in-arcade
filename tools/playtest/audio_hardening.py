@@ -191,7 +191,10 @@ def badnet_of(page):
 
 def launch(pw, blocked):
     """blocked=True launches with pre-gesture audio genuinely blocked."""
-    args = ["--autoplay-policy=document-user-activation-required"] if blocked else []
+    # booth rule: the game never makes sound — --mute-audio is always on, whatever
+    # the autoplay-policy variant (muting the output device does not change the
+    # <audio> element / AudioContext behaviour these checks assert on).
+    args = ["--mute-audio"] + (["--autoplay-policy=document-user-activation-required"] if blocked else [])
     return pw.chromium.launch(headless=True, args=args)
 
 

@@ -128,7 +128,7 @@ def run():
     results_out = []
     try:
         with sync_playwright() as p:
-            browser = p.chromium.launch()
+            browser = p.chromium.launch(args=["--mute-audio"])  # booth rule: the game never makes sound
 
             # ---- live ----------------------------------------------------------------
             if mode in ("live", "all"):

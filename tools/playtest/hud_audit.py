@@ -440,7 +440,7 @@ def audit_slingshot(page, ck, console, perr, badnet):
 
 def run_viewport(pw, port, vw, levels, moon_seconds, out_dir):
     w, h = vw
-    browser = pw.chromium.launch(headless=True)
+    browser = pw.chromium.launch(headless=True, args=["--mute-audio"])  # booth rule: the game never makes sound
     ctx = browser.new_context(viewport={"width": w, "height": h})
     page = ctx.new_page()
     console, perr, badnet = [], [], []

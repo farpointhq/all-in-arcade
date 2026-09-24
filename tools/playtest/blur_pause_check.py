@@ -250,7 +250,7 @@ def main():
     try:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=True)
+            browser = pw.chromium.launch(headless=True, args=["--mute-audio"])  # booth rule: the game never makes sound
             try:
                 verdict["scenarios"]["blur_during_play"] = scn_blur_during_play(browser, base, args.level)
                 verdict["scenarios"]["hidden_during_play"] = scn_hidden_during_play(browser, base, args.level)

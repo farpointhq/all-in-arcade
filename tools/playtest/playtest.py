@@ -259,7 +259,7 @@ def run_level(args):
                 record_video_size={"width": 960, "height": 600},
             )
             page = ctx.new_page()
-            console, perr, badnet = [], [], []
+            console, perr, badnet, reqfail = [], [], [], []
             page.on("console", lambda m: console.append("%s:%s" % (m.type, m.text))
                     if m.type in ("error", "warning") else None)
             page.on("pageerror", lambda e: perr.append(str(e)))
@@ -268,6 +268,13 @@ def run_level(args):
             # it there — the gate for network problems is URL-based instead)
             page.on("response", lambda r: badnet.append("%s %s" % (r.status, r.url))
                     if r.status >= 400 else None)
+            # issue #40: a response listener is blind to pre-response transport
+            # failures (server died mid-boot / connection refused / request
+            # aborted) — they never produce a response, only a requestfailed.
+            # net::ERR_ABORTED is an intentional navigation cancel, not a
+            # backend failure, so it stays out of the gate.
+            page.on("requestfailed", lambda r: reqfail.append("%s %s" % (r.failure, r.url))
+                    if "net::ERR_ABORTED" not in (r.failure or "") else None)
 
             url = ("/?level=%s&bot=1&flavor=%s&debug=1&beats=1"
                    % (lid, args.flavor))
@@ -355,12 +362,15 @@ def run_level(args):
     results["console"] = filtered(console)[-30:]
     results["perr"] = filtered(perr)[-20:]
     results["badnet"] = filtered(badnet)[-20:]
+    results["requestfailed"] = filtered(reqfail)[-20:]
     # console errors minus resource-load failures (judged by URL in badnet)
     app_console = [c for c in results["console"]
                    if not c.startswith("error:Failed to load resource")]
     results["consoleClean"] = not [c for c in app_console if c.startswith("error:")]
     results["noPageerror"] = not results["perr"]
-    results["netClean"] = not results["badnet"]
+    # issue #40: the network gate now also fails on pre-response transport
+    # failures (requestfailed), not just 4xx/5xx responses
+    results["netClean"] = not results["badnet"] and not results["requestfailed"]
     beats_expected = genre in GENRE_BEATS
     beats_count = 0
     for row in results["trace"]:

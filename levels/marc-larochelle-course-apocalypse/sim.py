@@ -189,7 +189,7 @@ def start_server():
 
 def run_sims(pw, results):
     """Deterministic fixed-dt pins (stub api, seeded PRNG)."""
-    browser = pw.chromium.launch(headless=True)
+    browser = pw.chromium.launch(headless=True, args=["--mute-audio"])  # booth rule: the game never makes sound
     page = browser.new_page(viewport={"width": 1000, "height": 640})
     pins = {}
 

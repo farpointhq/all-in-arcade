@@ -1,0 +1,14 @@
+{
+  "mode": "logo",
+  "base": "http://127.0.0.1:8640",
+  "aborted": "logo-in.svg",
+  "imgs": [
+    "assets/logo-all.svg"
+  ],
+  "noLogo": true,
+  "fallbackDisplay": "block",
+  "logoWrapDisplay": "none",
+  "h1Text": "ALL IN",
+  "lopsided_masthead": false,
+  "fallback_ok": true
+}

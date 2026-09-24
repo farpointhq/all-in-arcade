@@ -1,0 +1,12 @@
+{
+  "mode": "gate-old",
+  "base": "http://127.0.0.1:8640",
+  "lid": "ian-spence-rewind-loop",
+  "badnet": [],
+  "requestfailed": [
+    "net::ERR_FAILED http://127.0.0.1:8640/levels/ian-spence-rewind-loop/level.json"
+  ],
+  "canvas": true,
+  "netClean": true,
+  "gate_catches_failure": false
+}
