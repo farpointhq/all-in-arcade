@@ -1,0 +1,52 @@
+Issue #44 — AFTER FIX (serve.py with submissions deny, port 8644)
+Tree: tmp_worktree/issue-44 @ fix/issue-44 (off origin/main 20e882d).
+
+=== A) default submissions dir — POST still works, GET denied ===
+$ python3 serve.py --port 8644
+$ curl -i -X POST /api/submit -d '{"name":"Pia Iisky","email":"pia.private@example.com",...}'
+HTTP/1.0 200 OK
+Content-Type: application/json; charset=utf-8
+
+{"ok": true, "queued": true}
+
+$ curl -i GET /submissions/pending.jsonl
+HTTP/1.0 404 Not Found
+Content-Type: text/plain
+Content-Length: 37
+
+not found: /submissions/pending.jsonl
+
+$ curl -i GET /submissions/pending-2026.jsonl        # rotated-style name
+HTTP/1.0 404 Not Found
+Content-Type: text/plain
+Content-Length: 42
+
+not found: /submissions/pending-2026.jsonl
+
+# the record DID land on disk (POST/append unaffected):
+$ tail -1 submissions/pending.jsonl
+{"ts": "2026-09-24T14:33:09-0700", "name": "Pia Iisky", "email": "pia.private@example.com", "username": "pia", "genre": "auto", "prompt": "a moon made of pianos"}
+
+# legit static assets still serve:
+GET /          -> 200
+GET /src/app.js -> 200
+
+=== B) --submissions-dir pointing elsewhere (moved queue) ===
+$ python3 serve.py --port 8644 --submissions-dir /tmp/issue44-subs
+$ curl -i -X POST /api/submit -d '{"name":"Booth Op","email":"op.private@example.com",...}'
+HTTP/1.0 200 OK
+{"ok": true, "queued": true}
+
+# record written to the MOVED dir on disk (custom flag still honoured):
+$ tail -1 /tmp/issue44-subs/pending.jsonl
+{"ts": "2026-09-24T14:33:19-0700", "name": "Booth Op", "email": "op.private@example.com", "username": "op", "genre": "auto", "prompt": "custom dir test"}
+
+# default /submissions path is still closed even with the flag moved:
+GET /submissions/pending.jsonl            -> 404
+# no HTTP route reaches the moved queue either:
+GET /tmp/issue44-subs/pending.jsonl       -> 404
+GET /issue44-subs/pending.jsonl           -> 404
+
+VERDICT: static handler now hard-denies any GET resolving inside a submissions
+directory (live queue + rotated names), regardless of --submissions-dir; POST
+/api/submit and on-disk appends are unaffected; legitimate files still serve.

@@ -6,6 +6,7 @@ Endpoints:
   GET  /api/health     → {"ok": true}
   GET  /api/levels     → merged manifest + per-level JSON (drives UI + credits)
   POST /api/submit     → appends attendee submission to submissions/pending.jsonl
+  GET  /submissions/** → 404, never served (attendee PII; issue #44)
 
 Usage: python3 serve.py [--port 8181] [--submissions-dir DIR]
                         [--rotate-mb MB] [--keep-rotated N]
@@ -110,6 +111,10 @@ class Handler(BaseHTTPRequestHandler):
             contained = False
         if not contained:
             return self._send(403, b"forbidden", "text/plain")
+        # issue #44: never serve the submission queue (plain in-root path access,
+        # not a traversal). Bare 404 — indistinguishable from any other miss.
+        if is_private_path(real):
+            return self._send(404, "not found: %s" % path, "text/plain")
         if not os.path.isfile(real):
             if path == "/favicon.ico":
                 return self._send(204, b"")
@@ -208,6 +213,29 @@ class Handler(BaseHTTPRequestHandler):
             if not chunk:
                 break
             left -= len(chunk)
+
+
+# ---- submission privacy (issue #44) ----------------------------------------
+def private_submission_roots():
+    """Realpaths of every directory holding attendee PII that must stay unserved.
+
+    The live queue is the configured --submissions-dir; the default
+    <repo>/submissions is denied too, so the queue stays closed even when the
+    flag points elsewhere (e.g. outside the web root).
+    """
+    dirs = {SUBMISSIONS_DIR, os.path.join(ROOT, "submissions")}
+    return [os.path.realpath(d) for d in dirs if d]
+
+
+def is_private_path(real_path):
+    """True when real_path resolves inside a submissions directory (issue #44)."""
+    for root in private_submission_roots():
+        try:
+            if os.path.commonpath([real_path, root]) == root:
+                return True
+        except ValueError:  # mixed abs/rel or different drive — not the queue
+            continue
+    return False
 
 
 def maybe_rotate():
