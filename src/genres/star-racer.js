@@ -214,7 +214,12 @@ export function create(level, api) {
   const total = N * SEG_LEN;
 
   // ---- level objects (level.json is the source of truth; z is 0..1 of the track) ----
-  const items = (D.items || []).map((it, i) => ({ z: it.z * total, x: it.x, y: [-0.55, 0.45, 0][i % 3], got: false }));
+  // (#39) energy cells are PAINTED floor-anchored (draw(): floor glow + light pillar + charged cell
+  // on the trench floor plane), so they are COLLECTED in the floor band — the pickup the player sees
+  // is the pickup the game grants. This altitude used to cycle [-0.55, 0.45, 0] (collection altitudes
+  // with no painted counterpart: a y=0.45 cell rendered on the floor yet was only grabbable from the
+  // ceiling, a y=-0.55 cell was painted identically but needed the floor band).
+  const items = (D.items || []).map((it) => ({ z: it.z * total, x: it.x, y: -0.55, got: false }));
   const debris = (D.debris || []).map((ob) => ({ z: ob.z * total, x: ob.x }));
   // ---- turrets: floor/wall/ceiling mounts, telegraphed slow + inaccurate shots—they fall to blaster hits and drop energy.
   // y is an ALTITUDE like playerY (update(): +0.95 ceiling, -0.95 floor), NOT screen-y — floor
@@ -647,7 +652,8 @@ export function create(level, api) {
       }
 
       // energy-cell pickups: ground-anchored (floor glow + light pillar + charged cell)
-      // so they read as pickups ON the lane, not floaters in the sky
+      // so they read as pickups ON the lane, not floaters in the sky — and (#39) this floor anchor
+      // is also the band they are collected in (grab3D: |y - playerY| < 0.5), unlike turret drops
       for (const it of items) {
         if (it.got) continue;
         if (Math.floor(it.z / SEG_LEN) % N !== i) continue;
