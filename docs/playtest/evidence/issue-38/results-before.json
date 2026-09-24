@@ -1,0 +1,2750 @@
+{
+  "probe": "issue-38 turret altitude band",
+  "expect": "before",
+  "port": 8638,
+  "tree": "/Users/ryanmonsurate/Projects/all-in-arcade/tmp_worktree/issue-38",
+  "phases": {
+    "P1-ceiling-vs-floor-turret": {
+      "phase": "P1-ceiling-vs-floor-turret",
+      "subject": 0,
+      "pin_y": 0.95,
+      "dead": true,
+      "expected_dead": true,
+      "hp": 0,
+      "checks": {
+        "subject": true,
+        "status_playing": true
+      },
+      "ok": true,
+      "hearts": 3,
+      "status": "playing",
+      "turrets_end": [
+        {
+          "z": 564.48,
+          "x": 0.3,
+          "y": 0.82,
+          "hp": 0,
+          "dead": true
+        },
+        {
+          "z": 1088.64,
+          "x": -0.82,
+          "y": 0.1,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 1451.52,
+          "x": 0.3,
+          "y": -0.78,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 1935.36,
+          "x": 0.82,
+          "y": 0.1,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 2419.2,
+          "x": 0.3,
+          "y": 0.82,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 2903.04,
+          "x": -0.82,
+          "y": 0.1,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 3467.52,
+          "x": 0.3,
+          "y": -0.78,
+          "hp": 2,
+          "dead": false
+        }
+      ],
+      "trace": [
+        {
+          "t": 0.01,
+          "position": 0.0,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 0.88,
+          "position": 24.3,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 1.42,
+          "position": 48.6,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 1.92,
+          "position": 72.9,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 2.39,
+          "position": 97.0,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 2.85,
+          "position": 121.1,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 3.3,
+          "position": 145.6,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 3.73,
+          "position": 169.7,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 4.16,
+          "position": 194.0,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 4.57,
+          "position": 218.3,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 4.98,
+          "position": 242.6,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 5.38,
+          "position": 267.0,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 5.77,
+          "position": 291.2,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 6.16,
+          "position": 315.6,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 6.53,
+          "position": 339.7,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 6.9,
+          "position": 363.7,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 7.26,
+          "position": 387.8,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 1,
+          "subject_dead": false
+        },
+        {
+          "t": 7.62,
+          "position": 412.1,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 7.97,
+          "position": 436.3,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 8.32,
+          "position": 460.8,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 8.66,
+          "position": 485.1,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 8.99,
+          "position": 509.2,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 9.32,
+          "position": 533.7,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 9.65,
+          "position": 557.8,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 9.97,
+          "position": 582.3,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 10.29,
+          "position": 606.4,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 10.61,
+          "position": 630.9,
+          "playerX": 0,
+          "playerY": 0.936,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        }
+      ]
+    },
+    "P2-floor-vs-floor-turret": {
+      "phase": "P2-floor-vs-floor-turret",
+      "subject": 0,
+      "pin_y": -0.95,
+      "dead": false,
+      "expected_dead": false,
+      "hp": 2,
+      "checks": {
+        "subject": true,
+        "status_playing": true
+      },
+      "ok": true,
+      "hearts": 3,
+      "status": "playing",
+      "turrets_end": [
+        {
+          "z": 564.48,
+          "x": 0.3,
+          "y": 0.82,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 1088.64,
+          "x": -0.82,
+          "y": 0.1,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 1451.52,
+          "x": 0.3,
+          "y": -0.78,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 1935.36,
+          "x": 0.82,
+          "y": 0.1,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 2419.2,
+          "x": 0.3,
+          "y": 0.82,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 2903.04,
+          "x": -0.82,
+          "y": 0.1,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 3467.52,
+          "x": 0.3,
+          "y": -0.78,
+          "hp": 2,
+          "dead": false
+        }
+      ],
+      "trace": [
+        {
+          "t": 0.01,
+          "position": 0.1,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 0.86,
+          "position": 24.2,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 1.4,
+          "position": 48.4,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 1.89,
+          "position": 72.4,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 2.37,
+          "position": 96.7,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 2.82,
+          "position": 120.8,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 3.27,
+          "position": 144.8,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 3.7,
+          "position": 168.9,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 4.12,
+          "position": 193.1,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 4.54,
+          "position": 217.4,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 4.95,
+          "position": 241.7,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 5.35,
+          "position": 266.0,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 5.74,
+          "position": 290.4,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 6.13,
+          "position": 314.7,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 6.5,
+          "position": 338.8,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 6.87,
+          "position": 362.9,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 7.23,
+          "position": 387.4,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 7.59,
+          "position": 411.7,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 7.94,
+          "position": 435.9,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 8.29,
+          "position": 460.4,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 8.63,
+          "position": 484.6,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 8.97,
+          "position": 508.8,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 9.3,
+          "position": 533.2,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 9.62,
+          "position": 557.3,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 9.95,
+          "position": 581.9,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 10.27,
+          "position": 606.1,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 10.58,
+          "position": 630.4,
+          "playerX": 0,
+          "playerY": -0.925,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        }
+      ]
+    },
+    "P3-mid-xspam-vs-floor-turret": {
+      "phase": "P3-mid-xspam-vs-floor-turret",
+      "subject": 0,
+      "pin_y": 0.0,
+      "dead": true,
+      "expected_dead": true,
+      "hp": 0,
+      "checks": {
+        "subject": true,
+        "status_playing": true,
+        "positive_control_t1": true
+      },
+      "ok": true,
+      "hearts": 3,
+      "status": "playing",
+      "turrets_end": [
+        {
+          "z": 564.48,
+          "x": 0.3,
+          "y": 0.82,
+          "hp": 0,
+          "dead": true
+        },
+        {
+          "z": 1088.64,
+          "x": -0.82,
+          "y": 0.1,
+          "hp": 0,
+          "dead": true
+        },
+        {
+          "z": 1451.52,
+          "x": 0.3,
+          "y": -0.78,
+          "hp": 0,
+          "dead": true
+        },
+        {
+          "z": 1935.36,
+          "x": 0.82,
+          "y": 0.1,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 2419.2,
+          "x": 0.3,
+          "y": 0.82,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 2903.04,
+          "x": -0.82,
+          "y": 0.1,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 3467.52,
+          "x": 0.3,
+          "y": -0.78,
+          "hp": 2,
+          "dead": false
+        }
+      ],
+      "trace": [
+        {
+          "t": 0.02,
+          "position": 0.0,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 0.89,
+          "position": 24.2,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 1.43,
+          "position": 48.5,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 1.93,
+          "position": 72.8,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 2.41,
+          "position": 97.1,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 2.87,
+          "position": 121.3,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 3.32,
+          "position": 145.7,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 3.75,
+          "position": 169.9,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 4.17,
+          "position": 194.1,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 4.59,
+          "position": 218.4,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 5.0,
+          "position": 242.8,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 5.4,
+          "position": 267.1,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 5.79,
+          "position": 291.4,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 6.17,
+          "position": 315.7,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 6.55,
+          "position": 339.9,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 6.92,
+          "position": 364.0,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 7.28,
+          "position": 388.5,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 1,
+          "subject_dead": false
+        },
+        {
+          "t": 7.64,
+          "position": 412.9,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 7.99,
+          "position": 437.0,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 8.33,
+          "position": 461.0,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 8.68,
+          "position": 485.3,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 9.01,
+          "position": 510.0,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 9.35,
+          "position": 534.5,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 9.67,
+          "position": 558.6,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 10.0,
+          "position": 583.2,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 10.32,
+          "position": 607.3,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 10.63,
+          "position": 631.8,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 10.94,
+          "position": 656.0,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 11.25,
+          "position": 680.4,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 11.55,
+          "position": 704.4,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 11.85,
+          "position": 728.9,
+          "playerX": -0.006,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 12.15,
+          "position": 753.6,
+          "playerX": -0.021,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 12.44,
+          "position": 777.8,
+          "playerX": -0.036,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 12.73,
+          "position": 802.3,
+          "playerX": -0.018,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 13.02,
+          "position": 826.3,
+          "playerX": -0.033,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 13.3,
+          "position": 850.5,
+          "playerX": -0.048,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 13.58,
+          "position": 875.1,
+          "playerX": -0.044,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 13.86,
+          "position": 899.3,
+          "playerX": -0.037,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 14.13,
+          "position": 923.5,
+          "playerX": -0.457,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 14.41,
+          "position": 948.1,
+          "playerX": -0.465,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 14.67,
+          "position": 972.1,
+          "playerX": -0.465,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 14.94,
+          "position": 996.3,
+          "playerX": -0.465,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 15.21,
+          "position": 1020.9,
+          "playerX": -0.465,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 15.48,
+          "position": 1045.5,
+          "playerX": -0.465,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 15.73,
+          "position": 1069.6,
+          "playerX": -0.465,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 15.99,
+          "position": 1093.9,
+          "playerX": -0.463,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 16.25,
+          "position": 1118.4,
+          "playerX": -0.465,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 16.5,
+          "position": 1142.4,
+          "playerX": -0.485,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 16.76,
+          "position": 1167.0,
+          "playerX": -0.467,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 17.01,
+          "position": 1191.1,
+          "playerX": -0.204,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 17.27,
+          "position": 1215.8,
+          "playerX": -0.004,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 17.52,
+          "position": 1240.5,
+          "playerX": 0.015,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 17.77,
+          "position": 1264.6,
+          "playerX": 0.032,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 18.03,
+          "position": 1289.4,
+          "playerX": 0.051,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        }
+      ]
+    },
+    "P4-floor-vs-ceiling-turret": {
+      "phase": "P4-floor-vs-ceiling-turret",
+      "subject": 2,
+      "pin_y": -0.95,
+      "dead": true,
+      "expected_dead": true,
+      "hp": 0,
+      "checks": {
+        "subject": true,
+        "status_playing": true
+      },
+      "ok": true,
+      "hearts": 2,
+      "status": "playing",
+      "turrets_end": [
+        {
+          "z": 564.48,
+          "x": 0.3,
+          "y": 0.82,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 1088.64,
+          "x": -0.82,
+          "y": 0.1,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 1451.52,
+          "x": 0.3,
+          "y": -0.78,
+          "hp": 0,
+          "dead": true
+        },
+        {
+          "z": 1935.36,
+          "x": 0.82,
+          "y": 0.1,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 2419.2,
+          "x": 0.3,
+          "y": 0.82,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 2903.04,
+          "x": -0.82,
+          "y": 0.1,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 3467.52,
+          "x": 0.3,
+          "y": -0.78,
+          "hp": 2,
+          "dead": false
+        }
+      ],
+      "trace": [
+        {
+          "t": 0.01,
+          "position": 0.0,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 0.89,
+          "position": 24.2,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 1.43,
+          "position": 48.5,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 1.93,
+          "position": 72.9,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 2.41,
+          "position": 97.2,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 2.87,
+          "position": 121.3,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 3.31,
+          "position": 145.7,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 3.75,
+          "position": 169.9,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 4.18,
+          "position": 194.1,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 4.59,
+          "position": 218.3,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 5.0,
+          "position": 242.8,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 5.4,
+          "position": 267.1,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 5.79,
+          "position": 291.5,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 6.17,
+          "position": 315.7,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 6.55,
+          "position": 339.9,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 6.91,
+          "position": 364.0,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 7.28,
+          "position": 388.5,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 7.64,
+          "position": 412.9,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 7.99,
+          "position": 437.0,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 8.34,
+          "position": 461.6,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 8.68,
+          "position": 485.8,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 9.02,
+          "position": 510.0,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 9.35,
+          "position": 534.5,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 9.67,
+          "position": 558.7,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 10.0,
+          "position": 583.1,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 10.32,
+          "position": 607.4,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 10.63,
+          "position": 631.9,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 10.94,
+          "position": 656.0,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 11.25,
+          "position": 680.4,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 11.55,
+          "position": 704.5,
+          "playerX": 0,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 11.85,
+          "position": 728.9,
+          "playerX": -0.006,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 12.15,
+          "position": 753.6,
+          "playerX": -0.021,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 12.44,
+          "position": 777.6,
+          "playerX": -0.036,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 12.73,
+          "position": 802.2,
+          "playerX": -0.052,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 13.02,
+          "position": 826.3,
+          "playerX": -0.067,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 13.3,
+          "position": 850.6,
+          "playerX": -0.082,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 13.59,
+          "position": 875.2,
+          "playerX": -0.098,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 13.86,
+          "position": 899.3,
+          "playerX": -0.113,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 14.13,
+          "position": 923.5,
+          "playerX": -0.128,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 14.41,
+          "position": 948.1,
+          "playerX": -0.136,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 14.68,
+          "position": 972.8,
+          "playerX": -0.136,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 14.95,
+          "position": 997.0,
+          "playerX": -0.136,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 15.22,
+          "position": 1021.5,
+          "playerX": -0.136,
+          "playerY": -0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 15.48,
+          "position": 1045.5,
+          "playerX": -0.486,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 15.73,
+          "position": 1069.7,
+          "playerX": -0.486,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 15.99,
+          "position": 1094.0,
+          "playerX": -0.485,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 16.25,
+          "position": 1118.5,
+          "playerX": -0.467,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 16.52,
+          "position": 1143.2,
+          "playerX": -0.449,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 16.77,
+          "position": 1167.9,
+          "playerX": -0.431,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 17.05,
+          "position": 1193.4,
+          "playerX": -0.412,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 17.29,
+          "position": 1218.2,
+          "playerX": -0.394,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 17.55,
+          "position": 1243.0,
+          "playerX": -0.375,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 17.81,
+          "position": 1267.8,
+          "playerX": -0.357,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 1,
+          "subject_dead": false
+        },
+        {
+          "t": 18.07,
+          "position": 1292.5,
+          "playerX": -0.339,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 18.32,
+          "position": 1317.2,
+          "playerX": -0.321,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 18.58,
+          "position": 1341.4,
+          "playerX": -0.303,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 18.84,
+          "position": 1366.2,
+          "playerX": -0.292,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 19.09,
+          "position": 1390.9,
+          "playerX": -0.292,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 19.36,
+          "position": 1416.6,
+          "playerX": -0.292,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 19.62,
+          "position": 1441.4,
+          "playerX": -0.292,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 19.87,
+          "position": 1466.0,
+          "playerX": -0.292,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 20.13,
+          "position": 1490.1,
+          "playerX": -0.292,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        },
+        {
+          "t": 20.38,
+          "position": 1514.9,
+          "playerX": -0.292,
+          "playerY": -0.926,
+          "hearts": 2,
+          "status": "playing",
+          "subject_hp": 0,
+          "subject_dead": true
+        }
+      ]
+    },
+    "P5-ceiling-vs-ceiling-turret": {
+      "phase": "P5-ceiling-vs-ceiling-turret",
+      "subject": 2,
+      "pin_y": 0.95,
+      "dead": false,
+      "expected_dead": false,
+      "hp": 2,
+      "checks": {
+        "subject": true,
+        "status_playing": true
+      },
+      "ok": true,
+      "hearts": 3,
+      "status": "playing",
+      "turrets_end": [
+        {
+          "z": 564.48,
+          "x": 0.3,
+          "y": 0.82,
+          "hp": 0,
+          "dead": true
+        },
+        {
+          "z": 1088.64,
+          "x": -0.82,
+          "y": 0.1,
+          "hp": 0,
+          "dead": true
+        },
+        {
+          "z": 1451.52,
+          "x": 0.3,
+          "y": -0.78,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 1935.36,
+          "x": 0.82,
+          "y": 0.1,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 2419.2,
+          "x": 0.3,
+          "y": 0.82,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 2903.04,
+          "x": -0.82,
+          "y": 0.1,
+          "hp": 2,
+          "dead": false
+        },
+        {
+          "z": 3467.52,
+          "x": 0.3,
+          "y": -0.78,
+          "hp": 2,
+          "dead": false
+        }
+      ],
+      "trace": [
+        {
+          "t": 0.02,
+          "position": 0.2,
+          "playerX": 0,
+          "playerY": 0,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 0.85,
+          "position": 24.2,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 1.39,
+          "position": 48.5,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 1.89,
+          "position": 72.9,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 2.37,
+          "position": 97.1,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 2.82,
+          "position": 121.3,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 3.28,
+          "position": 145.7,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 3.71,
+          "position": 169.8,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 4.14,
+          "position": 194.1,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 4.55,
+          "position": 218.4,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 4.96,
+          "position": 242.7,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 5.36,
+          "position": 267.0,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 5.75,
+          "position": 291.3,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 6.13,
+          "position": 315.7,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 6.51,
+          "position": 339.8,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 6.88,
+          "position": 364.0,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 7.24,
+          "position": 388.5,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 7.6,
+          "position": 412.9,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 7.95,
+          "position": 436.9,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 8.29,
+          "position": 460.9,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 8.63,
+          "position": 485.3,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 8.97,
+          "position": 509.4,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 9.3,
+          "position": 533.8,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 9.63,
+          "position": 558.1,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 9.95,
+          "position": 582.5,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 10.27,
+          "position": 606.7,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 10.58,
+          "position": 631.2,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 10.89,
+          "position": 655.3,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 11.21,
+          "position": 680.5,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 11.51,
+          "position": 704.5,
+          "playerX": 0,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 11.81,
+          "position": 728.9,
+          "playerX": -0.006,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 12.11,
+          "position": 753.5,
+          "playerX": -0.021,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 12.4,
+          "position": 777.7,
+          "playerX": -0.036,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 12.69,
+          "position": 802.2,
+          "playerX": -0.052,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 12.98,
+          "position": 826.3,
+          "playerX": -0.067,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 13.26,
+          "position": 850.6,
+          "playerX": -0.082,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 13.54,
+          "position": 875.2,
+          "playerX": -0.098,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 13.82,
+          "position": 899.9,
+          "playerX": -0.113,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 14.1,
+          "position": 924.3,
+          "playerX": -0.129,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 14.38,
+          "position": 948.7,
+          "playerX": -0.136,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 14.65,
+          "position": 972.8,
+          "playerX": -0.136,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 14.91,
+          "position": 997.1,
+          "playerX": -0.136,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 15.18,
+          "position": 1021.6,
+          "playerX": -0.136,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 15.46,
+          "position": 1046.2,
+          "playerX": -0.136,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 15.72,
+          "position": 1070.3,
+          "playerX": -0.136,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 15.97,
+          "position": 1094.6,
+          "playerX": -0.134,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 16.23,
+          "position": 1119.1,
+          "playerX": -0.116,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 16.5,
+          "position": 1144.6,
+          "playerX": -0.098,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 16.76,
+          "position": 1169.2,
+          "playerX": -0.079,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 17.01,
+          "position": 1193.3,
+          "playerX": -0.062,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 17.27,
+          "position": 1218.0,
+          "playerX": -0.044,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 17.53,
+          "position": 1242.8,
+          "playerX": -0.025,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 17.78,
+          "position": 1267.7,
+          "playerX": -0.007,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 18.04,
+          "position": 1292.4,
+          "playerX": 0.011,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 18.3,
+          "position": 1317.1,
+          "playerX": 0.029,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 18.55,
+          "position": 1341.2,
+          "playerX": 0.047,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 18.81,
+          "position": 1365.9,
+          "playerX": 0.058,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 19.06,
+          "position": 1390.0,
+          "playerX": 0.058,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 19.34,
+          "position": 1417.2,
+          "playerX": 0.058,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 19.6,
+          "position": 1442.1,
+          "playerX": 0.058,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 19.86,
+          "position": 1466.7,
+          "playerX": 0.058,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 20.11,
+          "position": 1490.9,
+          "playerX": 0.058,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        },
+        {
+          "t": 20.37,
+          "position": 1515.5,
+          "playerX": 0.058,
+          "playerY": 0.926,
+          "hearts": 3,
+          "status": "playing",
+          "subject_hp": 2,
+          "subject_dead": false
+        }
+      ]
+    }
+  },
+  "notes": [],
+  "build_marker": "y: TURRET_SIDES[i] === \"floor\" ? 0.82",
+  "build_marker_ok": true,
+  "static_mount_y": [
+    {
+      "i": 0,
+      "kind": "floor",
+      "y": 0.82,
+      "expected": 0.82,
+      "ok": true
+    },
+    {
+      "i": 1,
+      "kind": "left",
+      "y": 0.1,
+      "expected": 0.1,
+      "ok": true
+    },
+    {
+      "i": 2,
+      "kind": "ceiling",
+      "y": -0.78,
+      "expected": -0.78,
+      "ok": true
+    },
+    {
+      "i": 3,
+      "kind": "right",
+      "y": 0.1,
+      "expected": 0.1,
+      "ok": true
+    },
+    {
+      "i": 4,
+      "kind": "floor",
+      "y": 0.82,
+      "expected": 0.82,
+      "ok": true
+    },
+    {
+      "i": 5,
+      "kind": "left",
+      "y": 0.1,
+      "expected": 0.1,
+      "ok": true
+    },
+    {
+      "i": 6,
+      "kind": "ceiling",
+      "y": -0.78,
+      "expected": -0.78,
+      "ok": true
+    }
+  ],
+  "boot": {
+    "ok": true,
+    "console": [],
+    "perr": [],
+    "badnet": []
+  },
+  "ok": true
+}

@@ -216,12 +216,16 @@ export function create(level, api) {
   // ---- level objects (level.json is the source of truth; z is 0..1 of the track) ----
   const items = (D.items || []).map((it, i) => ({ z: it.z * total, x: it.x, y: [-0.55, 0.45, 0][i % 3], got: false }));
   const debris = (D.debris || []).map((ob) => ({ z: ob.z * total, x: ob.x }));
-  // ---- turrets: floor/wall/ceiling mounts, telegraphed slow + inaccurate shots—they fall to blaster hits and drop energy。
+  // ---- turrets: floor/wall/ceiling mounts, telegraphed slow + inaccurate shots—they fall to blaster hits and drop energy.
+  // y is an ALTITUDE like playerY (update(): +0.95 ceiling, -0.95 floor), NOT screen-y — floor
+  // mounts sit low, ceiling mounts high, so "shoot the turret mounted at your band" is the verb.
+  // (#38: these two literals used to be swapped, which made mid/ceiling X-spam clear floor
+  // mounts while their own band could not reach them.)
   const TURRET_SPOTS = [0.14, 0.27, 0.36, 0.48, 0.6, 0.72, 0.86];
   const TURRET_SIDES = ["floor", "left", "ceiling", "right", "floor", "left", "ceiling"];
   const turrets = TURRET_SPOTS.map((f, i) => ({
     z: f * total, x: TURRET_SIDES[i] === "left" ? -0.82 : TURRET_SIDES[i] === "right" ? 0.82 : (i % 2 ? -0.3 : 0.3),
-    y: TURRET_SIDES[i] === "floor" ? 0.82 : TURRET_SIDES[i] === "ceiling" ? -0.78 : 0.1,
+    y: TURRET_SIDES[i] === "floor" ? -0.82 : TURRET_SIDES[i] === "ceiling" ? 0.78 : 0.1,
     hp: 2, cd: 1.4 + hash(i * 31) * 1.2, tele: 0, dead: false, kind: TURRET_SIDES[i],
   }));
   const drops = [];    // loose energy left behind by kills {z, x, y, ttl， on}
@@ -361,7 +365,9 @@ export function create(level, api) {
       }
       for (const tu of turrets) {
         if (tu.dead) continue;
-        if (Math.abs(b.z - tu.z) < SEG_LEN * 1.2 && Math.abs(b.x - tu.x) < 0.8 && Math.abs(b.y - tu.y) < 0.9) {
+        // altitude window matches the fighter-tracer band (0.55): only the altitude the mount is
+        // painted at can hit it — a full-trench X-spam must not clear every mount (#38)
+        if (Math.abs(b.z - tu.z) < SEG_LEN * 1.2 && Math.abs(b.x - tu.x) < 0.8 && Math.abs(b.y - tu.y) < 0.55) {
           b.on = false; tu.hp--; tu.flash = 0.35;
           if (tu.hp <= 0) {
             tu.dead = true;
