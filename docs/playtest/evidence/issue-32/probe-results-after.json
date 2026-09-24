@@ -1,0 +1,88 @@
+{
+  "port": 8632,
+  "base": "http://127.0.0.1:8632",
+  "expectBuild": "post",
+  "tree": "/Users/ryanmonsurate/Projects/all-in-arcade/tmp_worktree/issue-32",
+  "ts": "2026-09-24T14:32:14",
+  "build": {
+    "expect": "post",
+    "hasTextNodeFix": true,
+    "hasInnerHTMLConcat": false,
+    "appJsBytes": 19332,
+    "ok": true,
+    "base": "http://127.0.0.1:8632"
+  },
+  "cases": [
+    {
+      "case": "hostile message executes as HTML",
+      "ok": true,
+      "error": null,
+      "xssFired": false,
+      "imgInFatal": false,
+      "messageVisibleAsText": true,
+      "fatalDisplay": "flex",
+      "detailOpacity": "0.6",
+      "staticCopyIntact": true,
+      "xssSeenPolls": 0,
+      "imgSeenPolls": 0,
+      "pageErrors": [
+        "<img src=x onerror=\"window.__xss=1\">"
+      ],
+      "snapshot": {
+        "xss": null,
+        "display": "flex",
+        "imgCount": 0,
+        "spanCount": 1,
+        "detailOpacity": "0.6",
+        "innerHTMLHasImg": false,
+        "text": "Something broke in the booth game. Find the Fabric agent in chat and say: booth game is erroring <img src=x onerror=\"window.__xss=1\">"
+      }
+    },
+    {
+      "case": "benign long message still readable",
+      "ok": true,
+      "error": null,
+      "messageVisibleAsText": true,
+      "messageLength": 267,
+      "fatalDisplay": "flex",
+      "spanCount": 1,
+      "detailOpacity": "0.6",
+      "xssFired": false,
+      "imgInFatal": false,
+      "staticCopyIntact": true,
+      "pageErrors": [
+        "Kiosk fatal surface check \u2014 a long readable error message a long readable error message a long readable error message a long readable error message a long readable error message a long readable error message a long readable error message a long readable error message"
+      ],
+      "snapshot": {
+        "xss": null,
+        "display": "flex",
+        "imgCount": 0,
+        "spanCount": 1,
+        "detailOpacity": "0.6",
+        "innerHTMLHasImg": false,
+        "text": "Something broke in the booth game. Find the Fabric agent in chat and say: booth game is erroring Kiosk fatal surface check \u2014 a long readable error message a long readable error message a long readable error message a long readable error message a long readable error message a long readable error message a long readable error message a long readable error message"
+      }
+    },
+    {
+      "case": "repeat fatal does not accumulate spans",
+      "ok": true,
+      "error": null,
+      "spanCount": 1,
+      "showsLatest": true,
+      "staleFirstDropped": true,
+      "fatalDisplay": "flex",
+      "detailOpacity": "0.6",
+      "snapshot": {
+        "xss": null,
+        "display": "flex",
+        "imgCount": 0,
+        "spanCount": 1,
+        "detailOpacity": "0.6",
+        "innerHTMLHasImg": false,
+        "text": "Something broke in the booth game. Find the Fabric agent in chat and say: booth game is erroring fatal-probe-second"
+      }
+    }
+  ],
+  "passed": 3,
+  "total": 3
+}

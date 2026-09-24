@@ -35,7 +35,14 @@ const App = {
       const msg = (e && e.message) || (e && e.reason && (e.reason.message || e.reason)) || "";
       const f = $("#fatal");
       f.style.display = "flex";
-      f.innerHTML = "Something broke in the booth game.<br><br>Find the Fabric agent in chat and say: <b>booth game is erroring</b><br><span style='opacity:.6'>" + msg + "</span>";
+      // static copy is trusted (innerHTML is fine for it); the error message is
+      // NOT — it can carry markup (e.g. a JSON.parse SyntaxError snippet from a
+      // tampered save), so it goes in as a text node and renders verbatim (#32).
+      f.innerHTML = "Something broke in the booth game.<br><br>Find the Fabric agent in chat and say: <b>booth game is erroring</b><br>";
+      const detail = document.createElement("span");
+      detail.style.opacity = ".6";
+      detail.appendChild(document.createTextNode(msg));
+      f.appendChild(detail);
     };
     window.addEventListener("error", showFatal);
     window.addEventListener("unhandledrejection", showFatal);
