@@ -333,6 +333,51 @@ class PathContainmentTests(ServerCase):
         self.assertEqual(status, 204)
 
 
+class SubmissionsPrivacyTests(ServerCase):
+    """Issue #44 — the static handler must never serve attendee submissions.
+
+    Post-#27 containment is about escaping the root; this is a plain, in-root
+    path. pending.jsonl + rotated pending-*.jsonl hold attendee name/email, and
+    the kiosk form promises the email is "private — for follow-ups only".
+    """
+
+    PII = {"name": "Pia Iisky", "email": "pia.private@example.com",
+           "username": "pia", "genre": "auto", "prompt": "a moon made of pianos"}
+
+    def _seed(self, filename, rec):
+        """Write a queue file at the served default path <root>/submissions/."""
+        path = os.path.join(self.sb.root, "submissions", filename)
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+
+    def test_pending_jsonl_is_denied_and_leaks_nothing(self):
+        self._seed("pending.jsonl", self.PII)
+        status, body = self.get("/submissions/pending.jsonl")
+        self.assertIn(status, (403, 404), "the live queue must not be served")
+        self.assertNotIn(self.PII["email"].encode(), body, "attendee email must not leak")
+
+    def test_rotated_pending_is_denied(self):
+        self._seed("pending-2026.jsonl", dict(self.PII, email="rot@example.com"))
+        status, body = self.get("/submissions/pending-2026.jsonl")
+        self.assertIn(status, (403, 404), "rotated queue files are equally exposed")
+        self.assertNotIn(b"rot@example.com", body)
+
+    def test_submit_still_works_and_http_get_never_returns_email(self):
+        # POST keeps working; the record lands on disk in the configured dir ...
+        status, _ = self.post(json.dumps(VALID).encode("utf-8"))
+        self.assertEqual(status, 200, "POST /api/submit must keep working")
+        self.assertEqual(self.sb.pending_lines()[0]["email"], VALID["email"])
+        # ... and that same queue file stays unservable over HTTP. The sandbox
+        # points --submissions-dir at <root>/submissions-tmp, so this also pins
+        # the "flag respects a moved directory" requirement.
+        rel = os.path.relpath(self.sb.submissions, self.sb.root).replace(os.sep, "/")
+        status, body = self.get("/%s/pending.jsonl" % rel)
+        self.assertIn(status, (403, 404), "the configured queue path must be denied")
+        self.assertNotIn(VALID["email"].encode(), body,
+                         "a submitted email must never come back over HTTP")
+
+
 class RotationTests(ServerCase):
     extra_args = ("--rotate-mb", "0.001", "--keep-rotated", "2")
 
