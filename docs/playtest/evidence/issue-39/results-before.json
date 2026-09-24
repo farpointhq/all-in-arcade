@@ -1,0 +1,765 @@
+{
+  "probe": "issue-39 item paint/collection agreement",
+  "expect": "before",
+  "port": 8639,
+  "tree": "/Users/ryanmonsurate/Projects/all-in-arcade/tmp_worktree/issue-39-before",
+  "phases": {
+    "P1-floor-pin-grabs-floor-painted-cell": {
+      "phase": "P1-floor-pin-grabs-floor-painted-cell",
+      "item": 1,
+      "item_z": 302.4,
+      "item_x": -0.2,
+      "pin_y": -0.95,
+      "item_y_end": 0.45,
+      "got": false,
+      "expected_got": false,
+      "checks": {
+        "subject_got": true,
+        "status_playing": true
+      },
+      "ok": true,
+      "hearts": 3,
+      "status": "playing",
+      "trace": [
+        {
+          "t": 0.01,
+          "position": 0.2,
+          "playerX": 0,
+          "playerY": 0,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 0.85,
+          "position": 24.2,
+          "playerX": -0.151,
+          "playerY": -0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 1.39,
+          "position": 48.5,
+          "playerX": -0.151,
+          "playerY": -0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 1.89,
+          "position": 72.9,
+          "playerX": -0.151,
+          "playerY": -0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 2.36,
+          "position": 97.1,
+          "playerX": -0.151,
+          "playerY": -0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 2.82,
+          "position": 121.3,
+          "playerX": -0.151,
+          "playerY": -0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 3.27,
+          "position": 145.7,
+          "playerX": -0.151,
+          "playerY": -0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 3.7,
+          "position": 169.8,
+          "playerX": -0.151,
+          "playerY": -0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 4.13,
+          "position": 194.1,
+          "playerX": -0.151,
+          "playerY": -0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 4.55,
+          "position": 218.4,
+          "playerX": -0.151,
+          "playerY": -0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 4.95,
+          "position": 242.8,
+          "playerX": -0.151,
+          "playerY": -0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 5.36,
+          "position": 267.1,
+          "playerX": -0.151,
+          "playerY": -0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 5.75,
+          "position": 291.4,
+          "playerX": -0.151,
+          "playerY": -0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        }
+      ],
+      "paint_pixels": {
+        "count": 1516,
+        "top": 71,
+        "bottom": 558,
+        "centroid": 299.9
+      }
+    },
+    "P2-ceiling-pin-misses-floor-painted-cell": {
+      "phase": "P2-ceiling-pin-misses-floor-painted-cell",
+      "item": 1,
+      "item_z": 302.4,
+      "item_x": -0.2,
+      "pin_y": 0.95,
+      "item_y_end": 0.45,
+      "got": true,
+      "expected_got": true,
+      "checks": {
+        "subject_got": true,
+        "status_playing": true
+      },
+      "ok": true,
+      "hearts": 3,
+      "status": "playing",
+      "trace": [
+        {
+          "t": 0.01,
+          "position": 0.1,
+          "playerX": 0,
+          "playerY": 0,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 0.85,
+          "position": 24.2,
+          "playerX": -0.151,
+          "playerY": 0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 1.4,
+          "position": 48.5,
+          "playerX": -0.151,
+          "playerY": 0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 1.9,
+          "position": 72.9,
+          "playerX": -0.151,
+          "playerY": 0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 2.37,
+          "position": 97.1,
+          "playerX": -0.151,
+          "playerY": 0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 2.84,
+          "position": 121.3,
+          "playerX": -0.151,
+          "playerY": 0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 3.28,
+          "position": 145.7,
+          "playerX": -0.151,
+          "playerY": 0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 3.71,
+          "position": 169.8,
+          "playerX": -0.151,
+          "playerY": 0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 4.14,
+          "position": 194.1,
+          "playerX": -0.151,
+          "playerY": 0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 4.55,
+          "position": 218.4,
+          "playerX": -0.151,
+          "playerY": 0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 4.96,
+          "position": 242.8,
+          "playerX": -0.151,
+          "playerY": 0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 5.36,
+          "position": 267.1,
+          "playerX": -0.151,
+          "playerY": 0.927,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 5.75,
+          "position": 291.5,
+          "playerX": -0.151,
+          "playerY": 0.927,
+          "subject_got": true,
+          "hearts": 3,
+          "status": "playing"
+        }
+      ],
+      "paint_pixels": {
+        "count": 1483,
+        "top": 71,
+        "bottom": 408,
+        "centroid": 265.3
+      }
+    },
+    "P3-floor-pin-grabs-floor-band-cell": {
+      "phase": "P3-floor-pin-grabs-floor-band-cell",
+      "item": 0,
+      "item_z": 161.3,
+      "item_x": 0.2,
+      "pin_y": -0.95,
+      "item_y_end": -0.55,
+      "got": true,
+      "expected_got": true,
+      "checks": {
+        "subject_got": true,
+        "status_playing": true
+      },
+      "ok": true,
+      "hearts": 3,
+      "status": "playing",
+      "trace": [
+        {
+          "t": 0.01,
+          "position": 0.2,
+          "playerX": 0,
+          "playerY": 0,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 0.84,
+          "position": 24.2,
+          "playerX": 0.152,
+          "playerY": -0.928,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 1.38,
+          "position": 48.5,
+          "playerX": 0.152,
+          "playerY": -0.928,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 1.88,
+          "position": 72.9,
+          "playerX": 0.152,
+          "playerY": -0.928,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 2.36,
+          "position": 97.1,
+          "playerX": 0.152,
+          "playerY": -0.928,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 2.82,
+          "position": 121.3,
+          "playerX": 0.152,
+          "playerY": -0.928,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 3.27,
+          "position": 145.7,
+          "playerX": 0.152,
+          "playerY": -0.928,
+          "subject_got": true,
+          "hearts": 3,
+          "status": "playing"
+        }
+      ],
+      "paint_pixels": {
+        "count": 1760,
+        "top": 71,
+        "bottom": 559,
+        "centroid": 298.8
+      }
+    },
+    "P4-ceiling-pin-misses-floor-band-cell": {
+      "phase": "P4-ceiling-pin-misses-floor-band-cell",
+      "item": 0,
+      "item_z": 161.3,
+      "item_x": 0.2,
+      "pin_y": 0.95,
+      "item_y_end": -0.55,
+      "got": false,
+      "expected_got": false,
+      "checks": {
+        "subject_got": true,
+        "status_playing": true
+      },
+      "ok": true,
+      "hearts": 3,
+      "status": "playing",
+      "trace": [
+        {
+          "t": 0.01,
+          "position": 0.0,
+          "playerX": 0,
+          "playerY": 0,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 0.88,
+          "position": 24.2,
+          "playerX": 0.157,
+          "playerY": 0.936,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 1.42,
+          "position": 48.4,
+          "playerX": 0.157,
+          "playerY": 0.936,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 1.92,
+          "position": 72.5,
+          "playerX": 0.157,
+          "playerY": 0.936,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 2.39,
+          "position": 96.7,
+          "playerX": 0.157,
+          "playerY": 0.936,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 2.85,
+          "position": 120.9,
+          "playerX": 0.157,
+          "playerY": 0.936,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 3.3,
+          "position": 145.3,
+          "playerX": 0.157,
+          "playerY": 0.936,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 3.73,
+          "position": 169.4,
+          "playerX": 0.157,
+          "playerY": 0.936,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        }
+      ],
+      "paint_pixels": {
+        "count": 1770,
+        "top": 71,
+        "bottom": 408,
+        "centroid": 263.8
+      }
+    },
+    "P5-painted-altitude-pin-grabs": {
+      "phase": "P5-painted-altitude-pin-grabs",
+      "item": 1,
+      "item_z": 302.4,
+      "item_x": -0.2,
+      "pin_y": -0.153,
+      "item_y_end": 0.45,
+      "got": false,
+      "expected_got": false,
+      "checks": {
+        "subject_got": true,
+        "status_playing": true
+      },
+      "ok": true,
+      "hearts": 3,
+      "status": "playing",
+      "trace": [
+        {
+          "t": 0.01,
+          "position": 0.1,
+          "playerX": 0,
+          "playerY": 0,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 0.87,
+          "position": 24.2,
+          "playerX": -0.163,
+          "playerY": -0.127,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 1.41,
+          "position": 48.5,
+          "playerX": -0.163,
+          "playerY": -0.127,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 1.91,
+          "position": 72.9,
+          "playerX": -0.163,
+          "playerY": -0.127,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 2.39,
+          "position": 97.1,
+          "playerX": -0.163,
+          "playerY": -0.127,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 2.84,
+          "position": 121.3,
+          "playerX": -0.163,
+          "playerY": -0.127,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 3.29,
+          "position": 145.7,
+          "playerX": -0.163,
+          "playerY": -0.127,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 3.73,
+          "position": 169.9,
+          "playerX": -0.163,
+          "playerY": -0.127,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 4.15,
+          "position": 194.1,
+          "playerX": -0.163,
+          "playerY": -0.127,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 4.57,
+          "position": 218.3,
+          "playerX": -0.163,
+          "playerY": -0.127,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 4.97,
+          "position": 242.8,
+          "playerX": -0.163,
+          "playerY": -0.127,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 5.37,
+          "position": 267.1,
+          "playerX": -0.163,
+          "playerY": -0.127,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        },
+        {
+          "t": 5.77,
+          "position": 291.4,
+          "playerX": -0.163,
+          "playerY": -0.127,
+          "subject_got": false,
+          "hearts": 3,
+          "status": "playing"
+        }
+      ],
+      "paint_pixels": {
+        "count": 1587,
+        "top": 71,
+        "bottom": 494,
+        "centroid": 286.2
+      }
+    }
+  },
+  "notes": [],
+  "paint_geometry": {
+    "floor_alt": -0.95,
+    "wall_frac": 0.62,
+    "cell_lift": 0.26,
+    "painted_cell_alt": -0.153,
+    "grab_window": 0.5
+  },
+  "build_marker": "y: [-0.55, 0.45, 0][i % 3]",
+  "build_marker_ok": true,
+  "static_item_altitudes": [
+    {
+      "i": 0,
+      "z": 161.3,
+      "x": 0.2,
+      "y": -0.55,
+      "floor_plane_in_window": true,
+      "cell_in_window": true,
+      "ok": true
+    },
+    {
+      "i": 1,
+      "z": 302.4,
+      "x": -0.2,
+      "y": 0.45,
+      "floor_plane_in_window": false,
+      "cell_in_window": false,
+      "ok": false
+    },
+    {
+      "i": 2,
+      "z": 483.8,
+      "x": 0.45,
+      "y": 0,
+      "floor_plane_in_window": false,
+      "cell_in_window": true,
+      "ok": false
+    },
+    {
+      "i": 3,
+      "z": 665.3,
+      "x": -0.42,
+      "y": -0.55,
+      "floor_plane_in_window": true,
+      "cell_in_window": true,
+      "ok": true
+    },
+    {
+      "i": 4,
+      "z": 887.0,
+      "x": 0,
+      "y": 0.45,
+      "floor_plane_in_window": false,
+      "cell_in_window": false,
+      "ok": false
+    },
+    {
+      "i": 5,
+      "z": 1471.7,
+      "x": -0.35,
+      "y": 0,
+      "floor_plane_in_window": false,
+      "cell_in_window": true,
+      "ok": false
+    },
+    {
+      "i": 6,
+      "z": 1774.1,
+      "x": 0.42,
+      "y": -0.55,
+      "floor_plane_in_window": true,
+      "cell_in_window": true,
+      "ok": true
+    },
+    {
+      "i": 7,
+      "z": 2016,
+      "x": -0.3,
+      "y": 0.45,
+      "floor_plane_in_window": false,
+      "cell_in_window": false,
+      "ok": false
+    },
+    {
+      "i": 8,
+      "z": 2419.2,
+      "x": 0.3,
+      "y": 0,
+      "floor_plane_in_window": false,
+      "cell_in_window": true,
+      "ok": false
+    },
+    {
+      "i": 9,
+      "z": 2923.2,
+      "x": 0,
+      "y": -0.55,
+      "floor_plane_in_window": true,
+      "cell_in_window": true,
+      "ok": true
+    },
+    {
+      "i": 10,
+      "z": 3044.2,
+      "x": 0.45,
+      "y": 0.45,
+      "floor_plane_in_window": false,
+      "cell_in_window": false,
+      "ok": false
+    },
+    {
+      "i": 11,
+      "z": 3185.3,
+      "x": -0.25,
+      "y": 0,
+      "floor_plane_in_window": false,
+      "cell_in_window": true,
+      "ok": false
+    }
+  ],
+  "static_expected_y": [
+    -0.55,
+    0.45,
+    0.0
+  ],
+  "static_checks": {
+    "paint_inside_grab_window": true,
+    "altitude_band_as_expected": true,
+    "items_out_of_window_before_fix": [
+      1,
+      2,
+      4,
+      5,
+      7,
+      8,
+      10,
+      11
+    ]
+  },
+  "boot": {
+    "ok": true,
+    "console": [],
+    "perr": [],
+    "badnet": []
+  },
+  "ok": true
+}
