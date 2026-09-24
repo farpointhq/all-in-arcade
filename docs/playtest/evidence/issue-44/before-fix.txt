@@ -1,0 +1,52 @@
+Issue #44 — BEFORE FIX repro (unmodified serve.py at 20e882d, port 8644)
+Command: python3 serve.py --port 8644   (default submissions dir = <repo>/submissions)
+Config: max via curl, no auth. Fake attendee "Pia Iisky" / pia.private@example.com.
+
+=== health ===
+HTTP/1.0 200 OK
+Server: AllInArcade/1.0 Python/3.9.6
+Date: Thu, 24 Sep 2026 21:32:02 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 39
+Cache-Control: no-store, must-revalidate
+Access-Control-Allow-Origin: *
+
+{"ok": true, "time": 1790285522.409965}
+
+=== BEFORE: POST fake submission (fake email) ===
+HTTP/1.0 200 OK
+Server: AllInArcade/1.0 Python/3.9.6
+Date: Thu, 24 Sep 2026 21:32:02 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 28
+Cache-Control: no-store, must-revalidate
+Access-Control-Allow-Origin: *
+
+{"ok": true, "queued": true}
+
+=== BEFORE: GET /submissions/pending.jsonl (unauth, plain path) ===
+HTTP/1.0 200 OK
+Server: AllInArcade/1.0 Python/3.9.6
+Date: Thu, 24 Sep 2026 21:32:02 GMT
+Content-Type: application/octet-stream
+Content-Length: 403
+Cache-Control: public, max-age=60
+Access-Control-Allow-Origin: *
+
+{"ts": "2026-09-16T15:18:53-0400", "name": "Nicholas Ning", "email": "nick@farpointhq.com", "username": "", "genre": "shooter", "prompt": "DOOM. But realistic. Hyper-realistic. COD style.\nAble to do a battle royale with bots. Deathmatch"}
+{"ts": "2026-09-24T14:32:02-0700", "name": "Pia Iisky", "email": "pia.private@example.com", "username": "pia", "genre": "auto", "prompt": "a moon made of pianos"}
+
+=== BEFORE: GET /submissions/pending-2026.jsonl (rotated-style name) ===
+HTTP/1.0 200 OK
+Server: AllInArcade/1.0 Python/3.9.6
+Date: Thu, 24 Sep 2026 21:32:08 GMT
+Content-Type: application/octet-stream
+Content-Length: 403
+Cache-Control: public, max-age=60
+Access-Control-Allow-Origin: *
+
+{"ts": "2026-09-16T15:18:53-0400", "name": "Nicholas Ning", "email": "nick@farpointhq.com", "username": "", "genre": "shooter", "prompt": "DOOM. But realistic. Hyper-realistic. COD style.\nAble to do a battle royale with bots. Deathmatch"}
+{"ts": "2026-09-24T14:32:02-0700", "name": "Pia Iisky", "email": "pia.private@example.com", "username": "pia", "genre": "auto", "prompt": "a moon made of pianos"}
+
+VERDICT: unauthenticated GET returns 200 + attendee PII (name + email) on both the
+live queue and a rotated-style filename. Defect confirmed on origin/main.
